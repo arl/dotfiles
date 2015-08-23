@@ -120,16 +120,6 @@ else
     start_agent;
 fi
 
-# easy cd to futbuddy work dir
-function cdfutbuddy
-{
-	cd $HOME/Documents/dev/FutBuddy/futbuddy/
-}
-# easy cd to current courses dir
-function cdcourses
-{
-	cd $HOME/Documents/courses/coursera.algorithmicthink1/module1/application/
-}
 # explore given folder with nautilus
 # or current directory if no args
 function naut
