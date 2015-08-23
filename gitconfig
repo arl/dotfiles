@@ -1,0 +1,14 @@
+[user]
+	# https://confluence.atlassian.com/pages/viewpage.action?pageId=271943168
+	email = aurelien.rainone@gmail.com
+	name = Aurélien Rainone
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	co = checkout
+	st = status
+	dt = difftool
+[push]
+	default = simple
