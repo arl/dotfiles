@@ -21,7 +21,6 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# panty <<
 # set PATH so it includes user's private bin dir if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$PATH:$HOME/bin"
@@ -31,12 +30,14 @@ if [ -d "$HOME/scripts" ] ; then
     PATH="$PATH:$HOME/scripts"
 fi
 
-#export ANDROID_HOME=/home/panty/Documents/dev/adt-bundle-linux-x86_64-20131030/sdk
-export ANDROID_HOME=/home/panty/Documents/dev/android-sdk-linux/
+# work in progress
+
+#export ANDROID_HOME=$HOME/Documents/dev/adt-bundle-linux-x86_64-20131030/sdk
+export ANDROID_HOME=$HOME/Documents/dev/android-sdk-linux/
 # set JAVA_HOME
 #export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-amd64"
 
-export NODE_PATH="/home/panty/node"
+export NODE_PATH="$HOME/node"
 
 
 ########################################################################################

@@ -2,7 +2,7 @@
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
-	# panty : changed to color=always
+    # aurelien: maybe 'color=auto' would be better...
     alias ls='ls --color=always'
     alias grep='grep --color=always'
     alias pcregrep='pcregrep --color=always'

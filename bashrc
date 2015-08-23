@@ -123,12 +123,12 @@ fi
 # easy cd to futbuddy work dir
 function cdfutbuddy
 {
-	cd /home/panty/Documents/dev/FutBuddy/futbuddy/
+	cd $HOME/Documents/dev/FutBuddy/futbuddy/
 }
 # easy cd to current courses dir
 function cdcourses
 {
-	cd /home/panty/Documents/courses/coursera.algorithmicthink1/module1/application/
+	cd $HOME/Documents/courses/coursera.algorithmicthink1/module1/application/
 }
 # explore given folder with nautilus
 # or current directory if no args
@@ -139,11 +139,11 @@ function naut
 }
 alias expl='naut'
 
-export NPM_PACKAGES="/home/panty/.npm-packages"
+export NPM_PACKAGES="$HOME/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 # Unset manpath so we can inherit from /etc/manpath via the `manpath`
 # command
 unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-[[ -s "/home/panty/.gvm/scripts/gvm" ]] && source "/home/panty/.gvm/scripts/gvm"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
