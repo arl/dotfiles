@@ -137,3 +137,6 @@ export PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+# see git branch and status inside TMUX if pwd is a git repo
+if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
