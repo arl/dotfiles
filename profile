@@ -30,23 +30,32 @@ if [ -d "$HOME/scripts" ] ; then
     PATH="$PATH:$HOME/scripts"
 fi
 
-# work in progress
+############################################################
+# machine specific values that can't be included in dotfiles
+# because they are specific to a machine
+#
+# those will be treated is exported from '~/machine_specific':
+# - ANDROID_HOME : android-sdk root directory
+# - NODE_PATH    : NodeJS root directory
+#
+# envvars that aren't set won't be integrated in the PATH,
+# nor processed elsewhere. This in the case the same
+# 'dotfiles' git repo is used on machines with different
+# usages
+#
+# note: do not add final '\' for folders
 
-#export ANDROID_HOME=$HOME/Documents/dev/adt-bundle-linux-x86_64-20131030/sdk
-export ANDROID_HOME=$HOME/Documents/dev/android-sdk-linux
-# set JAVA_HOME
-#export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-amd64"
-export JAVA_HOME="/usr/lib/jvm/default-java"
+source $HOME/.machine_specific
 
-export NODE_PATH="$HOME/node"
+if [ -n "$ANDROID_HOME" ]; then export PATH="$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/" fi
+if [ -n "$NPM_PACKAGES" ]; then
+	export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+	export PATH="$NPM_PACKAGES/bin:$PATH"
 
-
-########################################################################################
-# add android sdk to the path
-export PATH="$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/:$NODE_PATH/bin:$NODE_PATH/lib/node_modules"
+	# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+	unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
+	export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+fi
 
 export GIT_EDITOR=vim
-
-# to enable the soft-debugger in Monodevelop
-export MONODEVELOP_SDB_TEST=yes
 

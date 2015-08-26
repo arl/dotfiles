@@ -1,0 +1,7 @@
+export ANDROID_HOME="$HOME/Documents/dev/android-sdk-linux"
+export JAVA_HOME="/usr/lib/jvm/default-java"
+
+export NPM_PACKAGES="$HOME/.npm-packages"
+
+# to enable the soft-debugger in Monodevelop
+export MONODEVELOP_SDB_TEST=yes
