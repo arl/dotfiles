@@ -33,16 +33,16 @@ fi
 # work in progress
 
 #export ANDROID_HOME=$HOME/Documents/dev/adt-bundle-linux-x86_64-20131030/sdk
-export ANDROID_HOME=$HOME/Documents/dev/android-sdk-linux/
+export ANDROID_HOME=$HOME/Documents/dev/android-sdk-linux
 # set JAVA_HOME
 #export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-amd64"
+export JAVA_HOME="/usr/lib/jvm/default-java"
 
 export NODE_PATH="$HOME/node"
 
 
 ########################################################################################
 # add android sdk to the path
-#export PATH="$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/:$NODE_PATH/bin:$NODE_PATH/lib/node_modules"
 export PATH="$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/:$NODE_PATH/bin:$NODE_PATH/lib/node_modules"
 
 export GIT_EDITOR=vim
