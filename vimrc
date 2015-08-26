@@ -21,11 +21,9 @@ else
 
 	" let Vundle manage Vundle, required
 	Plugin 'gmarik/Vundle.vim'
-	Plugin 'http://github.com/othree/javascript-libraries-syntax.vim.git'
 	Plugin 'http://github.com/scrooloose/nerdcommenter.git'
 	Plugin 'http://github.com/scrooloose/nerdtree.git'
 	Bundle "pangloss/vim-javascript"
-	Bundle 'wookiehangover/jshint.vim'
 	Plugin 'airblade/vim-gitgutter'
 	" The following are examples of different formats supported.
 	" Keep Plugin commands between vundle#begin/end.
