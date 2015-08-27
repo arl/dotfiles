@@ -108,7 +108,7 @@ function start_agent {
     echo succeeded
     chmod 600 "${SSH_ENV}"
     . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add ~/.ssh/id_rsa_bitbucket ~/.ssh/id_rsa_github ~/.ssh/id_rsa_gitlab
+    /usr/bin/ssh-add ~/.ssh/id_rsa_github ~/.ssh/id_rsa_gitlab
 }
    
 if [ -f "${SSH_ENV}" ]; then
