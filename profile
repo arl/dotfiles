@@ -47,7 +47,9 @@ fi
 
 source $HOME/.machine_specific
 
-if [ -n "$ANDROID_HOME" ]; then export PATH="$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/" fi
+if [ -n "$ANDROID_HOME" ]; then
+	export PATH="$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/"
+fi
 if [ -n "$NPM_PACKAGES" ]; then
 	export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 	export PATH="$NPM_PACKAGES/bin:$PATH"
