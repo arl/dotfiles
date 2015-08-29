@@ -127,12 +127,8 @@ function explore
 	dir=${1:-"${PWD}"}
 	nautilus "${dir}"
 }
-
-#export NPM_PACKAGES="$HOME/.npm-packages"
-#export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-#export PATH="$NPM_PACKAGES/bin:$PATH"
-
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
 # see git branch and status inside TMUX if pwd is a git repo
 if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
+
+# path to gvm (Go Version Manager)
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
