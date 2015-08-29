@@ -23,8 +23,10 @@ else
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'http://github.com/scrooloose/nerdcommenter.git'
 	Plugin 'http://github.com/scrooloose/nerdtree.git'
-	Bundle "pangloss/vim-javascript"
+	Bundle 'pangloss/vim-javascript'
 	Plugin 'airblade/vim-gitgutter'
+	"Plugin 'http://github.com/davidhalter/jedi-vim.git'
+
 	" The following are examples of different formats supported.
 	" Keep Plugin commands between vundle#begin/end.
 	" plugin on GitHub repo
@@ -85,4 +87,4 @@ au filetype html setl sw=2 sts=2 ts=2 et sta
 au FileType javascript setl sw=2 sts=2 ts=2 et sta
 
 
-:colorscheme elflord
+:colorscheme sourcerer
