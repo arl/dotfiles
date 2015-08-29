@@ -121,7 +121,7 @@ hi FoldColumn             cterm=bold             ctermbg=239   ctermfg=66
 hi Folded                 cterm=NONE             ctermbg=16    ctermfg=60
 hi IncSearch              cterm=bold             ctermbg=202   ctermfg=231
 hi LineNr                 cterm=NONE             ctermbg=237   ctermfg=102
-hi MatchParen             cterm=bold             ctermbg=NONE  ctermfg=226
+hi MatchParen             cterm=bold             ctermbg=NONE  ctermfg=172
 hi ModeMsg                cterm=bold             ctermbg=NONE  ctermfg=145
 hi MoreMsg                cterm=bold             ctermbg=234   ctermfg=29
 hi NonText                cterm=NONE             ctermbg=NONE  ctermfg=59
