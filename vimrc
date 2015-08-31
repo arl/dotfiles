@@ -66,6 +66,11 @@ endif
 filetype plugin indent on    " required
 
 
+" folding/unfolding with space
+set foldnestmax=2
+nnoremap <space> za
+vnoremap <space> zf
+
 " default tab values
 " size of a hard tabstop
 set tabstop=4
