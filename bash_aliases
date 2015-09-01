@@ -1,13 +1,11 @@
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-
-    # aurelien: maybe 'color=auto' would be better...
-    alias ls='ls --color=always'
-    alias grep='grep --color=always'
-    alias pcregrep='pcregrep --color=always'
-    alias fgrep='fgrep --color=always'
-    alias egrep='egrep --color=always'
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias pcregrep='pcregrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases
@@ -17,10 +15,8 @@ alias ltr='ls -alFtr1'
 alias la='ls -lA1'
 alias l='ls -CF1'
 alias cls='clear'
-alias less='less --RAW-CONTROL-CHARS'
 
-# git aliases
-alias gitst='git status'
+alias less='less --RAW-CONTROL-CHARS'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
