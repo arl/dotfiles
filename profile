@@ -45,7 +45,10 @@ fi
 #
 # note: do not add final '\' for folders
 
-source $HOME/.machine_specific
+# look for machine specific folder
+if [ -f $HOME/.machine_specific ]; then
+    source $HOME/.machine_specific
+fi
 
 if [ -n "$ANDROID_HOME" ]; then
 	export PATH="$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/"
