@@ -82,14 +82,25 @@ set shiftwidth=4
 " other than the (hard)tabstop
 set softtabstop=4
 
-
-set nu
+" line numbering
+set number
+" paste mode
 set paste
 
 " per filetype
 au filetype html setl sw=2 sts=2 ts=2 et sta
-"au FileType python setl sw=4 sts=4 ts=4 et sta
+au FileType python setl sw=4 sts=4 ts=4 et sta
 au FileType javascript setl sw=2 sts=2 ts=2 et sta
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mouse Support, for normal mode only
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" useful for scrolling
+set mouse=n
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Color Scheme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :colorscheme sourcerer
+
