@@ -120,13 +120,6 @@ else
     start_agent;
 fi
 
-# explore given folder with nautilus
-# or current directory if no args
-function explore
-{
-	dir=${1:-"${PWD}"}
-	nautilus "${dir}"
-}
 # see git branch and status inside TMUX if pwd is a git repo
 if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
 
