@@ -92,15 +92,8 @@ set paste
 map <C-c> "+y<CR>
 
 " map :pop and :tag to CTRL-SHIFT-Left and CTRL-SHIFT-Right
-if ! has("gui_running")
-  noremap  <ESC>[1;6D <C-Left>
-  inoremap <ESC>[1;6D <C-Left>
-  noremap  <ESC>[1;6C <C-Right>
-  inoremap <ESC>[1;6C <C-Right>
-endif
-
-map <C-S-Left> :pop<CR>
-map <C-S-Right> :tag<CR>
+map <C-Left> :pop<CR>
+map <C-Right> :tag<CR>
 
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
