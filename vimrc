@@ -87,6 +87,31 @@ set number
 " paste mode
 set paste
 
+
+" map Ctrl-C to copy to system clipboard
+map <C-c> "+y<CR>
+
+" map :pop and :tag to CTRL-SHIFT-Left and CTRL-SHIFT-Right
+if ! has("gui_running")
+  noremap  <ESC>[1;6D <C-Left>
+  inoremap <ESC>[1;6D <C-Left>
+  noremap  <ESC>[1;6C <C-Right>
+  inoremap <ESC>[1;6C <C-Right>
+endif
+
+map <C-S-Left> :pop<CR>
+map <C-S-Right> :tag<CR>
+
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
+
+
+
 " per filetype
 au filetype html setl sw=2 sts=2 ts=2 et sta
 au FileType python setl sw=4 sts=4 ts=4 et sta
