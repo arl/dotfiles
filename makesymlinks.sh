@@ -27,6 +27,9 @@ for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file $olddir/
     echo "Creating symlink to $file in home directory."
+
+	# TODO: add a test to see if destination directory exists, if thats not the case, mkdir -p
+
     ln -s $dir/$file ~/.$file
 done
 
