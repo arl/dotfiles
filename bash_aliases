@@ -22,10 +22,6 @@ alias less='less --RAW-CONTROL-CHARS'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# alias rm with trash-put to avoid accidents! and inform the user about it
-alias rm='trash-put'
-alert 'rm command will move delete files to trash for safety'
-
 # alias sudo with 'sudo ' to have sudo'ed command aliased too
 alias sudo='sudo '
 
