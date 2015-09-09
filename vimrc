@@ -86,7 +86,8 @@ set softtabstop=4
 set number
 " paste mode
 set paste
-
+" incremental search
+set incsearch
 
 " map Ctrl-C to copy to system clipboard
 map <C-c> "+y<CR>
