@@ -96,12 +96,12 @@ function my_color_prompt
 	export PS1="\[\e[00;33m\]\u\[\e[0m\]\[\e[00;37m\]@\h:\[\e[0m\]\[\e[00;36m\][\w]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]"
 }
 
-if [ -f "~/bash-git-prompt/gitprompt.sh" ]; then
-    function git_prompt()
-    {
-        source ~/bash-git-prompt/gitprompt.sh
-    }
-fi
+function git_prompt
+{
+	if [ -f "$HOME/bash-git-prompt/gitprompt.sh" ]; then
+		source ~/bash-git-prompt/gitprompt.sh
+	fi
+}
 my_color_prompt
 
 SSH_ENV=$HOME/.ssh/environment
