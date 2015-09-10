@@ -25,6 +25,7 @@ else
 	Plugin 'http://github.com/scrooloose/nerdtree.git'
 	Bundle 'pangloss/vim-javascript'
 	Plugin 'airblade/vim-gitgutter'
+	Plugin 'fatih/vim-go'
 	"Plugin 'http://github.com/davidhalter/jedi-vim.git'
 
 	" The following are examples of different formats supported.
@@ -110,7 +111,8 @@ endif
 au filetype html setl sw=2 sts=2 ts=2 et sta
 au FileType python setl sw=4 sts=4 ts=4 et sta
 au FileType javascript setl sw=2 sts=2 ts=2 et sta
-
+" make vim understand that *.md is not modula!
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mouse Support, for normal mode only
