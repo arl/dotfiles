@@ -91,9 +91,23 @@ if ! shopt -oq posix; then
   fi
 fi
 
-function my_color_prompt
+
+next_hue() {
+    color=$(( 30 + (++color % 8) ))
+    echo -ne "\e[1;${color}m"    # change 1 to 0 for darker colors
+}
+PROMPT_COMMAND=next_hue
+PS1="\$\[\e[0m\] "
+
+function serious_prompt
 {
 	export PS1="\[\e[00;33m\]\u\[\e[0m\]\[\e[00;37m\]@\h:\[\e[0m\]\[\e[00;36m\][\w]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]"
+}
+
+function rainbow_prompt
+{
+	export PROMPT_COMMAND='export H1="`history 1|sed -e "s/^[\ 0-9]*//; s/[\d0\d31\d34\d39\d96\d127]*//g; s/\(.\{1,50\}\).*$/\1/g"`";history -a;echo -e "sgr0\ncnorm\nrmso"|tput -S'
+	export PS1='\n\e[1;30m[\j:\!\e[1;30m]\e[0;36m \T \d \e[1;30m[\e[1;34m\u@\H\e[1;30m:\e[0;37m`tty 2>/dev/null` \e[0;32m+${SHLVL}\e[1;30m] \e[1;$((31 + (++color % 7)))m\w\e[0;37m\[\033]0;[ ${H1}... ] \w - \u@\H +$SHLVL @`tty 2>/dev/null` - [ `uptime` ]\007\]\n\[\]\$ '
 }
 
 function git_prompt
@@ -102,7 +116,7 @@ function git_prompt
 		source ~/bash-git-prompt/gitprompt.sh
 	fi
 }
-my_color_prompt
+rainbow_prompt
 
 SSH_ENV=$HOME/.ssh/environment
    
