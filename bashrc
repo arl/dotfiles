@@ -104,6 +104,7 @@ function serious_prompt
 	export PS1="\[\e[00;33m\]\u\[\e[0m\]\[\e[00;37m\]@\h:\[\e[0m\]\[\e[00;36m\][\w]:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]"
 }
 
+# credits to http://www.askapache.com/linux/bash-power-prompt.html
 function rainbow_prompt
 {
 	color=
