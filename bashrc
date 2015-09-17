@@ -119,30 +119,34 @@ function git_prompt
 }
 rainbow_prompt
 
-SSH_ENV=$HOME/.ssh/environment
+#SSH_ENV=$HOME/.ssh/environment
    
-# start the ssh-agent
-function start_agent {
-    echo "Initializing new SSH agent..."
-    # spawn ssh-agent
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    echo succeeded
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add ~/.ssh/id_rsa_github ~/.ssh/id_rsa_gitlab
-}
+## start the ssh-agent
+#function start_agent {
+    #echo "Initializing new SSH agent..."
+    ## spawn ssh-agent
+    #/usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    #echo succeeded
+    #chmod 600 "${SSH_ENV}"
+    #. "${SSH_ENV}" > /dev/null
+    #/usr/bin/ssh-add ~/.ssh/id_rsa_github ~/.ssh/id_rsa_gitlab
+#}
    
-if [ -f "${SSH_ENV}" ]; then
-     . "${SSH_ENV}" > /dev/null
-     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        start_agent;
-    }
-else
-    start_agent;
-fi
+#if [ -f "${SSH_ENV}" ]; then
+     #. "${SSH_ENV}" > /dev/null
+     #ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        #start_agent;
+    #}
+#else
+    #start_agent;
+#fi
+
 
 # see git branch and status inside TMUX if pwd is a git repo
 if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
 
 # path to gvm (Go Version Manager)
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

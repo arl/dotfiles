@@ -64,3 +64,23 @@ fi
 
 export GIT_EDITOR=vim
 
+# from Linux Server Hacks book
+function start_agent()
+{
+	if [ -f ~/.agent.env ]; then
+	. ~/.agent.env > /dev/null
+
+	if ! kill -0 $SSH_AGENT_PID > /dev/null 2>&1 ; then
+		echo "Stale agent file found. Spawning new agent..."
+		eval `ssh-agent | tee ~/.agent.env`
+		# TODO: should read list of ssh_keys an array defined in machine_specific
+		ssh-add ~/.ssh/id_rsa_gitlab ~/.ssh/id_rsa_github
+	fi
+		else
+			echo "Starting ssh-agent..."
+			eval `ssh-agent | tee ~/.agent.env`
+			# TODO: should read list of ssh_keys an array defined in machine_specific
+			ssh-add ~/.ssh/id_rsa_gitlab ~/.ssh/id_rsa_github
+	fi
+}
+start_agent
