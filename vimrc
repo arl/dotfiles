@@ -72,27 +72,46 @@ set foldnestmax=2
 nnoremap <space> za
 vnoremap <space> zf
 
-" default tab values
-" size of a hard tabstop
-set tabstop=4
+" map Ctrl-C to copy to system clipboard
+map <C-c> "+y<CR>
 
-" size of an "indent"
-set shiftwidth=4
+"store lots of :cmdline history
+set history=1000
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tabs / Spaces
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" default tab values
+""""""""""""""""""""
+set tabstop=4    "size of a hard tabstop
+set shiftwidth=4 "size of an "indent"
 
 " a combination of spaces and tabs are used to simulate tab stops at a width
 " other than the (hard)tabstop
 set softtabstop=4
 
-" line numbering
-set number
-" paste mode
-set paste
-" incremental search
-set incsearch
+" per filetype
+""""""""""""""""""""
+au filetype html setl sw=2 sts=2 ts=2 et sta
+au FileType python setl sw=4 sts=4 ts=4 et sta
+au FileType javascript setl sw=2 sts=2 ts=2 et sta
 
-" map Ctrl-C to copy to system clipboard
-map <C-c> "+y<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General Display Options
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"display tabs and trailing spaces
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+
+set number		"line numbering
+set paste		"can paste without problems
+set incsearch   "find the next match as we type the search
+set hlsearch    "hilight searches by default
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Navigation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " map :pop and :tag to CTRL-SHIFT-Left and CTRL-SHIFT-Right
 map <C-Left> :pop<CR>
 map <C-Right> :tag<CR>
@@ -105,20 +124,14 @@ if &term =~ '^screen'
     execute "set <xLeft>=\e[1;*D"
 endif
 
-
-
-" per filetype
-au filetype html setl sw=2 sts=2 ts=2 et sta
-au FileType python setl sw=4 sts=4 ts=4 et sta
-au FileType javascript setl sw=2 sts=2 ts=2 et sta
 " make vim understand that *.md is not modula!
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Mouse Support, for normal mode only
+" Mouse Support in terminal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" useful for scrolling
-set mouse=n
+set mouse=a
+set ttymouse=xterm2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color Scheme
