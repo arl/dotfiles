@@ -117,6 +117,8 @@ function git_prompt
 		source ~/bash-git-prompt/gitprompt.sh
 	fi
 }
+export TERM=xterm-256color vim 
+
 rainbow_prompt
 
 #SSH_ENV=$HOME/.ssh/environment
