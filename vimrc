@@ -142,6 +142,6 @@ set ttymouse=xterm2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color Scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:colorscheme colorer
-
-
+:colorscheme sourcerer
+":colorscheme lucius
+"LuciusBlackHighContrast
