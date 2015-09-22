@@ -12,7 +12,7 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+    . "$HOME/.bashrc"
     fi
 fi
 
@@ -51,15 +51,15 @@ if [ -f $HOME/.machine_specific ]; then
 fi
 
 if [ -n "$ANDROID_HOME" ]; then
-	export PATH="$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/"
+    export PATH="$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/"
 fi
 if [ -n "$NPM_PACKAGES" ]; then
-	export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-	export PATH="$NPM_PACKAGES/bin:$PATH"
+    export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+    export PATH="$NPM_PACKAGES/bin:$PATH"
 
-	# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
-	unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
-	export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+    # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+    unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
+    export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 fi
 
 export GIT_EDITOR=vim
@@ -67,20 +67,20 @@ export GIT_EDITOR=vim
 # from Linux Server Hacks book
 #function start_agent()
 #{
-	#if [ -f ~/.agent.env ]; then
-	#. ~/.agent.env > /dev/null
+    #if [ -f ~/.agent.env ]; then
+    #. ~/.agent.env > /dev/null
 
-	#if ! kill -0 $SSH_AGENT_PID > /dev/null 2>&1 ; then
-		#echo "Stale agent file found. Spawning new agent..."
-		#eval `ssh-agent | tee ~/.agent.env`
-		## TODO: should read list of ssh_keys an array defined in machine_specific
-		#ssh-add ~/.ssh/id_rsa_gitlab ~/.ssh/id_rsa_github ~/.ssh/id_rsa_comelz
-	#fi
-		#else
-			#echo "Starting ssh-agent..."
-			#eval `ssh-agent | tee ~/.agent.env`
-			## TODO: should read list of ssh_keys an array defined in machine_specific
-			#ssh-add ~/.ssh/id_rsa_gitlab ~/.ssh/id_rsa_github ~/.ssh/id_rsa_comelz
-	#fi
+    #if ! kill -0 $SSH_AGENT_PID > /dev/null 2>&1 ; then
+        #echo "Stale agent file found. Spawning new agent..."
+        #eval `ssh-agent | tee ~/.agent.env`
+        ## TODO: should read list of ssh_keys an array defined in machine_specific
+        #ssh-add ~/.ssh/id_rsa_gitlab ~/.ssh/id_rsa_github ~/.ssh/id_rsa_comelz
+    #fi
+        #else
+            #echo "Starting ssh-agent..."
+            #eval `ssh-agent | tee ~/.agent.env`
+            ## TODO: should read list of ssh_keys an array defined in machine_specific
+            #ssh-add ~/.ssh/id_rsa_gitlab ~/.ssh/id_rsa_github ~/.ssh/id_rsa_comelz
+    #fi
 #}
 #start_agent
