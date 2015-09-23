@@ -4,3 +4,5 @@ A simple dotfiles organization following [this excellent tutorial] (http://blog.
 
 `makesymlinks.sh` script has been adapted from
 https://raw.githubusercontent.com/michaeljsmalley/dotfiles/master/makesymlinks.sh
+
+[LICENSE](LICENSE)
