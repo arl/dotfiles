@@ -31,15 +31,15 @@ echo "done"
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file $olddir/
-	
-	# check that destination directory exists
-	dstdir=$(dirname ~/.$file)
-	if [ ! -d $dstdir ]; then
-		echo $dstdir doesn\'t exist, create it
-		mkdir -p "${dstdir}"
-	fi
 
-	echo "Creating symlink to $file in home directory."
-	ln -s $dir/$file ~/.$file
+    # check that destination directory exists
+    dstdir=$(dirname ~/.$file)
+    if [ ! -d $dstdir ]; then
+        echo $dstdir doesn\'t exist, create it
+        mkdir -p "${dstdir}"
+    fi
+
+    echo "Creating symlink to $file in home directory."
+    ln -s $dir/$file ~/.$file
 done
 
