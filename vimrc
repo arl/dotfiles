@@ -23,9 +23,10 @@ else
     Plugin 'gmarik/Vundle.vim'
     Plugin 'http://github.com/scrooloose/nerdcommenter.git'
     Plugin 'http://github.com/scrooloose/nerdtree.git'
-    Bundle 'pangloss/vim-javascript'
+    Plugin 'pangloss/vim-javascript'
     Plugin 'airblade/vim-gitgutter'
     Plugin 'fatih/vim-go'
+    Plugin 'taglist.vim'
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
 
     " The following are examples of different formats supported.
@@ -61,7 +62,22 @@ else
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""
     """"""""""""""""" Plugin Configuration """"""""""""""""" 
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    " NERDTree
     map <F2> :NERDTreeToggle<CR>
+
+    " taglist
+    map <F8> :TlistToggle<CR>
+    let Tlist_Use_Right_Window = 1
+    let Tlist_Use_Singleclick = 1
+
+
+
+
+
+
+
+
 endif
 
 filetype plugin indent on    " required
@@ -122,6 +138,12 @@ au FileType go set nolist
 " map :pop and :tag to CTRL-SHIFT-Left and CTRL-SHIFT-Right
 map <C-Left> :pop<CR>
 map <C-Right> :tag<CR>
+
+" ALT + arrow to navigate between windows
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
 
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
