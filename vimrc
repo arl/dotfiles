@@ -27,6 +27,7 @@ else
     Plugin 'airblade/vim-gitgutter'
     Plugin 'fatih/vim-go'
     Plugin 'taglist.vim'
+    Plugin 'http://github.com/majutsushi/tagbar'
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
 
     " The following are examples of different formats supported.
@@ -67,16 +68,12 @@ else
     map <F2> :NERDTreeToggle<CR>
 
     " taglist
-    map <F8> :TlistToggle<CR>
+    map <F9> :TlistToggle<CR>
     let Tlist_Use_Right_Window = 1
     let Tlist_Use_Singleclick = 1
 
-
-
-
-
-
-
+    " tagbar
+    nmap <F8> :TagbarToggle<CR>
 
 endif
 
