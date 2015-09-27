@@ -122,6 +122,10 @@ export TERM=xterm-256color vim
 rainbow_prompt
 
 SSH_ENV=$HOME/.ssh/environment
+# SSH_KEYS is read from $HOME/.machine_specific. It should be a space separated list
+# of the private keys you want to add to your authentication agent
+source $HOME/.machine_specific
+
 # start the ssh-agent
 function start_agent {
     echo "Initializing new SSH agent..."
@@ -130,7 +134,7 @@ function start_agent {
     echo succeeded
     chmod 600 "${SSH_ENV}"
     . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add ~/.ssh/id_rsa_github ~/.ssh/id_rsa_gitlab
+    for key in $SSH_KEYS; do /usr/bin/ssh-add "${key}" ; done
 }
 
 if [ -f "${SSH_ENV}" ]; then

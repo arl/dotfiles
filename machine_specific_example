@@ -1,0 +1,4 @@
+# vim: filetype=sh
+export NPM_PACKAGES=$HOME/.npm-packages
+export ANDROID_HOME=$HOME/Documents/dev/android-sdk-linux
+export SSH_KEYS="$HOME/.ssh/id_rsa_github $HOME/.ssh/id_rsa_gitlab"
