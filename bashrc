@@ -119,12 +119,10 @@ function git_prompt
 }
 export TERM=xterm-256color vim 
 
+# choose default prompt
 rainbow_prompt
 
 SSH_ENV=$HOME/.ssh/environment
-# SSH_KEYS is read from $HOME/.machine_specific. It should be a space separated list
-# of the private keys you want to add to your authentication agent
-source $HOME/.machine_specific
 
 # start the ssh-agent
 function start_agent {
@@ -134,7 +132,13 @@ function start_agent {
     echo succeeded
     chmod 600 "${SSH_ENV}"
     . "${SSH_ENV}" > /dev/null
-    for key in $SSH_KEYS; do /usr/bin/ssh-add "${key}" ; done
+
+    # SSH_KEYS is read from $HOME/.machine_specific. A space separated list
+    # of the private keys file is expected
+    if [ -f $HOME/.machine_specific ]; then
+        if [ -z ${SSH_KEYS+x} ]; then source $HOME/.machine_specific; fi
+        for key in $SSH_KEYS; do /usr/bin/ssh-add "${key}" ; done
+    fi
 }
 
 if [ -f "${SSH_ENV}" ]; then

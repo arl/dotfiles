@@ -45,7 +45,7 @@ fi
 #
 # note: do not add final '\' for folders
 
-# look for machine specific folder
+# look for machine specific config file
 if [ -f $HOME/.machine_specific ]; then
     source $HOME/.machine_specific
 fi
