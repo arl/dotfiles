@@ -21,13 +21,14 @@ else
 
     " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
-    Plugin 'http://github.com/scrooloose/nerdcommenter.git'
-    Plugin 'http://github.com/scrooloose/nerdtree.git'
+    Plugin 'scrooloose/nerdcommenter.git'
+    Plugin 'scrooloose/nerdtree.git'
     Plugin 'pangloss/vim-javascript'
     Plugin 'airblade/vim-gitgutter'
     Plugin 'fatih/vim-go'
     Plugin 'taglist.vim'
-    Plugin 'http://github.com/majutsushi/tagbar'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'majutsushi/tagbar'
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
 
     " The following are examples of different formats supported.
