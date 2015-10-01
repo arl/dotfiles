@@ -30,6 +30,8 @@ else
     Plugin 'tpope/vim-fugitive'
     Plugin 'majutsushi/tagbar'
     Plugin 'repeat.vim'
+    Plugin 'surround.vim'
+    Plugin 'kien/ctrlp.vim'
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
 
     " The following are examples of different formats supported.
