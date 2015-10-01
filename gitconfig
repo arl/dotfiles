@@ -7,6 +7,8 @@
 [difftool]
 	prompt = false
 [alias]
+	br = branch -avv
+	branches = branch
 	co = checkout
 	st = status
 	dt = difftool
