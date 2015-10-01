@@ -29,6 +29,7 @@ else
     Plugin 'taglist.vim'
     Plugin 'tpope/vim-fugitive'
     Plugin 'majutsushi/tagbar'
+    Plugin 'repeat.vim'
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
 
     " The following are examples of different formats supported.
