@@ -156,6 +156,3 @@ if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
 
 # path to gvm (Go Version Manager)
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
