@@ -19,6 +19,8 @@ alias cls='clear'
 alias less='less --RAW-CONTROL-CHARS'
 
 # tmux aliases
+# to make tmux understands that we want utf8...
+alias tmux='tmux -u'
 alias tmat='tmux attach-session -t'
 alias tmcs='tmux choose-session'
 alias tmls='tmux list-sessions'
