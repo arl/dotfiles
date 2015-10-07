@@ -114,6 +114,7 @@ function rainbow_prompt
 function git_prompt
 {
     if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+        export GIT_PROMPT_THEME=Custom
         source $HOME/.bash-git-prompt/gitprompt.sh
     fi
 }
