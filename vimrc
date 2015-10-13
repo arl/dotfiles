@@ -32,6 +32,8 @@ else
     Plugin 'repeat.vim'
     Plugin 'surround.vim'
     Plugin 'kien/ctrlp.vim'
+    Plugin 'vim-scripts/argtextobj.vim'
+
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
 
     " The following are examples of different formats supported.
