@@ -27,7 +27,7 @@ else
     Plugin 'airblade/vim-gitgutter'
     Plugin 'fatih/vim-go'
     Plugin 'taglist.vim'
-    Plugin 'tpope/vim-fugitive'
+    Plugin 'fugitive.vim'
     Plugin 'majutsushi/tagbar'
     Plugin 'repeat.vim'
     Plugin 'surround.vim'
