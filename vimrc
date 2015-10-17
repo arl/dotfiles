@@ -33,6 +33,7 @@ else
     Plugin 'surround.vim'
     Plugin 'kien/ctrlp.vim'
     Plugin 'vim-scripts/argtextobj.vim'
+    Plugin 'cakebaker/scss-syntax.vim'
 
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
 
@@ -126,6 +127,8 @@ set softtabstop=4
 " per filetype
 """"""""""""""""""""
 au Filetype html setl sw=2 sts=2 ts=2 et sta
+au Filetype css setl sw=2 sts=2 ts=2 et sta
+au Filetype scss setl sw=2 sts=2 ts=2 et sta
 au FileType python setl sw=4 sts=4 ts=4 et sta
 au FileType javascript setl sw=2 sts=2 ts=2 et sta
 
