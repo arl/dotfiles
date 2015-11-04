@@ -24,7 +24,8 @@ else
     Plugin 'scrooloose/nerdcommenter.git'
     Plugin 'scrooloose/nerdtree.git'
     Plugin 'pangloss/vim-javascript'
-    Plugin 'airblade/vim-gitgutter'
+    " disabled because i think it's a cause of some really slow startups of vim sometimes...
+    "Plugin 'airblade/vim-gitgutter'
     Plugin 'fatih/vim-go'
     Plugin 'taglist.vim'
     Plugin 'fugitive.vim'
@@ -170,6 +171,7 @@ set ttymouse=xterm2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color Scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:colorscheme sourcerer
+:colorscheme inkpot
+":colorscheme sourcerer
 ":colorscheme lucius
 "LuciusBlackHighContrast
