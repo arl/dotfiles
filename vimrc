@@ -171,6 +171,10 @@ set ttymouse=xterm2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color Scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" clearing uses the current background color
+:set t_ut=
+
 :colorscheme inkpot
 ":colorscheme sourcerer
 ":colorscheme lucius
