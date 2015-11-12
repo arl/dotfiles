@@ -88,7 +88,6 @@ else
     " tagbar
     nmap <F8> :TagbarToggle<CR>
 
-
     " CtrlP
     nnoremap <leader>f :CtrlP<CR>
     nnoremap <leader>F :CtrlPCurFile<CR>
@@ -97,7 +96,7 @@ else
     nnoremap <leader>M :CtrlPMRUFiles<CR>
     nnoremap <leader>t :CtrlPTag<CR>
     nnoremap <leader>T :CtrlPBufTag<CR>
-    "nnoremap <leader>N :CtrlP ~/Dropbox/nv/<CR>
+    " nnoremap <leader>N :CtrlP ~/Dropbox/nv/<CR>
     let g:ctrlp_extensions          = ['tag']
     let g:ctrlp_mruf_max            = 25
     let g:ctrlp_clear_cache_on_exit = 0
@@ -105,6 +104,10 @@ else
     let g:ctrlp_open_new_file       = 'r'
     let g:ctrlp_open_multiple_files = '3hjr'
     let g:ctrlp_root_markers        = ['tags']
+
+    " Surround
+    " double quote on current word
+    nmap " ysaw"
 
 endif
 
