@@ -123,19 +123,22 @@ set hidden
 set switchbuf=useopen,usetab
 set tags=./tags;,tags;
 
+" search
+set incsearch    " find the next match as we type the search
+set hlsearch     " hilight searches by default
+set ignorecase   " case ignored if search string is uppercase
+set smartcase    " overrides ignorecase if string contains an uppercase letter
+set gdefault     " 'g' is the default so s/../../
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Display Options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " display tabs and trailing spaces
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 set number       " line numbering
 set paste        " can paste without problems
-set incsearch    " find the next match as we type the search
-set hlsearch     " hilight searches by default
 set laststatus=2 " display status bar permanently
 
 
