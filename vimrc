@@ -1,3 +1,6 @@
+" a lot of the cool stuff is coming from:
+" https://github.com/romainl/dotvim/wiki/Mon-.vimrc-en-d%C3%A9tails
+
 set nocompatible              " be iMproved, required
 set modelines=1
 set modeline
