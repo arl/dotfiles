@@ -187,6 +187,4 @@ set ttymouse=xterm2
 :set t_ut=
 
 :colorscheme inkpot
-":colorscheme sourcerer
-":colorscheme lucius
-"LuciusBlackHighContrast
+
