@@ -126,6 +126,11 @@ set shiftwidth=4 "size of an "indent"
 " other than the (hard)tabstop
 set softtabstop=4
 
+" auto indent line after pressing Enter
+set autoindent
+set cindent
+inoremap { {<CR>}<up><end><CR>
+
 " per filetype
 """"""""""""""""""""
 au Filetype html setl sw=2 sts=2 ts=2 et sta
