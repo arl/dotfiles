@@ -85,6 +85,24 @@ else
     " tagbar
     nmap <F8> :TagbarToggle<CR>
 
+
+    " CtrlP
+    nnoremap <leader>f :CtrlP<CR>
+    nnoremap <leader>F :CtrlPCurFile<CR>
+    nnoremap <leader>b :CtrlPBuffer<CR>
+    nnoremap <leader>m :CtrlPMixed<CR>
+    nnoremap <leader>M :CtrlPMRUFiles<CR>
+    nnoremap <leader>t :CtrlPTag<CR>
+    nnoremap <leader>T :CtrlPBufTag<CR>
+    "nnoremap <leader>N :CtrlP ~/Dropbox/nv/<CR>
+    let g:ctrlp_extensions          = ['tag']
+    let g:ctrlp_mruf_max            = 25
+    let g:ctrlp_clear_cache_on_exit = 0
+    let g:ctrlp_by_filename         = 1
+    let g:ctrlp_open_new_file       = 'r'
+    let g:ctrlp_open_multiple_files = '3hjr'
+    let g:ctrlp_root_markers        = ['tags']
+
 endif
 
 filetype plugin indent on    " required
