@@ -1,7 +1,7 @@
 set nocompatible              " be iMproved, required
 set modelines=1
-set modeline 
-let mapleader=","             " set leader as ',' 
+set modeline
+let mapleader=","             " set leader as ','
 
 if empty(glob("$HOME/.vim/bundle"))
     echo "Vundle plugin does not seems installed, to install it:"
