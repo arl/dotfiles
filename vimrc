@@ -98,6 +98,11 @@ map <C-c> "+y<CR>
 "store lots of :cmdline history
 set history=1000
 
+" basic
+set backspace=indent,eol,start
+set hidden
+set switchbuf=useopen,usetab
+set tags=./tags;,tags;
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Display Options
