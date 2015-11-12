@@ -89,16 +89,15 @@ endif
 filetype plugin indent on    " required
 
 
-" folding/unfolding with space
-set foldnestmax=2
-nnoremap <space> za
-vnoremap <space> zf
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General Options
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " map Ctrl-C to copy to system clipboard
 map <C-c> "+y<CR>
 
 "store lots of :cmdline history
 set history=1000
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Display Options
@@ -145,9 +144,15 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 " do not show tabs and trailing spaces for go files
 au FileType go set nolist
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" folding/unfolding with space
+set foldnestmax=2
+nnoremap <space> za
+vnoremap <space> zf
+
 " map :pop and :tag to CTRL-SHIFT-Left and CTRL-SHIFT-Right
 map <C-Left> :pop<CR>
 map <C-Right> :tag<CR>
