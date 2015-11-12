@@ -108,15 +108,15 @@ set tags=./tags;,tags;
 " General Display Options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"display tabs and trailing spaces
+" display tabs and trailing spaces
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
-set number       "line numbering
-set paste        "can paste without problems
-set incsearch    "find the next match as we type the search
-set hlsearch     "hilight searches by default
-set laststatus=2 "display status bar permanently
+set number       " line numbering
+set paste        " can paste without problems
+set incsearch    " find the next match as we type the search
+set hlsearch     " hilight searches by default
+set laststatus=2 " display status bar permanently
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,8 +124,8 @@ set laststatus=2 "display status bar permanently
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " default tab values
 """"""""""""""""""""
-set tabstop=4    "size of a hard tabstop
-set shiftwidth=4 "size of an "indent"
+set tabstop=4    " size of a hard tabstop
+set shiftwidth=4 " size of an "indent"
 
 " a combination of spaces and tabs are used to simulate tab stops at a width
 " other than the (hard)tabstop
