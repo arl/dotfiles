@@ -123,6 +123,10 @@ set hidden
 set switchbuf=useopen,usetab
 set tags=./tags;,tags;
 
+" splitting
+set splitbelow
+set splitright
+
 " search
 set incsearch    " find the next match as we type the search
 set hlsearch     " hilight searches by default
