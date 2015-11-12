@@ -21,6 +21,7 @@ else
 
     " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
+    Plugin 'jwhitley/vim-matchit.git'
     Plugin 'scrooloose/nerdcommenter.git'
     Plugin 'scrooloose/nerdtree.git'
     Plugin 'pangloss/vim-javascript'
