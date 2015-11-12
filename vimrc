@@ -1,6 +1,7 @@
 set nocompatible              " be iMproved, required
 set modelines=1
 set modeline 
+let mapleader=","             " set leader as ',' 
 
 if empty(glob("$HOME/.vim/bundle"))
     echo "Vundle plugin does not seems installed, to install it:"
@@ -103,9 +104,6 @@ set backspace=indent,eol,start
 set hidden
 set switchbuf=useopen,usetab
 set tags=./tags;,tags;
-
-" set leader as ',' 
-let mapleader=","
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
