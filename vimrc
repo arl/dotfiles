@@ -112,10 +112,11 @@ set tags=./tags;,tags;
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
-set number      "line numbering
-set paste       "can paste without problems
-set incsearch   "find the next match as we type the search
-set hlsearch    "hilight searches by default
+set number       "line numbering
+set paste        "can paste without problems
+set incsearch    "find the next match as we type the search
+set hlsearch     "hilight searches by default
+set laststatus=2 "display status bar permanently
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
