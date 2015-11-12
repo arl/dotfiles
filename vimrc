@@ -104,6 +104,10 @@ set hidden
 set switchbuf=useopen,usetab
 set tags=./tags;,tags;
 
+" set leader as ',' 
+let mapleader=","
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Display Options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
