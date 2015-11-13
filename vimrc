@@ -246,5 +246,5 @@ set ttymouse=xterm2
 " clearing uses the current background color
 :set t_ut=
 
-:colorscheme inkpot
+:colorscheme desert256
 
