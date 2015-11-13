@@ -117,11 +117,9 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map Ctrl-C/Ctrl-v to copy/paste
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <C-r><C-o>+
+" cut/copy/paste like in m$
+source $VIMRUNTIME/mswin.vim
+behave mswin
 
 "store lots of :cmdline history
 set history=1000
