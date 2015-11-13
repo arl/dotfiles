@@ -150,10 +150,26 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 set number       " line numbering
 set paste        " can paste without problems
-set laststatus=2 " display status bar permanently
 
 " for gvim only
 set guifont=Consolas\ 10
+
+" status bar
+set statusline=%<\ %f\ %m%y%w%=\ L:\ \%l\/\%L\ C:\ \%c\ 
+set laststatus=2               " display status bar permanently
+
+set statusline=%<\             " begins with whitespace
+set statusline+=%f             " filename
+set statusline+=\              " whitespace
+set statusline+=%m             " modified
+set statusline+=%y             " filetype
+set statusline+=%w             " preview
+set statusline+=%=             " split
+set statusline+=L:\ \%l\/\%L   " line number/total
+set statusline+=\              " whitespace
+set statusline+=C:\ \%c        " column number
+set statusline+=\              " ends with whitespace
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs / Spaces
