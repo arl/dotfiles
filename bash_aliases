@@ -32,4 +32,4 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # alias sudo with 'sudo ' to have sudo'ed command aliased too
 alias sudo='sudo '
 
-alias ag="ag -C 3 --pager 'less -R'"
+alias ag="ag -S -C 3 --pager 'less -R'"
