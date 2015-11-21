@@ -144,7 +144,7 @@ set smartcase    " overrides ignorecase if string contains an uppercase letter
 set gdefault     " 'g' is the default so s/../../
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General Display Options
+" Display Options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " display tabs and trailing spaces
 set list
