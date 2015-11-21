@@ -40,6 +40,7 @@ else
     Plugin 'kien/ctrlp.vim'
     Plugin 'vim-scripts/argtextobj.vim'
     Plugin 'cakebaker/scss-syntax.vim'
+    Plugin 'itchyny/lightline.vim'
 
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
 
@@ -108,6 +109,25 @@ else
     " Surround
     " double quote on current word
     nmap " ysaw"
+
+    " lightline
+    let g:lightline = {
+          \ 'colorscheme': 'wombat',
+          \ 'active': {
+          \   'left': [ [ 'mode', 'paste' ],
+          \             [ 'readonly', 'filename', 'modified' ] ]
+          \ },
+          \ 'component': {
+          \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+          \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
+          \ },
+          \ 'component_visible_condition': {
+          \   'readonly': '(&filetype!="help"&& &readonly)',
+          \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
+          \ },
+          \ 'separator': { 'left': '⮀', 'right': '⮂' },
+          \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+          \ }
 
 endif
 
