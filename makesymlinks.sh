@@ -11,7 +11,7 @@ olddir=~/dotfiles-bak             # old dotfiles backup directory
 
 # list of files/folders to symlink in homedir
 # TODO: when the list will start to grow, too much, create the list on the fly by taking everthing under dotfiles dir, excluding repo files
-files="bash_aliases bashrc gitconfig gdbinit profile pylintrc screenrc vimrc tmux.conf tmux-git bash-git-prompt git-prompt-colors.sh agignore fonts/* vim/colors/*.vim vim/ftdetect/go.vim vim/syntax/go.vim" 
+files="bash_aliases bashrc gitconfig gdbinit profile pylintrc screenrc vimrc gvimrc tmux.conf tmux-git bash-git-prompt git-prompt-colors.sh agignore fonts/* vim/colors/*.vim vim/ftdetect/go.vim vim/syntax/go.vim" 
 ##########
 
 # create $olddir in homedir
