@@ -155,6 +155,9 @@ set paste        " can paste without problems
 
 " for gvim only
 set guifont=Consolas\ 10
+set guioptions-=m  "menu bar
+set guioptions-=T  "toolbar
+set guioptions-=r  "scrollbar
 
 " status bar
 set statusline=%<\ %f\ %m%y%w%=\ L:\ \%l\/\%L\ C:\ \%c\ 
