@@ -172,15 +172,13 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 set number       " line numbering
 set paste        " can paste without problems
+set laststatus=2 " display status bar permanently
 
 " for gvim only
 set guifont=Consolas\ 10
-set guioptions-=m  "menu bar
-set guioptions-=T  "toolbar
-set guioptions-=r  "scrollbar
-
-" status bar
-set laststatus=2   " display status bar permanently
+set guioptions-=m          " menu bar
+set guioptions-=T          " toolbar
+set guioptions-=r          " scrollbar
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
