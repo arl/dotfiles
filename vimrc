@@ -30,7 +30,7 @@ else
     Plugin 'scrooloose/nerdtree.git'
     Plugin 'pangloss/vim-javascript'
     " disabled because i think it's a cause of some really slow startups of vim sometimes...
-    "Plugin 'airblade/vim-gitgutter'
+    Plugin 'airblade/vim-gitgutter'
     Plugin 'fatih/vim-go'
     Plugin 'taglist.vim'
     Plugin 'fugitive.vim'
