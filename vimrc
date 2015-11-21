@@ -112,22 +112,61 @@ else
 
     " lightline
     let g:lightline = {
-          \ 'colorscheme': 'wombat',
-          \ 'active': {
-          \   'left': [ [ 'mode', 'paste' ],
-          \             [ 'readonly', 'filename', 'modified' ] ]
-          \ },
-          \ 'component': {
-          \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-          \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
-          \ },
-          \ 'component_visible_condition': {
-          \   'readonly': '(&filetype!="help"&& &readonly)',
-          \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
-          \ },
-          \ 'separator': { 'left': '⮀', 'right': '⮂' },
-          \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-          \ }
+        \ 'colorscheme': 'wombat',
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'fugitive': 'LightLineFugitive',
+        \   'readonly': 'LightLineReadonly',
+        \   'modified': 'LightLineModified',
+        \   'filename': 'LightLineFilename'
+        \ },
+        \ 'separator': { 'left': '⮀', 'right': '⮂' },
+        \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+        \ }
+
+    function! LightLineModified()
+      if &filetype == "help"
+        return ""
+      elseif &modified
+        return "+"
+      elseif &modifiable
+        return ""
+      else
+        return ""
+      endif
+    endfunction
+
+    function! LightLineReadonly()
+      if &filetype == "help"
+        return ""
+      elseif &readonly
+        return "⭤"
+      else
+        return ""
+      endif
+    endfunction
+
+    function! LightLineFugitive()
+      if exists("*fugitive#head")
+        let _ = fugitive#head()
+        return strlen(_) ? '⭠ '._ : ''
+      endif
+      return ''
+    endfunction
+
+    function! LightLineFilename()
+      let fname = expand('%:t')
+      return fname == 'ControlP' ? g:lightline.ctrlp_item :
+            \ fname == '__Tagbar__' ? g:lightline.fname :
+            \ fname =~ '__Gundo\|NERD_tree' ? '' :
+            \ &ft == 'vimshell' ? vimshell#get_status_string() :
+            \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+            \ ('' != fname ? fname : '[No Name]') .
+            \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+    endfunction
 
 endif
 
