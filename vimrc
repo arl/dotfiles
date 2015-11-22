@@ -159,10 +159,8 @@ else
 
     function! LightLineFilename()
       let fname = expand('%:t')
-      return fname == 'ControlP' ? g:lightline.ctrlp_item :
-            \ fname == '__Tagbar__' ? g:lightline.fname :
-            \ fname =~ '__Gundo\|NERD_tree' ? '' :
-            \ &ft == 'vimshell' ? vimshell#get_status_string() :
+      return fname == 'ControlP' ? '' :
+            \ fname == 'nerdtree' ? '' :
             \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
             \ ('' != fname ? fname : '[No Name]') .
             \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
