@@ -105,6 +105,7 @@ else
     let g:ctrlp_open_new_file       = 'r'
     let g:ctrlp_open_multiple_files = '3hjr'
     let g:ctrlp_root_markers        = ['tags']
+    let g:ctrlp_user_command        = 'ag %s -l --nocolor --hidden -g ""'
 
     " Surround
     " double quote on current word
