@@ -6,3 +6,10 @@ A simple dotfiles organization following [this excellent tutorial] (http://blog.
 https://raw.githubusercontent.com/michaeljsmalley/dotfiles/master/makesymlinks.sh
 
 [LICENSE](LICENSE)
+
+
+### Thanks
+add thanks for :
+- tutorial of using gnu sow to manage dotfiles
+- where i found .dircolors and .inputrc
+ascii art generated on [http://bigtext.org/](bigtext.org)
