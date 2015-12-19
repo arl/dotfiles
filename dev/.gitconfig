@@ -12,6 +12,8 @@
 	co = checkout
 	st = status --column
 	dt = difftool
-	lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lg = log --all --graph --abbrev-commit --date=relative
 [push]
 	default = simple
+[format]
+	pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
