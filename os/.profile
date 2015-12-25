@@ -61,5 +61,11 @@ if [ -n "$NPM_PACKAGES" ]; then
     unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
     export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 fi
+# If set and if it exists, add LOCAL GO /bin directory to the path
+if [ -n "$LOCALGOBIN" ]; then
+    if [ -d "$LOCALGOBIN" ]; then
+        export PATH="$LOCALGOBIN:$PATH"
+    fi
+fi
 
 export GIT_EDITOR=vim
