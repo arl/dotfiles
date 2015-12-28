@@ -37,7 +37,7 @@ else
     Plugin 'majutsushi/tagbar'
     Plugin 'repeat.vim'
     Plugin 'surround.vim'
-    Plugin 'kien/ctrlp.vim'
+    Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'vim-scripts/argtextobj.vim'
     Plugin 'cakebaker/scss-syntax.vim'
     Plugin 'itchyny/lightline.vim'
