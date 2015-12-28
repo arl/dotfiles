@@ -201,6 +201,18 @@ set ignorecase   " case ignored if search string is uppercase
 set smartcase    " overrides ignorecase if string contains an uppercase letter
 set gdefault     " 'g' is the default so s/../../
 
+" wildmenu
+set wildmenu
+set wildcharm=<C-z>
+set wildignore=*.swp,*.bak
+set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb,*.min.*
+set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
+set wildignore+=tags
+set wildignore+=*.tar.*
+set wildignorecase
+set wildmode=list:full
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Display Options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
