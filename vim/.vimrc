@@ -41,7 +41,7 @@ else
     Plugin 'vim-scripts/argtextobj.vim'
     Plugin 'cakebaker/scss-syntax.vim'
     Plugin 'itchyny/lightline.vim'
-	Plugin 'Valloric/YouCompleteMe'
+    Plugin 'Valloric/YouCompleteMe'
 
 
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
