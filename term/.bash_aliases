@@ -33,3 +33,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias sudo='sudo '
 
 alias ag="ag -S -C 3 --pager 'less -R'"
+
+# git aliases
+alias glg='git lg '

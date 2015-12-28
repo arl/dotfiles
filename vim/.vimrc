@@ -37,10 +37,12 @@ else
     Plugin 'majutsushi/tagbar'
     Plugin 'repeat.vim'
     Plugin 'surround.vim'
-    Plugin 'kien/ctrlp.vim'
+    Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'vim-scripts/argtextobj.vim'
     Plugin 'cakebaker/scss-syntax.vim'
     Plugin 'itchyny/lightline.vim'
+    Plugin 'Valloric/YouCompleteMe'
+
 
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
 
@@ -89,6 +91,8 @@ else
     " tagbar
     nmap <F8> :TagbarToggle<CR>
 
+    " for vim-go's GoTestFunc
+    let g:go_jump_to_error = 0
     " CtrlP
     nnoremap <leader>f :CtrlP<CR>
     nnoremap <leader>F :CtrlPCurFile<CR>

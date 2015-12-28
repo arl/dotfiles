@@ -12,7 +12,7 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
+        . "$HOME/.bashrc"
     fi
 fi
 
@@ -34,11 +34,11 @@ fi
 # machine specific values that can't be included in dotfiles
 # because they are specific to a machine
 #
-# those will be treated is exported from '~/machine_specific':
+# Those will be treated if exported from '~/machine_specific':
 # - ANDROID_HOME : android-sdk root directory
 # - NODE_PATH    : NodeJS root directory
 #
-# envvars that aren't set won't be integrated in the PATH,
+# Env vars that aren't set won't be integrated in the PATH,
 # nor processed elsewhere. This in the case the same
 # 'dotfiles' git repo is used on machines with different
 # usages
@@ -60,6 +60,12 @@ if [ -n "$NPM_PACKAGES" ]; then
     # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
     unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
     export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+fi
+# If set and if it exists, add LOCAL GO /bin directory to the path
+if [ -n "$LOCALGOBIN" ]; then
+    if [ -d "$LOCALGOBIN" ]; then
+        export PATH="$LOCALGOBIN:$PATH"
+    fi
 fi
 
 export GIT_EDITOR=vim
