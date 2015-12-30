@@ -157,3 +157,8 @@ if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
 
 # path to gvm (Go Version Manager)
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+# source .functions file
+if [ -f "$HOME/.functions" ]; then
+    source $HOME/.functions
+fi
