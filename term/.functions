@@ -1,11 +1,5 @@
 # vim: filetype=sh
 
-# Create a new directory and enter it
-function mkd() {
-    mkdir -p "$@" && cd "$_";
-}
-
-
 # As which can have undesired side effects and can't always be used
 # to know if a program exists, use safewhich, which is safe!
 # 
@@ -13,4 +7,17 @@ function mkd() {
 # http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
 function safewhich() {
     command -v "$1" >/dev/null 2>&1
+}
+
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+function tre() {
+    tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}
+
+# Create a new directory and enter it
+function mkd() {
+    mkdir -p "$@" && cd "$_";
 }
