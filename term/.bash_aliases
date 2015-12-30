@@ -11,11 +11,11 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF1'
-alias lt='ls -alFt1'
-alias ltr='ls -alFtr1'
-alias la='ls -lA1'
-alias l='ls -CF1'
+alias ll='ls -alF1h'
+alias lt='ls -alFt1h'
+alias ltr='ls -alFtr1h'
+alias la='ls -lA1h'
+alias l='ls -CF1h'
 alias cls='clear'
 
 alias less='less --RAW-CONTROL-CHARS'
