@@ -82,7 +82,7 @@ Package aimed at improving your terminal and bash shell. Some dotfiles are bash-
 + highly customized tmux config: status-bar, 256 colors, loads of bindings, tmux-git and more.
 + a powerful inputrc (global readline configuration file) improving your productivity with each of
  your tools internally relying on readline (so virtually everywhere you can write!). Every feature
- is detailed in the comments in [./term/.inputrc](.inputrc) // TODO: check link to .inputrc
+ is detailed in the comments in [.inputrc](./term/.inputrc)
 + bash config files
 + typing `git_prompt` in the shell brings you [git-prompt](https://github.com/magicmonty/bash-git-prompt)
 + A clear and informative prompt with colorful .dircolors [github.com/trapd00r/LS_COLORS](https://github.com/trapd00r/LS_COLORS)
@@ -122,10 +122,10 @@ if that was useful
 
 ### Credits and Thanks
 
-+ [Paulirish's Dotfiles](https://github.com/paulirish/dotfiles)
-+ I decided to use GNU stow to manage my dotfiles after reading [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)
-- Ascii art generated on [bigtext.org](http://bigtext.org/)
-- To everybody involved in the repositories, links found in this page!
++ [Paulirish's Dotfiles](https://github.com/paulirish/dotfiles).
++ I decided to use GNU stow to manage my dotfiles after reading [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html).
+- Ascii art generated on [bigtext.org](http://bigtext.org/).
+- To everybody developing and maintaining the project, files and plugins found here.
 
 ### TODO
 
