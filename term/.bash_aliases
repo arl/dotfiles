@@ -18,7 +18,14 @@ alias la='ls -lA1h'
 alias l='ls -CF1h'
 alias cls='clear'
 
-alias less='less --RAW-CONTROL-CHARS'
+
+# less aliases
+alias less='less -R'   # -R = --RAW-CONTROL-CHARS'
+
+# add lesc alias (pygmentize + less) if pygmentize is installed
+if command -v pygmentize >/dev/null 2>&1 ; then
+    alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less'
+fi
 
 # tmux aliases
 # to make tmux understands that we want utf8...
