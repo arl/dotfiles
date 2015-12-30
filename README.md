@@ -104,7 +104,7 @@ I use to manage my plugins, the main ones are:
  - [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
 My vimrc is well categorized and commented so that you and I easily find what we are looking for
-There are a lot of colorschemes, I change them often but eventually come back to [desert256](https://github.com/brafales/vim-desert256)
+There are a lot of colorschemes, I change them often but eventually come back to [desert256](http://www.vim.org/scripts/script.php?script_id=1243)
 
 ## Disclaimer
 
