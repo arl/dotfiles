@@ -15,10 +15,20 @@
  ⎩_____⎠ \___/   ⎩__⎠  ⎩__⎠   ⎟____⎠⎩_____⎠⎩_____⎠ \___⎠
 ```
 
+   * [Download and Installation](#download-and-installation)
+   * [Stow packages](#stow-packages)
+     * [dev package](#dev-package)
+     * [os package](#os-package)
+     * [term package](#term-package)
+     * [vim package](#vim-package)
+   * [Disclaimer](#disclaimer)
+   * [Credits and Thanks](#credits-and-thanks)
+   * [TODO](#todo)
+   * [<a href="LICENSE">LICENSE</a> ](#license)
 
-# Welcome to my dotfiles config!
+
+# Welcome to my dotfiles!
 ----
-
 This repository is my personal collection of dotfiles, they are installed on all my boxes, at home, at work and I use them everyday!
 
 Feel free to use, fork, clone, improve!
