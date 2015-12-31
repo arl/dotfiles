@@ -55,10 +55,11 @@ $ git clone github.com/USERNAME/dotfiles
 $ cd dotfiles
 ```
 
-One or two features of my configuration are provided by external projects, hosted on Github. They are
-included as Git Submodules so that's it's really easy to keep them up to date and enjoy the latest features and
+Two features of my configuration are provided by two Github-hosted, external projects
+([bash-git-prompt](https://github.com/magicmonty/bash-git-prompt) and [tmux-git](https://github.com/drmad/tmux-git)).
+They are included as Git Submodules so that's it's really easy to keep them up to date and enjoy the latest features and
 bug fixes.
-Pull the external code:
+So, to pull the files contained in git submodules, you do:
 ```sh
 $ git submodule init
 $ git submodule update
@@ -79,8 +80,7 @@ $ stow dev os term vim
 
 ##Stow packages
 ----
- Stow packages are simple folders located under the repository root. They represent and contain the 4
- categories of dotfiles:
+ Stow packages are simple folders located under the repository root. They represent and contain the 4 categories of dotfiles:
  
 + os: operating system global configuration files
 + vim: full vim configuration (plugins, colorschemes, etc.)
@@ -102,12 +102,10 @@ Global configuration for development tools like pylint, gdb and git
 
 Package aimed at improving your terminal and bash shell. Some dotfiles are bash-specific but this package also contains some shell-agnostic stuff :
 
-+ highly customized tmux config: status-bar, 256 colors, loads of bindings, tmux-git and more.
-+ a powerful inputrc (global readline configuration file) improving your productivity with each of
- your tools internally relying on readline (so virtually everywhere you can write!). Every feature
- is detailed in the comments in [.inputrc](./term/.inputrc)
++ highly customized tmux config: status-bar, 256 colors, loads of bindings, [tmux-git](https://github.com/drmad/tmux-git) and more.
++ a powerful inputrc (global readline configuration file) improving your productivity with each of your tools internally relying on readline (so virtually everywhere you can write!). Every feature is detailed in the comments in [.inputrc](./term/.inputrc)
 + bash config files
-+ typing `git_prompt` in the shell brings you [git-prompt](https://github.com/magicmonty/bash-git-prompt)
++ typing `git_prompt` in the shell brings you [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt)
 + A clear and informative prompt with colorful .dircolors [github.com/trapd00r/LS_COLORS](https://github.com/trapd00r/LS_COLORS)
 ![terminal screenshot](./screenshot.png)
 
@@ -128,29 +126,24 @@ Here are *some* of them:
  - [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
 My [`.vimrc`](./vim/.vimrc) is well categorized and commented so that you and I can easily find and modify what we are looking for.
-There are also loads of colorschemes, I change them often but eventually come back to [desert256](http://www.vim.org/scripts/script.php?script_id=1243)
+Loads of colorschemes, I change them often but eventually come back to [desert256](http://www.vim.org/scripts/script.php?script_id=1243)
 
 ## Disclaimer
 
-I only use Linux (Debian-based) OSes so i can't guarantee those configurations
-will work anywhere else, not even that you will like any of it ;-)
-That being said, mostly everything should work out of the box or with some minor
-changes, adaptations or renamings in order to make it work on other Linux
-distros or OSX (A lot of good stuff was found on other dotfiles repos that
-were targeting OSX)
+I only use Linux (Debian-based) OSes so i can't guarantee those configurations will work anywhere else, not even that you will like any of it ;-)
+That being said, mostly everything should work out of the box or with some minor changes, adaptations or renamings in order to make it work on other Linux distros or OSX (A lot of good stuff comes from other dotfiles repos that targets OSX)
 
-Keep in mind that these dotfiles have been slowly and carefully crafted to suit MY needs. I update them regularly as my needs or humour change.
-Anyway, share, transform, use it as a source of inspiration. I'd happy to hear from you
-if that was useful
+Keep in mind that these dotfiles have been slowly and carefully crafted to suit MY needs. I update them regularly as my needs, habits or mood change.
+Anyway, share, transform, use it as a source of inspiration. I'd love to hear that you found something useful here.
 
 
 ## Credits and Thanks
 
 + [Paulirish's Dotfiles](https://github.com/paulirish/dotfiles).
 + I decided to use GNU stow to manage my dotfiles after reading [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html).
-- Ascii art generated on [bigtext.org](http://bigtext.org/).
-- To everybody developing and maintaining the project, files and plugins found here.
-- TOC generated with [github-markdown-tow](https://github.com/ekalinin/github-markdown-toc)
++ Ascii art generated on [bigtext.org](http://bigtext.org/).
++ To everybody developing and maintaining the project, files and plugins found here.
++ TOC generated with [github-markdown-tow](https://github.com/ekalinin/github-markdown-toc)
 
 ## TODO
 
@@ -158,6 +151,3 @@ if that was useful
 + Add useful shell functions, scripts and binaries (through .functions?)
 
 ## [LICENSE](LICENSE)
-
-
-
