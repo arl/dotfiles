@@ -34,9 +34,41 @@ Dot files and dot folders are encapsulated into 4 main stow packages
  + clean organization 
 
 
-## Stow packages
-----
+##Download and Installation
+**Get The Code**
 
+Clone this repository, or better, fork it and clone **yours**:
+
+```sh
+cd $HOME
+git clone github.com/USERNAME/dotfiles
+cd dotfiles
+```
+
+One or two features of my configuration are provided by external projects, hosted on Github. They are
+included as Git Submodules so that's it's really easy to keep them up to date and enjoy the latest features and
+bug fixes.
+Pull the external code:
+```sh
+git submodule init
+git submodule update
+```
+
+**Install the dotfiles**
+
+If your dotfiles repository is located under your `$HOME`, you can simply do:
+```
+stow STOW_PACKAGE_NAME
+```
+For example, `stow dev` will simply create symlinks of everything located under the `dev` folder
+
+You can also install multiple packages at once. To install *everything*:
+```sh
+stow dev os term vim
+```
+
+##Stow packages
+----
  Stow packages are simple folders located under the repository root. They represent and contain the 4
  categories of dotfiles:
  
@@ -45,37 +77,18 @@ Dot files and dot folders are encapsulated into 4 main stow packages
 + dev: software development tools config
 + term: terminal configuration
 
-### How to Use?
-
-`cd` to your home directory and `git clone` this repository (or your fork, which i suggest) : 
-
-```sh
-cd $HOME
-git clone github.com/USERNAME/dotfiles
-cd dotfiles
-```
-
-It's important that your dotfiles repository is located under your HOME, so that you can simply do:
-```
-stow PACKAGE_NAME
-```
-You can also install multiple packages at once. This will install everything:
-```
-stow dev os term vim
-```
-
-#### dev package
+### dev package
 
 Global configuration for development tools like pylint, gdb and git
 
-#### os package
+### os package
 
  - *Consolas* font, patched for use with [Vim lightline](https://github.com/itchyny/lightline.vim)
  - `.profile`
  - a simple system that lets you have some *unversioned* machine-specific settings
 
 
-#### term package
+### term package
 
 Package aimed at improving your terminal and bash shell. Some dotfiles are bash-specific but this package also contains some shell-agnostic stuff :
 
@@ -89,9 +102,10 @@ Package aimed at improving your terminal and bash shell. Some dotfiles are bash-
 ![terminal screenshot](./screenshot.png)
 
 
-#### vim package
+###vim package
 
-I use to manage my plugins, the main ones are:
+I use [Vundle](https://github.com/VundleVim/Vundle.vim) to manage my vim plugins.
+Here are *some* of them:
 
  - [nerdtree](https://github.com/scrooloose/nerdtree)
  - [vim-go](https://github.com/fatih/vim-go)
@@ -103,8 +117,8 @@ I use to manage my plugins, the main ones are:
  - [lightline](https://github.com/itchyny/lightline.vim)
  - [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
-My vimrc is well categorized and commented so that you and I easily find what we are looking for
-There are a lot of colorschemes, I change them often but eventually come back to [desert256](http://www.vim.org/scripts/script.php?script_id=1243)
+My [`.vimrc`](./vim/.vimrc) is well categorized and commented so that you and I can easily find and modify what we are looking for.
+There are also loads of colorschemes, I change them often but eventually come back to [desert256](http://www.vim.org/scripts/script.php?script_id=1243)
 
 ## Disclaimer
 
@@ -120,18 +134,20 @@ Anyway, share, transform, use it as a source of inspiration. I'd happy to hear f
 if that was useful
 
 
-### Credits and Thanks
+## Credits and Thanks
 
 + [Paulirish's Dotfiles](https://github.com/paulirish/dotfiles).
 + I decided to use GNU stow to manage my dotfiles after reading [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html).
 - Ascii art generated on [bigtext.org](http://bigtext.org/).
 - To everybody developing and maintaining the project, files and plugins found here.
+- TOC generated with [github-markdown-tow](https://github.com/ekalinin/github-markdown-toc)
 
-### TODO
+## TODO
 
 + Make use of Git sub-modules for externally for dot files and folders externally maintained.
 + Add useful shell functions, scripts and binaries (through .functions?)
 
-### [LICENSE](LICENSE)
+## [LICENSE](LICENSE)
+
 
 
