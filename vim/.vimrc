@@ -42,6 +42,7 @@ else
     Plugin 'cakebaker/scss-syntax.vim'
     Plugin 'itchyny/lightline.vim'
     Plugin 'Valloric/YouCompleteMe'
+    Plugin 'will133/vim-dirdiff'
 
 
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
