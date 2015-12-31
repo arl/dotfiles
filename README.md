@@ -50,9 +50,9 @@ Dot files and dot folders are encapsulated into 4 main stow packages
 Clone this repository, or better, fork it and clone **yours**:
 
 ```sh
-cd $HOME
-git clone github.com/USERNAME/dotfiles
-cd dotfiles
+$ cd $HOME
+$ git clone github.com/USERNAME/dotfiles
+$ cd dotfiles
 ```
 
 One or two features of my configuration are provided by external projects, hosted on Github. They are
@@ -60,21 +60,21 @@ included as Git Submodules so that's it's really easy to keep them up to date an
 bug fixes.
 Pull the external code:
 ```sh
-git submodule init
-git submodule update
+$ git submodule init
+$ git submodule update
 ```
 
 **Install the dotfiles**
 
 If your dotfiles repository is located under your `$HOME`, you can simply do:
 ```
-stow STOW_PACKAGE_NAME
+$ stow STOW_PACKAGE_NAME
 ```
 For example, `stow dev` will simply create symlinks of everything located under the `dev` folder
 
 You can also install multiple packages at once. To install *everything*:
 ```sh
-stow dev os term vim
+$ stow dev os term vim
 ```
 
 ##Stow packages
