@@ -112,6 +112,10 @@ else
     let g:ctrlp_root_markers        = ['tags']
     let g:ctrlp_user_command        = 'ag %s -l --nocolor --hidden -g ""'
 
+
+    " dirdiff
+    let g:DirDiffExcludes = ".git,.svn,*.pyc,*.exe,*.so,*.o,.*.swp"
+
     " lightline
     let g:lightline = {
         \ 'colorscheme': 'wombat',
