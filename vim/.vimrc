@@ -7,11 +7,12 @@ set modeline
 let mapleader=","             " set leader as ','
 
 if empty(glob("$HOME/.vim/bundle"))
-    echo "Vundle plugin does not seems installed, to install it:"
+    echo "Vundle plugin does not seems installed, di you run:"
     echo ""
-    echo "\tgit clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"
-    echo "then from the shell:"
-    echo "\tvim +PluginInstall +qall"
+    echo "\tgit submodule init"
+    echo "followed by:"
+    echo "\tgit submodule update"
+    echo "?"
 else
     " set the runtime path to include Vundle and initialize
     set rtp+=~/.vim/bundle/Vundle.vim
