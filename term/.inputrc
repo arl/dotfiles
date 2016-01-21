@@ -1,6 +1,9 @@
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
 
+# Just because I don't like emacs
+set editing-mode vi
+
 # Treat '-' and '_' as equivalent when performing case-insensitive filename
 # matching and completion
 set completion-map-case on
