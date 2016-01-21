@@ -198,6 +198,7 @@ set tags=./tags;,tags;
 " splitting
 set splitbelow
 set splitright
+set diffopt=vertical " diffpatch splits vertically
 
 " search
 set incsearch    " find the next match as we type the search
