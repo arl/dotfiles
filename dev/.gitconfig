@@ -13,6 +13,8 @@
 	st = status --column
 	dt = difftool
 	lg = log --all --graph --abbrev-commit --date=relative
+	# interactive apply patch
+	ipatch = "!f() { git apply $1; git add -p; }; f"
 [push]
 	default = simple
 [format]
