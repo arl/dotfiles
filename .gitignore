@@ -1,4 +1,6 @@
+# vim swap files
 .*.swp
 .*.swo
 
-machine_specific
+# ignore every vim plugins, but vundle itself
+vim/.vim/bundle
