@@ -231,6 +231,9 @@ set wildignore+=*.tar.*
 set wildignorecase
 set wildmode=list:full
 
+" line wrapping
+set textwidth=80
+nnoremap <leader>w gq<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Display Options
