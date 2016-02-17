@@ -44,6 +44,7 @@ else
     Plugin 'itchyny/lightline.vim'
     Plugin 'Valloric/YouCompleteMe'
     Plugin 'will133/vim-dirdiff'
+    Plugin 'scrooloose/syntastic'
 
 
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
@@ -172,6 +173,19 @@ else
             \ ('' != fname ? fname : '[No Name]') .
             \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
     endfunction
+
+
+    " syntastic
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+
+    endif
 
 endif
 
