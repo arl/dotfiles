@@ -1,9 +1,6 @@
 [submodule "term/.bash-git-prompt"]
 	path = term/.bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt.git
-[submodule "term/.tmux-git"]
-	path = term/.tmux-git
-	url = https://github.com/drmad/tmux-git.git
 [submodule "vim/.vim/bundle/Vundle.vim"]
 	path = vim/.vim/bundle/Vundle.vim
 	url = https://github.com/gmarik/vundle.git
