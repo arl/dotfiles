@@ -151,11 +151,11 @@ else
     start_agent;
 fi
 
-
-# see git branch and status inside TMUX if pwd is a git repo
-if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
+# show git info in tmux status bar
+if [[ $TMUX ]]; then source ~/.tmux-gitbar/tmux-gitbar.sh; fi
 
 # source .functions file
 if [ -f "$HOME/.functions" ]; then
     source $HOME/.functions
 fi
+
