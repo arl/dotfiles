@@ -29,13 +29,13 @@
 
 # Welcome to my dotfiles!
 ----
-This repository is my personal collection of dotfiles, they are installed on all my boxes, at home, at work and I use them everyday!
+This is my personal collection of dotfiles, managing my bash-vim-tmux oriented
+configuration.
 
-Feel free to use, fork, clone, improve!
-
-My dotfiles are managed with the excellent [GNU Stow](http://www.gnu.org/software/stow/),
-available by default on every NIX system package manager, nothing else is needed.
-Dot files and dot folders are encapsulated into 4 main stow packages
+Symlinks to `$HOME` directory are handled with the excellent [GNU
+Stow](http://www.gnu.org/software/stow/), available by default on every NIX
+system package manager, nothing else is needed.  Dot files and dot folders are
+encapsulated into 4 main stow packages
 
  + No error-prone homemade install script
  + Home folder is not polluted with version control files
@@ -44,7 +44,8 @@ Dot files and dot folders are encapsulated into 4 main stow packages
  + clean organization 
 
 
-##Download and Installation
+## Download and Installation
+
 **Get The Code**
 
 Clone this repository, or better, fork it and clone **yours**:
@@ -78,7 +79,7 @@ You can also install multiple packages at once. To install *everything*:
 $ stow dev os term vim
 ```
 
-##Stow packages
+## Stow packages
 ----
  Stow packages are simple folders located under the repository root. They represent and contain the 4 categories of dotfiles:
  
@@ -110,7 +111,7 @@ Package aimed at improving your terminal and bash shell. Some dotfiles are bash-
 ![terminal screenshot](./screenshot.png)
 
 
-###vim package
+### vim package
 
 I use [Vundle](https://github.com/VundleVim/Vundle.vim) to manage my vim plugins.
 Here are *some* of them:
@@ -145,9 +146,5 @@ Anyway, share, transform, use it as a source of inspiration. I'd love to hear th
 + To everybody developing and maintaining the project, files and plugins found here.
 + TOC generated with [github-markdown-tow](https://github.com/ekalinin/github-markdown-toc)
 
-## TODO
-
-+ Make use of Git sub-modules for externally for dot files and folders externally maintained.
-+ Add useful shell functions, scripts and binaries (through .functions?)
 
 ## [LICENSE](LICENSE)
