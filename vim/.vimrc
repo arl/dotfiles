@@ -306,6 +306,10 @@ if &term =~ '^screen'
     execute "set <xLeft>=\e[1;*D"
 endif
 
+" open ctag in tab split
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" open ctag in vertical split
+map <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mouse Support in terminal
