@@ -185,8 +185,6 @@ else
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
 
-    endif
-
 endif
 
 filetype plugin indent on    " required
