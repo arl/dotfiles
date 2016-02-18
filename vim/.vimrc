@@ -107,12 +107,12 @@ else
     " nnoremap <leader>N :CtrlP ~/Dropbox/nv/<CR>
     let g:ctrlp_extensions          = ['tag']
     let g:ctrlp_mruf_max            = 25
-    let g:ctrlp_clear_cache_on_exit = 0
+    let g:ctrlp_use_caching = 0
     let g:ctrlp_by_filename         = 0
     let g:ctrlp_open_new_file       = 'r'
     let g:ctrlp_open_multiple_files = '3hjr'
     let g:ctrlp_root_markers        = ['tags']
-    let g:ctrlp_user_command        = 'ag %s -l --nocolor --hidden -g ""'
+    let g:ctrlp_user_command        = 'ag %s --files-with-matches --nocolor --smart-case -g ""'
 
 
     " dirdiff
