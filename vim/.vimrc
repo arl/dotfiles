@@ -242,12 +242,11 @@ au FileType python setl sw=4 sts=4 ts=4 et sta
 au FileType javascript setl sw=2 sts=2 ts=2 et sta
 au FileType dosini setl sw=2 sts=2 ts=2 et sta
 au FileType gitconfig setl sw=2 sts=2 ts=2 et sta
+au FileType go set nolist " no tabs/trailing spaces for fo
 
 " make vim understand that *.md is not modula!
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 
-" do not show tabs and trailing spaces for go files
-au FileType go set nolist
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
