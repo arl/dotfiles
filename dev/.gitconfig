@@ -1,32 +1,32 @@
 [user]
-	# https://confluence.atlassian.com/pages/viewpage.action?pageId=271943168
-	email = aurelien.rainone@gmail.com
-	name = Aurélien Rainone
+  # https://confluence.atlassian.com/pages/viewpage.action?pageId=271943168
+  email = aurelien.rainone@gmail.com
+  name = Aurélien Rainone
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [difftool]
-	prompt = false
+  prompt = false
 [alias]
-	br = branch -avv
-	branches = branch
-	co = checkout
-	st = status --column
-	dt = difftool
-	lg = log --all --graph --abbrev-commit --date=relative
-	lol       = log --pretty=oneline --abbrev-commit --graph --decorate
-	# interactive apply patch
-	ipatch = "!f() { git apply $1; git add -p; }; f"
-    unstage   = reset HEAD
-    undo      = reset --soft HEAD^
-    cosmetics = commit -m 'Cosmetics'
+  br = branch -avv
+  branches = branch
+  co = checkout
+  st = status --column
+  dt = difftool
+  lg = log --all --graph --abbrev-commit --date=relative
+  lol       = log --pretty=oneline --abbrev-commit --graph --decorate
+  # interactive apply patch
+  ipatch = "!f() { git apply $1; git add -p; }; f"
+  unstage   = reset HEAD
+  undo      = reset --soft HEAD^
+  cosmetics = commit -m 'Cosmetics'
 [status]
   relativePaths = true
 [push]
-	default = simple
+  default = simple
 [format]
-	pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+  pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 [color "status"]
   header    = white dim
   branch    = yellow
