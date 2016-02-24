@@ -40,6 +40,7 @@ else
     Plugin 'will133/vim-dirdiff'
     Plugin 'scrooloose/syntastic'
     Plugin 'vim-scripts/bats.vim'
+    Plugin 'tmhedberg/SimpylFold'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
@@ -147,6 +148,10 @@ else
         \ "mode": "passive",
         \ "active_filetypes": [""],
         \ "passive_filetypes": [""] }
+
+    " SimpylFold
+    autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+    autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
 endif
 
