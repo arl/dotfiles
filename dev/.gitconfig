@@ -27,3 +27,10 @@
   added     = green
   changed   = red
   untracked = blue
+[color "diff"]
+  meta        = yellow
+  commit      = green
+  frag        = magenta
+  old         = red
+  new         = green
+  whitespace  = "red reverse"
