@@ -16,8 +16,9 @@ alias lt='ls -alFt1h'
 alias ltr='ls -alFtr1h'
 alias la='ls -lA1h'
 alias l='ls -CF1h'
+# convert permissions to octal
+alias lo="ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g'"
 alias cls='clear'
-
 
 # less aliases
 alias less='less -R'   # -R = --RAW-CONTROL-CHARS'
@@ -35,8 +36,8 @@ alias tmcs='tmux choose-session'
 alias tmls='tmux list-sessions'
 
 # Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+#   sleep 10; alert [ optional message to print ]
+alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "${1:-End of Execution}"'
 
 # alias sudo with 'sudo ' to have sudo'ed command aliased too
 alias sudo='sudo '
