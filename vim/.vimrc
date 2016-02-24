@@ -45,6 +45,7 @@ else
     Plugin 'Valloric/YouCompleteMe'
     Plugin 'will133/vim-dirdiff'
     Plugin 'scrooloose/syntastic'
+    Plugin 'vim-scripts/bats.vim'
 
 
     "Plugin 'http://github.com/davidhalter/jedi-vim.git'
