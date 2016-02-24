@@ -18,6 +18,7 @@
 	ipatch = "!f() { git apply $1; git add -p; }; f"
     unstage   = reset HEAD
     undo      = reset --soft HEAD^
+    cosmetics = commit -m 'Cosmetics'
 [status]
   relativePaths = true
 [push]
