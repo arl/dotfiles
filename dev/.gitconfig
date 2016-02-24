@@ -18,6 +18,8 @@
 	ipatch = "!f() { git apply $1; git add -p; }; f"
     unstage   = reset HEAD
     undo      = reset --soft HEAD^
+[status]
+  relativePaths = true
 [push]
 	default = simple
 [format]
