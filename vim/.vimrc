@@ -7,12 +7,10 @@ set modeline
 let mapleader=","             " set leader as ','
 
 if empty(glob("$HOME/.vim/bundle"))
-    echo "Vundle plugin does not seems installed, di you run:"
+    echo "Vundle plugin does not seems installed, run:"
     echo ""
-    echo "\tgit submodule init"
-    echo "followed by:"
-    echo "\tgit submodule update"
-    echo "?"
+    echo "\tgit submodule init && git submodule update"
+    echo ""
 else
     " set the runtime path to include Vundle and initialize
     set rtp+=~/.vim/bundle/Vundle.vim
@@ -21,8 +19,6 @@ else
     """""""""""""""""""" Vundle Plugins """"""""""""""""""""
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""
     call vundle#begin()
-    " alternatively, pass a path where Vundle should install plugins
-    "call vundle#begin('~/some/path/here')
 
     " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
@@ -30,7 +26,6 @@ else
     Plugin 'scrooloose/nerdcommenter.git'
     Plugin 'scrooloose/nerdtree.git'
     Plugin 'pangloss/vim-javascript'
-    " disabled because i think it's a cause of some really slow startups of vim sometimes...
     Plugin 'airblade/vim-gitgutter'
     Plugin 'fatih/vim-go'
     Plugin 'taglist.vim'
@@ -47,38 +42,8 @@ else
     Plugin 'scrooloose/syntastic'
     Plugin 'vim-scripts/bats.vim'
 
-
-    "Plugin 'http://github.com/davidhalter/jedi-vim.git'
-
-    " The following are examples of different formats supported.
-    " Keep Plugin commands between vundle#begin/end.
-    " plugin on GitHub repo
-    "Plugin 'tpope/vim-fugitive'
-    " plugin from http://vim-scripts.org/vim/scripts.html
-    "Plugin 'L9'
-    " Git plugin not hosted on GitHub
-    "Plugin 'git://git.wincent.com/command-t.git'
-    " git repos on your local machine (i.e. when working on your own plugin)
-    "Plugin 'file:///home/gmarik/path/to/plugin'
-    " The sparkup vim script is in a subdirectory of this repo called vim.
-    " Pass the path to set the runtimepath properly.
-    "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-    " Avoid a name conflict with L9
-    "Plugin 'user/L9', {'name': 'newL9'}
-
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
-
-    " To ignore plugin indent changes, instead use:
-    "filetype plugin on
-    "
-    " Brief help
-    " :PluginList       - lists configured plugins
-    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-    "
-    " see :h vundle for more details or wiki for FAQ
 
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""
     """"""""""""""""" Plugin Configuration """"""""""""""""" 
@@ -105,7 +70,6 @@ else
     nnoremap <leader>M :CtrlPMRUFiles<CR>
     nnoremap <leader>t :CtrlPTag<CR>
     nnoremap <leader>T :CtrlPBufTag<CR>
-    " nnoremap <leader>N :CtrlP ~/Dropbox/nv/<CR>
     let g:ctrlp_extensions          = ['tag']
     let g:ctrlp_mruf_max            = 25
     let g:ctrlp_use_caching = 0
