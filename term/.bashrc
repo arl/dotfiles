@@ -144,11 +144,7 @@ else
     start_agent;
 fi
 
-# show git info in tmux status bar
-if [[ $TMUX ]]; then source ~/.tmux-gitbar/tmux-gitbar.sh; fi
-
 # source .functions file
 if [ -f "$HOME/.functions" ]; then
     source $HOME/.functions
 fi
-
