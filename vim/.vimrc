@@ -243,6 +243,7 @@ au FileType javascript setl sw=2 sts=2 ts=2 et sta
 au FileType dosini setl sw=2 sts=2 ts=2 et sta
 au FileType gitconfig setl sw=2 sts=2 ts=2 et sta
 au FileType go set nolist " no tabs/trailing spaces for fo
+au FileType c set nolist " no tabs/trailing spaces for fo
 
 " make vim understand that *.md is not modula!
 autocmd BufNewFile,BufRead *.md set filetype=markdown
@@ -275,10 +276,10 @@ if &term =~ '^screen'
     execute "set <xLeft>=\e[1;*D"
 endif
 
-" open ctag in tab split
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " open ctag in vertical split
-map <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" open ctag in tab split
+map <leader><C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mouse Support in terminal
