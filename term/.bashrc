@@ -121,8 +121,8 @@ function start_agent {
 
     # SSH_KEYS is read from $HOME/.machine_specific. A space separated list
     # of the private keys file is expected
-    if [ -f $HOME/.machine_specific ]; then
-        if [ -z ${SSH_KEYS+x} ]; then source $HOME/.machine_specific; fi
+    if [ -f "$HOME/.machine_specific" ]; then
+        if [ -z ${SSH_KEYS+x} ]; then source "$HOME/.machine_specific"; fi
         for key in $SSH_KEYS; do /usr/bin/ssh-add "${key}" ; done
     fi
 }
@@ -138,5 +138,5 @@ fi
 
 # source .functions file
 if [ -f "$HOME/.functions" ]; then
-    source $HOME/.functions
+    source "$HOME/.functions"
 fi
