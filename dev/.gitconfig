@@ -29,10 +29,10 @@
   excludesfile = ~/.gitignore
 [color "status"]
   header    = white dim
-  branch    = yellow
-  added     = green
-  changed   = red
-  untracked = blue
+  branch    = yellow bold
+  added     = green bold
+  changed   = red bold
+  untracked = cyan
 [color "diff"]
   meta        = yellow
   commit      = green
