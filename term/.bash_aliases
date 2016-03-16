@@ -36,7 +36,6 @@ alias tmcs='tmux choose-session'
 alias tmls='tmux list-sessions'
 
 # Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert [ optional message to print ]
 alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "${1:-End of Execution}"'
 
 # alias sudo with 'sudo ' to have sudo'ed command aliased too
