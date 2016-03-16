@@ -34,6 +34,7 @@ alias tmux='tmux -u'
 alias tmat='tmux attach-session -t'
 alias tmcs='tmux choose-session'
 alias tmls='tmux list-sessions'
+alias tmns='tmux new-session -s'
 
 # Add an "alert" alias for long running commands.  Use like so:
 alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "${1:-End of Execution}"'
