@@ -40,3 +40,5 @@
   old         = red
   new         = green
   whitespace  = "red reverse"
+[credential]
+	helper = cache --timeout=3600
