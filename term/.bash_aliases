@@ -20,8 +20,10 @@ alias l='ls -CF1h'
 alias lo="ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g'"
 alias cls='clear'
 
-# less aliases
-alias less='less -R'   # -R = --RAW-CONTROL-CHARS'
+# less alias
+alias less='less -FXR'   # -R = --RAW-CONTROL-CHARS'
+                         # -F or --quit-if-one-screen
+                         # -X or --no-init
 
 # add lesc alias (pygmentize + less) if pygmentize is installed
 if command -v pygmentize >/dev/null 2>&1 ; then
@@ -42,7 +44,7 @@ alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal ||
 # alias sudo with 'sudo ' to have sudo'ed command aliased too
 alias sudo='sudo '
 
-alias ag="ag -S -C 3 --pager 'less -R'"
+alias ag="ag -S -C 3 --pager 'less -FXR'"
 
 # git aliases
 alias glg='git lg '
