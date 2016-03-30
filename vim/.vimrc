@@ -244,6 +244,7 @@ au FileType dosini setl sw=2 sts=2 ts=2 et sta
 au FileType gitconfig setl sw=2 sts=2 ts=2 et sta
 au FileType go set nolist " no tabs/trailing spaces for go
 au FileType c set nolist
+au FileType haskell setl sw=2 sts=2 ts=2 et sta
 
 " make vim understand that *.md is not modula!
 autocmd BufNewFile,BufRead *.md set filetype=markdown
