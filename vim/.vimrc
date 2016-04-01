@@ -41,6 +41,7 @@ else
     Plugin 'scrooloose/syntastic'
     Plugin 'vim-scripts/bats.vim'
     Plugin 'tmhedberg/SimpylFold'
+    Plugin 'tikhomirov/vim-glsl'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
@@ -243,6 +244,7 @@ au FileType javascript setl sw=2 sts=2 ts=2 et sta
 au FileType dosini setl sw=2 sts=2 ts=2 et sta
 au FileType gitconfig setl sw=2 sts=2 ts=2 et sta
 au FileType cpp setl sw=4 sts=4 ts=4 et sta
+au FileType glsl setl sw=4 sts=4 ts=4 et sta
 au FileType go set nolist " no tabs/trailing spaces for go
 au FileType c set nolist
 au FileType haskell setl sw=2 sts=2 ts=2 et sta
@@ -250,6 +252,9 @@ au FileType haskell setl sw=2 sts=2 ts=2 et sta
 " make vim understand that *.md is not modula!
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 
+" treat .vert and .frag as glsl
+autocmd BufNewFile,BufRead *.vert set filetype=glsl
+autocmd BufNewFile,BufRead *.frag set filetype=glsl
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
