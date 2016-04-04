@@ -140,3 +140,7 @@ fi
 if [ -f "$HOME/.functions" ]; then
     source "$HOME/.functions"
 fi
+
+# Stop vim freezing on accidental Ctrl-S, from http://unix.stackexchange.com/questions/12107
+stty -ixon
+
