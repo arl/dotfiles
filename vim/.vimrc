@@ -288,6 +288,9 @@ map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " open ctag in tab split
 map <leader><C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
+" F4 to switch between C++ header/source file
+nnoremap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mouse Support in terminal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
