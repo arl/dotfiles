@@ -108,7 +108,6 @@ Package aimed at improving your terminal and bash shell. Some dotfiles are bash-
 + customized customized tmux config: status-bar, 256 colors, loads of bindings, [tmux-gitbar](https://github.com/aurelien-rainone/tmux-gitbar) and more.
 + a powerful inputrc (global readline configuration file) improving your productivity with each of your tools internally relying on readline (so virtually everywhere you can write!). Every feature is detailed in the comments in [.inputrc](./term/.inputrc)
 + bash config files
-+ typing `git_prompt` in the shell brings you [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt)
 + A clear and informative prompt with colorful .dircolors [github.com/trapd00r/LS_COLORS](https://github.com/trapd00r/LS_COLORS)
 ![terminal screenshot](./screenshot.png)
 
