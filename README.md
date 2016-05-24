@@ -29,7 +29,7 @@
 
 # Welcome to my dotfiles!
 ----
-This is my personal collection of dotfiles, managing my bash-vim-tmux oriented
+This is my collection of dotfiles, I use it to manage my bash-vim-tmux
 configuration.
 
 Symlinks to `$HOME` directory are handled with the excellent [GNU
@@ -56,11 +56,13 @@ $ git clone github.com/USERNAME/dotfiles
 $ cd dotfiles
 ```
 
-Two features of my configuration are provided by two Github-hosted, external projects
-([bash-git-prompt](https://github.com/magicmonty/bash-git-prompt) and [tmux-git](https://github.com/drmad/tmux-git)).
-They are included as Git Submodules so that's it's really easy to keep them up to date and enjoy the latest features and
-bug fixes.
-So, to pull the files contained in git submodules, you do:
+Two features of my configuration are provided by Github-hosted external projects:
+
+ * ([Vundle](https://github.com/gmarik/vundle)
+ * ([tmux-gitbar](https://github.com/aurelien-rainone/tmux-gitbar)
+
+They are included as a Git Submodules. So, to pull them :
+
 ```sh
 $ git submodule init
 $ git submodule update
@@ -103,7 +105,7 @@ Global configuration for development tools like pylint, gdb and git
 
 Package aimed at improving your terminal and bash shell. Some dotfiles are bash-specific but this package also contains some shell-agnostic stuff :
 
-+ highly customized tmux config: status-bar, 256 colors, loads of bindings, [tmux-git](https://github.com/drmad/tmux-git) and more.
++ highly customized tmux config: status-bar, 256 colors, loads of bindings, [tmux-git](https://github.com/iaurelien-rainone/tmux-gitbar) and more.
 + a powerful inputrc (global readline configuration file) improving your productivity with each of your tools internally relying on readline (so virtually everywhere you can write!). Every feature is detailed in the comments in [.inputrc](./term/.inputrc)
 + bash config files
 + typing `git_prompt` in the shell brings you [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt)
