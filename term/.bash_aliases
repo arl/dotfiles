@@ -52,3 +52,6 @@ alias glg='git lg '
 # svn aliases
 alias svndt='svn diff '
 alias svndiff='svn diff --internal-diff '
+
+# rlwrap aliases (add readline where there isn't)
+alias telnet="rlwrap telnet "
