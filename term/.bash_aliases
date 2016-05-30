@@ -50,5 +50,5 @@ alias ag="ag -S -C 3 --pager 'less -FXR'"
 alias glg='git lg '
 
 # svn aliases
-alias svndt='svn diff'
-alias svndiff='svn diff --internal-diff'
+alias svndt='svn diff '
+alias svndiff='svn diff --internal-diff '
