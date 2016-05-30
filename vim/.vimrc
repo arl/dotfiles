@@ -42,6 +42,7 @@ else
     Plugin 'vim-scripts/bats.vim'
     Plugin 'tmhedberg/SimpylFold'
     Plugin 'tikhomirov/vim-glsl'
+    Plugin 'elzr/vim-json'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
@@ -236,6 +237,7 @@ inoremap { {<CR>}<up><end><CR>
 " per filetype
 """"""""""""""""""""
 au Filetype sh setl sw=2 sts=2 ts=2 et sta
+au Filetype json setl sw=2 sts=2 ts=2 et sta
 au Filetype html setl sw=2 sts=2 ts=2 et sta
 au Filetype css setl sw=2 sts=2 ts=2 et sta
 au Filetype scss setl sw=2 sts=2 ts=2 et sta
