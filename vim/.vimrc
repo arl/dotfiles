@@ -43,6 +43,7 @@ else
     Plugin 'tmhedberg/SimpylFold'
     Plugin 'tikhomirov/vim-glsl'
     Plugin 'elzr/vim-json'
+	Plugin 'whatyouhide/vim-gotham'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
@@ -82,7 +83,7 @@ else
 
     " lightline
     let g:lightline = {
-        \ 'colorscheme': 'wombat',
+        \ 'colorscheme': 'gotham256',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'fugitive', 'filename' ] ]
@@ -307,5 +308,5 @@ set ttymouse=xterm2
 " clearing uses the current background color
 :set t_ut=
 
-:colorscheme desert256
+:colorscheme gotham256
 
