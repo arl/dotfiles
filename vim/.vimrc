@@ -43,7 +43,7 @@ else
     Plugin 'tmhedberg/SimpylFold'
     Plugin 'tikhomirov/vim-glsl'
     Plugin 'elzr/vim-json'
-	Plugin 'whatyouhide/vim-gotham'
+    Plugin 'whatyouhide/vim-gotham'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
@@ -268,9 +268,13 @@ set foldnestmax=2
 nnoremap <space> za
 vnoremap <space> zf
 
-" map :pop and :tag to CTRL-SHIFT-Left and CTRL-SHIFT-Right
+" map :pop and :tag to CTRL-Left/Right
 map <C-Left> :pop<CR>
 map <C-Right> :tag<CR>
+
+" map :tabprevious and :tabnext to leader-CTRL-Left/Right
+nmap <silent> <leader><C-Left> :tabprevious<CR>
+nmap <silent> <leader><C-Right> :tabnext<CR>
 
 " ALT + arrow to navigate between windows
 nmap <silent> <A-Up> :wincmd k<CR>
