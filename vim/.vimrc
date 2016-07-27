@@ -44,6 +44,7 @@ else
     Plugin 'tikhomirov/vim-glsl'
     Plugin 'elzr/vim-json'
     Plugin 'whatyouhide/vim-gotham'
+    Plugin 'aurelien-rainone/colorschwitch'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
