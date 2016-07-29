@@ -14,7 +14,7 @@ function safewhich() {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-    tree -aC -I '.*.swp|.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+    tree -aC -I '.*.swp|.svn|.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
 # Create a new directory and enter it
