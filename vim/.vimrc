@@ -61,6 +61,7 @@ else
 
     " for vim-go's GoTestFunc
     let g:go_jump_to_error = 0
+    let g:go_fmt_command = "gofmt"
     " CtrlP
     nnoremap <leader>f :CtrlP<CR>
     nnoremap <leader>F :CtrlPCurFile<CR>
