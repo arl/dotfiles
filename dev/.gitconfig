@@ -25,6 +25,8 @@
   # set the working tree as if the last comit hadn't been commited
   undo      = reset --soft HEAD^
   cosmetics = commit -m 'Cosmetics'
+  # delete all local branches that have been merged but laster
+  clean-branches = "!f() { git branch --merged | grep -v '^* master$' | grep -v '^  master$' | xargs -r git branch -d ; }; f"
 [status]
   relativePaths = true
 [push]
