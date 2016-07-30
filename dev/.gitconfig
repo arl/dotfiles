@@ -7,16 +7,22 @@
 [difftool]
   prompt = false
 [alias]
+  # to save a few keystrokes
   br = branch -avv
-  branches = branch
   co = checkout
   st = status --column
   dt = difftool
+
+  ## new 'features'
+  # pretty logging: full tree
   lg = log --all --graph --abbrev-commit --date=relative
-  lol       = log --pretty=oneline --abbrev-commit --graph --decorate
-  # interactive apply patch
+  # pretty logging: only commits leading to HEAD
+  lol= log --pretty=oneline --abbrev-commit --graph --decorate
+  # interactive apply patch (hunks)
   ipatch = "!f() { git apply $1; git add -p; }; f"
+  # unstage everything
   unstage   = reset HEAD
+  # set the working tree as if the last comit hadn't been commited
   undo      = reset --soft HEAD^
   cosmetics = commit -m 'Cosmetics'
 [status]
