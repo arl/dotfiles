@@ -316,3 +316,4 @@ set ttymouse=xterm2
 
 :colorscheme gotham256
 
+let g:colorschwitch_schemes = ['delek', 'slate', 'gotham256', 'sourcerer', 'morning']
