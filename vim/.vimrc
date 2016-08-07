@@ -73,7 +73,8 @@ else
     nnoremap <leader>T :CtrlPBufTag<CR>
     let g:ctrlp_extensions          = ['tag']
     let g:ctrlp_mruf_max            = 25
-    let g:ctrlp_use_caching = 0
+    let g:ctrlp_lazy_update         = 1
+    let g:ctrlp_use_caching         = 1
     let g:ctrlp_by_filename         = 0
     let g:ctrlp_open_new_file       = 'r'
     let g:ctrlp_open_multiple_files = '3hjr'
