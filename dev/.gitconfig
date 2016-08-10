@@ -27,6 +27,7 @@
   cosmetics = commit -m 'Cosmetics'
   # delete all local branches that have been merged but laster
   clean-branches = "!f() { git branch --merged | grep -v '^* master$' | grep -v '^  master$' | xargs -r git branch -d ; }; f"
+  cm = "commit -m"
 [status]
   relativePaths = true
 [push]
