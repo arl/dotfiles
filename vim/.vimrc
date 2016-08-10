@@ -316,6 +316,6 @@ set ttymouse=xterm2
 " clearing uses the current background color
 :set t_ut=
 
-:colorscheme gotham256
-
+" default colorscheme
+:colorscheme sourcerer
 let g:colorschwitch_schemes = ['delek', 'slate', 'gotham256', 'sourcerer', 'morning']
