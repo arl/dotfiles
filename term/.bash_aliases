@@ -55,3 +55,7 @@ alias svndiff='svn diff --internal-diff '
 
 # rlwrap aliases (add readline where there isn't)
 alias telnet="rlwrap -p'1;34' telnet "
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
