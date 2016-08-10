@@ -21,10 +21,6 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# set PATH so it includes user's private bin dir if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$PATH:$HOME/bin"
-fi
 # set PATH so it includes user's private scripts dir if it exists
 if [ -d "$HOME/scripts" ] ; then
     PATH="$PATH:$HOME/scripts"
