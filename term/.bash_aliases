@@ -43,6 +43,7 @@ alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal ||
 
 # alias sudo with 'sudo ' to have sudo'ed command aliased too
 alias sudo='sudo '
+alias suvi='sudo vi'
 
 alias ag="ag -S -C 3 --pager 'less -FXR'"
 
