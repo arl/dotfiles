@@ -156,6 +156,11 @@ else
         \ "active_filetypes": [""],
         \ "passive_filetypes": [""] }
 
+    "TODO: those warnings should be enabled everywhere but in Caligola
+    let g:syntastic_python_pylint_quiet_messages = {
+        \ "type":  "style",
+        \ "regex": '\(\[missing-docstring\|line-too-long\|invalid-name\]\)' }
+
     " SimpylFold
     autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
     autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
