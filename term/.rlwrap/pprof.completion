@@ -1,1 +1,1 @@
-disasm, dot, eog, evince, gif, gv, list, pdf, peek, png, proto, ps, raw, svg, tags, text, top, tree, web, weblist
+callgrind, disasm, dot, eog, evince, gif, gv, list, pdf, peek, png, proto, ps, raw, svg, tags, text, top, tree, web, weblist, quit, exit, cum, flat, call_tree, nodecount, nodefraction, edgefraction, focus, ignore, tagfocus, tagignore, functions, files, lines, addresses, unit, sample_index, mean, alloc_space, alloc_objects, inuse_space, inuse_objects, total_delay, ean_delay, contentions
