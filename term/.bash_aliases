@@ -56,6 +56,7 @@ alias svndiff='svn diff --internal-diff '
 
 # rlwrap aliases (add readline where there isn't)
 alias telnet="rlwrap -p'1;34' telnet "
+alias "gopprof"="rlwrap -f $HOME/.rlwrap/pprof.completion -p'1;35' go tool pprof "
 
 alias ..='cd ..'
 alias ...='cd ../..'
