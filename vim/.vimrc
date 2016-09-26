@@ -225,6 +225,7 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 set number       " line numbering
 set paste        " can paste without problems
 set laststatus=2 " display status bar permanently
+syntax enable
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
