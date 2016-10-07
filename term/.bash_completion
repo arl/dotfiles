@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# tmat completion
+# 'tmat' is an alias for 'tmux attach-session'
+# This bash completion relies on 'tmux.completion.bash' being sourced, as this
+# is where '_tmux_complete_session' is declared. On Debian distributions,
+# 'tmux.completion.bash' is part of the tmux package and is installed in
+# '/etc/bash_completion.d', it contains the following comment:
+#
+# See: http://www.debian-administration.org/articles/317 for how to write more.
+# Usage: Put "source bash_completion_tmux.sh" into your .bashrc
+# Based upon the example at http://paste-it.appspot.com/Pj4mLycDE
+
+_tmat() {
+    local cur
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    _tmux_complete_session "${cur}"
+
+    return 0
+}
+
+complete -F _tmat tmat
+# END tmat completion
