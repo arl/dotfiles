@@ -28,7 +28,8 @@
 
 
 # Welcome to my dotfiles!
-----
+-------------------------
+
 This is my collection of dotfiles, I use it to manage my bash-vim-tmux
 configuration.
 
@@ -71,28 +72,34 @@ $ git submodule update
 **Install the dotfiles**
 
 If your dotfiles repository is located under your `$HOME`, you can simply do:
+
 ```
 $ stow STOW_PACKAGE_NAME
 ```
 For example, `stow dev` will simply create symlinks of everything located under the `dev` folder
 
+
 You can also install multiple packages at once. To install *everything*:
+
 ```sh
 $ stow dev os term vim
 ```
 
 ## Stow packages
-----
- Stow packages are simple folders located under the repository root. They represent and contain the 4 categories of dotfiles:
+----------------
+Stow packages are simple folders located under the repository root. They
+represent and contain the 4 categories of dotfiles:
  
 + os: operating system global configuration files
 + vim: full vim configuration (plugins, colorschemes, etc.)
 + dev: software development tools config
 + term: terminal configuration
 
+
 ### dev package
 
 Global configuration for development tools like pylint, gdb and git
+
 
 ### os package
 
@@ -103,10 +110,15 @@ Global configuration for development tools like pylint, gdb and git
 
 ### term package
 
-Package aimed at improving your terminal and bash shell. Some dotfiles are bash-specific but this package also contains some shell-agnostic stuff :
+Package aimed at improving your terminal and bash shell. Some dotfiles are 
+bash-specific but this package also contains some shell-agnostic stuff :
 
-+ customized customized tmux config: status-bar, 256 colors, loads of bindings, [tmux-gitbar](https://github.com/aurelien-rainone/tmux-gitbar) and more.
-+ a powerful inputrc (global readline configuration file) improving your productivity with each of your tools internally relying on readline (so virtually everywhere you can write!). Every feature is detailed in the comments in [.inputrc](./term/.inputrc)
++ customized customized tmux config: status-bar, 256 colors, loads of bindings, 
+  [tmux-gitbar](https://github.com/aurelien-rainone/tmux-gitbar) and more.
++ a powerful inputrc (global readline configuration file) improving your 
+  productivity with each of your tools internally relying on readline (so
+virtually everywhere you can write!). Every feature is detailed in the
+comments in [.inputrc](./term/.inputrc)
 + bash config files
 + A clear and informative prompt with colorful .dircolors [github.com/trapd00r/LS_COLORS](https://github.com/trapd00r/LS_COLORS)
 ![terminal screenshot](./screenshot.png)
@@ -127,16 +139,24 @@ Here are *some* of them:
  - [lightline](https://github.com/itchyny/lightline.vim)
  - [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
-My [`.vimrc`](./vim/.vimrc) is well categorized and commented so that you and I can easily find and modify what we are looking for.
-Loads of colorschemes, I change them often but eventually come back to [desert256](http://www.vim.org/scripts/script.php?script_id=1243)
+My [`.vimrc`](./vim/.vimrc) is well categorized and commented so that you and I
+can easily find and modify what we are looking for.  Loads of colorschemes, I
+change them often but eventually come back to
+[desert256](http://www.vim.org/scripts/script.php?script_id=1243)
+
 
 ## Disclaimer
 
-I only use Linux (Debian-based) OSes so i can't guarantee those configurations will work anywhere else, not even that you will like any of it ;-)
-That being said, mostly everything should work out of the box or with some minor changes, adaptations or renamings in order to make it work on other Linux distros or OSX (A lot of good stuff comes from other dotfiles repos that targets OSX)
+I only use Linux (Debian-based) OSes so i can't guarantee those configurations
+will work anywhere else, not even that you will like any of it ;-) That being
+said, mostly everything should work out of the box or with some minor changes,
+adaptations or renamings in order to make it work on other Linux distros or
+OSX (A lot of good stuff comes from other dotfiles repos that targets OSX)
 
-Keep in mind that these dotfiles have been slowly and carefully crafted to suit MY needs. I update them regularly as my needs, habits or mood change.
-Anyway, share, transform, use it as a source of inspiration. I'd love to hear that you found something useful here.
+Keep in mind that these dotfiles have been slowly and carefully crafted to suit
+MY needs. I update them regularly as my needs, habits or mood change.
+Anyway, share, transform, use it as a source of inspiration. I'd love to hear
+that you found something useful here.
 
 
 ## Credits and Thanks
