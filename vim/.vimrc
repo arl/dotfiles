@@ -286,6 +286,17 @@ set wildmode=list:full
 set textwidth=80
 nnoremap <leader>w gq<CR>
 
+" help
+function! s:ShowHelp(tag) abort
+  if winheight('%') < winwidth('%')
+    execute 'vertical help '.a:tag
+  else
+    execute 'help '.a:tag
+  endif
+endfunction
+
+command! -nargs=1 H call s:ShowHelp(<f-args>)
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Display Options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
