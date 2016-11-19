@@ -1,0 +1,26 @@
+{    
+    // Editor
+
+    // Controls the font family.
+    "editor.fontFamily": "'Consolas', 'Courier New', monospace, 'Droid Sans Fallback'",
+    // Controls if selections have rounded corners
+    "editor.roundedSelection": false,
+
+    // Configure glob patterns for excluding files and folders.
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/tags": true,
+        "**/.*.swp": true
+    },
+
+
+    // Go
+
+    // Pick 'gofmt', 'goimports' or 'goreturns' to run on format.
+    "go.formatTool": "goimports",
+    // Enable gocode's autobuild feature
+    "go.gocodeAutoBuild": false    
+}
