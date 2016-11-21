@@ -23,6 +23,10 @@ if has("unix")
       let l:new_font_size = ' '.l:gf_size_whole
       let &guifont = substitute(&guifont, ' \d\+$', l:new_font_size, '')
     endfunction
+
+
+    map <silent> <F11>
+    \    :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 else
     function! FontSizePlus ()
       let l:gf_size_whole = matchstr(&guifont, '\(:h\)\@<=\d\+$')
