@@ -4,8 +4,7 @@ set guioptions-=T          " toolbar
 set guioptions-=r          " scrollbar
 set lines=999 columns=999  " start gvim maximized
 
-source $VIMRUNTIME/mswin.vim
-behave mswin
+behave xterm
 
 :colorscheme darkblue
 let g:colorschwitch_schemes = ['desert', 'darkblue', 'lucius', 'brookstream', 'torte', 'slate', 'gotham256', 'peachpuff', 'sourcerer', 'morning', 'pablo', 'koehler']
@@ -24,6 +23,10 @@ if has("unix")
       let l:new_font_size = ' '.l:gf_size_whole
       let &guifont = substitute(&guifont, ' \d\+$', l:new_font_size, '')
     endfunction
+
+
+    map <silent> <F11>
+    \    :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 else
     function! FontSizePlus ()
       let l:gf_size_whole = matchstr(&guifont, '\(:h\)\@<=\d\+$')
