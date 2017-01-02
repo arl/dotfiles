@@ -4,6 +4,7 @@
 	name = Aurélien Rainone
 [diff]
   tool = vimdiff
+  guitool = gvimdiff
 [difftool]
   prompt = false
 [alias]
@@ -12,6 +13,7 @@
   co = checkout
   st = status --column
   dt = difftool
+  dtg = difftool --
   cm = "commit -m"
 
   ## new 'features'
