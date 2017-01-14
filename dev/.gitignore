@@ -6,3 +6,7 @@ tags
 *.pyc
 *.swo
 *.swp
+
+# vs code generated files
+.vscode
+debug.test
