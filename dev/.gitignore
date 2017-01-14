@@ -10,3 +10,6 @@ tags
 # vs code generated files
 .vscode
 debug.test
+
+# go common profile coverage name
+profile.cov
