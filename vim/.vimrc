@@ -37,6 +37,7 @@ else
     Plugin 'cakebaker/scss-syntax.vim'
     Plugin 'itchyny/lightline.vim'
     Plugin 'Shougo/neocomplete.vim'
+    Plugin 'Shougo/vimproc.vim'
     Plugin 'will133/vim-dirdiff'
     Plugin 'scrooloose/syntastic'
     Plugin 'vim-scripts/bats.vim'
