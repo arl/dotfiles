@@ -407,3 +407,9 @@ set ttymouse=xterm2
 " default colorscheme
 :colorscheme sourcerer
 let g:colorschwitch_schemes = ['delek', 'slate', 'gotham256', 'sourcerer', 'morning']
+
+function! DoMirror ()
+  call vimproc#system_bg('python mirror.py --sync')
+endfunction
+
+nmap <F3> :call DoMirror()<CR>
