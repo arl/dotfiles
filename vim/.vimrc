@@ -40,7 +40,6 @@ else
     Plugin 'will133/vim-dirdiff'
     Plugin 'scrooloose/syntastic'
     Plugin 'vim-scripts/bats.vim'
-    Plugin 'tmhedberg/SimpylFold'
     Plugin 'tikhomirov/vim-glsl'
     Plugin 'elzr/vim-json'
     Plugin 'whatyouhide/vim-gotham'
