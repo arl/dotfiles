@@ -142,29 +142,26 @@ else
     endfunction
 
 
-    " syntastic
+    " Syntastic
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
 
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_auto_loc_list = 1
+    " disable automatic checks
     let g:syntastic_check_on_open = 0
     let g:syntastic_check_on_wq = 0
     let g:syntastic_mode_map = {
         \ "mode": "passive",
         \ "active_filetypes": [""],
         \ "passive_filetypes": [""] }
+    " instead press F5 for manual check
+    nnoremap <silent> <F5> :SyntasticCheck<CR>
 
-    "TODO: those warnings should be enabled everywhere but in Caligola
-    let g:syntastic_python_pylint_quiet_messages = {
-        \ "type":  "style",
-        \ "regex": '\(\[missing-docstring\|line-too-long\|invalid-name\]\)' }
-
-    " SimpylFold
-    autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
-    autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
-
+    " flake8: quiet specific messages
+    " E501 : line too long
+    let g:syntastic_python_flake8_args='--ignore=E501'
 
     " neocomplete.vim
     " Disable AutoComplPop.
