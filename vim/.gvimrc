@@ -6,8 +6,7 @@ set lines=100 columns=200  " start gvim maximized
 
 behave xterm
 
-:colorscheme darkblue
-let g:colorschwitch_schemes = ['desert', 'darkblue', 'lucius', 'brookstream', 'torte', 'slate', 'gotham256', 'peachpuff', 'sourcerer', 'morning', 'pablo', 'koehler']
+:colorscheme buddy
 
 if has("unix")
     function! FontSizePlus ()
