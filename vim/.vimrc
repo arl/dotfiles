@@ -375,8 +375,7 @@ set ttymouse=xterm2
 :set t_ut=
 
 " default colorscheme
-:colorscheme sourcerer
-let g:colorschwitch_schemes = ['delek', 'slate', 'gotham256', 'sourcerer', 'morning']
+:colorscheme obsidian
 
 function! DoMirror ()
   call vimproc#system_bg('python mirror.py --sync')
