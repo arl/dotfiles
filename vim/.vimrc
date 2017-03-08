@@ -34,6 +34,7 @@ else
     Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'vim-scripts/argtextobj.vim'
     Plugin 'itchyny/lightline.vim'
+    Plugin 'cocopon/lightline-hybrid.vim'
     Plugin 'Shougo/neocomplete.vim'
     Plugin 'Shougo/vimproc.vim'
     Plugin 'will133/vim-dirdiff'
@@ -85,7 +86,7 @@ else
 
     " lightline
     let g:lightline = {
-        \ 'colorscheme': 'gotham256',
+        \ 'colorscheme': 'hybrid',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'fugitive', 'filename' ] ]
