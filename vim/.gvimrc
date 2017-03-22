@@ -6,7 +6,7 @@ set lines=100 columns=200  " start gvim maximized
 
 behave xterm
 
-:colorscheme buddy
+:colorscheme desertedocean
 
 if has("unix")
     function! FontSizePlus ()
