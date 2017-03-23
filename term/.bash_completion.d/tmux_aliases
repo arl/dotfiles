@@ -1,0 +1,16 @@
+# tmat completion
+# 'tmat' is an alias for 'tmux attach-session'
+#
+# NOTE: requires _tmux_complete_session. That is defined in _tmux_completion
+# file. It begins with an underscore `_` so as to be loaded beforewards.
+
+_tmat() {
+    local cur
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    _tmux_complete_session "${cur}"
+
+    return 0
+}
+
+complete -F _tmat tmat
