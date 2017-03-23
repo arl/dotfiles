@@ -3,6 +3,20 @@
 # tmat completion
 # 'tmat' is an alias for 'tmux attach-session'
 
+# additional user compat completion directory definitions
+# should be declared in this directory
+: ${BASH_COMPLETION_DIR:=./.bash_completion.d}
+
+# source additional user bash completions
+if [[ -d $BASH_COMPLETION_DIR && -r $BASH_COMPLETION_DIR && \
+    -x $BASH_COMPLETION_DIR ]]; then
+    for i in $(LC_ALL=C command ls "$BASH_COMPLETION_DIR"); do
+        i=$BASH_COMPLETION_DIR/$i
+        [[ ${i##*/} != @($_backup_glob|Makefile*|$_blacklist_glob) \
+            && -f $i && -r $i ]] && . "$i"
+    done
+fi
+
 _tmat() {
     local cur
     COMPREPLY=()
