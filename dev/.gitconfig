@@ -31,7 +31,9 @@
   # delete all local branches that have been merged but laster
   clean-branches = "!f() { git branch --merged | grep -v '^* master$' | grep -v '^  master$' | xargs -r git branch -d ; }; f"
   # Interactive rebase with the given number of latest commits
-  reb = "!r() { git rebase -i HEAD~$1; }; r"
+  reb = "!r() { git rebase -i --autosquash HEAD~$1; }; r"
+  # Commit current stage area, in a commit that will automatically be fixed-up with previous one in the next interactive rebase
+  tobesquashed = commit --fixup HEAD
 [status]
   relativePaths = true
 [push]
