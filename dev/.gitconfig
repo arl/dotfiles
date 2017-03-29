@@ -1,7 +1,7 @@
 [user]
   # https://confluence.atlassian.com/pages/viewpage.action?pageId=271943168
-	email = aurelien.rainone@gmail.com
-	name = Aurélien Rainone
+  email = aurelien.rainone@gmail.com
+  name = Aurélien Rainone
 [diff]
   tool = vimdiff
   guitool = gvimdiff
@@ -54,11 +54,11 @@
   new         = green
   whitespace  = "red reverse"
 [credential]
-	helper = cache --timeout=3600
+  helper = cache --timeout=3600
 [filter "lfs"]
-	required = true
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	clean = git-lfs clean -- %f
+  required = true
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  clean = git-lfs clean -- %f
 [rebase]
-	autosquash = true
+  autosquash = true
