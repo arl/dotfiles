@@ -4,6 +4,24 @@
 # vim/gvim
 # ========
 
+# fag [EDITOR] [EXTENSION] - Open selected file, fuzzy-finding by content.
+#    - EDTIOR is vim by default
+#    - EXTENSION (empty by default), if set only filename matching
+#      *.EXTENSION pattern are presented
+fag() {
+  local line editor match_ext
+  editor=${1:-vim}
+  match_ext=${2:-}
+  # forge file matching option only if an extension has been provided
+  [[ -n $match_ext ]] && match_ext="-G \.$match_ext\$"
+  if line=$(ag --nobreak --nonumbers --noheading $match_ext . | fzf +m);
+  then
+    $editor $(echo $line | cut -d: -f 1)
+  else
+    echo cancelled...
+  fi
+}
+
 # fv [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
