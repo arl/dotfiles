@@ -64,3 +64,5 @@
   clean = git-lfs clean -- %f
 [rebase]
   autosquash = true
+[init]
+	templatedir = ~/.git_template
