@@ -102,6 +102,18 @@ fcor() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+# ff: fuzzy preview unstaged difference in the working tree.
+ff() {
+  is_in_git_repo || return
+  git -c color.status=always status --short |
+  fzf-down -m --ansi --nth 2..,.. \
+    --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
+  cut -c4- | sed 's/.* -> //'
+}
 
 # Processes
 # =========
