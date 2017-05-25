@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# select specific(s) ctags hook(s) for project
+# (by default no ctags hooks are enabled)
+# uncomment desired line(s)
+
+# for go project
+#.git/hooks/gotags
+
+# for project in other languages
+#.git/hooks/ctags
