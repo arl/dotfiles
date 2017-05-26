@@ -34,7 +34,7 @@
   reb = "!r() { git rebase -i --autosquash HEAD~$1; }; r"
   # Commit current stage area, in a commit that will automatically be fixed-up with previous one in the next interactive rebase
   tobesquashed = commit --fixup HEAD
-	ctags = !.git/hooks/ctags
+  ctags = "!f() { (cd $(git rev-parse --show-toplevel) && .git/hooks/gentags) ; }; f"
 [status]
   relativePaths = true
 [push]

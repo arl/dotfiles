@@ -1,11 +1,30 @@
 #!/bin/sh
 
-# select specific(s) ctags hook(s) for project
-# (by default no ctags hooks are enabled)
-# uncomment desired line(s)
+main() {
+  local ctags_cmd
 
-# for go project
-#.git/hooks/gotags
+  # select specific(s) ctags hook(s) for project
+  # (by default no ctags hooks are enabled)
+  # uncomment desired line(s)
 
-# for project in other languages
-#.git/hooks/ctags
+  # for go project
+  #ctags_cmd=.git/hooks/gotags
+
+  # for project in other languages
+  #ctags_cmd=.git/hooks/ctags
+
+  if [ -z $ctags_cmd ]; then
+    echo 'ctags hooks disabled, see .git/hooks/gentags'
+    return
+  fi
+
+  # run ctags_cmd, without garbage output
+  $ctags_cmd >/dev/null 2>&1 &
+  if [ $? -ne 0 ]; then
+    # just notify in case something went wrong
+    echo $ctags_cmd hook exited with $?
+    echo manually run with `git ctags`
+  fi
+}
+
+main "$@"

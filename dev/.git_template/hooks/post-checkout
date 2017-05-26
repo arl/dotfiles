@@ -1,2 +1,2 @@
 #!/bin/sh
-.git/hooks/gentags >/dev/null 2>&1 &
+.git/hooks/gentags
