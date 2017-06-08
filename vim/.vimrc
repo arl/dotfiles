@@ -44,6 +44,8 @@ else
     Plugin 'elzr/vim-json'
     Plugin 'whatyouhide/vim-gotham'
     Plugin 'aurelien-rainone/colorschwitch'
+    Plugin 'unblevable/quick-scope'
+    Plugin 'tpope/vim-sleuth'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
@@ -207,6 +209,10 @@ else
       let g:neocomplete#sources#omni#input_patterns = {}
     endif
 
+
+    " quick-scope
+    " " Trigger a highlight in the appropriate direction when pressing these keys:
+    let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 endif
 
 filetype plugin indent on    " required
