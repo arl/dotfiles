@@ -12,6 +12,7 @@
   br = branch -avv
   co = checkout
   st = status --column
+  ds = diff --staged
   dt = difftool
   dtg = difftool --
   cm = "commit -m"
