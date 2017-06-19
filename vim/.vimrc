@@ -46,6 +46,7 @@ else
     Plugin 'aurelien-rainone/colorschwitch'
     Plugin 'unblevable/quick-scope'
     Plugin 'tpope/vim-sleuth'
+    Plugin 'junegunn/goyo.vim'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
