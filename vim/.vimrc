@@ -272,6 +272,7 @@ function! s:ShowHelp(tag) abort
   endif
 endfunction
 
+" H to show help in vertical split
 command! -nargs=1 H call s:ShowHelp(<f-args>)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
