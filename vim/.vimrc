@@ -275,6 +275,15 @@ endfunction
 " H to show help in vertical split
 command! -nargs=1 H call s:ShowHelp(<f-args>)
 
+
+" annoying temporary files
+set backupdir=/tmp//,.
+set directory=/tmp//,.
+if v:version >= 703
+  set undodir=/tmp//,.
+endif
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Display Options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
