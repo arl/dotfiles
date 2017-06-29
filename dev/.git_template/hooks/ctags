@@ -5,6 +5,15 @@ set -e
 PATH="/usr/local/bin:$PATH"
 dir="`git rev-parse --git-dir`"
 trap 'rm -f "$dir/$$.tags"' EXIT
+
+# Depending on the project language, it's better to specialize
+# the language filter. Different ways to do it:
+#
+# (a) by file extension:
+# - git ls-files | egrep '\.py$' | \
+#
+# (b) with the ctags `--language` option
+
 git ls-files | \
   ctags --tag-relative -L - -f"$dir/$$.tags" --languages=-javascript,sql,go
 mv "$dir/$$.tags" "$dir/tags"
