@@ -47,6 +47,8 @@ else
     Plugin 'unblevable/quick-scope'
     Plugin 'tpope/vim-sleuth'
     Plugin 'junegunn/goyo.vim'
+    Plugin 'jiangmiao/auto-pairs.git'
+
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
@@ -214,6 +216,10 @@ else
     " quick-scope
     " " Trigger a highlight in the appropriate direction when pressing these keys:
     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+    " auto-pairs
+    " NOTE: ALT-P toggles the plugin
+
 endif
 
 filetype plugin indent on    " required
@@ -284,6 +290,8 @@ if v:version >= 703
   set undodir=/tmp//,.
 endif
 
+" disable automatic braces
+let g:autoclose_on = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Display Options
