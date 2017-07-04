@@ -153,3 +153,5 @@ if [ -f "$HOME/.fzf/bin/fzf" ]; then
     # fzf.functions is included in personal dotfiles repo
     [ -f ~/.fzf.functions ] && source ~/.fzf.functions
 fi
+
+RLWRAP_HOME="$HOME/.rlwrap"
