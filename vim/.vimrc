@@ -403,6 +403,11 @@ set ttymouse=xterm2
 " default colorscheme
 :colorscheme janah
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Work related (TODO: should be place in an external file)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 function! DoMirror ()
   call vimproc#system_bg('python mirror.py --sync')
 endfunction
