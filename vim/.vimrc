@@ -403,6 +403,27 @@ set ttymouse=xterm2
 " default colorscheme
 :colorscheme janah
 
+" BeforeDiff hook: set specific options, colorscheme, etc. when entering in
+" diff mode
+function! s:BeforeDiff() abort
+  " TODO: back current colorscheme so that we can restore it when going out
+  " of diff mode
+  if has("gui_running")
+    colorscheme burnttoast256
+  else
+    colorscheme obsidian
+  endif
+endfunction
+
+" AfterDiff hook: BeforeDiff counterpart
+" diff mode
+function! s:AfterDiff() abort
+  colorscheme janah
+endfunction
+
+"au BufEnter,BufNew * if &diff | syntax off | else | syntax on | endif
+au BufEnter,BufNew * if &diff | call s:BeforeDiff() | else | call s:AfterDiff() | endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Work related (TODO: should be place in an external file)
