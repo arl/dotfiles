@@ -14,7 +14,7 @@
   st = status --column
   ds = diff --staged
   dt = difftool
-  dtg = difftool --
+  dtg = difftool --gui
   cm = "commit -m"
 
   ## new 'features'
