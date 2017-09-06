@@ -29,7 +29,7 @@ alias less='less -FXR'   # -R = --RAW-CONTROL-CHARS'
 
 # add lesc alias (pygmentize + less) if pygmentize is installed
 if command -v pygmentize >/dev/null 2>&1 ; then
-    alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less'
+    alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less -N'
 fi
 
 # tmux aliases
