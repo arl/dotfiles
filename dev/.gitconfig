@@ -68,3 +68,6 @@
   autosquash = true
 [init]
   templatedir = ~/.git_template
+[gui]
+  fontui = -family \"Consolas\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+  fontdiff = -family \"Consolas\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
