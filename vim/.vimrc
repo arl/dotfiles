@@ -27,6 +27,7 @@ else
     Plugin 'scrooloose/nerdtree.git'
     Plugin 'airblade/vim-gitgutter'
     Plugin 'fatih/vim-go'
+    Plugin 'buoto/gotests-vim'
     Plugin 'fugitive.vim'
     Plugin 'majutsushi/tagbar'
     Plugin 'repeat.vim'
