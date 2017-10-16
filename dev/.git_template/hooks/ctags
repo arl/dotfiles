@@ -14,6 +14,6 @@ trap 'rm -f "$dir/$$.tags"' EXIT
 #
 # (b) with the ctags `--language` option
 
-git ls-files | \
+git ls-files --recurse-submodules | \
   ctags --tag-relative -L - -f"$dir/$$.tags" --languages=-javascript,sql,go
 mv "$dir/$$.tags" "$dir/tags"
