@@ -22,5 +22,7 @@
     // Pick 'gofmt', 'goimports' or 'goreturns' to run on format.
     "go.formatTool": "goimports",
     // Enable gocode's autobuild feature
-    "go.gocodeAutoBuild": false    
+    "go.gocodeAutoBuild": false,
+    "workbench.colorTheme": "Solarized Light",
+    "workbench.statusBar.visible": true
 }
