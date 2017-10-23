@@ -408,8 +408,13 @@ set ttymouse=xterm2
 " Work related (TODO: should be place in an external file)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! DoMirror ()
-  call vimproc#system_bg('python mirror.py --sync')
+function! DoMirror (rootonly)
+  let mirror_cmd = 'python mirror.py --sync'
+  if a:rootonly
+    let mirror_cmd = 'python mirror.py --sync --root-only'
+  end
+  call vimproc#system_bg(mirror_cmd)
 endfunction
 
-nmap <F3> :call DoMirror()<CR>
+nmap <F3> :call DoMirror(0)<CR>
+nmap <C-F3> :call DoMirror(1)<CR>
