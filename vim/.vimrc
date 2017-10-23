@@ -242,7 +242,7 @@ set history=1000
 set backspace=indent,eol,start
 set hidden
 set switchbuf=useopen,usetab
-set tags=./tags;,tags;
+set tags=./.git/tags;./tags;,tags;
 
 " splitting
 set splitbelow
