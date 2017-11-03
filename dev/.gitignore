@@ -13,3 +13,5 @@ debug.test
 
 # go common profile coverage name
 profile.cov
+
+.agignore
