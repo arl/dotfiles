@@ -2,7 +2,7 @@
 
 # additional user compat completion directory definitions
 # should be declared in this directory
-: ${BASH_COMPLETION_DIR:=./.bash_completion.d}
+: ${BASH_COMPLETION_DIR:=$HOME/.bash_completion.d}
 
 # source additional user bash completions
 if [[ -d $BASH_COMPLETION_DIR && -r $BASH_COMPLETION_DIR && \
