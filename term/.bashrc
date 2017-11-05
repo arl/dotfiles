@@ -8,11 +8,17 @@ case $- in
       *) return;;
 esac
 
+# Share history between different terminals
+# The 3 next commands are taken from https://unix.stackexchange.com/questions/1288
+
+# After each command, append to the history file and reread it
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups:erasedups
 
-# append to the history file, don't overwrite it
+# When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
