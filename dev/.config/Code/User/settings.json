@@ -23,6 +23,25 @@
     "go.formatTool": "goimports",
     // Enable gocode's autobuild feature
     "go.gocodeAutoBuild": false,
-    "workbench.colorTheme": "Solarized Light",
-    "workbench.statusBar.visible": true
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.statusBar.visible": true,
+
+
+    // C/C++
+    "C_Cpp.intelliSenseEngine": "Default",
+    "extensions.ignoreRecommendations": false,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressUpdateNotice": false,
+        "suppressWelcomeNotice": true
+    },
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "none",
+    "editor.minimap.enabled": false,
+    "workbench.sideBar.location": "left"
 }
