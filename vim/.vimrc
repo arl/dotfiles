@@ -36,19 +36,23 @@ else
     Plugin 'vim-scripts/argtextobj.vim'
     Plugin 'itchyny/lightline.vim'
     Plugin 'cocopon/lightline-hybrid.vim'
-    Plugin 'Shougo/neocomplete.vim'
-    Plugin 'Shougo/vimproc.vim'
     Plugin 'will133/vim-dirdiff'
     Plugin 'scrooloose/syntastic'
     Plugin 'vim-scripts/bats.vim'
-    Plugin 'tikhomirov/vim-glsl'
     Plugin 'elzr/vim-json'
-    Plugin 'whatyouhide/vim-gotham'
     Plugin 'aurelien-rainone/colorschwitch'
     Plugin 'unblevable/quick-scope'
     Plugin 'tpope/vim-sleuth'
     Plugin 'junegunn/goyo.vim'
     Plugin 'jiangmiao/auto-pairs.git'
+    if has('nvim')
+        Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        Plugin 'zchee/deoplete-clang'
+        let g:deoplete#enable_at_startup = 1
+        let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
+        let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+    endif
+
 
 
     " All of your Plugins must be added before the following line
@@ -146,13 +150,11 @@ else
             \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
     endfunction
 
-
     " Syntastic
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
 
-    let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_auto_loc_list = 1
     " disable automatic checks
     let g:syntastic_check_on_open = 0
@@ -163,56 +165,6 @@ else
         \ "passive_filetypes": [""] }
     " instead press F5 for manual check
     nnoremap <silent> <F5> :SyntasticCheck<CR>
-
-    " flake8: quiet specific messages
-    " E501 : line too long
-    let g:syntastic_python_flake8_args='--ignore=E501'
-
-    " neocomplete.vim
-    " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 0
-    " Use neocomplete.
-    let g:neocomplete#enable_at_startup = 1
-    " Use smartcase.
-    let g:neocomplete#enable_smart_case = 1
-    " Set minimum syntax keyword length.
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
-    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-    " Define keyword.
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-    " Plugin key-mappings.
-    inoremap <expr><C-g>     neocomplete#undo_completion()
-    inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-    " Recommended key-mappings.
-    " <CR>: close popup and save indent.
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-      return pumvisible() ? "\<C-y>" : "\<CR>"
-    endfunction
-    " <TAB>: completion.
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-    " Enable omni completion.
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-    " Enable heavy omni completion.
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-      let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-
 
     " quick-scope
     " " Trigger a highlight in the appropriate direction when pressing these keys:
@@ -302,7 +254,7 @@ set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 set number       " line numbering
-set paste        " can paste without problems
+set nopaste      " paste is obsolete
 set laststatus=2 " display status bar permanently
 syntax enable
 
@@ -405,18 +357,3 @@ endif
 
 " default colorscheme
 :colorscheme janah
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Work related (TODO: should be place in an external file)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-function! DoMirror (rootonly)
-  let mirror_cmd = 'python mirror.py --sync'
-  if a:rootonly
-    let mirror_cmd = 'python mirror.py --sync --root-only'
-  end
-  call vimproc#system_bg(mirror_cmd)
-endfunction
-
-nmap <F3> :call DoMirror(0)<CR>
-nmap <C-F3> :call DoMirror(1)<CR>
