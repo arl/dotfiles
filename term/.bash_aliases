@@ -63,3 +63,11 @@ alias "gopprof"="rlwrap -f $HOME/.rlwrap/pprof.completion -p'1;35' go tool pprof
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+# neovim alias
+if safewhich nvim
+    then
+    alias vi=nvim
+    alias vim=nvim
+    alias vimdiff='nvim -d'
+fi
