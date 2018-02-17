@@ -8,6 +8,8 @@ case $- in
       *) return;;
 esac
 
+EDITOR=vi
+
 # Share history between different terminals
 # The 3 next commands are taken from https://unix.stackexchange.com/questions/1288
 
@@ -77,6 +79,12 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+# source .functions file
+if [ -f "$HOME/.functions" ]; then
+    source "$HOME/.functions"
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -109,7 +117,7 @@ function rainbow_prompt
     export PS1='\n\e[1;30m[\j:\!\e[1;30m]\e[0;36m \T \d \e[1;30m[\e[1;$((31 + (++color % 7)))m\u\[\e[00;37m\]@\[\e[1;30m\]\H\e[1;30m:\e[0;37m`tty 2>/dev/null` \e[0;32m+${SHLVL}\e[1;30m] \e[1;36m\w\e[0;37m\[\033]0;[ ${H1}... ] \w - \u@\H +$SHLVL @`tty 2>/dev/null` - [ `uptime` ]\007\]\n\[\]\$ '
 }
 
-export TERM=xterm-256color vim 
+export TERM=screen-256color
 
 # choose default prompt
 rainbow_prompt
@@ -142,11 +150,6 @@ else
     start_agent;
 fi
 
-# source .functions file
-if [ -f "$HOME/.functions" ]; then
-    source "$HOME/.functions"
-fi
-
 # Stop vim freezing on accidental Ctrl-S, from
 # http://unix.stackexchange.com/questions/12107
 stty -ixon
@@ -161,3 +164,7 @@ if [ -f "$HOME/.fzf/bin/fzf" ]; then
 fi
 
 RLWRAP_HOME="$HOME/.rlwrap"
+if [ -f "$HOME/.machine_specific" ]; then
+    source "$HOME/.machine_specific";
+fi
+
