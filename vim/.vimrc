@@ -45,9 +45,12 @@ else
     Plugin 'tpope/vim-sleuth'
     Plugin 'junegunn/goyo.vim'
     Plugin 'jiangmiao/auto-pairs.git'
+    Plugin 'iCyMind/NeoSolarized'
     if has('nvim')
         Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         Plugin 'zchee/deoplete-clang'
+        Plugin 'zchee/deoplete-go', {'build': {'unix': 'make'}}
+        Plugin 'jodosha/vim-godebug' " Debugger integration via delve
         let g:deoplete#enable_at_startup = 1
         let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
         let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
