@@ -1537,6 +1537,20 @@ set print array off
 set print array-indexes on
 set python print-stack full
 
+# Add xxd command (dump memory region in canonical hex+ASCII display), a la
+# hexdump -C
+# usage: "xdd &p 64" in order to print
+# >>> xxd &p 64
+# 0000000: 0000 0000 0000 0000 df4f def7 ff7f 0000  .........O......
+# 0000010: 50bf ffff ff7f 0000 0000 0000 0000 0000  P...............
+# 0000020: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+# 0000030: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+
+define xxd
+dump binary memory dump.bin $arg0 $arg0+$arg1
+shell xxd dump.bin
+end
+
 # Start ------------------------------------------------------------------------
 
 python Dashboard.start()
