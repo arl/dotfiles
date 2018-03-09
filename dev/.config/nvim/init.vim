@@ -1,4 +1,6 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
-colorscheme desert256
+set termguicolors
+set background=light
+colorscheme NeoSolarized
