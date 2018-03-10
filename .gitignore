@@ -2,8 +2,5 @@
 .*.swp
 .*.swo
 
-# ignore every vim plugins, but vundle itself
-vim/.vim/bundle
-
 machine_specific
 os/.fonts/Library

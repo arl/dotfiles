@@ -6,60 +6,43 @@ set modelines=1
 set modeline
 let mapleader=","             " set leader as ','
 
-if empty(glob("$HOME/.vim/bundle"))
-    echo "Vundle plugin does not seems installed, run:"
-    echo ""
-    echo "\tgit submodule init && git submodule update"
-    echo ""
-else
-    " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.local/share/nvim/plugged')
 
-    """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-    """""""""""""""""""" Vundle Plugins """"""""""""""""""""
-    """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-    call vundle#begin()
-
-    " let Vundle manage Vundle, required
-    Plugin 'gmarik/Vundle.vim'
-    Plugin 'jwhitley/vim-matchit.git'
-    Plugin 'scrooloose/nerdcommenter.git'
-    Plugin 'scrooloose/nerdtree.git'
-    Plugin 'airblade/vim-gitgutter'
-    Plugin 'fatih/vim-go'
-    Plugin 'buoto/gotests-vim'
-    Plugin 'fugitive.vim'
-    Plugin 'majutsushi/tagbar'
-    Plugin 'repeat.vim'
-    Plugin 'surround.vim'
-    Plugin 'ctrlpvim/ctrlp.vim'
-    Plugin 'vim-scripts/argtextobj.vim'
-    Plugin 'itchyny/lightline.vim'
-    Plugin 'cocopon/lightline-hybrid.vim'
-    Plugin 'will133/vim-dirdiff'
-    Plugin 'scrooloose/syntastic'
-    Plugin 'vim-scripts/bats.vim'
-    Plugin 'elzr/vim-json'
-    Plugin 'aurelien-rainone/colorschwitch'
-    Plugin 'unblevable/quick-scope'
-    Plugin 'tpope/vim-sleuth'
-    Plugin 'junegunn/goyo.vim'
-    Plugin 'jiangmiao/auto-pairs.git'
-    Plugin 'iCyMind/NeoSolarized'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'aurelien-rainone/colorschwitch'
+    Plug 'brooth/far.vim'
+    Plug 'buoto/gotests-vim'
+    Plug 'cocopon/lightline-hybrid.vim'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'elzr/vim-json'
+    Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+    Plug 'iCyMind/NeoSolarized'
+    Plug 'itchyny/lightline.vim'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'junegunn/goyo.vim'
+    Plug 'majutsushi/tagbar'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    Plug 'scrooloose/syntastic'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-sleuth'
+    Plug 'tpope/vim-surround'
+    Plug 'unblevable/quick-scope'
+    Plug 'vim-scripts/argtextobj.vim'
+    Plug 'vim-scripts/bats.vim'
+    Plug 'will133/vim-dirdiff'
     if has('nvim')
-        Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        Plugin 'zchee/deoplete-clang'
-        Plugin 'zchee/deoplete-go', {'build': {'unix': 'make'}}
-        Plugin 'jodosha/vim-godebug' " Debugger integration via delve
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        Plug 'jodosha/vim-godebug' " Debugger integration via delve
+        Plug 'zchee/deoplete-clang'
+        Plug 'zchee/deoplete-go', {'build': {'unix': 'make'}}
         let g:deoplete#enable_at_startup = 1
         let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
         let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
     endif
 
-
-
-    " All of your Plugins must be added before the following line
-    call vundle#end()            " required
+call plug#end()
 
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""
     """"""""""""""""" Plugin Configuration """"""""""""""""" 
@@ -175,8 +158,6 @@ else
 
     " auto-pairs
     " NOTE: ALT-P toggles the plugin
-
-endif
 
 filetype plugin indent on    " required
 
