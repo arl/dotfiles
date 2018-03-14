@@ -71,3 +71,11 @@ if safewhich nvim
     alias vim=nvim
     alias vimdiff='nvim -d'
 fi
+
+function hex2dec {
+    local hex=$(echo "$@" | tr '[:lower:]' '[:upper:]')
+    echo "ibase=16; ${hex}" | bc
+}
+function dec2hex {
+    echo "obase=16; $@" | bc
+}
