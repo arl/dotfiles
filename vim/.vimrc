@@ -27,6 +27,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-sleuth'
+    Plug 'editorconfig/editorconfig-vim'
     Plug 'tpope/vim-surround'
     Plug 'unblevable/quick-scope'
     Plug 'vim-scripts/argtextobj.vim'
@@ -158,6 +159,13 @@ call plug#end()
 
     " auto-pairs
     " NOTE: ALT-P toggles the plugin
+
+
+    " editorconfig-vim
+    " to ensure that this plugin works well with Tim Pope's fugitive, use the
+    " following patterns array:
+    let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+    let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 filetype plugin indent on    " required
 
