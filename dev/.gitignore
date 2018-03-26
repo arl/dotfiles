@@ -1,6 +1,7 @@
 build/
 dist/
 tags
+work
 *~
 *.egg-info/
 *.pyc
