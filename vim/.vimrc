@@ -34,6 +34,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'vim-scripts/bats.vim'
     Plug 'will133/vim-dirdiff'
     if has('nvim')
+        Plug 'morhetz/gruvbox'
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'jodosha/vim-godebug' " Debugger integration via delve
         Plug 'zchee/deoplete-clang'
@@ -83,7 +84,7 @@ call plug#end()
 
     " lightline
     let g:lightline = {
-        \ 'colorscheme': 'hybrid',
+        \ 'colorscheme': 'gruvbox',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'fugitive', 'filename' ] ]
@@ -94,8 +95,8 @@ call plug#end()
         \   'modified': 'LightLineModified',
         \   'filename': 'LightLineFilename'
         \ },
-        \ 'separator': { 'left': '⮀', 'right': '⮂' },
-        \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+        \ 'separator': { 'left': '⮀', 'right': '' },
+        \ 'subseparator': { 'left': '', 'right': '' }
         \ }
 
     function! LightLineModified()
