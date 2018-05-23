@@ -17,6 +17,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'editorconfig/editorconfig-vim'
     Plug 'elzr/vim-json'
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+    Plug 'mileszs/ack.vim'
     Plug 'iCyMind/NeoSolarized'
     Plug 'itchyny/lightline.vim'
     Plug 'jiangmiao/auto-pairs'
@@ -164,14 +165,29 @@ call plug#end()
     " auto-pairs
     " NOTE: ALT-P toggles the plugin
 
-
     " editorconfig-vim
     " to ensure that this plugin works well with Tim Pope's fugitive, use the
     " following patterns array:
     let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
     let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
-filetype plugin indent on    " required
+    " vim-grepper
+    runtime plugin/grepper.vim
+    nnoremap <leader>g :Grepper<cr>
+    let g:grepper = { 'next_tool': '<leader>g' }
+    nmap gs  <plug>(GrepperOperator)
+    xmap gs  <plug>(GrepperOperator)
+
+    " ack.vim
+    if executable('ag')
+      "let g:ackprg = 'ag\ --vimgrep\ -S'
+      let g:ackprg = 'ag'
+      let g:ack_default_options = " -s -H --nocolor --nogroup --column --smart-case --follow"
+      " by default, do not jump to first result
+      cnoreabbrev Ack Ack!
+    endif
+
+    filetype plugin indent on    " required
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,7 +215,7 @@ set diffopt=vertical " diffpatch splits vertically
 
 " search
 set incsearch    " find the next match as we type the search
-set hlsearch     " hilight searches by default
+set hlsearch     " highlight searches by default
 set ignorecase   " case ignored if search string is uppercase
 set smartcase    " overrides ignorecase if string contains an uppercase letter
 set gdefault     " 'g' is the default so s/../../
