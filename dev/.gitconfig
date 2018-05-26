@@ -37,6 +37,14 @@
   tobesquashed = commit --fixup HEAD
   ctags = "!f() { (cd $(git rev-parse --show-toplevel) && .git/hooks/gentags) ; }; f"
   amend = commit --amend
+  # codereview aliases
+  change = codereview change
+  gofmt = codereview gofmt
+  mail = codereview mail
+  pending = codereview pending
+  submit = codereview submit
+  sync = codereview sync
+
 [status]
   relativePaths = true
 [push]
@@ -72,3 +80,5 @@
 [gui]
   fontui = -family \"Consolas\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
   fontdiff = -family \"Consolas\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+[http]
+	cookiefile = /home/aurelien/.gitcookies
