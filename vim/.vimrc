@@ -22,6 +22,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'itchyny/lightline.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/gv.vim'
     Plug 'keith/travis.vim'
     Plug 'majutsushi/tagbar'
     Plug 'scrooloose/nerdcommenter'
