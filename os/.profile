@@ -77,4 +77,4 @@ if [ -n "$GOPATH" ]; then
     fi
 fi
 
-export GIT_EDITOR=vim
+export GIT_EDITOR=nvim
