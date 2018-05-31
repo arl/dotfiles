@@ -1,17 +1,28 @@
 [user]
   email = aurelien.rainone@gmail.com
   name = Aurélien Rainone
+
+[merge]
+  tool = vimdiff
+[mergetool]
+  prompt = true
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [diff]
   tool = vimdiff
-  guitool = gvimdiff
 [difftool]
   prompt = false
+[difftool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE
+
 [alias]
   # to save a few keystrokes
   br = branch -avv
   co = checkout
   st = status --column
   ds = diff --staged
+  mt = mergetool
+  mtg = mergetool --gui
   dt = difftool
   dtg = difftool --gui
   cm = "commit -m"
