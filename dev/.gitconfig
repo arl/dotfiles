@@ -1,5 +1,4 @@
 [user]
-  # https://confluence.atlassian.com/pages/viewpage.action?pageId=271943168
   email = aurelien.rainone@gmail.com
   name = Aurélien Rainone
 [diff]
@@ -81,4 +80,4 @@
   fontui = -family \"Consolas\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
   fontdiff = -family \"Consolas\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 [http]
-	cookiefile = /home/aurelien/.gitcookies
+  cookiefile = /home/aurelien/.gitcookies
