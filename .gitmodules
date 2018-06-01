@@ -3,4 +3,4 @@
 	url = https://github.com/gmarik/vundle.git
 [submodule "tmux-gitbar"]
 	path = term/.tmux-gitbar
-	url = git@github.com:aurelien-rainone/tmux-gitbar.git
+	url = git@github.com:arl/tmux-gitbar.git
