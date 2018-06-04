@@ -2,9 +2,19 @@
     // Editor
 
     // Controls the font family.
-    "editor.fontFamily": "'Consolas', 'Courier New', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Fira Code', 'Consolas', 'Courier New', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true,
     // Controls if selections have rounded corners
     "editor.roundedSelection": false,
+
+
+    // Workbench
+
+    "workbench.colorTheme": "Gruvbox Dark (Medium)",
+    "workbench.statusBar.visible": true,
+
+
+    // Files
 
     // Configure glob patterns for excluding files and folders.
     "files.exclude": {
@@ -23,11 +33,10 @@
     "go.formatTool": "goimports",
     // Enable gocode's autobuild feature
     "go.gocodeAutoBuild": false,
-    "workbench.colorTheme": "Solarized Dark",
-    "workbench.statusBar.visible": true,
 
 
     // C/C++
+
     "C_Cpp.intelliSenseEngine": "Default",
     "extensions.ignoreRecommendations": false,
     "gitlens.advanced.messages": {
@@ -43,5 +52,12 @@
     "editor.renderControlCharacters": true,
     "editor.renderWhitespace": "none",
     "editor.minimap.enabled": false,
-    "workbench.sideBar.location": "left"
+    "workbench.sideBar.location": "left",
+    "window.menuBarVisibility": "default",
+    "window.zoomLevel": 1,
+
+    // Vim
+
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim"
 }
