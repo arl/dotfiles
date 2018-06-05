@@ -8,6 +8,7 @@ let mapleader=","             " set leader as ','
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+    " sort with :12,42sort i
     Plug 'airblade/vim-gitgutter'
     Plug 'aurelien-rainone/colorschwitch'
     Plug 'brooth/far.vim'
@@ -17,7 +18,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'editorconfig/editorconfig-vim'
     Plug 'elzr/vim-json'
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-    Plug 'mileszs/ack.vim'
     Plug 'iCyMind/NeoSolarized'
     Plug 'itchyny/lightline.vim'
     Plug 'jiangmiao/auto-pairs'
@@ -25,6 +25,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'junegunn/gv.vim'
     Plug 'keith/travis.vim'
     Plug 'majutsushi/tagbar'
+    Plug 'mileszs/ack.vim'
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'scrooloose/syntastic'
