@@ -25,6 +25,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'junegunn/gv.vim'
     Plug 'keith/travis.vim'
     Plug 'majutsushi/tagbar'
+    Plug 'Matt-Deacalion/vim-systemd-syntax'
     Plug 'mileszs/ack.vim'
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
