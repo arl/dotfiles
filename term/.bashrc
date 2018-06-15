@@ -15,9 +15,11 @@ EDITOR=nvim
 # After each command, append to the history file and reread it
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoredups:erasedups
+# ignoreboth ignores:
+# - lines beggining with ' '
+# - duplicateed consecutive lines
+# erasedups: erase duplicates lines
+HISTCONTROL='ignoreboth:erasedups'
 
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
