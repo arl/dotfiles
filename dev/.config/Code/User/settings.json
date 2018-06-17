@@ -6,6 +6,7 @@
     "editor.fontLigatures": true,
     // Controls if selections have rounded corners
     "editor.roundedSelection": false,
+    "editor.mouseWheelZoom": true,
 
 
     // Workbench
