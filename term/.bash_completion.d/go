@@ -1,0 +1,12 @@
+#!/bin/bash
+
+function safewhich() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+if safewhich gocomplete
+then
+  # go get -u github.com/posener/complete/gocomplete
+  # gocomplete -install
+  complete -C /home/aurelien/godev/bin/gocomplete go
+fi
