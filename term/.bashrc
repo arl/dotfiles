@@ -113,9 +113,7 @@ if [ -f "$HOME/.functions" ]; then
     source "$HOME/.functions"
 fi
 
-# Alias definitions.
-# ~/.bash_aliases, instead of adding them here directly.
-
+# read bash aliases from ~/.bash_aliases
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
