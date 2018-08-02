@@ -4,6 +4,7 @@
 set nocompatible              " be iMproved, required
 set modelines=1
 set modeline
+set exrc
 let mapleader=","             " set leader as ','
 
 call plug#begin('~/.local/share/nvim/plugged')
