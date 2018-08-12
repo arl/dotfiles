@@ -15,6 +15,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'brooth/far.vim'
     Plug 'buoto/gotests-vim'
     Plug 'cocopon/lightline-hybrid.vim'
+    Plug 'Matt-Deacalion/vim-systemd-syntax'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'elzr/vim-json'
@@ -26,7 +27,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'junegunn/gv.vim'
     Plug 'keith/travis.vim'
     Plug 'majutsushi/tagbar'
-    Plug 'Matt-Deacalion/vim-systemd-syntax'
+    Plug 'maximbaz/lightline-ale'
     Plug 'mileszs/ack.vim'
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -40,6 +41,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'unblevable/quick-scope'
     Plug 'vim-scripts/argtextobj.vim'
     Plug 'vim-scripts/bats.vim'
+    Plug 'w0rp/ale'
     Plug 'will133/vim-dirdiff'
     if has('nvim')
         Plug 'morhetz/gruvbox'
@@ -94,8 +96,13 @@ call plug#end()
     let g:lightline = {
         \ 'colorscheme': 'gruvbox',
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ],
-        \             [ 'fugitive', 'filename' ] ]
+        \   'left':  [
+        \     ['mode', 'paste'],
+        \     ['fugitive', 'filename'],
+        \   ],
+        \   'right': [
+        \     ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']
+        \     ],
         \ },
         \ 'component_function': {
         \   'fugitive': 'LightLineFugitive',
@@ -103,9 +110,26 @@ call plug#end()
         \   'modified': 'LightLineModified',
         \   'filename': 'LightLineFilename'
         \ },
-        \ 'separator': { 'left': '⮀', 'right': '' },
-        \ 'subseparator': { 'left': '', 'right': '' }
+        \ 'component_expand': {
+        \   'linter_checking': 'lightline#ale#checking',
+        \   'linter_warnings': 'lightline#ale#warnings',
+        \   'linter_errors': 'lightline#ale#errors',
+        \   'linter_ok': 'lightline#ale#ok',
+        \ },
+        \ 'component_type': {
+        \   'linter_checking': 'left',
+        \   'linter_warnings': 'warning',
+        \   'linter_errors': 'error',
+        \   'linter_ok': 'left',
+        \ },
+        \ 'separator': { 'left': '⮀', 'right': '⮂' },
+        \ 'subseparator': { 'left': '⮀', 'right': '⮂' }
         \ }
+
+    let g:lightline#ale#indicator_checking = "\uf110"
+    let g:lightline#ale#indicator_warnings = "\uf071"
+    let g:lightline#ale#indicator_errors = "\uf05e"
+    let g:lightline#ale#indicator_ok = "\uf00c"
 
     function! LightLineModified()
       if &filetype == "help"
@@ -193,6 +217,7 @@ call plug#end()
 
     filetype plugin indent on    " required
 
+    " ale
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Options
