@@ -52,6 +52,7 @@
   pending = codereview pending
   submit = codereview submit
   sync = codereview sync
+  dag = cola dag
 [status]
   relativePaths = true
 [push]
@@ -91,3 +92,5 @@
   cookiefile = /home/aurelien/.gitcookies
 [advice]
 	ignoredHook = false
+[cola]
+	spellcheck = false
