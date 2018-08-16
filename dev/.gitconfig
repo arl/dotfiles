@@ -1,7 +1,6 @@
 [user]
   email = aurelien.rainone@gmail.com
   name = Aurélien Rainone
-
 [merge]
   tool = vimdiff
 [mergetool]
@@ -14,7 +13,6 @@
   prompt = false
 [difftool "vimdiff"]
   cmd = nvim -d $LOCAL $REMOTE
-
 [alias]
   # to save a few keystrokes
   br = branch -avv
@@ -54,7 +52,6 @@
   pending = codereview pending
   submit = codereview submit
   sync = codereview sync
-
 [status]
   relativePaths = true
 [push]
