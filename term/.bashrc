@@ -117,3 +117,5 @@ fi
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+complete -C /home/aurelien/godev/bin/gocomplete go
