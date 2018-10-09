@@ -11,7 +11,7 @@
 
     // Workbench
 
-    "workbench.colorTheme": "Gruvbox Dark (Soft)",
+    "workbench.colorTheme": "Gruvbox Dark (Medium)",
     "workbench.statusBar.visible": true,
 
     // differentiate between current line highlight and actual selection
@@ -61,11 +61,13 @@
     "editor.minimap.enabled": false,
     "workbench.sideBar.location": "left",
     "window.menuBarVisibility": "default",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
 
     // Vim
 
     "vim.enableNeovim": true,
     "vim.neovimPath": "/usr/bin/nvim",
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "breadcrumbs.enabled": true,
+    "terminal.integrated.rendererType": "dom"
 }
