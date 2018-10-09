@@ -9,7 +9,7 @@ let mapleader=","             " set leader as ','
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-    " sort with :12,42sort i
+    " sort with :12,47sort i
     Plug 'airblade/vim-gitgutter'
     Plug 'aurelien-rainone/colorschwitch'
     Plug 'brooth/far.vim'
