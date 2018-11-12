@@ -21,3 +21,8 @@ function tre() {
 function mkd() {
     mkdir -p "$@" && cd "$_";
 }
+
+# Show useful filesystem disk space usage
+function dfs() {
+    df -Ph -x squashfs
+}
