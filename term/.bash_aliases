@@ -48,6 +48,10 @@ alias sudo='sudo '
 alias suvi='sudo vi'
 
 alias ag="ag -S -C 3 --pager 'less -FXR'"
+# ag no context
+alias agc0="ag -S --pager 'less -FXR'"
+# alias *.go files only
+alias ago='ag --file-search-regex '''.\*.go''''
 
 # git aliases
 alias glg='git lg '
