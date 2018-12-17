@@ -1,6 +1,13 @@
 # function definitions for fzf (fuzzy file finder)
 # most are taken from https://github.com/junegunn/fzf/wiki/Examples
 
+# Solarized colors
+export FZF_DEFAULT_OPTS='
+  --color=bg+:#073642,bg:#002b36,spinner:#719e07,hl:#586e75
+  --color=fg:#839496,header:#586e75,info:#cb4b16,pointer:#719e07
+  --color=marker:#719e07,fg+:#839496,prompt:#719e07,hl+:#719e07
+'
+
 fzf-down() {
   fzf --height 50% "$@" --border
 }
@@ -88,15 +95,14 @@ fco() {
 
 # fshow - git commit browser
 fshow() {
-  is_in_git_repo || echo 'not in git repo...'
   git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --header "Press CTRL-S to toggle sort" \
-      --preview "echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
-                 xargs -I % sh -c 'git show --color=always % | head -200 '" \
-      --bind "enter:execute:echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
-              xargs -I % sh -c 'vim fugitive://\$(git rev-parse --show-toplevel)/.git//% < /dev/tty'"
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
 }
 
 # fco - checkout git branch (including remote branches)
@@ -121,16 +127,14 @@ ff() {
 # fstash - easier way to deal with stashes
 # type fstash to get a list of your stashes
 # enter shows you the contents of the stash
-# ctrl-h shows a diff of the stash against your current HEAD
+# ctrl-d shows a diff of the stash against your current HEAD
 # ctrl-b checks the stash out as a branch, for easier merging
 fstash() {
-  is_in_git_repo || echo 'not in git repo...'
-  exit_if_not_in_git_repo
   local out q k sha
   while out=$(
     git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
     fzf --ansi --no-sort --query="$q" --print-query \
-        --expect=ctrl-h,ctrl-b);
+        --expect=ctrl-d,ctrl-b);
   do
     mapfile -t out <<< "$out"
     q="${out[0]}"
@@ -138,7 +142,7 @@ fstash() {
     sha="${out[-1]}"
     sha="${sha%% *}"
     [[ -z "$sha" ]] && continue
-    if [[ "$k" == 'ctrl-h' ]]; then
+    if [[ "$k" == 'ctrl-d' ]]; then
       git diff $sha
     elif [[ "$k" == 'ctrl-b' ]]; then
       git stash branch "stash-$sha" $sha
@@ -152,17 +156,20 @@ fstash() {
 # Processes
 # =========
 
-# fkill - kill process
+# fkill - kill processes - list only the ones you can kill. Modified the earlier script.
 fkill() {
-  local pid
-  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+  local pid 
+  if [ "$UID" != "0" ]; then
+    pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
+  else
+    pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+  fi  
 
   if [ "x$pid" != "x" ]
   then
     echo $pid | xargs kill -${1:-9}
-  fi
+  fi  
 }
-
 
 # Tmux
 # ====
