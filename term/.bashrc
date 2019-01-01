@@ -13,7 +13,8 @@ EDITOR=nvim
 # The 3 next commands are taken from https://unix.stackexchange.com/questions/1288
 
 # After each command, append to the history file and reread it
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -n; history -w; history -c; history -r"
+#PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -n; history -w; history -c; history -r"
+PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 # ignoreboth ignores:
 # - lines beggining with ' '
