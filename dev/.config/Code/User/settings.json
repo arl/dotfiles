@@ -7,11 +7,6 @@
     // Controls if selections have rounded corners
     "editor.roundedSelection": false,
     "editor.mouseWheelZoom": true,
-
-
-    // Workbench
-
-    "workbench.colorTheme": "Gruvbox Dark (Medium)",
     "workbench.statusBar.visible": true,
 
     // differentiate between current line highlight and actual selection
@@ -61,7 +56,7 @@
     "editor.minimap.enabled": false,
     "workbench.sideBar.location": "left",
     "window.menuBarVisibility": "default",
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
 
     // Vim
 
@@ -69,5 +64,8 @@
     "vim.neovimPath": "/usr/bin/nvim",
     "explorer.confirmDelete": false,
     "breadcrumbs.enabled": true,
-    "terminal.integrated.rendererType": "dom"
+    "terminal.integrated.rendererType": "dom",
+    "workbench.startupEditor": "newUntitledFile",
+    "go.buildTags": "integration",
+    "workbench.colorTheme": "Gruvbox Dark (Medium)"
 }
