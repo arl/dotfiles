@@ -1,5 +1,10 @@
-# function definitions for fzf (fuzzy file finder)
+# vim: set ft=sh ts=2 sw=2 sts=2 et sta:
+#
+# Function definitions for FZF
+#
 # most are taken from https://github.com/junegunn/fzf/wiki/Examples
+
+safewhich fzf || exit
 
 # Solarized colors
 export FZF_DEFAULT_OPTS='
@@ -207,5 +212,3 @@ fs() {
     fi
   fi
 }
-
-# vim: filetype=sh

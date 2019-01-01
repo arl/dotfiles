@@ -71,18 +71,25 @@ $ git submodule update
 
 **Install the dotfiles**
 
-If your dotfiles repository is located under your `$HOME`, you can simply do:
+If your dotfiles repository is located under your `$HOME`, you can simply do,
+while you are in your `dotfiles` repository:
 
+```sh
+$ stow dev
 ```
-$ stow STOW_PACKAGE_NAME
-```
-For example, `stow dev` will simply create symlinks of everything located under the `dev` folder
+
+This will create symlinks of everything located under the `dev` stow package
+(i.e the `dev` folder) in your home.
+
+By default stow assumes you want to place the symlinks in the parent of the
+current working directory, if that's not the case, pass `-t/--target` to set the
+target directory, as in `stow -t $HOME dev`
 
 
 You can also install multiple packages at once. To install *everything*:
 
 ```sh
-$ stow dev os term vim
+$ stow bash dev os term vim
 ```
 
 ## Stow packages
@@ -110,19 +117,26 @@ Global configuration for development tools like pylint, gdb and git
 
 ### term package
 
-Package aimed at improving your terminal and bash shell. Some dotfiles are 
-bash-specific but this package also contains some shell-agnostic stuff :
+Package aimed at improving your terminal and shell:
 
 + customized customized tmux config: status-bar, 256 colors, loads of bindings, 
-  [tmux-gitbar](https://github.com/aurelien-rainone/tmux-gitbar) and more.
 + a powerful inputrc (global readline configuration file) improving your 
   productivity with each of your tools internally relying on readline (so
 virtually everywhere you can write!). Every feature is detailed in the
 comments in [.inputrc](./term/.inputrc)
-+ bash config files
 + A clear and informative prompt with colorful .dircolors [github.com/trapd00r/LS_COLORS](https://github.com/trapd00r/LS_COLORS)
 ![terminal screenshot](./screenshot.png)
 
+
+### bash package
+
+bash-specific stuff
++ configuration files
++ aliases
++ functions
++ completion
+
+All ordered in nice and tidy `.bashrc` files, under `.bashrc.d` directory.
 
 ### vim package
 
