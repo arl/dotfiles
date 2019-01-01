@@ -1,4 +1,7 @@
-# vim: filetype=sh
+# vim: set ft=sh ts=2 sw=2 sts=2 et sta:
+#
+# Bash aliases
+#
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -28,7 +31,8 @@ alias less='less -FXR'   # -R = --RAW-CONTROL-CHARS'
                          # -X or --no-init
 
 # add lesc alias (pygmentize + less) if pygmentize is installed
-if command -v pygmentize >/dev/null 2>&1 ; then
+if safewhich pygmentize
+    then
     alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less -N'
 fi
 
@@ -75,11 +79,3 @@ if safewhich nvim
     alias vim=nvim
     alias vimdiff='nvim -d'
 fi
-
-function hex2dec {
-    local hex=$(echo "$@" | tr '[:lower:]' '[:upper:]')
-    echo "ibase=16; ${hex}" | bc
-}
-function dec2hex {
-    echo "obase=16; $@" | bc
-}

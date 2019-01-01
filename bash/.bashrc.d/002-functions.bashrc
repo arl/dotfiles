@@ -1,4 +1,7 @@
-# vim: filetype=sh
+# vim: set ft=sh ts=2 sw=2 sts=2 et sta:
+#
+# Bash functions
+#
 
 # As which can have undesired side effects and can't always be used
 # to know if a program exists, use safewhich, which is safe!
@@ -25,4 +28,15 @@ function mkd() {
 # Show useful filesystem disk space usage
 function dfs() {
     df -Ph -x squashfs
+}
+
+# Convert base-16 integers to base-10
+function hex2dec {
+    local hex=$(echo "$@" | tr '[:lower:]' '[:upper:]')
+    echo "ibase=16; ${hex}" | bc
+}
+
+# Convert base-10 integers to base-16
+function dec2hex {
+    echo "obase=16; $@" | bc
 }
