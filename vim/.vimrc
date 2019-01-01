@@ -67,9 +67,11 @@ call plug#end()
     " tagbar
     nmap <F8> :TagbarToggle<CR>
 
-    " for vim-go's GoTestFunc
+    " vim-go
     let g:go_jump_to_error = 0
     let g:go_fmt_command = "goimports"
+    let g:go_list_type = "locationlist"
+    let g:go_list_autoclose = 0
 
     " CtrlP
     nnoremap <leader>f :CtrlP<CR>
