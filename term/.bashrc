@@ -36,6 +36,11 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
+# enable bash completion in interactive shells
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
 # If set, Bash replaces directory names with the results of word
 # expansion when performing filename completion.
 shopt -s direxpand
