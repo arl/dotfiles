@@ -2,7 +2,7 @@
     // Editor
 
     // Controls the font family.
-    "editor.fontFamily": "'Fira Code', 'Consolas', 'Courier New', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "  'L- Consolas', 'Consolas', 'Courier New', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     // Controls if selections have rounded corners
     "editor.roundedSelection": false,
