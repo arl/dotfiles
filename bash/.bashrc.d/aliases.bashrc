@@ -58,6 +58,8 @@ alias ago='ag --file-search-regex '''.\*.go''''
 
 # git aliases
 alias glg='git lg '
+alias git_enableconfig="mv ~/.hiddengitconfig ~/.gitconfig"
+alias git_disableconfig="mv ~/.gitconfig ~/.hiddengitconfig"
 
 # svn aliases
 alias svndt='svn diff '
