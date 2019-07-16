@@ -80,3 +80,8 @@ if safewhich nvim
     alias vim=nvim
     alias vimdiff='nvim -d'
 fi
+
+if safewhich lazygit
+    then
+    alias zg='lazygit '
+fi
