@@ -4,7 +4,7 @@
 #
 # most are taken from https://github.com/junegunn/fzf/wiki/Examples
 
-safewhich fzf || exit
+safewhich fzf || return 0
 
 # Solarized colors
 export FZF_DEFAULT_OPTS='

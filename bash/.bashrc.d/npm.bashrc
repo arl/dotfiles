@@ -3,9 +3,9 @@
 # Node.js / NPM
 #
 
-if safewhich npm 
-    then
-    npm config set prefix ~/npm
-    export PATH="$PATH:$HOME/npm/bin"
-    export NODE_PATH="$NODE_PATH:$HOME/npm/lib/node_modules"
-fi
+# disable npm as I'm not using it ATM.
+safewhich npm || return 0
+
+npm config set prefix ~/npm
+export PATH="$PATH:$HOME/npm/bin"
+export NODE_PATH="$NODE_PATH:$HOME/npm/lib/node_modules"
