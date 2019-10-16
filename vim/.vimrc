@@ -17,6 +17,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'cocopon/lightline-hybrid.vim'
     Plug 'corylanou/vim-present'
     Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'easymotion/vim-easymotion'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'elzr/vim-json'
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
