@@ -8,4 +8,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+if safewhich terraform
+then
+  complete -C /home/aurelien/.local/bin/terraform terraform
+fi
+
 complete -C /home/aurelien/godev/bin/gocomplete go
