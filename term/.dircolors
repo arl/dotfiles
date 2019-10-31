@@ -60,6 +60,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 # documents {{{1
 *README               38;5;220;1
 *README.rst           38;5;220;1
+*README.md            38;5;220;1
 *LICENSE              38;5;220;1
 *COPYING              38;5;220;1
 *INSTALL              38;5;220;1
@@ -86,11 +87,14 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .tex                  38;5;184
 .textile              38;5;184
 # key-value, non-relational data {{{2
+.bib                  38;5;178
 .json                 38;5;178
+.jsonl                38;5;178
 .msg                  38;5;178
 .pgn                  38;5;178
 .rss                  38;5;178
 .xml                  38;5;178
+.toml                 38;5;178
 .yaml                 38;5;178
 .yml                  38;5;178
 .RData                38;5;178
@@ -103,6 +107,8 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .djvu                 38;5;141
 .pdf                  38;5;141
 .PDF                  38;5;141
+.mobi                 38;5;141
+.epub                 38;5;141
 # words {{{3
 .docm                 38;5;111;4
 .doc                  38;5;111
@@ -125,6 +131,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .pptsm                38;5;166;4
 # spreadsheet {{{3
 .csv                  38;5;78
+.tsv                  38;5;78
 #   Open document spreadsheet
 .ods                  38;5;112
 .xla                  38;5;76
@@ -139,9 +146,12 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 # }}}
 # }}}
 # configs {{{2
+*config               1
 *cfg                  1
 *conf                 1
 *rc                   1
+*authorized_keys      1
+*known_hosts          1
 .ini                  1
 .plist                1
 #   vim
@@ -173,6 +183,10 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .ahk                  38;5;41
 # python
 .py                   38;5;41
+.ipynb                38;5;41
+# ruby
+.rb                   38;5;41
+.gemspec              38;5;41
 # perl
 .pl                   38;5;208
 .PL                   38;5;160
@@ -189,6 +203,16 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .R                    38;5;49
 # GrADS script
 .gs                   38;5;81
+# Clojure
+.clj                  38;5;41
+.cljs                 38;5;41
+.cljc                 38;5;41
+# Clojure gorilla REPL worksheet
+.cljw                 38;5;41
+# Scala
+.scala                38;5;41
+# Dart
+.dart                 38;5;51
 
 # compiled {{{2
 #
@@ -228,8 +252,20 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .go                   38;5;81
 #   fortran
 .f                    38;5;81
+.F                    38;5;81
 .for                  38;5;81
 .ftn                  38;5;81
+.f90                  38;5;81
+.F90                  38;5;81
+.f95                  38;5;81
+.F95                  38;5;81
+.f03                  38;5;81
+.F03                  38;5;81
+.f08                  38;5;81
+.F08                  38;5;81
+# Nim
+.nim                  38;5;81
+.nimble               38;5;81
 #   pascal
 .s                    38;5;110
 .S                    38;5;110
@@ -239,16 +275,31 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .swift                38;5;219
 #   ?
 .sx                   38;5;81
+# Vala
+.vala                 38;5;81
+.vapi                 38;5;81
 #   interface file in GHC - https://github.com/trapd00r/LS_COLORS/pull/9
 .hi                   38;5;110
 #   haskell
 .hs                   38;5;81
 .lhs                  38;5;81
+#   agda
+.agda                 38;5;81
+.lagda                38;5;81
+.lagda.tex            38;5;81
+.lagda.rst            38;5;81
+.lagda.md             38;5;81
+.agdai                38;5;110
 
 # binaries {{{2
 # compiled apps for interpreted languages
 .pyc                  38;5;240
 # }}}
+# orchestration {{{2
+.tf                   38;5;168
+.tfstate              38;5;168
+.tfvars               38;5;168
+# orchestration 2}}}
 # html {{{2
 .css                  38;5;125;1
 .less                 38;5;125;1
@@ -265,6 +316,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .coffee               38;5;074;1
 .java                 38;5;074;1
 .js                   38;5;074;1
+.mjs                  38;5;074;1
 .jsm                  38;5;074;1
 .jsm                  38;5;074;1
 .jsp                  38;5;074;1
@@ -287,6 +339,11 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 *Makefile             38;5;155
 *MANIFEST             38;5;243
 *pm_to_blib           38;5;240
+# Functional Configuration
+.nix                  38;5;155
+.dhall                38;5;178
+# ruby rake
+.rake                 38;5;155
 # automake
 .am                   38;5;242
 .in                   38;5;242
@@ -303,10 +360,12 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 #}}}
 # graphics {{{1
 .bmp                  38;5;97
+.dicom                38;5;97
 .tiff                 38;5;97
 .tif                  38;5;97
 .TIFF                 38;5;97
 .cdr                  38;5;97
+.flif                 38;5;97
 .gif                  38;5;97
 .ico                  38;5;97
 .jpeg                 38;5;97
@@ -316,6 +375,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .png                  38;5;97
 .psd                  38;5;97
 .xpm                  38;5;97
+.webp                 38;5;97
 # }}}
 # vector {{{1
 .ai                   38;5;99
@@ -420,11 +480,11 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .tgz                  38;5;40
 .xz                   38;5;40
 .z                    38;5;40
-.Z                    38;5;40
 .zip                  38;5;40
 .zipx                 38;5;40
 .zoo                  38;5;40
 .zpaq                 38;5;40
+.zst                  38;5;40
 .zz                   38;5;40
   # packaged apps {{{2
 .apk                  38;5;215
@@ -483,6 +543,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .BUP                  38;5;241
 .bak                  38;5;241
 .o                    38;5;241 #   *nix Object file (shared libraries, core dumps etc)
+*core                 38;5;241 #   Linux user core dump file (from /proc/sys/kernel/core_pattern)
 .rlib                 38;5;241 #   Static rust library
 # temporary files
 .swp                  38;5;244
@@ -493,11 +554,13 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .pid                  38;5;248
 .state                38;5;248
 *lockfile             38;5;248
+*lock                 38;5;248
 # error logs
 .err                  38;5;160;1
 .error                38;5;160;1
 .stderr               38;5;160;1
 # state dumps
+.aria2                38;5;241
 .dump                 38;5;241
 .stackdump            38;5;241
 .zcompdump            38;5;241
@@ -541,6 +604,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .properties           38;5;116
 .sfv                  38;5;116
 .srt                  38;5;116
+.sub                  38;5;116
 .theme                38;5;116
 .torrent              38;5;116
 .urlview              38;5;116
@@ -558,6 +622,11 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .asc                  38;5;192;3
 .enc                  38;5;192;3
 .sig                  38;5;192;3
+.p7s                  38;5;192;3
+*id_dsa                38;5;192;3
+*id_rsa                38;5;192;3
+*id_ecdsa              38;5;192;3
+*id_ed25519            38;5;192;3
 # 1}}}
 # emulators {{{1
 .32x                  38;5;213
@@ -598,12 +667,12 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .mm                   38;5;7
 #   perldoc
 .pod                  38;5;7
-#   GIMP brush
+#   GIMP files
 .gbr                  38;5;7
+.scm                  38;5;7
+.xcf                  38;5;7
 # printer spool file
 .spl                  38;5;7
-#   GIMP project file
-.scm                  38;5;7
 # RStudio project file
 .Rproj                38;5;11
 #   Nokia Symbian OS files
@@ -626,9 +695,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .pi                   38;5;7
 .plt                  38;5;7
 .pm                   38;5;7
-.rb                   38;5;7
 .rdf                  38;5;7
-.rst                  38;5;7
 .ru                   38;5;7
 .sch                  38;5;7
 .sty                  38;5;7
@@ -702,6 +769,7 @@ TERM xterm-256color
 TERM xterm-88color
 TERM xterm-color
 TERM xterm-debian
+TERM xterm-kitty
 # }}}
 
 
