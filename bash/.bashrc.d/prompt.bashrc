@@ -21,4 +21,5 @@ function minimal_prompt
 }
 
 # set default prompt
-rainbow_prompt
+#rainbow_prompt
+minimal_prompt
