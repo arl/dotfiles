@@ -85,3 +85,8 @@ if safewhich lazygit
     then
     alias zg='lazygit '
 fi
+
+if safewhich most
+    then
+    export MANPAGER='most'
+fi
