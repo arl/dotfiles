@@ -17,7 +17,7 @@ function rainbow_prompt
 
 function minimal_prompt
 {
-  PS1="\`if [ \$? = 0 ]; then echo \[\e[33m\]^_^\[\e[0m\]; else echo \[\e[31m\]O_O\[\e[0m\]; fi\` \[\033[1;33m\][\[\033[0;36m\]\`basename \$PWD\`\[\033[1;33m\]]\[\033[0m\]\n\[\033[1;36m\] \u\[\033[1;33m\]-> \[\033[0m\]"
+  PS1="\`if [ \$? = 0 ]; then echo \[\e[33m\]^_^\[\e[0m\]; else echo \[\e[31m\]O_O\[\e[0m\]; fi\` \[\033[1;33m\][\[\033[0;36m\]\`basename \"\${PWD}\"\`\[\033[1;33m\]]\[\033[0m\]\n\[\033[1;36m\] \u\[\033[1;33m\]-> \[\033[0m\]"
 }
 
 # set default prompt
