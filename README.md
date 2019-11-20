@@ -23,7 +23,6 @@
      * [vim package](#vim-package)
    * [Disclaimer](#disclaimer)
    * [Credits and Thanks](#credits-and-thanks)
-   * [TODO](#todo)
    * [<a href="LICENSE">LICENSE</a> ](#license)
 
 
@@ -59,15 +58,9 @@ $ cd dotfiles
 
 Two features of my configuration are provided by Github-hosted external projects:
 
- * [Vundle](https://github.com/gmarik/vundle)
- * [tmux-gitbar](https://github.com/aurelien-rainone/tmux-gitbar)
+ * [vim-plug](https://github.com/junegunn/vim-plug) Minimalist Vim Plugin Manager
+ * [gitmux](https://github.com/arl/gitmux) Git in your tmux status bar
 
-They are included as a Git Submodules. So, to pull them :
-
-```sh
-$ git submodule init
-$ git submodule update
-```
 
 **Install the dotfiles**
 
@@ -140,7 +133,7 @@ All ordered in nice and tidy `.bashrc` files, under `.bashrc.d` directory.
 
 ### vim package
 
-I use [Vundle](https://github.com/VundleVim/Vundle.vim) to manage my vim plugins.
+I use [vim-plug](https://github.com/junegunn/vim-plug) to manage my vim plugins.
 Here are *some* of them:
 
  - [nerdtree](https://github.com/scrooloose/nerdtree)
@@ -151,7 +144,7 @@ Here are *some* of them:
  - [vim-surround](https://github.com/tpope/vim-surround)
  - [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)
  - [lightline](https://github.com/itchyny/lightline.vim)
- - [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
+ - [deoplete](https://github.com/Shougo/deoplete.nvim)
 
 My [`.vimrc`](./vim/.vimrc) is well categorized and commented so that you and I
 can easily find and modify what we are looking for.  Loads of colorschemes, I
