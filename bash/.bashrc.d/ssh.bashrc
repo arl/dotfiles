@@ -3,6 +3,13 @@
 # SSH agent and key setup
 #
 
+# Allow $USER to use keys. Only enter once and it will remain enabled till
+# you delete it or reboot the server 
+/usr/bin/keychain $HOME/.ssh/id_rsa_github
+source $HOME/.keychain/$HOSTNAME-sh
+return
+
+# Kept for reference but unused since switch to keychain
 SSH_ENV=$HOME/.ssh/environment
 
 # start the ssh-agent
