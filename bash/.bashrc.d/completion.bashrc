@@ -14,3 +14,9 @@ then
 fi
 
 complete -C /home/aurelien/godev/bin/gocomplete go
+
+if safewhich s5cmd
+then
+  COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
+  complete -C /home/aurelien/godev/bin/s5cmd s5cmd
+fi
