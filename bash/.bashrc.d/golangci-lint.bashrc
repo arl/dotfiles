@@ -391,6 +391,40 @@ _golangci-lint_completion_bash()
     noun_aliases=()
 }
 
+_golangci-lint_completion_zsh()
+{
+    last_command="golangci-lint_completion_zsh"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--color=")
+    two_word_flags+=("--color")
+    flags+=("--concurrency=")
+    two_word_flags+=("--concurrency")
+    two_word_flags+=("-j")
+    flags+=("--cpu-profile-path=")
+    two_word_flags+=("--cpu-profile-path")
+    flags+=("--mem-profile-path=")
+    two_word_flags+=("--mem-profile-path")
+    flags+=("--trace-path=")
+    two_word_flags+=("--trace-path")
+    flags+=("--verbose")
+    flags+=("-v")
+    flags+=("--version")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _golangci-lint_completion()
 {
     last_command="golangci-lint_completion"
@@ -399,6 +433,7 @@ _golangci-lint_completion()
 
     commands=()
     commands+=("bash")
+    commands+=("zsh")
 
     flags=()
     two_word_flags=()
@@ -447,6 +482,8 @@ _golangci-lint_config_path()
     local_nonpersistent_flags+=("--print-issued-lines")
     flags+=("--print-linter-name")
     local_nonpersistent_flags+=("--print-linter-name")
+    flags+=("--uniq-by-line")
+    local_nonpersistent_flags+=("--uniq-by-line")
     flags+=("--modules-download-mode=")
     two_word_flags+=("--modules-download-mode")
     local_nonpersistent_flags+=("--modules-download-mode=")
@@ -592,6 +629,8 @@ _golangci-lint_linters()
     local_nonpersistent_flags+=("--print-issued-lines")
     flags+=("--print-linter-name")
     local_nonpersistent_flags+=("--print-linter-name")
+    flags+=("--uniq-by-line")
+    local_nonpersistent_flags+=("--uniq-by-line")
     flags+=("--modules-download-mode=")
     two_word_flags+=("--modules-download-mode")
     local_nonpersistent_flags+=("--modules-download-mode=")
@@ -702,6 +741,8 @@ _golangci-lint_run()
     local_nonpersistent_flags+=("--print-issued-lines")
     flags+=("--print-linter-name")
     local_nonpersistent_flags+=("--print-linter-name")
+    flags+=("--uniq-by-line")
+    local_nonpersistent_flags+=("--uniq-by-line")
     flags+=("--modules-download-mode=")
     two_word_flags+=("--modules-download-mode")
     local_nonpersistent_flags+=("--modules-download-mode=")
@@ -890,8 +931,6 @@ __start_golangci-lint()
 
     __golangci-lint_handle_word
 }
-
-safewhich golangci-lint || return 0
 
 if [[ $(type -t compopt) = "builtin" ]]; then
     complete -o default -F __start_golangci-lint golangci-lint
