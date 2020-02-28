@@ -45,7 +45,7 @@
   tobesquashed = commit --fixup HEAD
   ctags = "!f() { (cd $(git rev-parse --show-toplevel) && .git/hooks/gentags) ; }; f"
   amend = commit --amend
-  # codereview aliases
+  # codereview
   change = codereview change
   gofmt = codereview gofmt
   mail = codereview mail
@@ -53,6 +53,9 @@
   submit = codereview submit
   sync = codereview sync
   dag = cola dag
+  # develer-specific
+  thismonth = "!f() { git --no-pager log --all --no-merges --since \"last month\" --author \"$(git config user.name)\" --abbrev-commit --oneline --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=short --color=auto ; }; f"
+  odoo = "!f() { git thismonth; }; f"
 [status]
   relativePaths = true
 [push]
