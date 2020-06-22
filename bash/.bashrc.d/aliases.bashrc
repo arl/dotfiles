@@ -34,6 +34,7 @@ alias less='less -FXR'   # -R = --RAW-CONTROL-CHARS'
 if safewhich pygmentize
     then
     alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less -N'
+    alias ccat='lesc '
 fi
 
 # tmux aliases
