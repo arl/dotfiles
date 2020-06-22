@@ -1,7 +1,6 @@
 #!/bin/bash
 
-if safewhich gocomplete
-then
-  # go get -u github.com/posener/complete/v2/gocomplete
-  complete -C /home/aurelien/godev/bin/gocomplete go
-fi
+safewhich gocomplete || exit
+
+# go get -u github.com/posener/complete/v2/gocomplete
+complete -C "$(command -v gocomplete)" go
