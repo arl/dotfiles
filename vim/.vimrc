@@ -15,7 +15,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'brooth/far.vim'
     Plug 'buoto/gotests-vim'
     Plug 'cocopon/lightline-hybrid.vim'
-    Plug 'corylanou/vim-present'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'editorconfig/editorconfig-vim'
@@ -50,7 +49,6 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'jodosha/vim-godebug' " Debugger integration via delve
         Plug 'zchee/deoplete-clang'
-        Plug 'zchee/deoplete-go', {'build': {'unix': 'make'}}
         let g:deoplete#enable_at_startup = 1
         let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
         let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
