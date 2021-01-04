@@ -3,7 +3,9 @@
 # Node.js / NPM
 #
 
-# disable npm as I'm not using it ATM.
+export NODEJS_HOME=/usr/local/lib/node/nodejs
+export PATH=$NODEJS_HOME/bin:$PATH
+
 safewhich npm || return 0
 
 #npm config set prefix ~/npm
