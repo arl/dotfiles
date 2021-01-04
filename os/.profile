@@ -26,8 +26,8 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # set PATH so it includes user's private scripts dir if it exists
-if [ -d "$HOME/scripts" ] ; then
-    PATH="$PATH:$HOME/scripts"
+if [ -d "$HOME/dev/scripts" ] ; then
+    PATH="$PATH:$HOME/dev/scripts"
 fi
 
 ############################################################
