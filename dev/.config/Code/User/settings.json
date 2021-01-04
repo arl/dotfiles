@@ -1,4 +1,4 @@
-{    
+{
     "editor.fontFamily": "  'L- Consolas', 'Consolas', 'Courier New', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "editor.roundedSelection": false,
@@ -105,35 +105,59 @@
     "goOutliner.extendExplorerTab": true,
     "telemetry.enableTelemetry": false,
     "vsicons.dontShowNewVersionMessage": true,
-    "workbench.colorTheme": "Gruvbox Dark (Soft)",
-
     "go.formatTool": "goimports",
     "go.gocodeAutoBuild": false,
     "go.autocompleteUnimportedPackages": true,
-   // Go settings with gopls from Reddit https://www.reddit.com/r/golang/comments/dficva/best_ide_to_work_with_go_modules/f33h6ek
-    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "shellcheck.disableVersionCheck": true,
+    "shellcheck.exclude": [
+        "SC1091"
+    ],
+    "workbench.colorTheme": "Monokai",
+    "files.associations": {
+        "*.go2": "go"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "go.delveConfig": {
+        "dlvLoadConfig": {
+            "followPointers": true,
+            "maxVariableRecurse": 1,
+            "maxStringLen": 64,
+            "maxArrayValues": 64,
+            "maxStructFields": -1
+        },
+        "apiVersion": 2,
+        "showGlobalVariables": true
+    },
     "go.useLanguageServer": true,
-    "go.alternateTools": {
-        "go-languageserver": "gopls"
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+        // Optional: Disable snippets, as they conflict with completion ranking.
+        "editor.snippetSuggestions": "none",
     },
-    "go.languageServerExperimentalFeatures": {
-        "format": true,
-        "autoComplete": true,
-        "goToDefinition": true,
-        "hover": true,
-        "signatureHelp": true,
-        "goToTypeDefinition": true,
-        "goToImplementation": true,
-        "documentSymbols": true,
-        "workspaceSymbols": true,
-        "findReferences": true,
-        "documentLink": true
+    "[go.mod]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
     },
-    "go.buildOnSave": "off",
-    "go.vetOnSave": "off",
-    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-    "go.docsTool": "gogetdoc",
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-    }
+    "gopls": {
+        // Add parameter placeholders when completing a function.
+        "usePlaceholders": true,
+        // If true, enable additional analyses with staticcheck.
+        // Warning: This will significantly increase memory usage.
+        "staticcheck": false,
+    },
+    "go.liveErrors": {
+        "enabled": false,
+        "delay": 500
+    },
+    "C_Cpp.updateChannel": "Insiders"
 }
