@@ -1,6 +1,6 @@
 #!/bin/bash
 
-safewhich tldr || exit
+safewhich tldr || return 0
 
 function _tldr_autocomplete {
   pages=$(tldr -a)

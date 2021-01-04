@@ -4,6 +4,6 @@
 # install bash completion for Terraform
 #
 
-safewhich terraform || exit
+safewhich terraform || return 0
 
 complete -C "$(command -v terraform)" terraform
