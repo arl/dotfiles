@@ -4,4 +4,4 @@
 #
 
 safewhich aws || return 0
-complete -C '/home/aurelien/.local/bin/aws_completer' aws
+complete -C '/usr/local/bin/aws_completer' aws
