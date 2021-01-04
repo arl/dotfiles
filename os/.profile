@@ -12,13 +12,17 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-        . "$HOME/.bashrc"
+  . "$HOME/.bashrc"
     fi
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
+fi
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
 # set PATH so it includes user's private scripts dir if it exists
@@ -56,11 +60,6 @@ if [ -n "$NPM_PACKAGES" ]; then
     # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
     unset MANPATH
     export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-fi
-
-# If set and if it exists, add $HOME/.local/bin directory to the path
-if [ -d "$HOME/.local/bin" ]; then
-    export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # If set and if it exists, add LOCAL GO /bin directory to the path
