@@ -20,6 +20,7 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
@@ -63,9 +64,9 @@ if [ -n "$NPM_PACKAGES" ]; then
 fi
 
 # If set and if it exists, add LOCAL GO /bin directory to the path
-if [ -n "$LOCALGOBIN" ]; then
-    if [ -d "$LOCALGOBIN" ]; then
-        export PATH="$LOCALGOBIN:$PATH"
+if [ -d /usr/local/go/bin ]; then
+    if [ -d "/usr/local/go/bin" ]; then
+        export PATH="/usr/local/go/bin:$PATH"
     fi
 fi
 
