@@ -159,5 +159,9 @@
         "enabled": false,
         "delay": 500
     },
-    "C_Cpp.updateChannel": "Insiders"
+    "C_Cpp.updateChannel": "Insiders",
+    "go.languageServerExperimentalFeatures": {    
+        "diagnostics": true,
+        "documentLink": true
+    }
 }
