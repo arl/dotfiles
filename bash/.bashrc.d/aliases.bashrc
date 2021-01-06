@@ -84,17 +84,3 @@ if safewhich lazygit
     then
     alias zg='lazygit '
 fi
-
-if safewhich most
-    then
-    export MANPAGER='most'
-fi
-
-# glow: markdown on terminal go get github.com/charmbracelet/glow
-if safewhich glow
-  then
-  # view .md files in terminal with glow
-  mdless() {
-     glow "$@" -s dark | less -r
-  }
-fi
