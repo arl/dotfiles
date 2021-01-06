@@ -22,6 +22,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
     Plug 'iCyMind/NeoSolarized'
     Plug 'itchyny/lightline.vim'
+    Plug 'jez/vim-superman'
     Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/gv.vim'
