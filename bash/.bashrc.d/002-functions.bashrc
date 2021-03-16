@@ -8,7 +8,7 @@
 # 
 # Credits goes to:
 # http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
-function safewhich() {
+safewhich() {
     command -v "$1" >/dev/null 2>&1
 }
 
@@ -16,27 +16,27 @@ function safewhich() {
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
-function tre() {
+tre() {
     tree -aC -I '.*.swp|.svn|.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
 # Create a new directory and enter it
-function mkd() {
+mkd() {
     mkdir -p "$@" && cd "$_";
 }
 
 # Show useful filesystem disk space usage
-function dfs() {
+dfs() {
     df -Ph -x squashfs
 }
 
 # Convert base-16 integers to base-10
-function hex2dec {
+hex2dec() {
     local hex=$(echo "$@" | tr '[:lower:]' '[:upper:]')
     echo "ibase=16; ${hex}" | bc
 }
 
 # Convert base-10 integers to base-16
-function dec2hex {
+dec2hex() {
     echo "obase=16; $@" | bc
 }
