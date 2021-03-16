@@ -40,3 +40,8 @@ hex2dec() {
 dec2hex() {
     echo "obase=16; $@" | bc
 }
+
+# Copy last executed terminal command into the clipboard
+copycmd() {
+    history 2 | head -n 1 | cut -d " " -f 4- | xclip -sel cli
+}
