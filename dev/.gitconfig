@@ -46,6 +46,8 @@
   tobesquashed = commit --fixup HEAD
   ctags = "!f() { (cd $(git rev-parse --show-toplevel) && .git/hooks/gentags) ; }; f"
   amend = commit --amend
+  # Place all modifications in a WIP commit
+  wip = "!f() { git add -u && git cm wip; }; f"
   
   ## Codereview
   change = codereview change
