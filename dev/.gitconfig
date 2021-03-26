@@ -25,27 +25,29 @@
   dtg = difftool --gui
   cm = "commit -m"
 
-  ## new 'features'
+  ## Tree
   # pretty logging: full tree
   lg = log --all --graph --abbrev-commit --date=relative
   # pretty logging: only commits leading to HEAD
   lol= log --pretty=oneline --abbrev-commit --graph --decorate
-  # interactive apply patch (hunks)
+
+  # Interactive apply patch (hunks)
   ipatch = "!f() { git apply $1; git add -p; }; f"
-  # unstage everything
+  
+  ## Time-savers
+  # Unstage everything
   unstage   = reset HEAD
-  # set the working tree as if the last comit hadn't been commited
+  # Set the working tree as if the last comit hadn't been commited
   undo      = reset --soft HEAD^
   cosmetics = commit -m 'Cosmetics'
-  # delete all local branches that have been merged but laster
-  clean-branches = "!f() { git branch --merged | grep -v '^* master$' | grep -v '^  master$' | xargs -r git branch -d ; }; f"
   # Interactive rebase with the given number of latest commits
   reb = "!r() { git rebase -i --autosquash HEAD~$1; }; r"
-  # Commit current stage area, in a commit that will automatically be fixed-up with previous one in the next interactive rebase
+  # Put the whole staging area in a fixpu commit
   tobesquashed = commit --fixup HEAD
   ctags = "!f() { (cd $(git rev-parse --show-toplevel) && .git/hooks/gentags) ; }; f"
   amend = commit --amend
-  # codereview
+  
+  ## Codereview
   change = codereview change
   gofmt = codereview gofmt
   mail = codereview mail
@@ -53,9 +55,8 @@
   submit = codereview submit
   sync = codereview sync
   dag = cola dag
-  # develer-specific
-  thismonth = "!f() { git --no-pager log --all --no-merges --since \"last month\" --author \"$(git config user.name)\" --abbrev-commit --oneline --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=short --color=auto ; }; f"
-  odoo = "!f() { git thismonth; }; f"
+
+  odoo = "!f() { git --no-pager log --all --no-merges --since \"last month\" --author \"$(git config user.name)\" --abbrev-commit --oneline --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=short --color=auto ; }; f"
 [status]
   relativePaths = true
 [push]
