@@ -10,5 +10,6 @@
 
 for file in ~/.bashrc.d/*.bashrc;
 do
+ # shellcheck source=/dev/null
  source "$file"
 done

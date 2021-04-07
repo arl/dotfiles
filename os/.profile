@@ -12,22 +12,22 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-  . "$HOME/.bashrc"
+        . "$HOME/.bashrc"
     fi
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
+if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
+if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
 # set PATH so it includes user's private scripts dir if it exists
-if [ -d "$HOME/dev/scripts" ] ; then
+if [ -d "$HOME/dev/scripts" ]; then
     PATH="$PATH:$HOME/dev/scripts"
 fi
 
@@ -47,8 +47,9 @@ fi
 # note: do not add final '\' for folders
 
 # look for machine specific config file
-if [ -f $HOME/.machine_specific ]; then
-    source $HOME/.machine_specific
+if [ -f "$HOME/.machine_specific" ]; then
+    # shellcheck source=/dev/null
+    source "$HOME/.machine_specific"
 fi
 
 if [ -n "$ANDROID_HOME" ]; then
@@ -60,7 +61,8 @@ if [ -n "$NPM_PACKAGES" ]; then
 
     # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
     unset MANPATH
-    export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+    MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+    export MANPATH
 fi
 
 # If set and if it exists, add LOCAL GO /bin directory to the path
@@ -78,3 +80,6 @@ if [ -n "$GOPATH" ]; then
 fi
 
 export GIT_EDITOR=nvim
+
+# shellcheck source=/dev/null
+source "$HOME/.cargo/env"
