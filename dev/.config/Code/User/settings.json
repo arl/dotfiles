@@ -3,6 +3,10 @@
     "editor.fontLigatures": true,
     "editor.roundedSelection": false,
     "editor.mouseWheelZoom": true,
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.formatOnSave": false
+    },
     "workbench.statusBar.visible": true,
     "workbench.colorCustomizations": {
         "editor.selectionBackground": "#435594",
@@ -154,14 +158,35 @@
         // If true, enable additional analyses with staticcheck.
         // Warning: This will significantly increase memory usage.
         "staticcheck": false,
+        "codelenses": {
+            "generate": false, // Don't show the `go generate` lens.
+            "gc_details": true // Show a code lens toggling the display of gc's choices.
+        }
     },
     "go.liveErrors": {
         "enabled": false,
         "delay": 500
     },
     "C_Cpp.updateChannel": "Insiders",
-    "go.languageServerExperimentalFeatures": {    
+    "go.languageServerExperimentalFeatures": {
         "diagnostics": true,
         "documentLink": true
+    },
+    "[html]": {
+        "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
+    },
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "python.languageServer": "Pylance",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "window.zoomLevel": 0,
+    "[rust]": {
+        "editor.defaultFormatter": "statiolake.vscode-rustfmt"
     }
 }
