@@ -1,0 +1,6 @@
+#!/bin/bash
+
+safewhich rustc || return 0
+safewhich cargo || return 0
+
+source $(rustc --print sysroot)/etc/bash_completion.d/cargo
