@@ -169,8 +169,7 @@
     },
     "C_Cpp.updateChannel": "Insiders",
     "go.languageServerExperimentalFeatures": {
-        "diagnostics": true,
-        "documentLink": true
+        "diagnostics": true
     },
     "[html]": {
         "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
@@ -188,5 +187,5 @@
     "window.zoomLevel": 0,
     "[rust]": {
         "editor.defaultFormatter": "statiolake.vscode-rustfmt"
-    }
+    },
 }
