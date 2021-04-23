@@ -2,6 +2,12 @@
 
 safewhich gh || return 0
 
+
+# To update completion, run:
+# :11,$d
+# $
+# r!gh completion -s bash
+
 __gh_debug()
 {
     if [[ -n ${BASH_COMP_DEBUG_FILE} ]]; then
@@ -355,6 +361,27 @@ __gh_handle_word()
     __gh_handle_word
 }
 
+_gh_actions()
+{
+    last_command="gh_actions"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--help")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _gh_alias_delete()
 {
     last_command="gh_alias_delete"
@@ -460,6 +487,10 @@ _gh_api()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--cache=")
+    two_word_flags+=("--cache")
+    local_nonpersistent_flags+=("--cache")
+    local_nonpersistent_flags+=("--cache=")
     flags+=("--field=")
     two_word_flags+=("--field")
     two_word_flags+=("-F")
@@ -484,6 +515,12 @@ _gh_api()
     two_word_flags+=("--input")
     local_nonpersistent_flags+=("--input")
     local_nonpersistent_flags+=("--input=")
+    flags+=("--jq=")
+    two_word_flags+=("--jq")
+    two_word_flags+=("-q")
+    local_nonpersistent_flags+=("--jq")
+    local_nonpersistent_flags+=("--jq=")
+    local_nonpersistent_flags+=("-q")
     flags+=("--method=")
     two_word_flags+=("--method")
     two_word_flags+=("-X")
@@ -492,6 +529,12 @@ _gh_api()
     local_nonpersistent_flags+=("-X")
     flags+=("--paginate")
     local_nonpersistent_flags+=("--paginate")
+    flags+=("--preview=")
+    two_word_flags+=("--preview")
+    two_word_flags+=("-p")
+    local_nonpersistent_flags+=("--preview")
+    local_nonpersistent_flags+=("--preview=")
+    local_nonpersistent_flags+=("-p")
     flags+=("--raw-field=")
     two_word_flags+=("--raw-field")
     two_word_flags+=("-f")
@@ -500,6 +543,12 @@ _gh_api()
     local_nonpersistent_flags+=("-f")
     flags+=("--silent")
     local_nonpersistent_flags+=("--silent")
+    flags+=("--template=")
+    two_word_flags+=("--template")
+    two_word_flags+=("-t")
+    local_nonpersistent_flags+=("--template")
+    local_nonpersistent_flags+=("--template=")
+    local_nonpersistent_flags+=("-t")
     flags+=("--help")
 
     must_have_one_flag=()
@@ -766,6 +815,27 @@ _gh_config()
     noun_aliases=()
 }
 
+_gh_gist_clone()
+{
+    last_command="gh_gist_clone"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--help")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _gh_gist_create()
 {
     last_command="gh_gist_create"
@@ -842,6 +912,12 @@ _gh_gist_edit()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--add=")
+    two_word_flags+=("--add")
+    two_word_flags+=("-a")
+    local_nonpersistent_flags+=("--add")
+    local_nonpersistent_flags+=("--add=")
+    local_nonpersistent_flags+=("-a")
     flags+=("--filename=")
     two_word_flags+=("--filename")
     two_word_flags+=("-f")
@@ -906,6 +982,8 @@ _gh_gist_view()
     local_nonpersistent_flags+=("--filename")
     local_nonpersistent_flags+=("--filename=")
     local_nonpersistent_flags+=("-f")
+    flags+=("--files")
+    local_nonpersistent_flags+=("--files")
     flags+=("--raw")
     flags+=("-r")
     local_nonpersistent_flags+=("--raw")
@@ -928,6 +1006,7 @@ _gh_gist()
     command_aliases=()
 
     commands=()
+    commands+=("clone")
     commands+=("create")
     commands+=("delete")
     commands+=("edit")
@@ -993,6 +1072,50 @@ _gh_issue_close()
     noun_aliases=()
 }
 
+_gh_issue_comment()
+{
+    last_command="gh_issue_comment"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--body=")
+    two_word_flags+=("--body")
+    two_word_flags+=("-b")
+    local_nonpersistent_flags+=("--body")
+    local_nonpersistent_flags+=("--body=")
+    local_nonpersistent_flags+=("-b")
+    flags+=("--body-file=")
+    two_word_flags+=("--body-file")
+    two_word_flags+=("-F")
+    local_nonpersistent_flags+=("--body-file")
+    local_nonpersistent_flags+=("--body-file=")
+    local_nonpersistent_flags+=("-F")
+    flags+=("--editor")
+    flags+=("-e")
+    local_nonpersistent_flags+=("--editor")
+    local_nonpersistent_flags+=("-e")
+    flags+=("--web")
+    flags+=("-w")
+    local_nonpersistent_flags+=("--web")
+    local_nonpersistent_flags+=("-w")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _gh_issue_create()
 {
     last_command="gh_issue_create"
@@ -1019,6 +1142,12 @@ _gh_issue_create()
     local_nonpersistent_flags+=("--body")
     local_nonpersistent_flags+=("--body=")
     local_nonpersistent_flags+=("-b")
+    flags+=("--body-file=")
+    two_word_flags+=("--body-file")
+    two_word_flags+=("-F")
+    local_nonpersistent_flags+=("--body-file")
+    local_nonpersistent_flags+=("--body-file=")
+    local_nonpersistent_flags+=("-F")
     flags+=("--label=")
     two_word_flags+=("--label")
     two_word_flags+=("-l")
@@ -1061,6 +1190,102 @@ _gh_issue_create()
     noun_aliases=()
 }
 
+_gh_issue_delete()
+{
+    last_command="gh_issue_delete"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_issue_edit()
+{
+    last_command="gh_issue_edit"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--add-assignee=")
+    two_word_flags+=("--add-assignee")
+    local_nonpersistent_flags+=("--add-assignee")
+    local_nonpersistent_flags+=("--add-assignee=")
+    flags+=("--add-label=")
+    two_word_flags+=("--add-label")
+    local_nonpersistent_flags+=("--add-label")
+    local_nonpersistent_flags+=("--add-label=")
+    flags+=("--add-project=")
+    two_word_flags+=("--add-project")
+    local_nonpersistent_flags+=("--add-project")
+    local_nonpersistent_flags+=("--add-project=")
+    flags+=("--body=")
+    two_word_flags+=("--body")
+    two_word_flags+=("-b")
+    local_nonpersistent_flags+=("--body")
+    local_nonpersistent_flags+=("--body=")
+    local_nonpersistent_flags+=("-b")
+    flags+=("--body-file=")
+    two_word_flags+=("--body-file")
+    two_word_flags+=("-F")
+    local_nonpersistent_flags+=("--body-file")
+    local_nonpersistent_flags+=("--body-file=")
+    local_nonpersistent_flags+=("-F")
+    flags+=("--milestone=")
+    two_word_flags+=("--milestone")
+    two_word_flags+=("-m")
+    local_nonpersistent_flags+=("--milestone")
+    local_nonpersistent_flags+=("--milestone=")
+    local_nonpersistent_flags+=("-m")
+    flags+=("--remove-assignee=")
+    two_word_flags+=("--remove-assignee")
+    local_nonpersistent_flags+=("--remove-assignee")
+    local_nonpersistent_flags+=("--remove-assignee=")
+    flags+=("--remove-label=")
+    two_word_flags+=("--remove-label")
+    local_nonpersistent_flags+=("--remove-label")
+    local_nonpersistent_flags+=("--remove-label=")
+    flags+=("--remove-project=")
+    two_word_flags+=("--remove-project")
+    local_nonpersistent_flags+=("--remove-project")
+    local_nonpersistent_flags+=("--remove-project=")
+    flags+=("--title=")
+    two_word_flags+=("--title")
+    two_word_flags+=("-t")
+    local_nonpersistent_flags+=("--title")
+    local_nonpersistent_flags+=("--title=")
+    local_nonpersistent_flags+=("-t")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _gh_issue_list()
 {
     last_command="gh_issue_list"
@@ -1087,6 +1312,16 @@ _gh_issue_list()
     local_nonpersistent_flags+=("--author")
     local_nonpersistent_flags+=("--author=")
     local_nonpersistent_flags+=("-A")
+    flags+=("--jq=")
+    two_word_flags+=("--jq")
+    two_word_flags+=("-q")
+    local_nonpersistent_flags+=("--jq")
+    local_nonpersistent_flags+=("--jq=")
+    local_nonpersistent_flags+=("-q")
+    flags+=("--json=")
+    two_word_flags+=("--json")
+    local_nonpersistent_flags+=("--json")
+    local_nonpersistent_flags+=("--json=")
     flags+=("--label=")
     two_word_flags+=("--label")
     two_word_flags+=("-l")
@@ -1109,12 +1344,24 @@ _gh_issue_list()
     local_nonpersistent_flags+=("--milestone")
     local_nonpersistent_flags+=("--milestone=")
     local_nonpersistent_flags+=("-m")
+    flags+=("--search=")
+    two_word_flags+=("--search")
+    two_word_flags+=("-S")
+    local_nonpersistent_flags+=("--search")
+    local_nonpersistent_flags+=("--search=")
+    local_nonpersistent_flags+=("-S")
     flags+=("--state=")
     two_word_flags+=("--state")
     two_word_flags+=("-s")
     local_nonpersistent_flags+=("--state")
     local_nonpersistent_flags+=("--state=")
     local_nonpersistent_flags+=("-s")
+    flags+=("--template=")
+    two_word_flags+=("--template")
+    two_word_flags+=("-t")
+    local_nonpersistent_flags+=("--template")
+    local_nonpersistent_flags+=("--template=")
+    local_nonpersistent_flags+=("-t")
     flags+=("--web")
     flags+=("-w")
     local_nonpersistent_flags+=("--web")
@@ -1167,6 +1414,46 @@ _gh_issue_status()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--jq=")
+    two_word_flags+=("--jq")
+    two_word_flags+=("-q")
+    local_nonpersistent_flags+=("--jq")
+    local_nonpersistent_flags+=("--jq=")
+    local_nonpersistent_flags+=("-q")
+    flags+=("--json=")
+    two_word_flags+=("--json")
+    local_nonpersistent_flags+=("--json")
+    local_nonpersistent_flags+=("--json=")
+    flags+=("--template=")
+    two_word_flags+=("--template")
+    two_word_flags+=("-t")
+    local_nonpersistent_flags+=("--template")
+    local_nonpersistent_flags+=("--template=")
+    local_nonpersistent_flags+=("-t")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_issue_transfer()
+{
+    last_command="gh_issue_transfer"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
     flags+=("--help")
     flags+=("--repo=")
     two_word_flags+=("--repo")
@@ -1195,6 +1482,22 @@ _gh_issue_view()
     flags+=("-c")
     local_nonpersistent_flags+=("--comments")
     local_nonpersistent_flags+=("-c")
+    flags+=("--jq=")
+    two_word_flags+=("--jq")
+    two_word_flags+=("-q")
+    local_nonpersistent_flags+=("--jq")
+    local_nonpersistent_flags+=("--jq=")
+    local_nonpersistent_flags+=("-q")
+    flags+=("--json=")
+    two_word_flags+=("--json")
+    local_nonpersistent_flags+=("--json")
+    local_nonpersistent_flags+=("--json=")
+    flags+=("--template=")
+    two_word_flags+=("--template")
+    two_word_flags+=("-t")
+    local_nonpersistent_flags+=("--template")
+    local_nonpersistent_flags+=("--template=")
+    local_nonpersistent_flags+=("-t")
     flags+=("--web")
     flags+=("-w")
     local_nonpersistent_flags+=("--web")
@@ -1217,10 +1520,14 @@ _gh_issue()
 
     commands=()
     commands+=("close")
+    commands+=("comment")
     commands+=("create")
+    commands+=("delete")
+    commands+=("edit")
     commands+=("list")
     commands+=("reopen")
     commands+=("status")
+    commands+=("transfer")
     commands+=("view")
 
     flags=()
@@ -1253,6 +1560,12 @@ _gh_pr_checkout()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--detach")
+    local_nonpersistent_flags+=("--detach")
+    flags+=("--force")
+    flags+=("-f")
+    local_nonpersistent_flags+=("--force")
+    local_nonpersistent_flags+=("-f")
     flags+=("--recurse-submodules")
     local_nonpersistent_flags+=("--recurse-submodules")
     flags+=("--help")
@@ -1321,6 +1634,50 @@ _gh_pr_close()
     noun_aliases=()
 }
 
+_gh_pr_comment()
+{
+    last_command="gh_pr_comment"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--body=")
+    two_word_flags+=("--body")
+    two_word_flags+=("-b")
+    local_nonpersistent_flags+=("--body")
+    local_nonpersistent_flags+=("--body=")
+    local_nonpersistent_flags+=("-b")
+    flags+=("--body-file=")
+    two_word_flags+=("--body-file")
+    two_word_flags+=("-F")
+    local_nonpersistent_flags+=("--body-file")
+    local_nonpersistent_flags+=("--body-file=")
+    local_nonpersistent_flags+=("-F")
+    flags+=("--editor")
+    flags+=("-e")
+    local_nonpersistent_flags+=("--editor")
+    local_nonpersistent_flags+=("-e")
+    flags+=("--web")
+    flags+=("-w")
+    local_nonpersistent_flags+=("--web")
+    local_nonpersistent_flags+=("-w")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _gh_pr_create()
 {
     last_command="gh_pr_create"
@@ -1353,6 +1710,12 @@ _gh_pr_create()
     local_nonpersistent_flags+=("--body")
     local_nonpersistent_flags+=("--body=")
     local_nonpersistent_flags+=("-b")
+    flags+=("--body-file=")
+    two_word_flags+=("--body-file")
+    two_word_flags+=("-F")
+    local_nonpersistent_flags+=("--body-file")
+    local_nonpersistent_flags+=("--body-file=")
+    local_nonpersistent_flags+=("-F")
     flags+=("--draft")
     flags+=("-d")
     local_nonpersistent_flags+=("--draft")
@@ -1379,6 +1742,8 @@ _gh_pr_create()
     local_nonpersistent_flags+=("--milestone")
     local_nonpersistent_flags+=("--milestone=")
     local_nonpersistent_flags+=("-m")
+    flags+=("--no-maintainer-edit")
+    local_nonpersistent_flags+=("--no-maintainer-edit")
     flags+=("--project=")
     two_word_flags+=("--project")
     two_word_flags+=("-p")
@@ -1443,6 +1808,92 @@ _gh_pr_diff()
     noun_aliases=()
 }
 
+_gh_pr_edit()
+{
+    last_command="gh_pr_edit"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--add-assignee=")
+    two_word_flags+=("--add-assignee")
+    local_nonpersistent_flags+=("--add-assignee")
+    local_nonpersistent_flags+=("--add-assignee=")
+    flags+=("--add-label=")
+    two_word_flags+=("--add-label")
+    local_nonpersistent_flags+=("--add-label")
+    local_nonpersistent_flags+=("--add-label=")
+    flags+=("--add-project=")
+    two_word_flags+=("--add-project")
+    local_nonpersistent_flags+=("--add-project")
+    local_nonpersistent_flags+=("--add-project=")
+    flags+=("--add-reviewer=")
+    two_word_flags+=("--add-reviewer")
+    local_nonpersistent_flags+=("--add-reviewer")
+    local_nonpersistent_flags+=("--add-reviewer=")
+    flags+=("--base=")
+    two_word_flags+=("--base")
+    two_word_flags+=("-B")
+    local_nonpersistent_flags+=("--base")
+    local_nonpersistent_flags+=("--base=")
+    local_nonpersistent_flags+=("-B")
+    flags+=("--body=")
+    two_word_flags+=("--body")
+    two_word_flags+=("-b")
+    local_nonpersistent_flags+=("--body")
+    local_nonpersistent_flags+=("--body=")
+    local_nonpersistent_flags+=("-b")
+    flags+=("--body-file=")
+    two_word_flags+=("--body-file")
+    two_word_flags+=("-F")
+    local_nonpersistent_flags+=("--body-file")
+    local_nonpersistent_flags+=("--body-file=")
+    local_nonpersistent_flags+=("-F")
+    flags+=("--milestone=")
+    two_word_flags+=("--milestone")
+    two_word_flags+=("-m")
+    local_nonpersistent_flags+=("--milestone")
+    local_nonpersistent_flags+=("--milestone=")
+    local_nonpersistent_flags+=("-m")
+    flags+=("--remove-assignee=")
+    two_word_flags+=("--remove-assignee")
+    local_nonpersistent_flags+=("--remove-assignee")
+    local_nonpersistent_flags+=("--remove-assignee=")
+    flags+=("--remove-label=")
+    two_word_flags+=("--remove-label")
+    local_nonpersistent_flags+=("--remove-label")
+    local_nonpersistent_flags+=("--remove-label=")
+    flags+=("--remove-project=")
+    two_word_flags+=("--remove-project")
+    local_nonpersistent_flags+=("--remove-project")
+    local_nonpersistent_flags+=("--remove-project=")
+    flags+=("--remove-reviewer=")
+    two_word_flags+=("--remove-reviewer")
+    local_nonpersistent_flags+=("--remove-reviewer")
+    local_nonpersistent_flags+=("--remove-reviewer=")
+    flags+=("--title=")
+    two_word_flags+=("--title")
+    two_word_flags+=("-t")
+    local_nonpersistent_flags+=("--title")
+    local_nonpersistent_flags+=("--title=")
+    local_nonpersistent_flags+=("-t")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _gh_pr_list()
 {
     last_command="gh_pr_list"
@@ -1463,12 +1914,28 @@ _gh_pr_list()
     local_nonpersistent_flags+=("--assignee")
     local_nonpersistent_flags+=("--assignee=")
     local_nonpersistent_flags+=("-a")
+    flags+=("--author=")
+    two_word_flags+=("--author")
+    two_word_flags+=("-A")
+    local_nonpersistent_flags+=("--author")
+    local_nonpersistent_flags+=("--author=")
+    local_nonpersistent_flags+=("-A")
     flags+=("--base=")
     two_word_flags+=("--base")
     two_word_flags+=("-B")
     local_nonpersistent_flags+=("--base")
     local_nonpersistent_flags+=("--base=")
     local_nonpersistent_flags+=("-B")
+    flags+=("--jq=")
+    two_word_flags+=("--jq")
+    two_word_flags+=("-q")
+    local_nonpersistent_flags+=("--jq")
+    local_nonpersistent_flags+=("--jq=")
+    local_nonpersistent_flags+=("-q")
+    flags+=("--json=")
+    two_word_flags+=("--json")
+    local_nonpersistent_flags+=("--json")
+    local_nonpersistent_flags+=("--json=")
     flags+=("--label=")
     two_word_flags+=("--label")
     two_word_flags+=("-l")
@@ -1481,12 +1948,24 @@ _gh_pr_list()
     local_nonpersistent_flags+=("--limit")
     local_nonpersistent_flags+=("--limit=")
     local_nonpersistent_flags+=("-L")
+    flags+=("--search=")
+    two_word_flags+=("--search")
+    two_word_flags+=("-S")
+    local_nonpersistent_flags+=("--search")
+    local_nonpersistent_flags+=("--search=")
+    local_nonpersistent_flags+=("-S")
     flags+=("--state=")
     two_word_flags+=("--state")
     two_word_flags+=("-s")
     local_nonpersistent_flags+=("--state")
     local_nonpersistent_flags+=("--state=")
     local_nonpersistent_flags+=("-s")
+    flags+=("--template=")
+    two_word_flags+=("--template")
+    two_word_flags+=("-t")
+    local_nonpersistent_flags+=("--template")
+    local_nonpersistent_flags+=("--template=")
+    local_nonpersistent_flags+=("-t")
     flags+=("--web")
     flags+=("-w")
     local_nonpersistent_flags+=("--web")
@@ -1515,10 +1994,26 @@ _gh_pr_merge()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--auto")
+    local_nonpersistent_flags+=("--auto")
+    flags+=("--body=")
+    two_word_flags+=("--body")
+    two_word_flags+=("-b")
+    local_nonpersistent_flags+=("--body")
+    local_nonpersistent_flags+=("--body=")
+    local_nonpersistent_flags+=("-b")
+    flags+=("--body-file=")
+    two_word_flags+=("--body-file")
+    two_word_flags+=("-F")
+    local_nonpersistent_flags+=("--body-file")
+    local_nonpersistent_flags+=("--body-file=")
+    local_nonpersistent_flags+=("-F")
     flags+=("--delete-branch")
     flags+=("-d")
     local_nonpersistent_flags+=("--delete-branch")
     local_nonpersistent_flags+=("-d")
+    flags+=("--disable-auto")
+    local_nonpersistent_flags+=("--disable-auto")
     flags+=("--merge")
     flags+=("-m")
     local_nonpersistent_flags+=("--merge")
@@ -1613,6 +2108,12 @@ _gh_pr_review()
     local_nonpersistent_flags+=("--body")
     local_nonpersistent_flags+=("--body=")
     local_nonpersistent_flags+=("-b")
+    flags+=("--body-file=")
+    two_word_flags+=("--body-file")
+    two_word_flags+=("-F")
+    local_nonpersistent_flags+=("--body-file")
+    local_nonpersistent_flags+=("--body-file=")
+    local_nonpersistent_flags+=("-F")
     flags+=("--comment")
     flags+=("-c")
     local_nonpersistent_flags+=("--comment")
@@ -1645,6 +2146,22 @@ _gh_pr_status()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--jq=")
+    two_word_flags+=("--jq")
+    two_word_flags+=("-q")
+    local_nonpersistent_flags+=("--jq")
+    local_nonpersistent_flags+=("--jq=")
+    local_nonpersistent_flags+=("-q")
+    flags+=("--json=")
+    two_word_flags+=("--json")
+    local_nonpersistent_flags+=("--json")
+    local_nonpersistent_flags+=("--json=")
+    flags+=("--template=")
+    two_word_flags+=("--template")
+    two_word_flags+=("-t")
+    local_nonpersistent_flags+=("--template")
+    local_nonpersistent_flags+=("--template=")
+    local_nonpersistent_flags+=("-t")
     flags+=("--help")
     flags+=("--repo=")
     two_word_flags+=("--repo")
@@ -1673,6 +2190,22 @@ _gh_pr_view()
     flags+=("-c")
     local_nonpersistent_flags+=("--comments")
     local_nonpersistent_flags+=("-c")
+    flags+=("--jq=")
+    two_word_flags+=("--jq")
+    two_word_flags+=("-q")
+    local_nonpersistent_flags+=("--jq")
+    local_nonpersistent_flags+=("--jq=")
+    local_nonpersistent_flags+=("-q")
+    flags+=("--json=")
+    two_word_flags+=("--json")
+    local_nonpersistent_flags+=("--json")
+    local_nonpersistent_flags+=("--json=")
+    flags+=("--template=")
+    two_word_flags+=("--template")
+    two_word_flags+=("-t")
+    local_nonpersistent_flags+=("--template")
+    local_nonpersistent_flags+=("--template=")
+    local_nonpersistent_flags+=("-t")
     flags+=("--web")
     flags+=("-w")
     local_nonpersistent_flags+=("--web")
@@ -1697,8 +2230,10 @@ _gh_pr()
     commands+=("checkout")
     commands+=("checks")
     commands+=("close")
+    commands+=("comment")
     commands+=("create")
     commands+=("diff")
+    commands+=("edit")
     commands+=("list")
     commands+=("merge")
     commands+=("ready")
@@ -2053,6 +2588,55 @@ _gh_repo_fork()
     local_nonpersistent_flags+=("--clone")
     flags+=("--remote")
     local_nonpersistent_flags+=("--remote")
+    flags+=("--remote-name=")
+    two_word_flags+=("--remote-name")
+    local_nonpersistent_flags+=("--remote-name")
+    local_nonpersistent_flags+=("--remote-name=")
+    flags+=("--help")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_repo_list()
+{
+    last_command="gh_repo_list"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--archived")
+    local_nonpersistent_flags+=("--archived")
+    flags+=("--fork")
+    local_nonpersistent_flags+=("--fork")
+    flags+=("--language=")
+    two_word_flags+=("--language")
+    two_word_flags+=("-l")
+    local_nonpersistent_flags+=("--language")
+    local_nonpersistent_flags+=("--language=")
+    local_nonpersistent_flags+=("-l")
+    flags+=("--limit=")
+    two_word_flags+=("--limit")
+    two_word_flags+=("-L")
+    local_nonpersistent_flags+=("--limit")
+    local_nonpersistent_flags+=("--limit=")
+    local_nonpersistent_flags+=("-L")
+    flags+=("--no-archived")
+    local_nonpersistent_flags+=("--no-archived")
+    flags+=("--private")
+    local_nonpersistent_flags+=("--private")
+    flags+=("--public")
+    local_nonpersistent_flags+=("--public")
+    flags+=("--source")
+    local_nonpersistent_flags+=("--source")
     flags+=("--help")
 
     must_have_one_flag=()
@@ -2101,6 +2685,7 @@ _gh_repo()
     commands+=("clone")
     commands+=("create")
     commands+=("fork")
+    commands+=("list")
     commands+=("view")
 
     flags=()
@@ -2109,6 +2694,207 @@ _gh_repo()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--help")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_run_download()
+{
+    last_command="gh_run_download"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--dir=")
+    two_word_flags+=("--dir")
+    two_word_flags+=("-D")
+    local_nonpersistent_flags+=("--dir")
+    local_nonpersistent_flags+=("--dir=")
+    local_nonpersistent_flags+=("-D")
+    flags+=("--name=")
+    two_word_flags+=("--name")
+    two_word_flags+=("-n")
+    local_nonpersistent_flags+=("--name")
+    local_nonpersistent_flags+=("--name=")
+    local_nonpersistent_flags+=("-n")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_run_list()
+{
+    last_command="gh_run_list"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--limit=")
+    two_word_flags+=("--limit")
+    two_word_flags+=("-L")
+    local_nonpersistent_flags+=("--limit")
+    local_nonpersistent_flags+=("--limit=")
+    local_nonpersistent_flags+=("-L")
+    flags+=("--workflow=")
+    two_word_flags+=("--workflow")
+    two_word_flags+=("-w")
+    local_nonpersistent_flags+=("--workflow")
+    local_nonpersistent_flags+=("--workflow=")
+    local_nonpersistent_flags+=("-w")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_run_rerun()
+{
+    last_command="gh_run_rerun"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_run_view()
+{
+    last_command="gh_run_view"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--exit-status")
+    local_nonpersistent_flags+=("--exit-status")
+    flags+=("--job=")
+    two_word_flags+=("--job")
+    two_word_flags+=("-j")
+    local_nonpersistent_flags+=("--job")
+    local_nonpersistent_flags+=("--job=")
+    local_nonpersistent_flags+=("-j")
+    flags+=("--log")
+    local_nonpersistent_flags+=("--log")
+    flags+=("--log-failed")
+    local_nonpersistent_flags+=("--log-failed")
+    flags+=("--verbose")
+    flags+=("-v")
+    local_nonpersistent_flags+=("--verbose")
+    local_nonpersistent_flags+=("-v")
+    flags+=("--web")
+    flags+=("-w")
+    local_nonpersistent_flags+=("--web")
+    local_nonpersistent_flags+=("-w")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_run_watch()
+{
+    last_command="gh_run_watch"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--exit-status")
+    local_nonpersistent_flags+=("--exit-status")
+    flags+=("--interval=")
+    two_word_flags+=("--interval")
+    two_word_flags+=("-i")
+    local_nonpersistent_flags+=("--interval")
+    local_nonpersistent_flags+=("--interval=")
+    local_nonpersistent_flags+=("-i")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_run()
+{
+    last_command="gh_run"
+
+    command_aliases=()
+
+    commands=()
+    commands+=("download")
+    commands+=("list")
+    commands+=("rerun")
+    commands+=("view")
+    commands+=("watch")
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
     flags+=("--help")
 
     must_have_one_flag=()
@@ -2251,6 +3037,270 @@ _gh_secret()
     noun_aliases=()
 }
 
+_gh_ssh-key_add()
+{
+    last_command="gh_ssh-key_add"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--title=")
+    two_word_flags+=("--title")
+    two_word_flags+=("-t")
+    local_nonpersistent_flags+=("--title")
+    local_nonpersistent_flags+=("--title=")
+    local_nonpersistent_flags+=("-t")
+    flags+=("--help")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_ssh-key_list()
+{
+    last_command="gh_ssh-key_list"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--help")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_ssh-key()
+{
+    last_command="gh_ssh-key"
+
+    command_aliases=()
+
+    commands=()
+    commands+=("add")
+    commands+=("list")
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--help")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_workflow_disable()
+{
+    last_command="gh_workflow_disable"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_workflow_enable()
+{
+    last_command="gh_workflow_enable"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_workflow_list()
+{
+    last_command="gh_workflow_list"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--all")
+    flags+=("-a")
+    local_nonpersistent_flags+=("--all")
+    local_nonpersistent_flags+=("-a")
+    flags+=("--limit=")
+    two_word_flags+=("--limit")
+    two_word_flags+=("-L")
+    local_nonpersistent_flags+=("--limit")
+    local_nonpersistent_flags+=("--limit=")
+    local_nonpersistent_flags+=("-L")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_workflow_run()
+{
+    last_command="gh_workflow_run"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--field=")
+    two_word_flags+=("--field")
+    two_word_flags+=("-F")
+    local_nonpersistent_flags+=("--field")
+    local_nonpersistent_flags+=("--field=")
+    local_nonpersistent_flags+=("-F")
+    flags+=("--json")
+    local_nonpersistent_flags+=("--json")
+    flags+=("--raw-field=")
+    two_word_flags+=("--raw-field")
+    two_word_flags+=("-f")
+    local_nonpersistent_flags+=("--raw-field")
+    local_nonpersistent_flags+=("--raw-field=")
+    local_nonpersistent_flags+=("-f")
+    flags+=("--ref=")
+    two_word_flags+=("--ref")
+    two_word_flags+=("-r")
+    local_nonpersistent_flags+=("--ref")
+    local_nonpersistent_flags+=("--ref=")
+    local_nonpersistent_flags+=("-r")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_workflow_view()
+{
+    last_command="gh_workflow_view"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--ref=")
+    two_word_flags+=("--ref")
+    two_word_flags+=("-r")
+    local_nonpersistent_flags+=("--ref")
+    local_nonpersistent_flags+=("--ref=")
+    local_nonpersistent_flags+=("-r")
+    flags+=("--web")
+    flags+=("-w")
+    local_nonpersistent_flags+=("--web")
+    local_nonpersistent_flags+=("-w")
+    flags+=("--yaml")
+    flags+=("-y")
+    local_nonpersistent_flags+=("--yaml")
+    local_nonpersistent_flags+=("-y")
+    flags+=("--help")
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_gh_workflow()
+{
+    last_command="gh_workflow"
+
+    command_aliases=()
+
+    commands=()
+    commands+=("disable")
+    commands+=("enable")
+    commands+=("list")
+    commands+=("run")
+    commands+=("view")
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--repo=")
+    two_word_flags+=("--repo")
+    two_word_flags+=("-R")
+    flags+=("--help")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _gh_root_command()
 {
     last_command="gh"
@@ -2258,6 +3308,7 @@ _gh_root_command()
     command_aliases=()
 
     commands=()
+    commands+=("actions")
     commands+=("alias")
     commands+=("api")
     commands+=("auth")
@@ -2269,7 +3320,10 @@ _gh_root_command()
     commands+=("pr")
     commands+=("release")
     commands+=("repo")
+    commands+=("run")
     commands+=("secret")
+    commands+=("ssh-key")
+    commands+=("workflow")
 
     flags=()
     two_word_flags=()
