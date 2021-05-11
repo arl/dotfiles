@@ -188,4 +188,7 @@
     "[rust]": {
         "editor.defaultFormatter": "statiolake.vscode-rustfmt"
     },
+    "[javascript]": {
+        "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
+    },
 }
