@@ -191,4 +191,25 @@
     "[javascript]": {
         "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
     },
+    "terminal.integrated.tabs.enabled": true,
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "/usr/bin/bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        },
+        "fish": {
+            "path": "fish"
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "bash",
 }
