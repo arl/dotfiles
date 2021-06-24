@@ -174,23 +174,20 @@
     "[html]": {
         "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
     },
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "python.languageServer": "Pylance",
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "window.zoomLevel": 0,
     "[rust]": {
         "editor.defaultFormatter": "statiolake.vscode-rustfmt"
     },
     "[javascript]": {
         "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
     },
+    "window.zoomLevel": 0,
     "terminal.integrated.tabs.enabled": true,
     "terminal.integrated.profiles.linux": {
         "bash": {
