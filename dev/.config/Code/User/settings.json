@@ -38,7 +38,7 @@
     "breadcrumbs.enabled": true,
     "editor.minimap.enabled": true,
     "editor.renderControlCharacters": true,
-    "editor.renderWhitespace": "none",
+    "editor.renderWhitespace": "all",
     "editor.selectionHighlight": true,
     "explorer.confirmDelete": false,
     "files.autoSave": "off",
