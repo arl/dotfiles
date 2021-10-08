@@ -31,6 +31,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'Matt-Deacalion/vim-systemd-syntax'
     Plug 'maximbaz/lightline-ale'
     Plug 'mileszs/ack.vim'
+    Plug 'rust-lang/rust.vim'
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'scrooloose/syntastic'
@@ -221,6 +222,9 @@ call plug#end()
     filetype plugin indent on    " required
 
     " ale
+
+    " rust
+    let g:rustfmt_autosave = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Options
