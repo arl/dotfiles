@@ -1,3 +1,4 @@
+#!/bin/bash
 # vim: set ft=sh ts=2 sw=2 sts=2 et sta:
 #
 # Bash functions
@@ -45,3 +46,5 @@ dec2hex() {
 copycmd() {
     history 2 | head -n 1 | cut -d " " -f 4- | xclip -sel cli
 }
+
+urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
