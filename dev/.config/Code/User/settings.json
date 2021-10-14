@@ -1,14 +1,33 @@
 {
     "editor.fontFamily": "  'L- Consolas', 'Consolas', 'Courier New', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
-    "editor.roundedSelection": false,
-    "editor.mouseWheelZoom": true,
     "editor.formatOnSave": true,
+    "editor.guides.bracketPairs": false,
+    "editor.minimap.enabled": true,
+    "editor.mouseWheelZoom": true,
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.roundedSelection": false,
+    "editor.selectionHighlight": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "redhat.telemetry.enabled": false,
+    "window.zoomLevel": 0,
+    "window.menuBarVisibility": "default",
+    "breadcrumbs.enabled": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
     "[python]": {
         "editor.formatOnSave": false
     },
-    "workbench.statusBar.visible": true,
     "workbench.colorCustomizations": {
+        "workbench.colorTheme": "Monokai",
+        "workbench.editorAssociations": {
+            "*.ipynb": "jupyter-notebook"
+        },
+        "workbench.sideBar.location": "left",
+        "workbench.startupEditor": "newUntitledFile",
+        "workbench.statusBar.visible": true,
         "editor.selectionBackground": "#435594",
         "editor.selectionHighlightBackground": "#7383B4",
         "terminalCursor.foreground": "#00ffaa"
@@ -21,7 +40,9 @@
         "**/.svn": true,
         "**/*.o": true,
         "**/node_modules": true,
-        "**/tags": true
+        "**/tags": true,
+        "target/debug": true,
+        "target/release": true
     },
     "C_Cpp.intelliSenseEngine": "Default",
     "extensions.ignoreRecommendations": false,
@@ -35,23 +56,11 @@
         "suppressUpdateNotice": false,
         "suppressWelcomeNotice": true
     },
-    "breadcrumbs.enabled": true,
-    "editor.minimap.enabled": true,
-    "editor.renderControlCharacters": true,
-    "editor.renderWhitespace": "all",
-    "editor.selectionHighlight": true,
-    "explorer.confirmDelete": false,
-    "files.autoSave": "off",
     "gitlens.advanced.telemetry.enabled": false,
     "gitlens.codeLens.enabled": false,
     "gitlens.defaultDateFormat": "Do, MMMM YYYY h:mma",
     "gitlens.defaultDateShortFormat": "D MMM YYYY",
     "gitlens.settings.mode": "advanced",
-    "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.rendererType": "dom",
-    "window.menuBarVisibility": "default",
-    "workbench.sideBar.location": "left",
-    "workbench.startupEditor": "newUntitledFile",
     "peacock.favoriteColors": [
         {
             "name": "Angular Red",
@@ -112,8 +121,6 @@
     "go.formatTool": "goimports",
     "go.gocodeAutoBuild": false,
     "go.autocompleteUnimportedPackages": true,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
@@ -121,11 +128,6 @@
     "shellcheck.exclude": [
         "SC1091"
     ],
-    "workbench.colorTheme": "Monokai",
-    "files.associations": {
-        "*.go2": "go"
-    },
-    "explorer.confirmDragAndDrop": false,
     "go.delveConfig": {
         "dlvLoadConfig": {
             "followPointers": true,
@@ -141,52 +143,47 @@
     "[go]": {
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-        },
-        // Optional: Disable snippets, as they conflict with completion ranking.
+            "source.organizeImports": true
+        }
     },
     "[go.mod]": {
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-        },
+            "source.organizeImports": true
+        }
     },
     "gopls": {
-        // Add parameter placeholders when completing a function.
         "usePlaceholders": true,
-        // If true, enable additional analyses with staticcheck.
-        // Warning: This will significantly increase memory usage.
         "staticcheck": false,
         "codelenses": {
-            "generate": false, // Don't show the `go generate` lens.
-            "gc_details": true // Show a code lens toggling the display of gc's choices.
+            "generate": false,
+            "gc_details": true
         }
     },
     "go.liveErrors": {
         "enabled": false,
         "delay": 500
     },
-    "C_Cpp.updateChannel": "Insiders",
     "go.languageServerExperimentalFeatures": {
         "diagnostics": true
     },
     "[html]": {
         "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
     },
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
     "python.languageServer": "Pylance",
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "[rust]": {
-        "editor.defaultFormatter": "statiolake.vscode-rustfmt"
+        "editor.defaultFormatter": "matklad.rust-analyzer",
+        "editor.guides.bracketPairs": true
     },
     "[javascript]": {
         "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
     },
-    "window.zoomLevel": 0,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.rendererType": "dom",
     "terminal.integrated.tabs.enabled": true,
     "terminal.integrated.profiles.linux": {
         "bash": {
@@ -207,5 +204,11 @@
             "icon": "terminal-powershell"
         }
     },
-    "terminal.integrated.defaultProfile.linux": "bash",
-}    "window.zoomLevel": 0,
+    "bookmarks.saveBookmarksInProject": true,
+    "bookmarks.useWorkaroundForFormatters": true,
+    "extensions.supportUntrustedWorkspaces": {},
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    }
+}
