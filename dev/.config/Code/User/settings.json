@@ -12,8 +12,6 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "redhat.telemetry.enabled": false,
-    "window.zoomLevel": 0,
-    "window.menuBarVisibility": "default",
     "breadcrumbs.enabled": true,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
@@ -116,7 +114,7 @@
         }
     ],
     "goOutliner.extendExplorerTab": true,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "vsicons.dontShowNewVersionMessage": true,
     "go.formatTool": "goimports",
     "go.gocodeAutoBuild": false,
