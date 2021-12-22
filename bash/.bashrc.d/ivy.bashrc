@@ -2,6 +2,4 @@
 #
 
 safewhich ivy || return 0
-
-#rlwrap -S 'ivy> ' -pBLUE  ivy
-alias ivy="rlwrap -S 'ivy> ' -p'1;35'  ivy"
+alias ivy="rlwrap --file \$HOME/.ivy.completion --substitute-prompt='ivy> ' --prompt-colour='1;35' ivy"
