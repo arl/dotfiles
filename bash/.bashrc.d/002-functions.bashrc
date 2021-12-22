@@ -48,3 +48,9 @@ copycmd() {
 }
 
 urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
+
+# Copy the absolute path to the argument in the clipboard. Without argument,
+# copy the working directory.
+clipath() {
+    safewhich xclip && readlink -e "${1:-.}" | tr -d '\r\n' | xclip -sel cli
+}
