@@ -348,6 +348,9 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.vert set filetype=glsl
 autocmd BufNewFile,BufRead *.frag set filetype=glsl
 
+" handle ivy files as R
+autocmd BufNewFile,BufRead *.ivy set filetype=r
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigation
