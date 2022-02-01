@@ -3,5 +3,5 @@
 # plan9port, for acme
 #
 
-PLAN9=/home/aurelien/dev/plan9port export PLAN9
+PLAN9=/usr/local/plan9 export PLAN9
 PATH=$PATH:$PLAN9/bin
