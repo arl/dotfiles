@@ -3,11 +3,13 @@
 # Node.js / NPM
 #
 
-export NODEJS_HOME=/usr/local/lib/node/nodejs
-export PATH=$NODEJS_HOME/bin:$PATH
-
+safewhich node || return 0
 safewhich npm || return 0
 
-#npm config set prefix ~/npm
-#export PATH="$PATH:$HOME/npm/bin"
-#export NODE_PATH="$NODE_PATH:$HOME/npm/lib/node_modules"
+NPM_PACKAGES="${HOME}/.npm-packages"
+
+export PATH="$PATH:$NPM_PACKAGES/bin"
+
+# Preserve MANPATH if you already defined it somewhere in your config.
+# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
