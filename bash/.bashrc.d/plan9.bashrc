@@ -5,3 +5,5 @@
 
 PLAN9=/usr/local/plan9 export PLAN9
 PATH=$PATH:$PLAN9/bin
+
+alias acme="acme -m /mnt/acme -f /mnt/font/Consolas/12a/font"
