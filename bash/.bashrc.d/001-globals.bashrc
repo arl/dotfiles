@@ -2,5 +2,5 @@
 #
 # globals
 #
-EDITOR=nvim
+EDITOR=vim
 TERM=xterm-256color

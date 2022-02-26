@@ -1,6 +1,7 @@
 " a lot of the cool stuff is coming from:
 " https://github.com/romainl/dotvim/wiki/Mon-.vimrc-en-d%C3%A9tails
 
+syntax on
 set nocompatible              " be iMproved, required
 set modelines=1
 set modeline
@@ -13,13 +14,12 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'airblade/vim-gitgutter'
     Plug 'aurelien-rainone/colorschwitch'
     Plug 'brooth/far.vim'
-    Plug 'buoto/gotests-vim'
     Plug 'cocopon/lightline-hybrid.vim'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'elzr/vim-json'
-    Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+    Plug 'govim/govim'
     Plug 'iCyMind/NeoSolarized'
     Plug 'itchyny/lightline.vim'
     Plug 'jez/vim-superman'
@@ -31,6 +31,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'Matt-Deacalion/vim-systemd-syntax'
     Plug 'maximbaz/lightline-ale'
     Plug 'mileszs/ack.vim'
+    Plug 'yami-beta/asyncomplete-omni.vim'
+    Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'rust-lang/rust.vim'
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -49,7 +51,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     if has('nvim')
         Plug 'morhetz/gruvbox'
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        Plug 'jodosha/vim-godebug' " Debugger integration via delve
         Plug 'zchee/deoplete-clang'
         let g:deoplete#enable_at_startup = 1
         let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
@@ -68,11 +69,23 @@ call plug#end()
     " tagbar
     nmap <F8> :TagbarToggle<CR>
 
-    " vim-go
-    let g:go_jump_to_error = 0
-    let g:go_fmt_command = "goimports"
-    let g:go_list_type = "locationlist"
-    let g:go_list_autoclose = 0
+    " asyncomplete and go
+    function! Omni()
+        call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+                        \ 'name': 'omni',
+                        \ 'whitelist': ['go'],
+                        \ 'completor': function('asyncomplete#sources#omni#completor')
+                        \  }))
+    endfunction
+    au VimEnter * :call Omni()
+
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+    " To automatically show doc in popus when hovering
+    set completeopt=menuone,noinsert,noselect,popup
+    let g:asyncomplete_auto_completeopt = 0
 
     " CtrlP
     nnoremap <leader>f :CtrlP<CR>
@@ -407,4 +420,4 @@ endif
 :set t_ut=
 
 " default colorscheme
-:colorscheme janah
+:colorscheme desert256

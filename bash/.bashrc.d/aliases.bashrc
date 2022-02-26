@@ -75,10 +75,10 @@ alias ....='cd ../../..'
 # neovim alias
 if safewhich nvim
     then
-    alias vi=nvim
     alias vim=nvim
     alias vimdiff='nvim -d'
 fi
+alias vi=vim
 
 if safewhich lazygit
     then
