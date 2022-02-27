@@ -6,13 +6,13 @@
 [mergetool]
   prompt = true
 [mergetool "vimdiff"]
-  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+  cmd = vimdiff $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [diff]
   tool = vimdiff
 [difftool]
   prompt = false
 [difftool "vimdiff"]
-  cmd = nvim -d $LOCAL $REMOTE
+  cmd = vimdiff $LOCAL $REMOTE
 [alias]
   # to save a few keystrokes
   br = branch -avv
