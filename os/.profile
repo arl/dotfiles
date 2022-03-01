@@ -79,7 +79,8 @@ if [ -n "$GOPATH" ]; then
     fi
 fi
 
-export GIT_EDITOR=nvim
+export GIT_EDITOR=vim
+export EDITOR=vim
 
 # shellcheck source=/dev/null
 source "$HOME/.cargo/env"

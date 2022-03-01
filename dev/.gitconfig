@@ -67,6 +67,7 @@
   pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [core]
   excludesfile = ~/.gitignore
+  editor = /usr/bin/vim
 [color "status"]
   header    = white dim
   branch    = yellow bold
