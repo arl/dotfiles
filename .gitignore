@@ -5,4 +5,5 @@
 machine_specific
 os/.fonts/Library
 vim/.vim/.netrwhist
+vim/.vim/plugged
 os/.fonts/.uuid

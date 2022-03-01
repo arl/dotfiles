@@ -8,7 +8,7 @@ set modeline
 set exrc
 let mapleader=","             " set leader as ','
 
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin()
 
     " sort with :12,47sort i
     Plug 'airblade/vim-gitgutter'
