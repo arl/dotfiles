@@ -33,7 +33,7 @@
 
   # Interactive apply patch (hunks)
   ipatch = "!f() { git apply $1; git add -p; }; f"
-  
+
   ## Time-savers
   # Unstage everything
   unstage   = reset HEAD
@@ -48,7 +48,7 @@
   amend = commit --amend
   # Place all modifications in a WIP commit
   wip = "!f() { git add -u && git cm wip; }; f"
-  
+
   ## Codereview
   change = codereview change
   gofmt = codereview gofmt
@@ -97,10 +97,10 @@
 [http]
   cookiefile = /home/aurelien/.gitcookies
 [advice]
-	ignoredHook = false
+  ignoredHook = false
 [cola]
-	spellcheck = false
+  spellcheck = false
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
 [rerere]
-	enabled = true
+  enabled = true
