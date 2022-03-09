@@ -26,6 +26,11 @@ set completion-query-items 200
 # Show extra file information when completing, like `ls -F` does
 set visible-stats on
 
+# If set to On, readline displays possible completions using different colors to
+# indicate their file type. The color definitions are taken from the value of
+# the LS_COLORS environment variable.
+set colored-stats on
+
 # Be more intelligent when autocompleting by also looking at the text after
 # the cursor. For example, when the current line is "cd ~/src/mozil", and
 # the cursor is on the "z", pressing Tab will not autocomplete it to "cd
