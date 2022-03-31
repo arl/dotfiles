@@ -54,3 +54,15 @@ urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 clipath() {
     safewhich xclip && readlink -e "${1:-.}" | tr -d '\r\n' | xclip -sel cli
 }
+
+# Change directory and list its content at the same time.
+# from https://opensource.com/article/19/7/bash-aliases
+function cl() {
+    DIR="$*";
+        # if no DIR given, go home
+        if [ $# -lt 1 ]; then
+                DIR=$HOME;
+    fi;
+    builtin cd "${DIR}" && \
+        ls -alF1h --color=auto
+}
