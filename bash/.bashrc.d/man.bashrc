@@ -6,8 +6,8 @@
 
 
 # If vman is installed add VMAN_BIN to the PATH
-VMAN_BIN=$HOME/.local/share/nvim/plugged/vim-superman/bin
-if [ -f $VMAN_BIN/vman ];
+VMAN_BIN=$HOME/.vim/plugged/vim-superman/bin
+if [ -f "${VMAN_BIN}/vman" ];
 then
   export PATH=$PATH:$VMAN_BIN
   alias man=vman
