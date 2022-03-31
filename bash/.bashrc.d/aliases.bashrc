@@ -84,3 +84,7 @@ if safewhich lazygit
     then
     alias zg='lazygit '
 fi
+
+# python virtualenv aliases
+alias ve='python3 -m virtualenv ./.venv'
+alias va='source ./.venv/bin/activate'
