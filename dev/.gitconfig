@@ -13,6 +13,8 @@
   prompt = false
 [difftool "vimdiff"]
   cmd = vimdiff $LOCAL $REMOTE
+[difftool "difftastic"]
+  cmd = /home/aurelien/.cargo/bin/difft $LOCAL $REMOTE
 [alias]
   # to save a few keystrokes
   br = branch -avv
@@ -23,6 +25,7 @@
   mtg = mergetool --gui
   dt = difftool
   dtg = difftool --gui
+  dtt = difftool -t difftastic
   cm = "commit -m"
 
   ## Tree
