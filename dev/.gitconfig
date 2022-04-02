@@ -14,7 +14,7 @@
 [difftool "vimdiff"]
   cmd = vimdiff $LOCAL $REMOTE
 [difftool "difftastic"]
-  cmd = /home/aurelien/.cargo/bin/difft $LOCAL $REMOTE
+  cmd = difft --color=always $LOCAL $REMOTE
 [alias]
   # to save a few keystrokes
   br = branch -avv
