@@ -36,6 +36,7 @@
         "**/.git": true,
         "**/.hg": true,
         "**/.svn": true,
+        "**/.venv": true,
         "**/*.o": true,
         "**/node_modules": true,
         "**/tags": true,
