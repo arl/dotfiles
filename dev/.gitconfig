@@ -15,6 +15,8 @@
   cmd = vimdiff $LOCAL $REMOTE
 [difftool "difftastic"]
   cmd = difft --color=always $LOCAL $REMOTE
+[pager]
+  difftool = true
 [alias]
   # to save a few keystrokes
   br = branch -avv
@@ -71,6 +73,7 @@
 [core]
   excludesfile = ~/.gitignore
   editor = /usr/bin/vim
+  pager = less -R
 [color "status"]
   header    = white dim
   branch    = yellow bold
@@ -108,3 +111,5 @@
   insteadOf = https://github.com/
 [rerere]
   enabled = true
+[color]
+  ui = always
