@@ -26,8 +26,8 @@
   mt = mergetool
   mtg = mergetool --gui
   dt = difftool
-  dtg = difftool --gui
-  dtt = difftool -t difftastic
+  dtg = "!f() { git --no-pager difftool --tool=vimdiff; }; f"
+  dtt = difftool --tool difftastic
   cm = "commit -m"
 
   ## Tree
