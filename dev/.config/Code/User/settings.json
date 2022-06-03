@@ -27,7 +27,9 @@
         "workbench.statusBar.visible": true,
         "editor.selectionBackground": "#435594",
         "editor.selectionHighlightBackground": "#7383B4",
-        "terminalCursor.foreground": "#00ffaa"
+        "terminalCursor.foreground": "#00ffaa",
+        "tab.activeBackground": "#565680",
+        "tab.inactiveBackground": "#000000"
     },
     "files.exclude": {
         "**/.*.swp": true,
