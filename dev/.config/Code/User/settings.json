@@ -10,7 +10,6 @@
     "editor.roundedSelection": false,
     "editor.selectionHighlight": true,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "redhat.telemetry.enabled": false,
     "breadcrumbs.enabled": true,
     "explorer.confirmDelete": false,
@@ -45,21 +44,6 @@
     },
     "C_Cpp.intelliSenseEngine": "Default",
     "extensions.ignoreRecommendations": false,
-    "gitlens.advanced.messages": {
-        "suppressCommitHasNoPreviousCommitWarning": false,
-        "suppressCommitNotFoundWarning": false,
-        "suppressFileNotUnderSourceControlWarning": false,
-        "suppressGitVersionWarning": false,
-        "suppressLineUncommittedWarning": false,
-        "suppressNoRepositoryWarning": false,
-        "suppressUpdateNotice": false,
-        "suppressWelcomeNotice": true
-    },
-    "gitlens.advanced.telemetry.enabled": false,
-    "gitlens.codeLens.enabled": false,
-    "gitlens.defaultDateFormat": "Do, MMMM YYYY h:mma",
-    "gitlens.defaultDateShortFormat": "D MMM YYYY",
-    "gitlens.settings.mode": "advanced",
     "peacock.favoriteColors": [
         {
             "name": "Angular Red",
@@ -174,7 +158,6 @@
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "[rust]": {
-        "editor.defaultFormatter": "matklad.rust-analyzer",
         "editor.guides.bracketPairs": true
     },
     "[javascript]": {
@@ -182,7 +165,6 @@
     },
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.defaultProfile.linux": "bash",
-    "terminal.integrated.rendererType": "dom",
     "terminal.integrated.tabs.enabled": true,
     "terminal.integrated.profiles.linux": {
         "bash": {
