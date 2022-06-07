@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaultsauto[]
 [
     {
         "key": "ctrl+[Backquote]",
@@ -13,7 +12,7 @@
         "command": "-workbench.action.quit"
     },
     {
-        "key": "alt+right",
+        "key": "alt+n",
         "command": "bookmarks.jumpToNext",
         "when": "editorTextFocus"
     },
@@ -23,7 +22,7 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "alt+left",
+        "key": "alt+p",
         "command": "bookmarks.jumpToPrevious",
         "when": "editorTextFocus"
     },
@@ -41,5 +40,13 @@
         "key": "ctrl+alt+k",
         "command": "-bookmarks.toggle",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.navigateForward"
     }
 ]
