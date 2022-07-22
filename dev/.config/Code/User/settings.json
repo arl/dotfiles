@@ -195,4 +195,7 @@
         "jupyter-notebook": "left"
     },
     "workbench.colorTheme": "Monokai"
+    "[css]": {
+        "editor.defaultFormatter": "aeschli.vscode-css-formatter"
+    }
 }
