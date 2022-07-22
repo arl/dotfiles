@@ -57,6 +57,8 @@ alias ago='ag --file-search-regex '''.\*.go''''
 
 # git aliases
 alias glg='git lg '
+alias gll='git lol '
+alias gl='gll '
 alias git_enableconfig="mv ~/.hiddengitconfig ~/.gitconfig"
 alias git_disableconfig="mv ~/.gitconfig ~/.hiddengitconfig"
 
