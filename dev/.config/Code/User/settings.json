@@ -197,5 +197,8 @@
     "workbench.colorTheme": "Monokai"
     "[css]": {
         "editor.defaultFormatter": "aeschli.vscode-css-formatter"
+    },
+    "search.exclude": {
+        "work/": true
     }
 }
