@@ -13,6 +13,7 @@
   prompt = false
 [difftool "vimdiff"]
   cmd = vimdiff $LOCAL $REMOTE
+# Requires github.com/Wilfred/difftastic in the PATH somewhere
 [difftool "difftastic"]
   cmd = difft --color=always $LOCAL $REMOTE
 [pager]
@@ -28,6 +29,10 @@
   dt = difftool
   dtg = "!f() { git --no-pager difftool --tool=vimdiff; }; f"
   dtt = difftool --tool difftastic
+
+  # Use difftastic to show the diff of a commit
+  dttshow = "!f() { git dtt ${1:-HEAD}~1 ${1:-HEAD} ; }; f"
+
   cm = "commit -m"
 
   ## Tree
