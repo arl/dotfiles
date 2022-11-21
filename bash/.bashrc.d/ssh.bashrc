@@ -5,7 +5,7 @@
 
 # Allow $USER to use keys. Only enter once and it will remain enabled till
 # you delete it or reboot the server 
-/usr/bin/keychain $HOME/.ssh/id_rsa_github
+/usr/bin/keychain $HOME/.ssh/id_ed25519
 source $HOME/.keychain/$HOSTNAME-sh
 return
 
