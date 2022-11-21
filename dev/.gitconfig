@@ -32,6 +32,7 @@
 
   # Use difftastic to show the diff of a commit
   dttshow = "!f() { git dtt ${1:-HEAD}~1 ${1:-HEAD} ; }; f"
+  dts = dttshow
 
   cm = "commit -m"
 
