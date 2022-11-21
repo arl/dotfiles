@@ -83,4 +83,3 @@ export GIT_EDITOR=vim
 export EDITOR=vim
 
 # shellcheck source=/dev/null
-source "$HOME/.cargo/env"
