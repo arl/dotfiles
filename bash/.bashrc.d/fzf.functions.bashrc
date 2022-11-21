@@ -110,6 +110,22 @@ fshow() {
 FZF-EOF"
 }
 
+# ftshow - git commit browser (like fshow but use difftastic)
+ftshow() {
+  if ! safewhich difft; then
+    echo "difft not found, run fshow instead"
+    return 0
+  fi
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git --no-pager difftool --tool=difftastic %~1 % --color=always | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
+}
+
 # fco - checkout git branch (including remote branches)
 fcor() {
   is_in_git_repo || echo 'not in git repo...'
