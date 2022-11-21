@@ -139,7 +139,7 @@
     },
     "gopls": {
         "usePlaceholders": true,
-        "staticcheck": false,
+        "staticcheck": true,
         "codelenses": {
             "generate": false,
             "gc_details": true
@@ -194,11 +194,12 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "workbench.colorTheme": "Monokai"
     "[css]": {
         "editor.defaultFormatter": "aeschli.vscode-css-formatter"
     },
     "search.exclude": {
         "work/": true
-    }
+    },
+    "githubPullRequests.pullBranch": "never",
+    "workbench.colorTheme": "Monokai"
 }
