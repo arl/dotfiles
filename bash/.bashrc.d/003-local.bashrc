@@ -7,4 +7,3 @@ export SSH_KEYS="$HOME/.ssh/id_ed25519"
 export LOCALGOBIN=/usr/local/go/bin
 export GOPATH=$HOME/godev
 export PATH=$GOPATH/bin:$PATH
-export CDPATH=$GOPATH/src
