@@ -199,5 +199,10 @@
         "work/": true
     },
     "githubPullRequests.pullBranch": "never",
-    "workbench.colorTheme": "Monokai"
+    "workbench.colorTheme": "Minimal",
+    "editor.tokenColorCustomizations": {
+        "[Minimal]": {
+            "comments": "#c3d3e298"
+        }
+    }
 }
