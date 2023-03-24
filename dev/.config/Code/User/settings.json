@@ -44,7 +44,7 @@
         "target/debug": true,
         "target/release": true
     },
-    "C_Cpp.intelliSenseEngine": "Default",
+    "C_Cpp.intelliSenseEngine": "default",
     "extensions.ignoreRecommendations": false,
     "peacock.favoriteColors": [
         {
@@ -187,8 +187,6 @@
             "icon": "terminal-powershell"
         }
     },
-    "bookmarks.saveBookmarksInProject": true,
-    "bookmarks.useWorkaroundForFormatters": true,
     "extensions.supportUntrustedWorkspaces": {},
     "notebook.cellToolbarLocation": {
         "default": "right",
