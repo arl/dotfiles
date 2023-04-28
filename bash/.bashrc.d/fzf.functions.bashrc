@@ -13,7 +13,7 @@ export FZF_DEFAULT_OPTS='
   --color=marker:#719e07,fg+:#839496,prompt:#719e07,hl+:#719e07
 '
 
-fzf-down() {
+fzf_down() {
   fzf --height 50% "$@" --border
 }
 
@@ -94,7 +94,7 @@ fco() {
     sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
   target=$(
     (echo "$tags"; echo "$branches") | sed '/^$/d' |
-    fzf-down --no-hscroll --reverse --ansi +m -d "\t" -n 2 -q "$*") || return
+    fzf_down --no-hscroll --reverse --ansi +m -d "\t" -n 2 -q "$*") || return
   git checkout $(echo "$target" | awk '{print $2}')
 }
 
@@ -140,7 +140,7 @@ fcor() {
 ff() {
   is_in_git_repo || echo 'not in git repo...'
   git -c color.status=always status --short |
-  fzf-down -m --ansi --nth 2..,.. \
+  fzf_down -m --ansi --nth 2..,.. \
     --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
   cut -c4- | sed 's/.* -> //'
 }
