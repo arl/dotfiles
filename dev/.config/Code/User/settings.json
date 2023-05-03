@@ -204,5 +204,6 @@
         "[Minimal]": {
             "comments": "#c3d3e298"
         }
-    }
+    },
+    "workbench.iconTheme": "vscode-icons"
 }
