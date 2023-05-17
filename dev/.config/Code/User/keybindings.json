@@ -48,5 +48,9 @@
     {
         "key": "alt+right",
         "command": "workbench.action.navigateForward"
+    },
+    {
+        "key": "ctrl+alt+c",
+        "command": "github.copilot.toggleCopilot"
     }
 ]
