@@ -1,8 +1,16 @@
 #!/bin/bash
 # vim: set ft=sh ts=2 sw=2 sts=2 et sta:
 #
-# bash history
-#
+# If installed, let github.com/ellie/atuin handle history management, otherwise,
+# use old-scholl bash hisotry management configuration.
+if safewhich atuin; then
+   [[ -f ~/.bash-preexec.sh ]] && source "$HOME/.bash-preexec.sh"
+   # Bind ctrl-r but not up arrow
+   eval "$(atuin init --disable-up-arrow bash)"
+   return
+fi
+
+echo github.com/ellie/atuin not enabled
 
 # Share history between different terminals
 # The 3 next commands are taken from https://unix.stackexchange.com/questions/1288
@@ -18,7 +26,6 @@ shopt -s histappend
 # See HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=2000
 HISTFILESIZE=6000
-
 
 # Declare histclean function. Look the whole history from duplicates, remove
 # them, as well as entries matching HISTIGNORE, while preserving input order.
@@ -48,7 +55,7 @@ function histclean {
    local HISTFILE_DST=/tmp/.$USER.bash_history.clean
    if [ -f $HISTFILE_SRC ]; then
       \cp $HISTFILE_SRC $HISTFILE_SRC.backup
-      __dedup $HISTFILE_SRC | __rm_histignore >| $HISTFILE_DST
+      __dedup $HISTFILE_SRC | __rm_histignore >|$HISTFILE_DST
       \mv "${HISTFILE_DST}" "${HISTFILE_SRC}"
       chmod go-r $HISTFILE_SRC
       history -c
