@@ -7,12 +7,11 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return ;;
 esac
 
-for file in ~/.bashrc.d/*.bashrc;
-do
- # shellcheck source=/dev/null
- source "$file"
+for file in ~/.bashrc.d/*.bashrc; do
+  # shellcheck source=/dev/null
+  source "$file"
 done
