@@ -2,5 +2,5 @@
 
 safewhich gocomplete || return 0
 
-# go install github.com/posener/complete/v2/gocomplete@latest
+# go install github.com/posener/complete/gocomplete@latest
 complete -C "$(command -v gocomplete)" go
