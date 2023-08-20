@@ -1,13 +1,18 @@
 #!/bin/bash
+#
+# Completion script for:
+#
+# github.com/psibi/tldr-hs
 
 safewhich tldr || return 0
 
-function _tldr_autocomplete {
-  pages=$(tldr -a)
-  COMPREPLY=()
-  if [ "$COMP_CWORD" = 1 ]; then
-    COMPREPLY=($(compgen -W "$pages" -- $2))
-  fi
+_tldr_complete() {
+    local cur opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+
+    opts=$(tldr --list | tr ',' '\n')
+    COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 }
 
-complete -F _tldr_autocomplete tldr
+complete -F _tldr_complete tldr
