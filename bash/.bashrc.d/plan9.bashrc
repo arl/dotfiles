@@ -3,6 +3,9 @@
 # plan9port, for acme
 #
 
+# no acme no party
+safewhich acme || return 0
+
 PLAN9=/usr/local/plan9 export PLAN9
 PATH=$PATH:$PLAN9/bin
 
