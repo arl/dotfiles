@@ -52,19 +52,6 @@ if [ -f "$HOME/.machine_specific" ]; then
     source "$HOME/.machine_specific"
 fi
 
-if [ -n "$ANDROID_HOME" ]; then
-    export PATH="$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/"
-fi
-if [ -n "$NPM_PACKAGES" ]; then
-    export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-    export PATH="$NPM_PACKAGES/bin:$PATH"
-
-    # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
-    unset MANPATH
-    MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-    export MANPATH
-fi
-
 # If set and if it exists, add LOCAL GO /bin directory to the path
 if [ -d /usr/local/go/bin ]; then
     if [ -d "/usr/local/go/bin" ]; then
