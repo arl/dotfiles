@@ -10,7 +10,7 @@ let mapleader=","             " set leader as ','
 
 call plug#begin()
 
-    " sort with :12,47sort i
+    " sort with :14,51sort i
     Plug 'airblade/vim-gitgutter'
     Plug 'aurelien-rainone/colorschwitch'
     Plug 'brooth/far.vim'
@@ -31,8 +31,8 @@ call plug#begin()
     Plug 'Matt-Deacalion/vim-systemd-syntax'
     Plug 'maximbaz/lightline-ale'
     Plug 'mileszs/ack.vim'
-    Plug 'yami-beta/asyncomplete-omni.vim'
     Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'roxma/vim-tmux-clipboard'
     Plug 'rust-lang/rust.vim'
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -48,6 +48,7 @@ call plug#begin()
     Plug 'vim-scripts/bats.vim'
     Plug 'w0rp/ale'
     Plug 'will133/vim-dirdiff'
+    Plug 'yami-beta/asyncomplete-omni.vim'
     if has('nvim')
         Plug 'morhetz/gruvbox'
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
