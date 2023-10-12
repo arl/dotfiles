@@ -46,7 +46,6 @@ call plug#begin()
     Plug 'unblevable/quick-scope'
     Plug 'vim-scripts/argtextobj.vim'
     Plug 'vim-scripts/bats.vim'
-    Plug 'w0rp/ale'
     Plug 'will133/vim-dirdiff'
     Plug 'yami-beta/asyncomplete-omni.vim'
     if has('nvim')
