@@ -1,8 +1,41 @@
+/* Sort all entries:
+ tail +4 FILENAME | jq 'to_entries | sort_by(.key) | from_entries' 
+*/
 {
+  "C_Cpp.intelliSenseEngine": "default",
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[go.mod]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[python]": {
+    "editor.formatOnSave": false
+  },
+  "[rust]": {
+    "editor.guides.bracketPairs": true
+  },
+  "breadcrumbs.enabled": true,
   "editor.fontFamily": "  'L- Consolas', 'Consolas', 'Courier New', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": false,
+  "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": true,
   "editor.mouseWheelZoom": true,
   "editor.renderControlCharacters": true,
@@ -10,27 +43,15 @@
   "editor.roundedSelection": false,
   "editor.selectionHighlight": true,
   "editor.suggestSelection": "first",
-  "redhat.telemetry.enabled": false,
-  "breadcrumbs.enabled": true,
+  "editor.tokenColorCustomizations": {
+    "[Minimal]": {
+      "comments": "#c3d3e298"
+    }
+  },
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "[python]": {
-    "editor.formatOnSave": false
-  },
-  "workbench.colorCustomizations": {
-    "workbench.colorTheme": "Monokai",
-    "workbench.editorAssociations": {
-      "*.ipynb": "jupyter-notebook"
-    },
-    "workbench.sideBar.location": "left",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.statusBar.visible": true,
-    "editor.selectionBackground": "#435594",
-    "editor.selectionHighlightBackground": "#7383B4",
-    "terminalCursor.foreground": "#00ffaa",
-    "tab.activeBackground": "#565680",
-    "tab.inactiveBackground": "#000000"
-  },
+  "extensions.ignoreRecommendations": false,
+  "extensions.supportUntrustedWorkspaces": {},
   "files.exclude": {
     "**/.*.swp": true,
     "**/.DS_Store": true,
@@ -44,8 +65,42 @@
     "target/debug": true,
     "target/release": true
   },
-  "C_Cpp.intelliSenseEngine": "default",
-  "extensions.ignoreRecommendations": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "jsonc": false
+  },
+  "githubPullRequests.pullBranch": "never",
+  "go.delveConfig": {
+    "dlvLoadConfig": {
+      "followPointers": true,
+      "maxVariableRecurse": 1,
+      "maxStringLen": 64,
+      "maxArrayValues": 64,
+      "maxStructFields": -1
+    },
+    "apiVersion": 2,
+    "showGlobalVariables": true
+  },
+  "go.formatTool": "gofumpt",
+  "go.languageServerExperimentalFeatures": {
+    "diagnostics": true
+  },
+  "go.useLanguageServer": true,
+  "gopls": {
+    "usePlaceholders": true,
+    "staticcheck": true,
+    "codelenses": {
+      "generate": false,
+      "gc_details": true
+    }
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
   "peacock.favoriteColors": [
     {
       "name": "Angular Red",
@@ -100,68 +155,18 @@
       "value": "#42b883"
     }
   ],
-  "goOutliner.extendExplorerTab": true,
-  "telemetry.telemetryLevel": "off",
-  "vsicons.dontShowNewVersionMessage": true,
-  "go.formatTool": "gofumpt",
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  "python.languageServer": "Pylance",
+  "redhat.telemetry.enabled": false,
+  "search.exclude": {
+    "work/": true
   },
   "shellcheck.disableVersionCheck": true,
   "shellcheck.exclude": [
     "SC1091"
   ],
-  "go.delveConfig": {
-    "dlvLoadConfig": {
-      "followPointers": true,
-      "maxVariableRecurse": 1,
-      "maxStringLen": 64,
-      "maxArrayValues": 64,
-      "maxStructFields": -1
-    },
-    "apiVersion": 2,
-    "showGlobalVariables": true
-  },
-  "go.useLanguageServer": true,
-  "[go]": {
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    }
-  },
-  "[go.mod]": {
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    }
-  },
-  "gopls": {
-    "usePlaceholders": true,
-    "staticcheck": true,
-    "codelenses": {
-      "generate": false,
-      "gc_details": true
-    }
-  },
-  "go.languageServerExperimentalFeatures": {
-    "diagnostics": true
-  },
-  "[html]": {
-    "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
-  },
-  "python.languageServer": "Pylance",
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[rust]": {
-    "editor.guides.bracketPairs": true
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
+  "telemetry.telemetryLevel": "off",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.defaultProfile.linux": "bash",
-  "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.profiles.linux": {
     "bash": {
       "path": "/usr/bin/bash"
@@ -181,28 +186,22 @@
       "icon": "terminal-powershell"
     }
   },
-  "extensions.supportUntrustedWorkspaces": {},
-  "notebook.cellToolbarLocation": {
-    "default": "right",
-    "jupyter-notebook": "left"
+  "terminal.integrated.tabs.enabled": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.colorCustomizations": {
+    "workbench.colorTheme": "Monokai",
+    "workbench.editorAssociations": {
+      "*.ipynb": "jupyter-notebook"
+    },
+    "workbench.sideBar.location": "left",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.statusBar.visible": true,
+    "editor.selectionBackground": "#435594",
+    "editor.selectionHighlightBackground": "#7383B4",
+    "terminalCursor.foreground": "#00ffaa",
+    "tab.activeBackground": "#565680",
+    "tab.inactiveBackground": "#000000"
   },
-  "search.exclude": {
-    "work/": true
-  },
-  "githubPullRequests.pullBranch": "never",
   "workbench.colorTheme": "Minimal",
-  "editor.tokenColorCustomizations": {
-    "[Minimal]": {
-      "comments": "#c3d3e298"
-    }
-  },
-  "workbench.iconTheme": "vscode-icons",
-  "editor.inlineSuggest.enabled": true,
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false,
-    "jsonc": false
-  },
+  "workbench.iconTheme": "vscode-icons"
 }
