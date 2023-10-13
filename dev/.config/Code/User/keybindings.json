@@ -52,5 +52,15 @@
   {
     "key": "ctrl+alt+c",
     "command": "github.copilot.toggleCopilot"
+  },
+  {
+    "key": "alt+o",
+    "command": "extension.goToTest",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "-extension.goToTest",
+    "when": "editorTextFocus"
   }
 ]
