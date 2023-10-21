@@ -42,6 +42,27 @@ dec2hex() {
     echo "obase=16; $@" | bc
 }
 
+# Convert base-16 integers to binary
+hex2bin() {
+    local hex=$(echo "$@" | tr '[:lower:]' '[:upper:]')
+    echo "ibase=16; obase=2; ${hex}" | bc
+}
+
+# Convert base-2 integers to base-16
+bin2hex() {
+    printf 'obase=16; ibase=2; %s\n' "$1" | bc
+}
+
+# Convert base-10 integers to binary
+dec2bin() {
+    echo "obase=2; $@" | bc
+}
+
+# Convert base-16 integers to base-10
+bin2dec() {
+    echo "ibase=2; $@" | bc
+}
+
 # Copy last executed terminal command into the clipboard
 copycmd() {
     history 2 | head -n 1 | cut -d " " -f 4- | xclip -sel cli
