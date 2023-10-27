@@ -108,3 +108,12 @@ if safewhich yaegi
     then
     alias yaegi="rlwrap -D 2 -R -s 1000 -pBlue yaegi"
 fi
+
+if safewhich shmoji && safewhich fzf
+    then
+    alias emoji="shmoji fzf"
+    if safewhich xclip
+    then
+    alias emoclip="shmoji fzf | xclip -sel cli"
+    fi
+fi
