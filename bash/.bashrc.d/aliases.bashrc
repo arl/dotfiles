@@ -117,3 +117,8 @@ if safewhich shmoji && safewhich fzf
     alias emoclip="shmoji fzf | xclip -sel cli"
     fi
 fi
+
+if safewhich mdcat
+then
+  alias md=mdcat
+fi
