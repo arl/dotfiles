@@ -1,5 +1,5 @@
 /* Sort all entries:
- tail +4 FILENAME | jq 'to_entries | sort_by(.key) | from_entries' 
+ :4,$!jq 'to_entries | sort_by(.key) | from_entries'
 */
 {
   "C_Cpp.intelliSenseEngine": "default",
@@ -37,6 +37,9 @@
   "editor.guides.bracketPairs": false,
   "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": true,
+  "editor.minimap.maxColumn": 100,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "always",
   "editor.mouseWheelZoom": true,
   "editor.renderControlCharacters": true,
   "editor.renderWhitespace": "all",
@@ -66,11 +69,12 @@
     "target/release": true
   },
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
     "plaintext": false,
     "markdown": false,
     "scminput": false,
-    "jsonc": false
+    "jsonc": false,
+    "go": true
   },
   "githubPullRequests.pullBranch": "never",
   "go.delveConfig": {
@@ -88,6 +92,9 @@
   "go.languageServerExperimentalFeatures": {
     "diagnostics": true
   },
+  "go.testFlags": [
+    "-v"
+  ],
   "go.useLanguageServer": true,
   "gopls": {
     "usePlaceholders": true,
@@ -189,19 +196,11 @@
   "terminal.integrated.tabs.enabled": true,
   "vsicons.dontShowNewVersionMessage": true,
   "workbench.colorCustomizations": {
-    "workbench.colorTheme": "Monokai",
-    "workbench.editorAssociations": {
-      "*.ipynb": "jupyter-notebook"
-    },
-    "workbench.sideBar.location": "left",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.statusBar.visible": true,
-    "editor.selectionBackground": "#435594",
-    "editor.selectionHighlightBackground": "#7383B4",
-    "terminalCursor.foreground": "#00ffaa",
-    "tab.activeBackground": "#565680",
-    "tab.inactiveBackground": "#000000"
+    "minimap.background": "#00002299",
+    "minimapSlider.background": "#595a9970",
+    "minimapSlider.activeBackground": "#595a99b0",
+    "minimapSlider.hoverBackground": "#595a9990",
   },
-  "workbench.colorTheme": "Minimal",
+  "workbench.colorTheme": "Alabaster Dark",
   "workbench.iconTheme": "vscode-icons"
 }
