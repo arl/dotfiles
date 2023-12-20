@@ -27,9 +27,7 @@ mkd() {
 }
 
 # Show useful filesystem disk space usage
-dfs() {
-    df -Ph -x squashfs
-}
+dfs() { df -Ph -x squashfs; }
 
 # Convert base-16 integers to base-10
 hex2dec() {
@@ -38,9 +36,7 @@ hex2dec() {
 }
 
 # Convert base-10 integers to base-16
-dec2hex() {
-    echo "obase=16; $@" | bc
-}
+dec2hex() { echo "obase=16; $@" | bc; }
 
 # Convert base-16 integers to binary
 hex2bin() {
@@ -49,24 +45,16 @@ hex2bin() {
 }
 
 # Convert base-2 integers to base-16
-bin2hex() {
-    printf 'obase=16; ibase=2; %s\n' "$1" | bc
-}
+bin2hex() { printf 'obase=16; ibase=2; %s\n' "$1" | bc; }
 
 # Convert base-10 integers to binary
-dec2bin() {
-    echo "obase=2; $@" | bc
-}
+dec2bin() { echo "obase=2; $@" | bc; }
 
 # Convert base-16 integers to base-10
-bin2dec() {
-    echo "ibase=2; $@" | bc
-}
+bin2dec() { echo "ibase=2; $@" | bc; }
 
 # Copy last executed terminal command into the clipboard
-copycmd() {
-    history 2 | head -n 1 | cut -d " " -f 4- | xclip -sel cli
-}
+copycmd() { history 2 | head -n 1 | cut -d " " -f 4- | xclip -sel cli; }
 
 urldecode() {
     : "${*//+/ }"
@@ -89,4 +77,13 @@ function cl() {
     fi
     builtin cd "${DIR}" &&
         ls -alF1h --color=auto
+}
+
+# color go test -cover output
+# go install github.com/enrichman/gocol@latest
+gocol() {
+    echo new one
+    gocol_bin="$(go env GOPATH)/bin/gocol"
+    safewhich "$gocol_bin" &&
+        go test -cover "$*" | "$gocol_bin"
 }
