@@ -6,7 +6,7 @@
 
 # As which can have undesired side effects and can't always be used
 # to know if a program exists, use safewhich, which is safe!
-# 
+#
 # Credits goes to:
 # http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
 safewhich() {
@@ -18,12 +18,12 @@ safewhich() {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 tre() {
-    tree -aC -I '.*.swp|.svn|.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+    tree -aC -I '.*.swp|.svn|.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
 }
 
 # Create a new directory and enter it
 mkd() {
-    mkdir -p "$@" && cd "$_";
+    mkdir -p "$@" && cd "$_"
 }
 
 # Show useful filesystem disk space usage
@@ -68,7 +68,10 @@ copycmd() {
     history 2 | head -n 1 | cut -d " " -f 4- | xclip -sel cli
 }
 
-urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
+urldecode() {
+    : "${*//+/ }"
+    echo -e "${_//%/\\x}"
+}
 
 # Copy the absolute path to the argument in the clipboard. Without argument,
 # copy the working directory.
@@ -79,11 +82,11 @@ clipath() {
 # Change directory and list its content at the same time.
 # from https://opensource.com/article/19/7/bash-aliases
 function cl() {
-    DIR="$*";
-        # if no DIR given, go home
-        if [ $# -lt 1 ]; then
-                DIR=$HOME;
-    fi;
-    builtin cd "${DIR}" && \
+    DIR="$*"
+    # if no DIR given, go home
+    if [ $# -lt 1 ]; then
+        DIR=$HOME
+    fi
+    builtin cd "${DIR}" &&
         ls -alF1h --color=auto
 }

@@ -31,13 +31,12 @@ alias lo="ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g
 alias cls='clear'
 
 # less alias
-alias less='less -FXR'   # -R = --RAW-CONTROL-CHARS'
-                         # -F or --quit-if-one-screen
-                         # -X or --no-init
+alias less='less -FXR' # -R = --RAW-CONTROL-CHARS'
+# -F or --quit-if-one-screen
+# -X or --no-init
 
 # add lesc alias (pygmentize + less) if pygmentize is installed
-if safewhich pygmentize
-    then
+if safewhich pygmentize; then
     alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less -N'
     alias ccat='lesc '
 fi
@@ -80,15 +79,13 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # neovim alias
-if safewhich nvim
-    then
+if safewhich nvim; then
     alias vim=nvim
     alias vimdiff='nvim -d'
 fi
 alias vi=vim
 
-if safewhich lazygit
-    then
+if safewhich lazygit; then
     alias zg='lazygit '
 fi
 
@@ -104,21 +101,17 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias ts='date +%s'
 alias tsmilli='date +%s'000
 
-if safewhich yaegi
-    then
+if safewhich yaegi; then
     alias yaegi="rlwrap -D 2 -R -s 1000 -pBlue yaegi"
 fi
 
-if safewhich shmoji && safewhich fzf
-    then
+if safewhich shmoji && safewhich fzf; then
     alias emoji="shmoji fzf"
-    if safewhich xclip
-    then
-    alias emoclip="shmoji fzf | xclip -sel cli"
+    if safewhich xclip; then
+        alias emoclip="shmoji fzf | xclip -sel cli"
     fi
 fi
 
-if safewhich mdcat
-then
-  alias md=mdcat
+if safewhich mdcat; then
+    alias md=mdcat
 fi

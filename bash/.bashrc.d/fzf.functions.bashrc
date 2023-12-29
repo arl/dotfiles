@@ -30,8 +30,7 @@ fag() {
   match_ext=${2:-}
   # forge file matching option only if an extension has been provided
   [[ -n $match_ext ]] && match_ext="-G \.$match_ext\$"
-  if line=$(ag --nobreak --nonumbers --noheading $match_ext . | fzf +m);
-  then
+  if line=$(ag --nobreak --nonumbers --noheading $match_ext . | fzf +m); then
     $editor $(echo $line | cut -d: -f 1)
   else
     echo cancelled...
@@ -58,11 +57,10 @@ fgv() {
 v() {
   local files
   files=$(grep '^>' ~/.viminfo | cut -c3- |
-          while read line; do
-            [ -f "${line/\~/$HOME}" ] && echo "$line"
-          done | fzf -d -m -q "$*" -1) && vim ${files//\~/$HOME}
+    while read line; do
+      [ -f "${line/\~/$HOME}" ] && echo "$line"
+    done | fzf -d -m -q "$*" -1) && vim ${files//\~/$HOME}
 }
-
 
 # Bash
 # ====
@@ -71,16 +69,15 @@ v() {
 fd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
+    -o -type d -print 2>/dev/null | fzf +m) &&
+    cd "$dir"
 }
-
 
 # Git
 # ===
 
 is_in_git_repo() {
-  git rev-parse HEAD > /dev/null 2>&1
+  git rev-parse HEAD >/dev/null 2>&1
 }
 
 # fco - checkout git branch/tag
@@ -89,20 +86,25 @@ fco() {
   local tags branches target
   tags=$(git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
   branches=$(
-    git branch --all | grep -v HEAD             |
-    sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
-    sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+    git branch --all | grep -v HEAD |
+      sed "s/.* //" | sed "s#remotes/[^/]*/##" |
+      sort -u | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}'
+  ) || return
   target=$(
-    (echo "$tags"; echo "$branches") | sed '/^$/d' |
-    fzf_down --no-hscroll --reverse --ansi +m -d "\t" -n 2 -q "$*") || return
+    (
+      echo "$tags"
+      echo "$branches"
+    ) | sed '/^$/d' |
+      fzf_down --no-hscroll --reverse --ansi +m -d "\t" -n 2 -q "$*"
+  ) || return
   git checkout $(echo "$target" | awk '{print $2}')
 }
 
 # fshow - git commit browser
 fshow() {
   git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+    --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+    fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
       --bind "ctrl-m:execute:
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
                 xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
@@ -117,8 +119,8 @@ ftshow() {
     return 0
   fi
   git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+    --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+    fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
       --bind "ctrl-m:execute:
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
                 xargs -I % sh -c 'git --no-pager difftool --tool=difftastic %~1 % --color=always | less -R') << 'FZF-EOF'
@@ -131,18 +133,18 @@ fcor() {
   is_in_git_repo || echo 'not in git repo...'
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-          fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+    branch=$(echo "$branches" |
+      fzf-tmux -d $((2 + $(wc -l <<<"$branches"))) +m) &&
+    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 # ff: fuzzy preview unstaged difference in the working tree.
 ff() {
   is_in_git_repo || echo 'not in git repo...'
   git -c color.status=always status --short |
-  fzf_down -m --ansi --nth 2..,.. \
-    --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
-  cut -c4- | sed 's/.* -> //'
+    fzf_down -m --ansi --nth 2..,.. \
+      --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
+    cut -c4- | sed 's/.* -> //'
 }
 
 # fstash - easier way to deal with stashes
@@ -154,10 +156,10 @@ fstash() {
   local out q k sha
   while out=$(
     git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
-    fzf --ansi --no-sort --query="$q" --print-query \
-        --expect=ctrl-d,ctrl-b);
-  do
-    mapfile -t out <<< "$out"
+      fzf --ansi --no-sort --query="$q" --print-query \
+        --expect=ctrl-d,ctrl-b
+  ); do
+    mapfile -t out <<<"$out"
     q="${out[0]}"
     k="${out[1]}"
     sha="${out[-1]}"
@@ -167,7 +169,7 @@ fstash() {
       git diff $sha
     elif [[ "$k" == 'ctrl-b' ]]; then
       git stash branch "stash-$sha" $sha
-      break;
+      break
     else
       git stash show -p $sha
     fi
@@ -179,17 +181,16 @@ fstash() {
 
 # fkill - kill processes - list only the ones you can kill. Modified the earlier script.
 fkill() {
-  local pid 
+  local pid
   if [ "$UID" != "0" ]; then
     pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
   else
     pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-  fi  
+  fi
 
-  if [ "x$pid" != "x" ]
-  then
+  if [ "x$pid" != "x" ]; then
     echo $pid | xargs kill -${1:-9}
-  fi  
+  fi
 }
 
 # Tmux
@@ -211,14 +212,14 @@ fpane() {
     tmux select-pane -t ${target_window}.${target_pane}
   else
     tmux select-pane -t ${target_window}.${target_pane} &&
-    tmux select-window -t $target_window
+      tmux select-window -t $target_window
   fi
 }
 
 # Switch tmux-sessions
 fs() {
   local session
-  session=$(tmux list-sessions -F "#{session_name}" | \
+  session=$(tmux list-sessions -F "#{session_name}" |
     fzf --height 40% --reverse --query="$1" --select-1 --exit-0)
   if [ $? -eq 0 ]; then
     if [ -n "${TMUX}" ]; then
