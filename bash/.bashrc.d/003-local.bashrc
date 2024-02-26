@@ -5,4 +5,4 @@
 
 export SSH_KEYS="$HOME/.ssh/id_ed25519"
 export GOPATH=$HOME/dev
-export PATH=$GOPATH/bin:$PATH
+export PATH=$GOPATH/bin:$(go env GOROOT)/bin:$PATH
