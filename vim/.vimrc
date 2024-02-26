@@ -12,7 +12,7 @@ call plug#begin()
 
     " sort with :14,51sort i
     Plug 'airblade/vim-gitgutter'
-    Plug 'aurelien-rainone/colorschwitch'
+    Plug 'arl/colorschwitch'
     Plug 'brooth/far.vim'
     Plug 'cocopon/lightline-hybrid.vim'
     Plug 'ctrlpvim/ctrlp.vim'
