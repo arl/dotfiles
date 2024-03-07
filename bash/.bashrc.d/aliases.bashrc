@@ -113,5 +113,9 @@ if safewhich shmoji && safewhich fzf; then
 fi
 
 if safewhich mdcat; then
-    alias md=mdcat
+    alias md="mdcat "
+fi
+
+if safewhich tldr; then
+    alias tldr="tldr -t base16 "
 fi
