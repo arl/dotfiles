@@ -87,3 +87,23 @@ gocol() {
     safewhich "$gocol_bin" &&
         go test -cover "$*" | "$gocol_bin"
 }
+
+# Convert a date string to the number of seconds since unix Epoch.
+# Use now without any arguments.
+ts() {
+  if [ -n "$1" ]; then
+    date -d "$1" +%s
+  else
+    date +%s
+  fi
+}
+
+# Convert a date string to the number of milliseconds since unix Epoch.
+# Use now without any arguments.
+tsmilli() {
+  if [ -n "$1" ]; then
+    date -d "$1" +%s000
+  else 
+    date +%s000
+  fi
+}
