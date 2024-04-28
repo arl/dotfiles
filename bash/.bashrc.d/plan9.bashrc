@@ -2,11 +2,12 @@
 #
 # plan9port, for acme
 #
+PLAN9="/usr/local/plan9"
 
-# no acme no party
-safewhich acme || return 0
+# Check if /usr/local/plan9 exists and is a directory
+[ -d  $PLAN9 ] || return
 
-PLAN9=/usr/local/plan9 export PLAN9
+export PLAN9
 PATH=$PATH:$PLAN9/bin
 
 alias acme="acme -m /mnt/acme -f /mnt/font/Consolas/12a/font"
