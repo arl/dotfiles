@@ -109,7 +109,8 @@ if safewhich shmoji && safewhich fzf; then
 fi
 
 if safewhich mdcat; then
-    alias md="mdcat "
+    md() { [ $# -eq 0 ] && mdcat README.md || mdcat "$@"; }
+    alias md='md'
 fi
 
 if safewhich tldr; then
