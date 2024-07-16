@@ -234,10 +234,6 @@ call plug#end()
 
     filetype plugin indent on    " required
 
-    " ale
-
-    " rust
-    let g:rustfmt_autosave = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Options
