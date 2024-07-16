@@ -3,6 +3,11 @@
 # local stuff (machine-specific)
 #
 
+if safewhich atuin; then
+    export PATH="$HOME/.atuin/bin:$PATH"
+fi
+
 export SSH_KEYS="$HOME/.ssh/id_ed25519"
 export GOPATH=$HOME/dev
-export PATH=$GOPATH/bin:$(go env GOROOT)/bin:$PATH
+PATH=$GOPATH/bin:$(go env GOROOT)/bin:$PATH
+export PATH

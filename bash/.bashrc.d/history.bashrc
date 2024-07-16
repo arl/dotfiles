@@ -6,7 +6,60 @@
 if safewhich atuin; then
    [[ -f ~/.bash-preexec.sh ]] && source "$HOME/.bash-preexec.sh"
    # Bind ctrl-r but not up arrow
-   eval "$(atuin init --disable-up-arrow bash)"
+   # eval "$(atuin init --disable-up-arrow bash)"
+   # return
+
+   # replace the default:
+   # [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+   # eval "$(atuin init bash)"
+
+   # with this:
+   [[ -f ~/.bash-preexec.sh ]] && source "$HOME/.bash-preexec.sh"
+   eval "$(atuin init bash --disable-up-arrow)"
+
+   export ATUIN_ARROW_INDEX=-1
+   export ATUIN_CYCLE_MODE=0
+   __atuin__up_arrow() {
+      if [[ $ATUIN_CYCLE_MODE -eq 0 && -n "$READLINE_LINE" ]]; then
+         # execute traditional atuin_history up arrow function, interactive backwards prefix search or whatever
+         __atuin_history --shell-up-key-binding
+         return
+      fi
+
+      export ATUIN_ARROW_INDEX=$((ATUIN_ARROW_INDEX + 1))
+      export ATUIN_CYCLE_MODE=1
+
+      HISTORY=$(atuin search --cmd-only --filter-mode host --limit 1 --offset $ATUIN_ARROW_INDEX)
+      READLINE_LINE=${HISTORY}
+      READLINE_POINT=${#READLINE_LINE}
+
+      return
+   }
+
+   __atuin__down_arrow() {
+      export ATUIN_ARROW_INDEX=$((ATUIN_ARROW_INDEX - 1))
+      if [[ $ATUIN_ARROW_INDEX -lt 0 ]]; then
+         __atuin__reset_arrow
+         HISTORY=""
+      else
+         HISTORY=$(atuin search --cmd-only --filter-mode host --limit 1 --offset $ATUIN_ARROW_INDEX)
+      fi
+      READLINE_LINE=${HISTORY}
+      READLINE_POINT=${#READLINE_LINE}
+
+      return
+   }
+
+   __atuin__reset_arrow() {
+      export ATUIN_ARROW_INDEX=-1
+      export ATUIN_CYCLE_MODE=0
+   }
+
+   bind -x '"\e[A": __atuin__up_arrow'
+   bind -x '"\eOA": __atuin__up_arrow'
+   bind -x '"\e[B": __atuin__down_arrow'
+   bind -x '"\eOB": __atuin__down_arrow'
+   precmd_functions+=(__atuin__reset_arrow)
    return
 fi
 
