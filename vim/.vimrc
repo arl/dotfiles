@@ -11,29 +11,23 @@ let mapleader=","             " set leader as ','
 call plug#begin()
 
     " sort with :14,51sort i
+    Plug 'Matt-Deacalion/vim-systemd-syntax'
     Plug 'airblade/vim-gitgutter'
     Plug 'arl/colorschwitch'
     Plug 'brooth/far.vim'
     Plug 'cocopon/lightline-hybrid.vim'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'easymotion/vim-easymotion'
-    Plug 'editorconfig/editorconfig-vim'
     Plug 'elzr/vim-json'
-    Plug 'govim/govim'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'iCyMind/NeoSolarized'
     Plug 'itchyny/lightline.vim'
     Plug 'jez/vim-superman'
-    Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/gv.vim'
-    Plug 'keith/travis.vim'
     Plug 'majutsushi/tagbar'
-    Plug 'Matt-Deacalion/vim-systemd-syntax'
     Plug 'maximbaz/lightline-ale'
-    Plug 'mileszs/ack.vim'
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'roxma/vim-tmux-clipboard'
-    Plug 'rust-lang/rust.vim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'scrooloose/syntastic'
@@ -45,16 +39,9 @@ call plug#begin()
     Plug 'tpope/vim-surround'
     Plug 'unblevable/quick-scope'
     Plug 'vim-scripts/argtextobj.vim'
-    Plug 'vim-scripts/bats.vim'
     Plug 'will133/vim-dirdiff'
-    Plug 'yami-beta/asyncomplete-omni.vim'
     if has('nvim')
         Plug 'morhetz/gruvbox'
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        Plug 'zchee/deoplete-clang'
-        let g:deoplete#enable_at_startup = 1
-        let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
-        let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
     endif
 
 call plug#end()
@@ -63,29 +50,56 @@ call plug#end()
     """"""""""""""""" Plugin Configuration """"""""""""""""" 
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+    " basically a lot of this configuration comes from:
+    " https://pmihaylov.com/vim-for-go-development/
+
+    " coc
+    " Use tab for trigger completion with characters ahead and navigate
+    " NOTE: There's always complete item selected by default, you may want to enable
+    " no select by `"suggest.noselect": true` in your configuration file
+    " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+    " other plugin before putting this into your config
+    inoremap <silent><expr> <TAB>
+          \ coc#pum#visible() ? coc#pum#next(1) :
+          \ CheckBackspace() ? "\<Tab>" :
+          \ coc#refresh()
+    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+    " GoTo code navigation
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+
+    " Go
+    " disable all linters as that is taken care of by coc.nvim
+    let g:go_diagnostics_enabled = 0
+    let g:go_metalinter_enabled = []
+
+    " don't jump to errors after metalinter is invoked
+    let g:go_jump_to_error = 0
+
+    " run go imports on file save
+    let g:go_fmt_command = "goimports"
+
+    " automatically highlight variable your cursor is on
+    let g:go_auto_sameids = 0
+
+    let g:go_highlight_types = 1
+    let g:go_highlight_fields = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_function_calls = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_extra_types = 1
+    let g:go_highlight_build_constraints = 1
+    let g:go_highlight_generate_tags = 1
+
+
     " NERDTree
     map <F2> :NERDTreeToggle<CR>
 
     " tagbar
     nmap <F8> :TagbarToggle<CR>
-
-    " asyncomplete and go
-    function! Omni()
-        call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-                        \ 'name': 'omni',
-                        \ 'whitelist': ['go'],
-                        \ 'completor': function('asyncomplete#sources#omni#completor')
-                        \  }))
-    endfunction
-    au VimEnter * :call Omni()
-
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-
-    " To automatically show doc in popus when hovering
-    set completeopt=menuone,noinsert,noselect,popup
-    let g:asyncomplete_auto_completeopt = 0
 
     " CtrlP
     nnoremap <leader>f :CtrlP<CR>
@@ -215,22 +229,6 @@ call plug#end()
     " following patterns array:
     let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
     let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
-
-    " vim-grepper
-    runtime plugin/grepper.vim
-    nnoremap <leader>g :Grepper<cr>
-    let g:grepper = { 'next_tool': '<leader>g' }
-    nmap gs  <plug>(GrepperOperator)
-    xmap gs  <plug>(GrepperOperator)
-
-    " ack.vim
-    if executable('ag')
-      "let g:ackprg = 'ag\ --vimgrep\ -S'
-      let g:ackprg = 'ag'
-      let g:ack_default_options = " -s -H --nocolor --nogroup --column --smart-case --follow"
-      " by default, do not jump to first result
-      cnoreabbrev Ack Ack!
-    endif
 
     filetype plugin indent on    " required
 
