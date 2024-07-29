@@ -2,7 +2,6 @@
 #
 # globals
 #
-EDITOR=nvim
 TERM=xterm-256color
 
 # make less more friendly for non-text input files, see lesspipe(1)

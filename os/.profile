@@ -66,7 +66,7 @@ if [ -n "$GOPATH" ]; then
     fi
 fi
 
-export GIT_EDITOR=vim
-export EDITOR=vim
+export GIT_EDITOR=nvim
+export EDITOR=nvim
 
 # shellcheck source=/dev/null
