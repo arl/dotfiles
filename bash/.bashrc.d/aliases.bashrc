@@ -112,7 +112,3 @@ if safewhich mdcat; then
     md() { [ $# -eq 0 ] && mdcat README.md || mdcat "$@"; }
     alias md='md'
 fi
-
-if safewhich tldr; then
-    alias tldr="tldr -t base16 "
-fi
