@@ -94,6 +94,13 @@ call plug#end()
     let g:go_highlight_build_constraints = 1
     let g:go_highlight_generate_tags = 1
 
+    " Ctrl-Click -> go to definition
+    function! GoToDefMouse()
+      if &filetype == 'go'
+        execute 'GoDef'
+      endif
+    endfunction
+    autocmd FileType go nnoremap <silent> <C-LeftMouse> :call GoToDefMouse()<CR>
 
     " NERDTree
     map <F2> :NERDTreeToggle<CR>
@@ -236,11 +243,14 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map Ctrl-C/Ctrl-v to copy/paste
+" map Ctrl-c/Ctrl-v to copy/paste
 vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
+
+map <A-Left> <C-O>
+map <A-Right> <C-I>
 
 "store lots of :cmdline history
 set history=1000
@@ -374,12 +384,6 @@ map <C-Right> :tag<CR>
 " map :tabprevious and :tabnext to leader-CTRL-Left/Right
 nmap <silent> <leader><C-Left> :tabprevious<CR>
 nmap <silent> <leader><C-Right> :tabnext<CR>
-
-" ALT + arrow to navigate between windows
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
 
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
