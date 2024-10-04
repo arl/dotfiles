@@ -1,6 +1,0 @@
-#!/bin/bash
-
-safewhich gocomplete || return 0
-
-# go install github.com/posener/complete/gocomplete@latest
-complete -C "$(command -v gocomplete)" go
