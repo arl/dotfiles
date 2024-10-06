@@ -53,6 +53,10 @@ call plug#end()
     " basically a lot of this configuration comes from:
     " https://pmihaylov.com/vim-for-go-development/
 
+    function! CheckBackspace() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
     " coc
     " Use tab for trigger completion with characters ahead and navigate
     " NOTE: There's always complete item selected by default, you may want to enable
