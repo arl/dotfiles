@@ -9,13 +9,13 @@
   "[go.mod]": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     }
   },
   "[go]": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     }
   },
   "[javascript]": {
@@ -69,12 +69,13 @@
     "target/release": true
   },
   "github.copilot.enable": {
-    "*": false,
+    "*": true,
     "plaintext": false,
-    "markdown": false,
+    "markdown": true,
     "scminput": false,
     "jsonc": false,
-    "go": true
+    "go": true,
+    "shellscript": true
   },
   "githubPullRequests.pullBranch": "never",
   "go.delveConfig": {
@@ -92,9 +93,7 @@
   "go.languageServerExperimentalFeatures": {
     "diagnostics": true
   },
-  "go.testFlags": [
-    "-v"
-  ],
+  "go.testFlags": ["-v"],
   "go.useLanguageServer": true,
   "gopls": {
     "usePlaceholders": true,
@@ -168,9 +167,7 @@
     "work/": true
   },
   "shellcheck.disableVersionCheck": true,
-  "shellcheck.exclude": [
-    "SC1091"
-  ],
+  "shellcheck.exclude": ["SC1091"],
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.defaultProfile.linux": "bash",
@@ -199,8 +196,28 @@
     "minimap.background": "#00002299",
     "minimapSlider.background": "#595a9970",
     "minimapSlider.activeBackground": "#595a99b0",
-    "minimapSlider.hoverBackground": "#595a9990",
+    "minimapSlider.hoverBackground": "#595a9990"
   },
-  "workbench.colorTheme": "Alabaster Dark",
-  "workbench.iconTheme": "vscode-icons"
+  "workbench.colorTheme": "Minimal",
+  "workbench.iconTheme": "vscode-icons",
+  "[go][go.mod]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "editor.occurrencesHighlight": "multiFile",
+  "githubPullRequests.fileListLayout": "flat",
+  "[st]": {
+    "editor.formatOnSave": false
+  },
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "window.zoomLevel": 0,
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
