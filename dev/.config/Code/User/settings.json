@@ -30,7 +30,6 @@
   "[rust]": {
     "editor.guides.bracketPairs": true
   },
-  "breadcrumbs.enabled": true,
   "editor.fontFamily": "  'L- Consolas', 'Consolas', 'Courier New', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
