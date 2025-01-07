@@ -9,6 +9,6 @@
 VMAN_BIN=$HOME/.vim/plugged/vim-superman/bin
 if [ -f "${VMAN_BIN}/vman" ];
 then
-  export PATH=$PATH:$VMAN_BIN
+  addToPATH $VMAN_BIN
   alias man=vman
 fi

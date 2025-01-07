@@ -4,10 +4,10 @@
 #
 
 if safewhich atuin; then
-    export PATH="$HOME/.atuin/bin:$PATH"
+    addToPATH $HOME/.atuin/bin
 fi
 
 export SSH_KEYS="$HOME/.ssh/id_ed25519"
 export GOPATH=$HOME/dev
-PATH=$GOPATH/bin:$(go env GOROOT)/bin:$PATH
+addToPATH $GOPATH/bin:$(go env GOROOT)/bin
 export PATH

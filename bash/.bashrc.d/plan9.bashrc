@@ -8,6 +8,6 @@ PLAN9="/usr/local/plan9"
 [ -d  $PLAN9 ] || return
 
 export PLAN9
-PATH=$PATH:$PLAN9/bin
+addToPATH $PLAN9/bin
 
 alias acme="acme -m /mnt/acme -f /mnt/font/Consolas/12a/font"

@@ -15,7 +15,8 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
 # Add "a few" things to the $PATH
-export PATH="$PATH:/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin:$NPM_PACKAGES/bin"
+addToPATH "/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin"
+addToPATH "$NPM_PACKAGES/bin"
 
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
