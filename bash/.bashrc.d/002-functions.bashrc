@@ -10,7 +10,7 @@
 # Credits goes to:
 # http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
 safewhich() {
-    command -v "$1" >/dev/null 2>&1
+  command -v "$1" >/dev/null 2>&1
 }
 
 # only add an entry to PATH if not already there.
@@ -26,12 +26,12 @@ function addToPATH {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 tre() {
-    tree -aC -I '.*.swp|.svn|.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
+  tree -aC -I '.*.swp|.svn|.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
 }
 
 # Create a new directory and enter it
 mkd() {
-    mkdir -p "$@" && cd "$_"
+  mkdir -p "$@" && cd "$_" || exit
 }
 
 # Show useful filesystem disk space usage
@@ -39,61 +39,63 @@ dfs() { df -Ph -x squashfs; }
 
 # Convert base-16 integers to base-10
 hex2dec() {
-    local hex=$(echo "$@" | tr '[:lower:]' '[:upper:]')
-    echo "ibase=16; ${hex}" | bc
+  local hex
+  hex=$(echo "$*" | tr '[:lower:]' '[:upper:]')
+  echo "ibase=16; ${hex}" | bc
 }
 
 # Convert base-10 integers to base-16
-dec2hex() { echo "obase=16; $@" | bc; }
+dec2hex() { echo "obase=16; $*" | bc; }
 
 # Convert base-16 integers to binary
 hex2bin() {
-    local hex=$(echo "$@" | tr '[:lower:]' '[:upper:]')
-    echo "ibase=16; obase=2; ${hex}" | bc
+  local hex
+  hex=$(echo "$*" | tr '[:lower:]' '[:upper:]')
+  echo "ibase=16; obase=2; ${hex}" | bc
 }
 
 # Convert base-2 integers to base-16
 bin2hex() { printf 'obase=16; ibase=2; %s\n' "$1" | bc; }
 
 # Convert base-10 integers to binary
-dec2bin() { echo "obase=2; $@" | bc; }
+dec2bin() { echo "obase=2; $*" | bc; }
 
 # Convert base-16 integers to base-10
-bin2dec() { echo "ibase=2; $@" | bc; }
+bin2dec() { echo "ibase=2; $*" | bc; }
 
 # Copy last executed terminal command into the clipboard
 copycmd() { history 2 | head -n 1 | cut -d " " -f 4- | xclip -sel cli; }
 
 urldecode() {
-    : "${*//+/ }"
-    echo -e "${_//%/\\x}"
+  : "${*//+/ }"
+  echo -e "${_//%/\\x}"
 }
 
 # Copy the absolute path to the argument in the clipboard. Without argument,
 # copy the working directory.
 clipath() {
-    safewhich xclip && readlink -e "${1:-.}" | tr -d '\r\n' | xclip -sel cli
+  safewhich xclip && readlink -e "${1:-.}" | tr -d '\r\n' | xclip -sel cli
 }
 
 # Change directory and list its content at the same time.
 # from https://opensource.com/article/19/7/bash-aliases
 function cl() {
-    DIR="$*"
-    # if no DIR given, go home
-    if [ $# -lt 1 ]; then
-        DIR=$HOME
-    fi
-    builtin cd "${DIR}" &&
-        ls -alF1h --color=auto
+  DIR="$*"
+  # if no DIR given, go home
+  if [ $# -lt 1 ]; then
+    DIR=$HOME
+  fi
+  builtin cd "${DIR}" &&
+    ls -alF1h --color=auto
 }
 
 # color go test -cover output
 # go install github.com/enrichman/gocol@latest
 gocol() {
-    echo new one
-    gocol_bin="$(go env GOPATH)/bin/gocol"
-    safewhich "$gocol_bin" &&
-        go test -cover "$*" | "$gocol_bin"
+  echo new one
+  gocol_bin="$(go env GOPATH)/bin/gocol"
+  safewhich "$gocol_bin" &&
+    go test -cover "$*" | "$gocol_bin"
 }
 
 # Convert a date string to the number of seconds since unix Epoch.
@@ -111,7 +113,7 @@ ts() {
 tsmilli() {
   if [ -n "$1" ]; then
     date -d "$1" +%s000
-  else 
+  else
     date +%s000
   fi
 }
