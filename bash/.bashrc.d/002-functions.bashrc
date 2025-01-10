@@ -15,10 +15,11 @@ safewhich() {
 
 # only add an entry to PATH if not already there.
 function addToPATH {
-  case ":$PATH:" in
-    *":$1:"*) :;; # already there
-    *) PATH="$1:$PATH";; # or PATH="$PATH:$1"
-  esac
+  IFS=':' read -ra path_parts <<<"$PATH"
+  for p in "${path_parts[@]}"; do
+    [[ $p == "$1" ]] && return
+  done
+  PATH="$PATH:$1"
 }
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
