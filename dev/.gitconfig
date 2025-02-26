@@ -1,33 +1,55 @@
 [user]
   email = aurelien.rainone@gmail.com
   name = Aurélien Rainone
-[merge]
-  tool = vimdiff
-[mergetool]
-  prompt = true
-[mergetool "vimdiff"]
-  cmd = vimdiff $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-[diff]
-  tool = vimdiff
-[difftool]
-  prompt = false
-[difftool "vimdiff"]
-  cmd = vimdiff $LOCAL $REMOTE
+
 # Requires github.com/Wilfred/difftastic in the PATH somewhere
 [difftool "difftastic"]
   cmd = difft --color=always $LOCAL $REMOTE
 [pager]
   difftool = true
+
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+
+[help]
+  autocorrect = prompt
+[commit]
+  verbose = true
+[rerere]
+  enabled = true
+  autoupdate = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+
 [alias]
   # to save a few keystrokes
   br = branch -avv
   co = checkout
-  st = status --column
+  st = status
   ds = diff --staged
   mt = mergetool
   mtg = mergetool --gui
   dt = difftool
-  dtg = "!f() { git --no-pager difftool --tool=vimdiff; }; f"
+  dtg = "!f() { git --no-pager difftool --tool=nvim; }; f"
   dtt = difftool --tool difftastic
 
   # Use difftastic to show the diff of a commit
@@ -53,7 +75,7 @@
   undo      = reset --soft HEAD^
   cosmetics = commit -m 'Cosmetics'
   # Interactive rebase with the given number of latest commits
-  reb = "!r() { git rebase -i --autosquash HEAD~$1; }; r"
+  reb = "!r() { git rebase -i --no-fork-point --autosquash HEAD~$1; }; r"
   # Put the whole staging area in a fixpu commit
   tobesquashed = commit --fixup HEAD
   ctags = "!f() { (cd $(git rev-parse --show-toplevel) && .git/hooks/gentags) ; }; f"
@@ -73,8 +95,6 @@
   odoo = "!f() { git --no-pager log --all --no-merges --since \"last month\" --author \"$(git config user.name)\" --abbrev-commit --oneline --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=short --color=auto ; }; f"
 [status]
   relativePaths = true
-[push]
-  default = simple
 [format]
   pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [core]
@@ -101,11 +121,9 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   clean = git-lfs clean -- %f
-[rebase]
-  autosquash = true
 [init]
   templatedir = ~/.git_template
-	defaultBranch = main
+  defaultBranch = main
 [gui]
   fontui = -family \"Consolas\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
   fontdiff = -family \"Consolas\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
@@ -117,7 +135,5 @@
   spellcheck = false
 [url "git@github.com:"]
   insteadOf = https://github.com/
-[rerere]
-  enabled = true
 [color]
   ui = always
