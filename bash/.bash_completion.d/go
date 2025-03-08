@@ -1,71 +1,80 @@
-#!/bin/bash
+# Install in /etc/bash_completion.d/ or your personal directory
 
-# (The MIT License)
-#
-# Copyright (c) 2014 Kura
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the 'Software'), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+complete -f -X '!*.8' 8l
+complete -f -X '!*.6' 6l
+complete -f -X '!*.5' 5l
+complete -f -X '!*.go' 8g 6g 5g gofmt gccgo
 
-
-
-_go_expand ()
-{
-    [ "$cur" != "${cur%\\}" ] && cur="$cur"'\';
-    if [[ "$cur" == \~*/* ]]; then
-        eval cur=$cur;
-    else
-        if [[ "$cur" == \~* ]]; then
-            cur=${cur#\~};
-            COMPREPLY=($( compgen -P '~' -u $cur ));
-            return ${#COMPREPLY[@]};
-        fi;
-    fi
+_go_importpath() {
+  echo "$(compgen -W "$(go list all) all std" -- "$1")"
 }
 
-_go_filedir () 
-{
-    local IFS='
-';
-    _tmux_expand || return 0;
-    if [ "$1" = -d ]; then
-        COMPREPLY=(${COMPREPLY[@]} $( compgen -d -- $cur ));
-        return 0;
-    fi;
-    COMPREPLY=(${COMPREPLY[@]} $( eval compgen -f -- \"$cur\" ))
+_go_test_functions() {
+  find . -not -path "./vendor" -type f -name "*_test.go" -exec cat {} \; | grep -oP '^func (\w+)\(\w \*testing\.T\) {$' | grep -oP ' \w+' | grep -oP '\w+';
 }
 
-function _go() {
-  cur="${COMP_WORDS[COMP_CWORD]}"
-  case "${COMP_WORDS[COMP_CWORD-1]}" in
-    "go")
-      comms="build clean doc env bug fix fmt generate get install list run test tool version vet"
-      COMPREPLY=($(compgen -W "${comms}" -- ${cur}))
+_go_bench_functions() {
+  find . -not -path "./vendor" -type f -name "*_test.go" -exec cat {} \; | grep -oP '^func (\w+)\(\w \*testing\.B\) {$' | grep -oP ' \w+' | grep -oP '\w+';
+}
+
+_go() {
+  local cur prev cmd
+  cur=$(_get_cword)
+  prev="${COMP_WORDS[COMP_CWORD-1]}"
+  cmd="${COMP_WORDS[1]}"
+
+  local cmds="build clean doc env fix fmt generate get install list mod run test tool version vet"
+  local flags
+
+  if [[ "$COMP_CWORD" == 1 ]]; then
+    COMPREPLY=($(compgen -W "$cmds help" -- "$cur"))
+    return
+  fi
+
+  case "$cmd" in
+    'build'|'install')
+      flags="-o -a -n -p -v -x"
       ;;
-    *)
-      #files=$(find ${PWD} -mindepth 1 -maxdepth 1 -type f -iname "*.go" -exec basename {} \;)
-      #dirs=$(find ${PWD} -mindepth 1 -maxdepth 1 -type d -not -name ".*" -exec basename {} \;)
-      #repl="${files} ${dirs}"
-      COMPREPLY=($(compgen -W "${repl}" -- ${cur}))
-      _go_filedir
+    'run')
+      # Filesystem-based completion for 'go run'
+      COMPREPLY=($(compgen -f -- "$cur"))
+      return
+      ;;
+    'clean')
+      flags="-i -r -n -x"
+      ;;
+    'list')
+      flags="-e -f -json"
+      ;;
+    'mod')
+      if [[ "$COMP_CWORD" == 2 ]]; then
+        COMPREPLY=($(compgen -W "download edit graph init tidy vendor verify why" -- "$cur"))
+        return
+      fi
+      ;;
+    'test')
+      case "$prev" in
+        '-run')
+          COMPREPLY=($(compgen -W "$(_go_test_functions)" -- "$cur"))
+          return
+          ;;
+        '-bench')
+          COMPREPLY=($(compgen -W "$(_go_bench_functions)" -- "$cur"))
+          return
+          ;;
+      esac
+      flags="-c -file -i -p -x -run -bench"
+      ;;
+    'vet')
+      flags="-all -asmdecl -assign -atomic -bool -buildtag -cgocall -composites"
       ;;
   esac
-  return 0
+
+  if [[ "$cur" == -* ]]; then
+    COMPREPLY=($(compgen -W "$flags" -- "$cur"))
+  else
+    COMPREPLY=($(_go_importpath "$cur"))
+  fi
 }
 
 complete -F _go go
