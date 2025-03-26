@@ -57,3 +57,8 @@ set convert-meta off
 # ctrl left, ctrl right for moving on the readline by word
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
+
+
+# Male Ctrl-f complete filenames, this helps with completion scripts with a bad
+# behaviour.
+C-f complete-filename
