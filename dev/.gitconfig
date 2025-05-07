@@ -3,8 +3,15 @@
   name = Aurélien Rainone
 
 # Requires github.com/Wilfred/difftastic in the PATH somewhere
+[diff]
+  external = "difft"
+[difftool]
+  prompt = false
 [difftool "difftastic"]
   cmd = difft --color=always $LOCAL $REMOTE
+  prompt = false
+[difftool "nvim"]
+  cmd = nvim -d $LOCAL $REMOTE
 [pager]
   difftool = true
 
@@ -49,8 +56,9 @@
   mt = mergetool
   mtg = mergetool --gui
   dt = difftool
-  dtg = "!f() { git --no-pager difftool --tool=nvim; }; f"
+  dtg = "!f() { git --no-pager difftool --tool=difftastic; }; f"
   dtt = difftool --tool difftastic
+  dtv = "!f() { git --no-pager difftool --tool=nvim --no-prompt $1 $2 -- $3; }; f"
 
   # Use difftastic to show the diff of a commit
   dttshow = "!f() { git dtt ${1:-HEAD}~1 ${1:-HEAD} ; }; f"
