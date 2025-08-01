@@ -1,5 +1,7 @@
 # bash completion V2 for goreleaser                           -*- shell-script -*-
 
+safewhich goreleaser || return 0
+
 __goreleaser_debug()
 {
     if [[ -n ${BASH_COMP_DEBUG_FILE-} ]]; then
