@@ -38,8 +38,8 @@
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
   "editor.mouseWheelZoom": true,
-  "editor.renderControlCharacters": true,
-  "editor.renderWhitespace": "all",
+  "editor.renderControlCharacters": false,
+  "editor.renderWhitespace": "none",
   "editor.roundedSelection": false,
   "editor.selectionHighlight": true,
   "editor.suggestSelection": "first",
@@ -222,5 +222,8 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "git.blame.editorDecoration.enabled": false,
+  "docker.extension.enableComposeLanguageServer": false,
+  "git.blame.statusBarItem.enabled": true
 }
