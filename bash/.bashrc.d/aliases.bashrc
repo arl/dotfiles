@@ -37,7 +37,7 @@ alias less='less -FXR' # -R = --RAW-CONTROL-CHARS'
 
 # add lesc alias (pygmentize + less) if pygmentize is installed
 if safewhich pygmentize; then
-    alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less -N'
+    alias lesc='LESS="-R" LESSOPEN="|pygmentize -P style=dracula -g %s" less -N'
     alias ccat='lesc '
 fi
 
