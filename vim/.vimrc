@@ -10,8 +10,7 @@ let mapleader=","             " set leader as ','
 
 call plug#begin()
 
-    " sort with :14,51sort i
-    Plug 'Matt-Deacalion/vim-systemd-syntax'
+    " sort with :14,44sort i
     Plug 'airblade/vim-gitgutter'
     Plug 'arl/colorschwitch'
     Plug 'brooth/far.vim'
@@ -26,17 +25,18 @@ call plug#begin()
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/gv.vim'
     Plug 'majutsushi/tagbar'
+    Plug 'Matt-Deacalion/vim-systemd-syntax'
     Plug 'maximbaz/lightline-ale'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'scrooloose/syntastic'
+    Plug 'sindrets/diffview.nvim'
     Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-rhubarb'
     Plug 'tpope/vim-sleuth'
-    Plug 'tpope/vim-surround'
     Plug 'unblevable/quick-scope'
     Plug 'vim-scripts/argtextobj.vim'
     Plug 'will133/vim-dirdiff'
