@@ -1,19 +1,12 @@
 python
 
-# Aurelien: this is the old .gdbinit content:
-#<<OLD
-# add path to python so gdb stops to complain and
-# enables pretty-print of C++ types (done in python)
-#python sys.path.append("/usr/share/5/python")
-#>>OLD
-
 # GDB dashboard - Modular visual interface for GDB in Python.
 #
 # https://github.com/cyrus-and/gdb-dashboard
 
 # License ----------------------------------------------------------------------
 
-# Copyright (c) 2015-2024 Andrea Cardaci <cyrus.and@gmail.com>
+# Copyright (c) 2015-2025 Andrea Cardaci <cyrus.and@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -2380,6 +2373,11 @@ set python print-stack full
 # Start ------------------------------------------------------------------------
 
 python Dashboard.start()
+
+# Fixes ------------------------------------------------------------------------
+
+# workaround for the GDB readline issue, see #325
+python import sys; sys.modules['readline'] = None
 
 # File variables ---------------------------------------------------------------
 
