@@ -52,6 +52,8 @@
   br = branch -avv
   co = checkout
   st = status
+  # for use with other tools in command chains
+  rawdiff = diff --no-ext-diff --no-color
   ds = diff --staged
   mt = mergetool
   mtg = mergetool --gui
