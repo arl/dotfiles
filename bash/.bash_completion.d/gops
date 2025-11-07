@@ -5,6 +5,8 @@
 
 # bash completion V2 for gops                                 -*- shell-script -*-
 
+safewhich go || return 0
+
 __gops_debug()
 {
     if [[ -n ${BASH_COMP_DEBUG_FILE-} ]]; then

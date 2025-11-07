@@ -90,15 +90,6 @@ function cl() {
     ls -alF1h --color=auto
 }
 
-# color go test -cover output
-# go install github.com/enrichman/gocol@latest
-gocol() {
-  echo new one
-  gocol_bin="$(go env GOPATH)/bin/gocol"
-  safewhich "$gocol_bin" &&
-    go test -cover "$*" | "$gocol_bin"
-}
-
 # Convert a date string to the number of seconds since unix Epoch.
 # Use now without any arguments.
 ts() {

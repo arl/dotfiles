@@ -1,5 +1,7 @@
 # Install in /etc/bash_completion.d/ or your personal directory
 
+safewhich go || return 1
+
 complete -f -X '!*.8' 8l
 complete -f -X '!*.6' 6l
 complete -f -X '!*.5' 5l
