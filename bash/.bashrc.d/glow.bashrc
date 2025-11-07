@@ -3,13 +3,12 @@
 # mdless alias for glow to read markdown files
 # in the terminal
 #
-# go get -u github.com/charmbracelet/glow
+# go install github.com/charmbracelet/glow@latest
 
-if safewhich glow
-  then
-  mdless() {
-    # Provide . to glow if no arguments, so that glow opens
-    # README.md if it finds one in the current directory.
-    glow -p -s dark ${1:-.}
-  }
-fi
+safewhich glow || return 0
+
+mdless() {
+  # Provide . to glow if no arguments, so that glow opens
+  # README.md if it finds one in the current directory.
+  glow -p -s dark ${1:-.}
+}
