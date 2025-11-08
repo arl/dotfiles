@@ -5,14 +5,14 @@
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias pcregrep='pcregrep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
+  alias pcregrep='pcregrep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -37,8 +37,8 @@ alias less='less -FXR' # -R = --RAW-CONTROL-CHARS'
 
 # add lesc alias (pygmentize + less) if pygmentize is installed
 if safewhich pygmentize; then
-    alias lesc='LESS="-R" LESSOPEN="|pygmentize -P style=dracula -g %s" less -N'
-    alias ccat='lesc '
+  alias lesc='LESS="-R" LESSOPEN="|pygmentize -P style=dracula -g %s" less -N'
+  alias ccat='lesc '
 fi
 
 # tmux aliases
@@ -80,13 +80,13 @@ alias ....='cd ../../..'
 
 # neovim alias
 if safewhich nvim; then
-    alias vim=nvim
-    alias vimdiff='nvim -d'
+  alias vim=nvim
+  alias vimdiff='nvim -d'
 fi
 alias vi=vim
 
 if safewhich lazygit; then
-    alias zg='lazygit '
+  alias zg='lazygit '
 fi
 
 # python virtualenv aliases
@@ -98,16 +98,16 @@ alias va='source ./.venv/bin/activate'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 if safewhich yaegi; then
-    alias yaegi="rlwrap -D 2 -R -s 1000 -pBlue yaegi"
+  alias yaegi="rlwrap -D 2 -R -s 1000 -pBlue yaegi"
 fi
 
 if safewhich shmoji && safewhich fzf; then
-    alias emoji="shmoji fzf"
-    if safewhich xclip; then
-        alias emoclip="shmoji fzf | xclip -sel cli"
-    fi
+  alias emoji="shmoji fzf"
+  if safewhich xclip; then
+      alias emoclip="shmoji fzf | xclip -sel cli"
+  fi
 fi
 
 if safewhich glow; then
-    alias md='glow'
+  alias md='glow'
 fi
