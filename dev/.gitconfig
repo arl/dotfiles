@@ -74,6 +74,7 @@
   # pretty logging: only commits leading to HEAD
   lol= log --pretty=oneline --abbrev-commit --graph --decorate
   lolr= log --pretty=oneline --abbrev-commit --graph --decorate --remotes
+  ls= log --stat
 
   # Interactive apply patch (hunks)
   ipatch = "!f() { git apply $1; git add -p; }; f"
