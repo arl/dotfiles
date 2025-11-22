@@ -1,4 +1,5 @@
 # vim: set ft=sh ts=2 sw=2 sts=2 et sta:
+# shellcheck shell=bash
 #
 # prompt
 #
