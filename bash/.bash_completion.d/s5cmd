@@ -1,11 +1,31 @@
-#!/bin/bash
-
-# vim: set ft=sh ts=2 sw=2 sts=2 et sta:
-#
-# install bash completion for s5cmd
-# https://github.com/peak/s5cmd
-
 safewhich s5cmd || return 0
 
-COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
-complete -C "$(command -v s5cmd)" s5cmd
+# To update completion, run:
+# :7,$d
+# :r!s5cmd --install-completion
+
+# To enable autocompletion you should add the following script to startup scripts of your shell.
+# It is probably located at ~/.bashrc
+# prepare autocompletion suggestions for s5cmd and save them to COMPREPLY array
+_s5cmd_cli_bash_autocomplete() {
+	if [[ "${COMP_WORDS[0]}" != "source" ]]; then
+		COMPREPLY=()
+		local opts cur cmd
+		cur="${COMP_WORDS[COMP_CWORD]}"
+		cmd="${COMP_LINE:0:$COMP_POINT}"
+		[ "${COMP_LINE:COMP_POINT-1:$COMP_POINT}" == " " ] \
+			&& cmd="${cmd} ''" 
+		opts=$($cmd --generate-bash-completion)
+
+		while IFS='' read -r line;
+		do
+			COMPREPLY+=("$line");
+		done \
+		< <(compgen -o bashdefault -o default -o nospace -W "${opts}" -- "${cur}")
+
+		return 0
+	fi
+}
+
+# call the _s5cmd_cli_bash_autocomplete to complete s5cmd command.
+complete -o nospace -F _s5cmd_cli_bash_autocomplete s5cmd
