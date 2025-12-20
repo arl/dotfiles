@@ -242,6 +242,7 @@ call plug#end()
     let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
     filetype plugin indent on    " required
+    autocmd FileType gitcommit setlocal textwidth=66
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
