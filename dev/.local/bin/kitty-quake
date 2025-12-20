@@ -1,16 +1,9 @@
 #!/bin/bash
 # Helper script for quake-style kitty terminal
 
-# Use tdrop with mouse-based monitor detection and fullscreen
-# tdrop -m -t \
-#       -P 'wmctrl -i -r $wid -b add,sticky,fullscreen' \
-#       -w 100% -h 100% \
-#       --wm wmctrl \
-#       kitty --start-as=fullscreen
-
-# Seems we can remove the explicit width/height and start-as options since they
-# are implied by the wmctrl options.
-tdrop -m -t \
+# Use GLFW_IM_MODULE=ibus or the caret (^) and probably
+# other keys are not recognized by kitty.
+GLFW_IM_MODULE=ibus tdrop -m -t \
       -P 'wmctrl -i -r $wid -b add,sticky,fullscreen' \
       --wm wmctrl \
       kitty
