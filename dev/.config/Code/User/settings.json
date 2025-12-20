@@ -86,7 +86,7 @@
     "apiVersion": 2,
     "showGlobalVariables": true
   },
-  "go.formatTool": "gofumpt",
+  "go.formatTool": "goimports",
   "go.languageServerExperimentalFeatures": {
     "diagnostics": true
   },
