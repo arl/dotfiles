@@ -344,7 +344,7 @@ set softtabstop=4
 " auto indent line after pressing Enter
 set autoindent
 set cindent
-inoremap { {<CR>}<up><end><CR>
+"inoremap { {<CR>}<up><end><CR>
 
 " per filetype
 """"""""""""""""""""
