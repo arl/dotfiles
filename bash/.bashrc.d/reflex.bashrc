@@ -9,6 +9,6 @@ safewhich reflex || return
 function reflexgo
 {
   local cmdline="${*:-go run -race . | pp}"
-  reflex -r '\.go$' -s -- bash -c "$cmdline"
+  reflex -r '\.go$' -- bash -c "$cmdline"
 }
 
