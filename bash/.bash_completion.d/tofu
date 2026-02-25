@@ -1,0 +1,24 @@
+# vim: set ft=sh ts=2 sw=2 sts=2 et sta:
+#
+# tofu autocomplete
+#
+
+safewhich tofu || return 0
+
+complete -C /snap/opentofu/220/tofu tofu
+
+_script_tofu_completions() {
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "aws gitlab ovh" -- "${COMP_WORDS[COMP_CWORD]}"))
+    else
+        # Rebuild the command line as if "tofu" was called directly,
+        # removing the module name (first argument)
+        local cur="${COMP_WORDS[COMP_CWORD]}"
+        local line="tofu ${COMP_WORDS[*]:2}"
+        local point=$((${#line} - ${#COMP_LINE} + ${COMP_POINT}))
+
+        COMPREPLY=($(COMP_LINE="$line" COMP_POINT="$point" /snap/opentofu/220/tofu))
+    fi
+}
+
+complete -o default -F _script_tofu_completions ./script/tofu
