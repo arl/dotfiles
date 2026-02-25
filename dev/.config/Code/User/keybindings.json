@@ -62,5 +62,15 @@
     "key": "ctrl+shift+t",
     "command": "-extension.goToTest",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+[Quote]",
+    "command": "github.copilot.chat.completions.enable",
+    "when": "github.copilot.activated && github.copilot.extensionUnification.activated && !config.editor.inlineSuggest.enabled || github.copilot.activated && github.copilot.extensionUnification.activated && !github.copilot.completions.enabled"
+  },
+  {
+    "key": "ctrl+shift+[Backslash]",
+    "command": "github.copilot.chat.completions.disable",
+    "when": "config.editor.inlineSuggest.enabled && github.copilot.activated && github.copilot.completions.enabled && github.copilot.extensionUnification.activated"
   }
 ]

@@ -30,7 +30,6 @@
   },
   "editor.fontFamily": "  'L- Consolas', 'Consolas', 'Courier New', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
-  "editor.formatOnSave": true,
   "editor.guides.bracketPairs": false,
   "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": true,
@@ -66,13 +65,11 @@
     "target/release": true
   },
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
     "plaintext": false,
     "markdown": true,
     "scminput": false,
-    "jsonc": false,
-    "go": true,
-    "shellscript": true
+    "python": false
   },
   "githubPullRequests.pullBranch": "never",
   "go.delveConfig": {
@@ -90,7 +87,9 @@
   "go.languageServerExperimentalFeatures": {
     "diagnostics": true
   },
-  "go.testFlags": ["-v"],
+  "go.testFlags": [
+    "-v"
+  ],
   "go.useLanguageServer": true,
   "gopls": {
     "usePlaceholders": true,
@@ -164,7 +163,9 @@
     "work/": true
   },
   "shellcheck.disableVersionCheck": true,
-  "shellcheck.exclude": ["SC1091"],
+  "shellcheck.exclude": [
+    "SC1091"
+  ],
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.defaultProfile.linux": "bash",
@@ -214,7 +215,7 @@
   "window.zoomLevel": 0,
   "diffEditor.hideUnchangedRegions.enabled": true,
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   // "[typescript]": {
   //   "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -889,7 +890,27 @@
       "tool": "librarian",
       "action": "allow"
     }
-  ]
+  ],
+  "chat.tools.terminal.autoApprove": {
+    "/^go build \\./\\.\\.\\.$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "go": true
+  },
+  "claudeCode.preferredLocation": "panel",
   "amp.git.commit.coauthor.enabled": false,
   "amp.git.commit.ampThread.enabled": false,
+  "chat.tools.urls.autoApprove": {
+    "https://raw.githubusercontent.com": {
+      "approveRequest": false,
+      "approveResponse": true
+    }
+  },
+  "editor.formatOnSave": true,
+  "[shellscript]": {
+    "files.eol": "\n",
+    "editor.defaultColorDecorators": "never",
+    "editor.detectIndentation": true,
+  },
 }
