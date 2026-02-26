@@ -11,7 +11,14 @@ case $- in
 *) return ;;
 esac
 
-for file in ~/.bashrc.d/*.bashrc; do
+for file in "$HOME/.bashrc.d"/*.bashrc; do
   # shellcheck source=/dev/null
   source "$file"
 done
+
+if [ -d "$HOME/.bashrc_private.d" ]; then
+    for file in "$HOME/.bashrc_private.d"/*.bashrc; do
+        # shellcheck source=/dev/null
+        source "$file"
+    done
+fi
