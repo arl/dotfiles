@@ -912,4 +912,5 @@
     "editor.defaultColorDecorators": "never",
     "editor.detectIndentation": true,
   },
+  "chat.viewSessions.orientation": "stacked",
 }
