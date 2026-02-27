@@ -65,11 +65,7 @@
     "target/release": true
   },
   "github.copilot.enable": {
-    "*": false,
-    "plaintext": false,
-    "markdown": true,
-    "scminput": false,
-    "python": false
+    "*": false
   },
   "githubPullRequests.pullBranch": "never",
   "go.delveConfig": {
