@@ -44,7 +44,10 @@
   "editor.suggestSelection": "first",
   "editor.tokenColorCustomizations": {
     "[Minimal]": {
-      "comments": "#c3d3e298"
+      "comments": {
+        "foreground": "#c3d3e298",
+        "fontStyle": ""
+      }
     }
   },
   "explorer.confirmDelete": false,
