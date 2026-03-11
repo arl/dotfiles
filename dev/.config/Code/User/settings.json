@@ -891,11 +891,8 @@
     }
   ],
   "chat.tools.terminal.autoApprove": {
-    "/^go build \\./\\.\\.\\.$/": {
-      "approve": true,
-      "matchCommandLine": true
-    },
-    "go": true
+    "go": true,
+    "thview": true,
   },
   "claudeCode.preferredLocation": "panel",
   "amp.git.commit.coauthor.enabled": false,

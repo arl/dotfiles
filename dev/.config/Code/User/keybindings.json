@@ -72,5 +72,10 @@
     "key": "ctrl+shift+[Backslash]",
     "command": "github.copilot.chat.completions.disable",
     "when": "config.editor.inlineSuggest.enabled && github.copilot.activated && github.copilot.completions.enabled && github.copilot.extensionUnification.activated"
+  },
+  {
+    "key": "ctrl+alt+s",
+    "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
+    "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
   }
 ]
