@@ -218,7 +218,7 @@ fs() {
   session=$(tmux list-sessions -F "#{session_name}" |
     fzf --height 40% --reverse --query="$1" --select-1 --exit-0)
   if [ $? -eq 0 ]; then
-    if [ -n "${TMUX}" ]; then
+    if [ "$TERM_PROGRAM" == "tmux" ]; then
       tmux switch-client -t "$session"
     else
       tmux attach-session -t "$session"
