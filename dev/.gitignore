@@ -17,3 +17,6 @@ profile.cov
 
 # python virtual environement
 .venv
+
+
+.config/kitty/kitty.conf.bak
