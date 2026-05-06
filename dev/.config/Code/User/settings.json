@@ -901,6 +901,14 @@
     "https://raw.githubusercontent.com": {
       "approveRequest": false,
       "approveResponse": true
+    },
+    "https://en.wikipedia.org": {
+      "approveRequest": false,
+      "approveResponse": true
+    },
+    "https://md.railgun.works": {
+      "approveRequest": false,
+      "approveResponse": true
     }
   },
   "editor.formatOnSave": true,
@@ -909,5 +917,8 @@
     "editor.defaultColorDecorators": "never",
     "editor.detectIndentation": true,
   },
+  "github.copilot.chat.copilotMemory.enabled": true,
+  "github.copilot.chat.githubMcpServer.enabled": true,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
   "chat.viewSessions.orientation": "stacked",
 }
