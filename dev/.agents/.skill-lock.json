@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "skills": {
+    "using-guigui": {
+      "source": "guigui-gui/guigui",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/guigui-gui/guigui.git",
+      "skillPath": "skills/using-guigui/SKILL.md",
+      "skillFolderHash": "e79febdeca507a959cb43271d5488f8a3dc1143d",
+      "installedAt": "2026-07-25T17:18:00Z",
+      "updatedAt": "2026-07-25T17:18:00Z"
+    }
+  }
+}
