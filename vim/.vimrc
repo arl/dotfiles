@@ -14,23 +14,19 @@ call plug#begin()
     Plug 'airblade/vim-gitgutter'
     Plug 'arl/colorschwitch'
     Plug 'brooth/far.vim'
-    Plug 'cocopon/lightline-hybrid.vim'
-    Plug 'ctrlpvim/ctrlp.vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'elzr/vim-json'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'iCyMind/NeoSolarized'
     Plug 'itchyny/lightline.vim'
     Plug 'jez/vim-superman'
+    Plug 'junegunn/fzf.vim'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/gv.vim'
-    Plug 'majutsushi/tagbar'
     Plug 'Matt-Deacalion/vim-systemd-syntax'
-    Plug 'maximbaz/lightline-ale'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-    Plug 'scrooloose/syntastic'
     Plug 'sindrets/diffview.nvim'
     Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-fugitive'
@@ -98,6 +94,8 @@ call plug#end()
     let g:go_highlight_build_constraints = 1
     let g:go_highlight_generate_tags = 1
 
+    autocmd FileType go nmap <leader>o :GoAlternate<CR>
+
     " Ctrl-Click -> go to definition
     function! GoToDefMouse()
       if &filetype == 'go'
@@ -109,26 +107,23 @@ call plug#end()
     " NERDTree
     map <F2> :NERDTreeToggle<CR>
 
-    " tagbar
-    nmap <F8> :TagbarToggle<CR>
-
     " CtrlP
-    nnoremap <leader>f :CtrlP<CR>
-    nnoremap <leader>F :CtrlPCurFile<CR>
-    nnoremap <leader>b :CtrlPBuffer<CR>
-    nnoremap <leader>m :CtrlPMixed<CR>
-    nnoremap <leader>M :CtrlPMRUFiles<CR>
-    nnoremap <leader>t :CtrlPTag<CR>
-    nnoremap <leader>T :CtrlPBufTag<CR>
-    let g:ctrlp_extensions          = ['tag']
-    let g:ctrlp_mruf_max            = 25
-    let g:ctrlp_lazy_update         = 1
-    let g:ctrlp_use_caching         = 1
-    let g:ctrlp_by_filename         = 0
-    let g:ctrlp_open_new_file       = 'r'
-    let g:ctrlp_open_multiple_files = '3hjr'
-    let g:ctrlp_root_markers        = ['tags']
-    let g:ctrlp_user_command        = 'ag %s --files-with-matches --nocolor --smart-case -g ""'
+    "nnoremap <leader>f :CtrlP<CR>
+    "nnoremap <leader>F :CtrlPCurFile<CR>
+    "nnoremap <leader>b :CtrlPBuffer<CR>
+    "nnoremap <leader>m :CtrlPMixed<CR>
+    "nnoremap <leader>M :CtrlPMRUFiles<CR>
+    "nnoremap <leader>t :CtrlPTag<CR>
+    "nnoremap <leader>T :CtrlPBufTag<CR>
+    "let g:ctrlp_extensions          = ['tag']
+    "let g:ctrlp_mruf_max            = 25
+    "let g:ctrlp_lazy_update         = 1
+    "let g:ctrlp_use_caching         = 1
+    "let g:ctrlp_by_filename         = 0
+    "let g:ctrlp_open_new_file       = 'r'
+    "let g:ctrlp_open_multiple_files = '3hjr'
+    "let g:ctrlp_root_markers        = ['tags']
+    "let g:ctrlp_user_command        = 'ag %s --files-with-matches --nocolor --smart-case -g ""'
 
 
     " dirdiff
@@ -211,22 +206,6 @@ call plug#end()
             \ ('' != fname ? fname : '[No Name]') .
             \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
     endfunction
-
-    " Syntastic
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-
-    let g:syntastic_auto_loc_list = 1
-    " disable automatic checks
-    let g:syntastic_check_on_open = 0
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_mode_map = {
-        \ "mode": "passive",
-        \ "active_filetypes": [""],
-        \ "passive_filetypes": [""] }
-    " instead press F5 for manual check
-    nnoremap <silent> <F5> :SyntasticCheck<CR>
 
     " quick-scope
     " " Trigger a highlight in the appropriate direction when pressing these keys:
