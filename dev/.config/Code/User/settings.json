@@ -276,6 +276,5 @@
     "go": false
   },
   "chat.mcp.gallery.enabled": true,
-  "chat.viewSessions.orientation": "stacked",
   "chat.byokUtilityModelDefault": "mainAgent",
 }
