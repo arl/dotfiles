@@ -3,6 +3,11 @@
 #
 # If installed, let github.com/ellie/atuin handle history management, otherwise,
 # use old-scholl bash hisotry management configuration.
+if [[ ${TERM_PROGRAM-} == vscode || -n ${VSCODE_SHELL_INTEGRATION-} ]]; then
+   # VS Code shell integration needs a clean PROMPT_COMMAND path for command detection.
+   return
+fi
+
 if safewhich atuin; then
    [[ -f ~/.bash-preexec.sh ]] && source "$HOME/.bash-preexec.sh"
    # Bind ctrl-r but not up arrow
