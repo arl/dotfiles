@@ -20,6 +20,7 @@ call plug#begin()
     Plug 'iCyMind/NeoSolarized'
     Plug 'itchyny/lightline.vim'
     Plug 'jez/vim-superman'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/gv.vim'
@@ -33,6 +34,7 @@ call plug#begin()
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-rhubarb'
     Plug 'tpope/vim-sleuth'
+    Plug 'tpope/vim-surround'
     Plug 'unblevable/quick-scope'
     Plug 'vim-scripts/argtextobj.vim'
     Plug 'will133/vim-dirdiff'
@@ -107,23 +109,15 @@ call plug#end()
     " NERDTree
     map <F2> :NERDTreeToggle<CR>
 
-    " CtrlP
-    "nnoremap <leader>f :CtrlP<CR>
-    "nnoremap <leader>F :CtrlPCurFile<CR>
-    "nnoremap <leader>b :CtrlPBuffer<CR>
-    "nnoremap <leader>m :CtrlPMixed<CR>
-    "nnoremap <leader>M :CtrlPMRUFiles<CR>
-    "nnoremap <leader>t :CtrlPTag<CR>
-    "nnoremap <leader>T :CtrlPBufTag<CR>
-    "let g:ctrlp_extensions          = ['tag']
-    "let g:ctrlp_mruf_max            = 25
-    "let g:ctrlp_lazy_update         = 1
-    "let g:ctrlp_use_caching         = 1
-    "let g:ctrlp_by_filename         = 0
-    "let g:ctrlp_open_new_file       = 'r'
-    "let g:ctrlp_open_multiple_files = '3hjr'
-    "let g:ctrlp_root_markers        = ['tags']
-    "let g:ctrlp_user_command        = 'ag %s --files-with-matches --nocolor --smart-case -g ""'
+    " fzf
+    nnoremap <leader>f :Files<CR>
+    nnoremap <leader>F :call fzf#vim#files(expand('%:h'), {})<CR>
+    nnoremap <leader>b :Buffers<CR>
+    nnoremap <leader>m :History<CR>
+    nnoremap <leader>/ :Rg<CR>
+    nnoremap <leader>t :Tags<CR>
+    nnoremap <leader>T :BTags<CR>
+    nnoremap <leader>l :BLines<CR>
 
 
     " dirdiff
@@ -137,9 +131,6 @@ call plug#end()
         \     ['mode', 'paste'],
         \     ['fugitive', 'filename'],
         \   ],
-        \   'right': [
-        \     ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']
-        \     ],
         \ },
         \ 'component_function': {
         \   'fugitive': 'LightLineFugitive',
@@ -147,26 +138,9 @@ call plug#end()
         \   'modified': 'LightLineModified',
         \   'filename': 'LightLineFilename'
         \ },
-        \ 'component_expand': {
-        \   'linter_checking': 'lightline#ale#checking',
-        \   'linter_warnings': 'lightline#ale#warnings',
-        \   'linter_errors': 'lightline#ale#errors',
-        \   'linter_ok': 'lightline#ale#ok',
-        \ },
-        \ 'component_type': {
-        \   'linter_checking': 'left',
-        \   'linter_warnings': 'warning',
-        \   'linter_errors': 'error',
-        \   'linter_ok': 'left',
-        \ },
         \ 'separator': { 'left': '⮀', 'right': '⮂' },
         \ 'subseparator': { 'left': '⮀', 'right': '⮂' }
         \ }
-
-    let g:lightline#ale#indicator_checking = "\uf110"
-    let g:lightline#ale#indicator_warnings = "\uf071"
-    let g:lightline#ale#indicator_errors = "\uf05e"
-    let g:lightline#ale#indicator_ok = "\uf00c"
 
     function! LightLineModified()
       if &filetype == "help"
