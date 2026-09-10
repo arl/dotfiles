@@ -89,6 +89,8 @@ if safewhich lazygit; then
   alias zg='lazygit '
 fi
 
+alias isodate='date --utc +%Y%m%dT-%H%M%S '
+
 # python virtualenv aliases
 alias ve='python3 -m virtualenv ./.venv'
 alias va='source ./.venv/bin/activate'
