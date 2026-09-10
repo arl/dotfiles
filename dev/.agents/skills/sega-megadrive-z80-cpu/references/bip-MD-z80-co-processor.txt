@@ -1,0 +1,304 @@
+ 
+ Sega Megadrive Music Driver: The Z80 Co-Processor - L Break Into Program, 0:1 
+ ↓ 
+ JAVASCRIPT IS DISABLED. Please enable JavaScript on your browser to best view this site. 
+ L Break Into Program, 0:1 
+ Retro Computer Preservation 
+ Home 
+ Programming 
+ BASIC 
+ Part 1: Hello! 
+ Part 2: Variables 
+ Part 3: IF… 
+ Part 4: Loops 
+ Part 5: Subroutines 
+ Assembly Language 
+ Primer 
+ Part 1: Numbers 
+ Part 2: Maths 
+ Part 3: Branching and Loops 
+ Z80 
+ Z80 Opcodes 
+ Hardware 
+ Computers 
+ Agon 
+ ZX81 
+ Motherboard 
+ ZX Spectrum 
+ Motherboard 
+ Memory Map 
+ Keyboard 
+ Screen Memory Layout 
+ Interrupts 
+ Sound 
+ Character Set 
+ Assembly Language 
+ Z80 Development Toolchain 
+ Z80 Tutorials 
+ Z80 Library Routines 
+ Z80 Demos 
+ ZX Spectrum Next 
+ Assembly Language 
+ Z80 Development Toolchain 
+ Z80 Library Routines 
+ Z80 Demos 
+ Components 
+ Z80 
+ 8250 UART 
+ Links 
+ Speculation 
+ My Collection 
+ Post navigation 
+ Sega Megadrive Music Driver: The Z80 Co-Processor 
+ L Break Into Program, 0:1 
+ Posted on May 12, 2026 by Break Into Program May 12, 2026 
+ As mentioned in the introduction , the Sega Megadrive has a Z80 co-processor that serves two purposes: 
+ For backwards compatibility with the Z80-based Master System. 
+ For managing audio in games. 
+ Backwards Compatibility 
+ Backwards compatibility with the Master System requires a Power Base Convertor, a fairly dumb adaptor that maps the pins of the smaller Master System cartridges to the Megadrive cartridge connector. The convertor is designed to fit on the Megadrive 1, though does work on the Megadrive 2 with some modifications. 
+ This also explains why the Megadrive has a Master System PSG sound chip (SN76489) in addition to the FM chip (YM2612). 
+ Backwards compatibility is outside the scope of this document, though I may revisit it in another article. 
+ Interrupts 
+ The Z80 will receive an interrupt every VBLANK with a suitable interrupt handler at address 0x0038 and IM 1 enabled. If music is tied to the VBLANK via this interrupt, it will run at a different speed (slightly slower) on a PAL (50Hz) Megadrive. 
+ Clock Speed 
+ The Z80 is clocked at 3.579545MHz for NTCS systems and 3.546894MHz for PAL. 
+ Memory Map 
+ The Z80 has its own 64K address space and it is mapped as follows: 
+ This is mapped to address 0x0A00000 in the 68000 address space. 
+ My music driver has the driver code in the 8K of RAM, and the music data as a 32K bank of cartridge ROM. A side effect of having the code in RAM is that I can write self-modifying code to improve performance. 
+ Ports 
+ The 68000 controls the Z80 via the following ports: 
+ 0x0A11100 – Z80_BUS_REQ 
+ 0x0A11200 – Z80_RESET 
+ Banking 
+ The Z80 can bank in 32K of cartridge ROM at address 0x8000 by writing to the banking register at 0x6000. 
+ To specify which section the most significant 9 bits of the 24-bit address must be written a bit at a time into bit 0 of the register, starting with bit 15 and ending with bit 23. 
+ For example, to page in address 0x800000 (0b100000000000000000000000), take the top 9 bits (0b100000000) and write it out from right to left as follows: 
+Z80_PAGE_REG: equ 0x6000 ; The paging register
+page: LD HL, Z80_PAGE_REG
+ XOR A ; A: 0
+ LD (HL),A ; Write out 8 zeros
+ LD (HL),A
+ LD (HL),A
+ LD (HL),A
+ LD (HL),A
+ LD (HL),A
+ LD (HL),A
+ LD (HL),A
+ INC A ; A: 1
+ LD (HL),A ; Followed by 1 one
+ RET
+ Bus Considerations 
+ The 68000 can only access the Z80 RAM by requesting access to its bus. 
+Z80_BUS_REQ: equ 0x0A11100
+Z80_RESET: equ 0x0A11200
+; Halt the Z80 so the 68000 can access it
+;
+haltZ80: move.w #0x100, Z80_BUS_REQ ; Write 0x100 to request access to the bus
+ move.w #0x100, Z80_RESET ; Write 0x100 to halt the Z80
+.l1: btst.b #0, Z80_BUS_REQ ; Loop until control is confirmed
+ bne.b .l1 
+ rts
+; Resume the Z80
+;
+freeZ80: move.w #0, Z80_BUS_REQ ; Write 0 to release bus access
+ rts
+ I’ve seen other examples online that also write 0 to Z80_RESET (in freeZ80), though in my experience I’ve found that it is not required. 
+ Initialising the Z80 Co-Processor 
+ Now that we understand how to access the Z80 RAM, we can copy our code into it and reset the Z80. This snippet assumes that there are two labels defined, driverZ80 which points to the Z80 binary code in the cartridge ROM, and driverZ80_len, which is the size of that block in bytes. 
+ This function doesn’t use the haltZ80 and freeZ80 functions though you can see similar writes to the registers within. 
+Z80_RAM: equ 0x0A00000 ; This maps to address 0x0000 in the Z80 memory map
+Z80_BUS_REQ: equ 0x0A11100
+Z80_RESET: equ 0x0A11200
+;
+; Load the music driver into Z80 RAM and start it
+;
+loadDriver: move SR,-(SP)
+ lea Z80_RAM, a0 ; a0: Z80 Memory Space
+ lea Z80_BUS_REQ, a1 ; a1: Z80 bus request
+ lea Z80_RESET, a2 ; a2: Z80 reset
+ lea driverZ80, a3 ; a3: Address of the Z80 binary 
+ move.w #driverZ80_len, d0 ; d0: Size of the Z80 binary code
+ move #0x2700,SR ; Mask all interrupts
+ move.w #0x100,(a1) ; Z88_BUS_REQ
+ move.w #0x100,(a2) ; Z80_RESET
+;
+; Wait for the Z80
+;
+.l1: btst.b #0,(a1) ; Z80_BUS_REQ
+ bne .l1 
+;
+; Write the data to the Z80
+;
+.l2: move.b (a3)+,(a0)+
+ dbf d0,.l2
+ move.w #0,(a2) ; Z80_RESET
+ move.w #0,(a1) ; Z80_BUS_REQ
+ move.w #0x100,(a2) ; Z80_RESET
+ move (SP)+,SR ; Restore original status register
+ rts
+ Inter CPU Communication 
+ Now that the Z80 is running our music driver code we need a way for our 68000 code to control it, for example to instruct it to start a tune or sound effect, or stop. The easiest way to do this would be to do implement a mailbox, a couple of bytes that both CPUs can access. 
+ For example, from the 680000: 
+ Call haltZ80 
+ Write a command byte to memory location 1 
+ Write a parameter byte to memory location 2 
+ Call freeZ80 
+ The command bytes could be, for example: 
+ 0x00: Start tune or sound effect (the parameter byte being the tune or sound effect to play) 
+ 0x01: Stop tune (no parameter byte) 
+ The Z80 music driver loop would listen for changes to these bytes, performing the appropriate action if it detects one. 
+ When writing Firearm I discovered that this wasn’t quick enough, for example if a number of sound effects were called in quick succession as there was only one mailbox. So I extended the mailbox idea by extending it to be a 32-byte circular buffer that could queue up to 16 command/parameter pairs. 
+ It is worth noting that this should be done sparingly; continuously halting the Z80 will effectively slow the Z80, resulting in musical artefacts, for example, the tune’s tempo slowing down. 
+ The 68000 code to queue something in the buffer looks like this. 
+; Queue a command to the music driver
+;
+; - d0: Command
+; - d1: Parameter
+; 
+; Command: 0 (Play) - Parameter is the tune number, indexed from 0
+; Command: 1 (Stop) - No parameters
+;
+; The buffer is 32 bytes long at address 0xA00E0 in the 68000 address space (0x00E0 in the Z80)
+;
+cmdMusicDriver: jsr haltZ80 ; Get access to the Z80 RAM
+ lea 0x0A000E0, a0 ; a0: 0x00E0 in Z80 driver
+ moveq #0, d2 ; d0.l = 0
+ move.b 0x0A00009, d2 ; d2: 0x0009 is DRIVER_CTRL_P2
+ move.b d1, (0x00, A0, D2) ; Store both bytes in the circular buffer
+ move.b d0, (0x01, A0, D2)
+ addq.b #0x02, 0x0A00009 ; Move and wrap the head pointer
+ andi.b #0x1E, 0x0A00009
+ jsr freeZ80 ; Give the Z80 its RAM back
+ rts
+ There is a corresponding function in the Z80 code that processes this buffer. 
+mainLoop2: LD H,0x00 ; The circular buffer is in the first page of RAM
+ LD A,(DRIVER_CTRL_P2)
+ LD L,A ; L: The tail pointer to the circular buffer
+ LD A,(DRIVER_CTRL_P1) ; A: The head pointer to the circular buffer
+ CP L ; If both pointers are the same, then
+ JP Z,mainLoop1 ; exit this loop, no more commands to process
+ LD A,L ; HL: Tail index in the circular buffer
+ ADD A,tuneQueue
+ LD L,A
+ LD A,(HL) ; Get the first byte (parameter)
+ LD (tuneQueueParam),A ; And store
+ INC L
+ LD A,(HL) ; Get the second byte (command)
+ ADD A,A ; Index it into the tune command lookup table
+ LD L,A
+ LD BC,CMD_TABLE
+ ADD HL,BC
+ LD A,(HL) ; Fetch the command address from the table
+ INC HL
+ LD H,(HL) ; HL: The command address
+ LD L,A
+ CALL callHL ; Call that routine
+ LD A,(DRIVER_CTRL_P1) ; Move and wrap the tail pointer
+ ADD A,2
+ AND 0x1E
+ LD (DRIVER_CTRL_P1),A
+ JP mainLoop2 ; Loop until circular buffer empty
+callHL: JP (HL) ; Simulate CALL (HL) - must be CALLed
+ Posted in Sega MegaDrive 
+ Tagged 68000 , Chip Tunes , Consoles , Hardware , Megadrive , Programming , Sega , SN76489 , YM2612 , Z80 
+ permalink 
+ Post navigation 
+ Comments are closed. 
+ Search 
+ Search for: 
+ Recent Posts 
+ I Accidentally Wrote an Emulator (Part 6) 
+ I Accidentally Wrote an Emulator (Part 5) 
+ I Accidentally Wrote an Emulator (Part 4) 
+ I Accidentally Wrote an Emulator (Part 3) 
+ I Accidentally Wrote an Emulator (Part 2) 
+ I Accidentally Wrote an Emulator (Part 1) 
+ Sega Megadrive Music Driver: Bytecode Processing 
+ Sega Megadrive Music Driver: The Z80 Co-Processor 
+ Sega Megadrive Music Driver: Introduction 
+ Retro Computer Festival 2025 
+ Categories 
+ Calculators (2)
+ Sinclair Cambridge (1)
+ Repairs (1)
+ Sinclair Oxford 300 (1)
+ Repairs (1)
+ Computers (56)
+ Acorn BBC Micro (3)
+ Repairs (3)
+ Commodore 64 (4)
+ Repairs (4)
+ Spectrum Next (1)
+ Tatung Einstein (8)
+ ZX Spectrum (25)
+ Repairs (13)
+ ZX81 (2)
+ Repairs (1)
+ Consoles (3)
+ Sega MegaDrive (3)
+ Emulators (6)
+ Events (7)
+ Musings (20)
+ Projects (19)
+ Cerberus 2080 (2)
+ BBC Basic (2)
+ Harlequin (1)
+ High Altitude Balloon (1)
+ Homebrew Z80 (8)
+ Pico (5)
+ Spectrum Next (2)
+ BBC Basic (2)
+ Reviews (3)
+ Software Development (28)
+ Code (13)
+ Twop Twips (1)
+ Uncategorized (1)
+ Tags 6502 
+ 68000 
+ Assembly 
+ AY-3-8912 
+ BASIC 
+ BBC Basic 
+ BBC Micro 
+ C++ 
+ Calculators 
+ Chip Tunes 
+ Clock 
+ Commodore 64 
+ Composite Video 
+ Consoles 
+ Debugging 
+ DMA 
+ Emulator 
+ Game 
+ Hardware 
+ Homebrew 
+ Interrupts 
+ Keyboard 
+ Maths 
+ Megadrive 
+ Pico 
+ PIO 
+ Programming 
+ Raspberry PI 
+ Repair 
+ Retro Festival 
+ Scouts 
+ Screen 
+ Scrolling 
+ Sega 
+ SN76489 
+ Sound 
+ Spectrum 
+ Spectrum Next 
+ Speculation 
+ Sprites 
+ Tatung Einstein 
+ Tim Follin 
+ YM2612 
+ Z80 
+ ZX81 
+©2026 - L Break Into Program, 0:1 
+ ↑ 

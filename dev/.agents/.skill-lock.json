@@ -1,14 +1,77 @@
 {
   "version": 3,
   "skills": {
+    "grafana-core/alloy": {
+      "source": "grafana/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/grafana/skills.git",
+      "skillPath": "skills/grafana-core/alloy/SKILL.md",
+      "skillFolderHash": "281dc13c1de05ee3b798d6a9a621065401baed8b",
+      "installedAt": "2026-09-10T08:30:03Z",
+      "updatedAt": "2026-09-10T08:30:03Z"
+    },
+    "grafana-core/dashboarding": {
+      "source": "grafana/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/grafana/skills.git",
+      "skillPath": "skills/grafana-core/dashboarding/SKILL.md",
+      "skillFolderHash": "3bc337b816a47b018d9d428e466b7a6e491d17ff",
+      "installedAt": "2026-09-10T08:30:32Z",
+      "updatedAt": "2026-09-10T08:30:32Z"
+    },
+    "grafana-core/grafana-oss": {
+      "source": "grafana/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/grafana/skills.git",
+      "skillPath": "skills/grafana-core/grafana-oss/SKILL.md",
+      "skillFolderHash": "0db60d82f3b318310a46266553e3dc6b310e9222",
+      "installedAt": "2026-09-10T08:21:40Z",
+      "updatedAt": "2026-09-10T08:26:34Z"
+    },
+    "grafana-core/promql": {
+      "source": "grafana/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/grafana/skills.git",
+      "skillPath": "skills/grafana-core/promql/SKILL.md",
+      "skillFolderHash": "921be6f98a338a30e0cebede6e899d235df386ca",
+      "installedAt": "2026-09-10T08:30:20Z",
+      "updatedAt": "2026-09-10T08:30:20Z"
+    },
+    "grafana-lgtm/loki": {
+      "source": "grafana/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/grafana/skills.git",
+      "skillPath": "skills/grafana-lgtm/loki/SKILL.md",
+      "skillFolderHash": "eb7b299e3a84bc103dbc1ce767a4afd4492ad843",
+      "installedAt": "2026-09-10T08:31:26Z",
+      "updatedAt": "2026-09-10T08:31:26Z"
+    },
+    "grafana-lgtm/mimir": {
+      "source": "grafana/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/grafana/skills.git",
+      "skillPath": "skills/grafana-lgtm/mimir/SKILL.md",
+      "skillFolderHash": "65931a3fe6b65c33977fd29c8bb8a10380dbab86",
+      "installedAt": "2026-09-10T08:19:00Z",
+      "updatedAt": "2026-09-10T08:27:01Z"
+    },
+    "grafana-lgtm/prometheus": {
+      "source": "grafana/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/grafana/skills.git",
+      "skillPath": "skills/grafana-lgtm/prometheus/SKILL.md",
+      "skillFolderHash": "5655d734f3506e862588b57d0dd2c0b6b0fbc4dd",
+      "installedAt": "2026-09-10T08:31:48Z",
+      "updatedAt": "2026-09-10T08:31:48Z"
+    },
     "using-guigui": {
       "source": "guigui-gui/guigui",
       "sourceType": "github",
       "sourceUrl": "https://github.com/guigui-gui/guigui.git",
       "skillPath": "skills/using-guigui/SKILL.md",
-      "skillFolderHash": "e79febdeca507a959cb43271d5488f8a3dc1143d",
+      "skillFolderHash": "661cc66341bdde51130eeecd3906dfc4a455c13a",
       "installedAt": "2026-07-25T17:18:00Z",
-      "updatedAt": "2026-07-25T17:18:00Z"
+      "updatedAt": "2026-09-10T08:13:45Z"
     }
   }
 }

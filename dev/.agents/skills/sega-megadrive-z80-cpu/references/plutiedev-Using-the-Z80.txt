@@ -1,0 +1,133 @@
+ 
+ Using the Z80 - Plutiedev 
+ Using the Z80 
+ The Z80 is the second CPU in the Mega Drive, and it's main purpose is
+ to handle the sound hardware. Usually it's either used to do PCM (with
+ the 68000 taking care of the rest), or it's left to handle all sound
+ tasks on its own. This will go through the basics of getting it
+ running.
+ Stuff we need 
+ Loading a Z80 program 
+ Communicating with the Z80 
+ Accessing the YM2612 
+ Z80 and DMA transfers 
+ Stuff we need 
+ We're going to assume you have a Z80 program already built. The Z80
+ program must run from address $0000 (doing the whole Z80
+ initialization itself) and must fit within 8KB. Also reserve some known
+ addresses to talk with the 68000.
+ Now, before we start some handy constants:
+ Z80Ram: equ $A00000 ; Where Z80 RAM starts 
+Z80BusReq: equ $A11100 ; Z80 bus request line 
+Z80Reset: equ $A11200 ; Z80 reset line 
+ Z80Ram points to where Z80 RAM starts (again, it's 8KB
+ large). Z80BusReq and Z80Reset are two 16-bit
+ registers used to control the Z80 and we're going to see their use in
+ the following sections.
+ Make sure to read the section on Z80 and DMA
+ transfers (since you're likely using DMA to load graphics), as
+ there's an important issue you need to be aware of.
+ Back to top 
+ Loading a Z80 program 
+ The first thing you'll want to do is set up the Z80. Assuming you already
+ have a Z80 program ready to use, what you should do is load the program
+ into Z80 RAM, then reset the Z80 and let it run.
+ Well, erm, easier said than done.
+ The first step is to get access to the Z80 bus (and hence Z80 RAM).
+ To do this we reset, then request the bus then release reset
+ (this is because for some reason we can't access Z80 RAM while Z80 is
+ reset). Thankfully, it's just three register writes:
+ Assert Z80 reset by writing $000 to Z80Reset 
+ Request Z80 bus by writing $100 to Z80BusReq 
+ Release Z80 reset by writing $100 to Z80Reset 
+ move.w #$000, (Z80Reset)
+ move.w #$100, (Z80BusReq)
+ move.w #$100, (Z80Reset) 
+ Now we can copy our program to Z80 RAM! A loop that copies the Z80
+ program into Z80 RAM (from Z80Ram onwards) will do. As long
+ as it fits in 8KB you'll be OK. Only catch: you must use byte
+ accesses when touching Z80 RAM , word accesses won't work.
+ lea (Z80Prog), a0
+ lea (Z80Ram), a1
+ move.w #Z80ProgSize-1, d0
+@Loop:
+ move.b (a0)+, (a1)+
+ dbf d0, @Loop 
+ Now we proceed to reset the Z80 properly . We assert reset, but
+ we need to wait a bit — if we don't do this, the YM2612 may not work
+ properly. Write $000 to Z80Reset and then wait
+ at least 192 cycles (but more won't hurt).
+ move.w #$000, (Z80Reset)
+ move.w #20, d0
+@Wait:
+ dbf d0, @Wait 
+ Finally, once we're done with all this we can release both reset and the
+ bus which will let the Z80 start running the program we loaded:
+ Release Z80 reset by writing $100 to Z80Reset 
+ Release Z80 bus by writing $000 to Z80BusReq 
+ move.w #$100, (Z80Reset)
+ move.w #$000, (Z80BusReq)
+ rts 
+ Back to top 
+ Communicating with the Z80 
+ Annoyingly, the only way to communicate with the Z80 is by poking its
+ RAM. So reserve some known addresses in Z80 RAM to pass data between
+ the 68000 and the Z80 (also, the usual advices about multithreading apply
+ here as well).
+ We can't access Z80 RAM while it's running, but we can request its bus
+ (which will pause the Z80). Note that depending what the Z80 is doing,
+ it may take a bit until the bus is free. So once you write
+ $100 to Z80BusReq , you need to keep reading
+ back from it until it also returns $100 (at which point the
+ Z80 has let go of the bus).
+ This is best wrapped in a macro: 
+ PauseZ80: macro 
+ move.w #$100, (Z80BusReq)
+@WaitZ80\@:
+ btst #0, (Z80BusReq)
+ bne.s @WaitZ80\@
+ endm 
+ Then access Z80 RAM. You can do whatever you want (read or write) as
+ long as you remember to only use byte accesses (if you need to read a
+ larger value, you'll have to do multiple accesses).
+ Once you're done write $000 to Z80BusReq to
+ release the bus (no need to wait this time):
+ ResumeZ80: macro 
+ move.w #$000, (Z80BusReq)
+ endm 
+ The Z80 may get interrupted in the middle of an instruction! This means
+ that if the Z80 was executing a 16-bit read or write, it may have touched
+ only half of it. The most atomic operation you have on the Z80 side is an
+ 8-bit access.
+ Sometimes you need to prevent the Z80 from accessing the 68000 bus but
+ you don't need to access Z80 RAM. In that case, you can bus request it
+ without waiting for the Z80 to give the bus (since that only matters
+ when you're going to access the Z80 area, and if the Z80 was accessing
+ the 68000 bus then you'd be already waiting anyway):
+ FastPauseZ80: macro 
+ move.w #$100, (Z80BusReq)
+ endm 
+ If you aren't sure what you're doing however, stick to PauseZ80 .
+ Back to top 
+ Accessing the YM2612 
+ One big catch is that the YM2612 is actually on the Z80 bus. If you were
+ using it from the 68000 before, you were likely just holding the Z80 bus
+ requested, but with the Z80 running you can't do that anymore.
+ Thankfully, the solution is the same as for Z80 RAM: use
+ PauseZ80 , access the YM2612, then ResumeZ80 .
+ Back to top 
+ Z80 and DMA transfers 
+ Something you should be aware of is that the Z80 and DMA
+ transfers don't play nice in some board revisions (especially
+ early ones), and can result in garbage being loaded to video memory.
+ This does not happen on most revisions and never happens in
+ emulators , which can make debugging harder.
+ Sadly, the only safe workaround seems to be to halt the Z80 while using
+ DMA, so the procedure would go like this:
+ Request the Z80 bus (use FastPauseZ80 )
+ Do the DMA transfers now
+ Release the Z80 bus (use ResumeZ80 )
+ Using FastPauseZ80 is enough since we don't want to access
+ Z80 RAM using the 68000 and by the time the DMA command is written the
+ Z80 will have been definitely halted.
+ Back to top 

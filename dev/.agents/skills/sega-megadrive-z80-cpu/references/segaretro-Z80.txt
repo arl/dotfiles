@@ -1,0 +1,65 @@
+ 
+ Z80 - Sega Retro 
+ Skip to main content 
+ Menu 
+ Main Navigation 
+ Main Page Recent changes Random page Help Special pages Upload file 
+ Home Consoles 
+ SG-1000 Sega Master System Sega Mega Drive Sega Game Gear Sega Mega-CD Sega 32X Sega Pico Sega Saturn Sega Dreamcast Advanced Pico Beena Non-Sega consoles 
+ Arcade Systems 
+ Electro-mechanical Pre-System 1 Sega System series Sega Model series Sega NAOMI series Post-NAOMI Pinball Tables Slots, redemptions, etc. 
+ Sega 
+ Sega People Franchises Consumer products Venues 
+ Development 
+ Emulation Programs Official documentation Unofficial documentation 
+ Search 
+ What links here Related changes Special pages Printable version Permanent link Page information Cite this page Page values 
+ Create account Log in 
+ Sega Retro may not look as expected in this version of Internet Explorer. We recommend you upgrade to a newer version of Internet Explorer or switch to a browser like Firefox or Chrome. 
+  Actions 
+ Page Discussion View source History 
+ Z80 
+ From Sega Retro 
+ This article needs cleanup . This article needs to be edited to conform to a higher standard of article quality. After the article has been cleaned up, you may remove this message. For help, see the How to Edit a Page article.
+ Z80 
+ Designer: Zilog 
+ The Zilog Z80 is an 8/16-bit microprocessor designed and manufactured by Zilog from 1976 onwards. It was designed by ex- Intel engineers Masatoshi Shima and Federico Faggin . It was widely used both in desktop and embedded computer designs, and is one of the most popular CPUs of all time. Although Zilog made several attempts to move off the Z80 onto more powerful 16-bit (Zilog Z800, Zilog Z8000) and 32-bit (Zilog Z80000) platforms, other companies were offering CPUs in this performance range years earlier, and the Zilog chips never caught on.
+ Contents 
+ 1 History 
+ 2 Notable Uses 
+ 3 Documentation 
+ 4 External links 
+ 5 References 
+ History 
+ The Z80 is an enhanced (and fully binary-compatible) version of the Intel 8080. The Z80 was set in motion at the end of 1974, when Federico Faggin left Intel, after working on the 8080, to found Zilog with Ralph Ungermann. By July 1976, Zilog had the Z80 on the market. It was designed to be binary compatible with the Intel 8080 so that code for the latter could run unmodified on it, notably the CP/M operating system. Masatoshi Shima , the principal logic and transistor level-designer of the Intel 4004 and the 8080, designed most of the microarchitecture as well as the gate and transistor levels of the Z80.
+ The Z80 offered five real improvements over the 8080: 
+ an enhanced instruction set including the new indexing registers IX/IY and instructions for them, many new bit-manipulating and shifting operations, and enhanced capabilities for processing interrupts; 
+ two instances of each of the 16-bit registers AF (accumulator+flags), BC, DE, and HL, which could be quickly switched between to speed up response to interrupts or other context-switching; 
+ a limited ability for SIMD (Single Instruction, Multiple Data) with instructions to perform copy, compare, input, and output over contiguous blocks of memory; 
+ a built-in DRAM refresh address counter that would otherwise have to be provided by external circuitry; 
+ a much lower price. 
+ The Z80 quickly took over from the 8080 in the market, and became the most popular 8-bit CPU of all time - indeed, if one takes the absolute size of the market into account, the most successful CPU ever. Later versions increased in speed from the early models' 1 MHz up to as much as 20 MHz.
+ Perhaps key to the success of the Z80 was the built-in DRAM controller and memory refresh register (R), which allowed systems to be built with fewer support chips. Competitor MOS Technology, Inc, maker of the famous 6502 processor, later included this very useful feature in its second generation color video chip VIC-II.
+ Notable Uses 
+ A number of Sega's arcade systems used the Z80 as the CPU. This includes Gremlin 's VIC Dual , which came with Sega's acquisition of Gremlin in 1978. 
+ Sega Master System and Game Gear . 
+ Neo Geo Pocket and Neo Geo Pocket Color . 
+ Both the SNK Neo Geo and Sega Mega Drive video games consoles use it as an audio coprocessor. 
+ Sega's SG-1000 uses the NEC 780C, a binary-compatible clone of the Z80. 
+ As a sound coprocessor in many, many arcade game systems, including many of Sega's 1985-1993 boards. 
+ The Z80 and Motorola 6502 were the main consoles in many early (1976-1985) arcade systems, with some companies continuing to use the Z80 as a main CPU for about six-ten years beyond that point. 
+ Nintendo 's Game Boy and Game Boy Color handheld game systems used a Z80 clone (GB-Z80) manufactured by Sharp Corporation, which had a markedly different instruction set and differences in the complement of registers but shared many of the same opcodes (in terms of both hexadecimal data and written mnemonics). The Sharp Z80 in the Game Boy Color is notable for its ability to selectively double its clock speed when running Game Boy Color software. 
+ The lower-end Texas Instruments set of graphic calculators use Z80 as a central processor, while more advanced models use the Motorola 68000 as their CPU. 
+ Documentation 
+ Programmer's reference manual
+ External links 
+ http://www.zilog.com/ 
+ http://www.z80.info/ 
+ References 
+Retrieved from " https://segaretro.org/index.php?title=Z80&oldid=978425 " 
+ Categories : Cleanup Integrated circuits 
+ -->
+Sega Retro is part of the Backwards Compatible family of sites, which are dedicated to research and preservation of gaming history and culture. Donate | Privacy Policy | About Sega Retro | Contact 
+ Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International license . 
+ Please enable JavaScript to pass antispam protection! Here are the instructions how to enable JavaScript in your web browser http://www.enable-javascript.com . Antispam by CleanTalk. 
+ 

@@ -1,0 +1,135 @@
+ 
+ Zilog Z80 - MegaDrive Wiki 
+ Zilog Z80 
+ From MegaDrive Wiki 
+ Jump to: navigation , search 
+ Z80 and 8 KB SRAM in top middle, sound circuitry on the right, YM2612 on the lower right on a Model 1 Mega Drive. 
+ The Zilog Z80 is a general-purpose 8-bit CPU. It is clocked at 3.58 MHz in the Mega Drive and is often used as the sound CPU, but is officially designated as the Co-Processor to the M68k. It has direct memory access to 8 kilobytes of dedicated sound RAM, as well as the YM2612 FM synthesis chip, and the SN76489 PSG chip. On top of this, it can access a 32KByte 'bank' of any area within M68k memory. This CPU is often used to run the code for the sound driver on many games, while some games only utilise it for DAC playback. The Z80 in the Mega Drive also provides full backwards compatibility to the Master System with nothing but a passive adapter.
+ The two main pure Z80 sound drivers that exist are SMPS/Z80, and the GEMS sound driver. The latter was used in Sonic Spinball, while the first was used in Sonic the Hedgehog 3. There are also a number of pure Z80 sound drivers in production by some other Mega Drive homebrew programmers, such as Echo. 
+ Contents 
+ 1 Hardware 
+ 1.1 Memory Map 
+ 1.2 Z80 Control Registers 
+ 2 Programming the Z80 
+ 2.1 Registers 
+ 2.2 Initialise the Z80 
+ 2.3 Play Music at a steady pace 
+ 2.4 Limitations of a Z80 Sound Driver 
+ Hardware 
+ The Z80 has it's own private bus, completely separate from the Mega Drive's bus. This allows it to keep running completely separately from the Mega Drive at full speed, but still has the ability to access a 32 KB window of 68k address space that can be banked anywhere in the address space, but should only be banked to ROM. It also has the ability to access the YM2612 at any time through an IO mapped location.
+ Even though the Z80's 8 KB memory is usually SRAM, it can be replaced with a PSRAM due to a signal that can be used as refresh, which is actually brought out to a pin that is not connected on SRAMs.
+ The Z80's memory is laid out like the following:
+ Memory Map 
+ Start 
+ End 
+ Description
+ 0000h 
+ 1FFFh 
+ Z80 RAM
+ 2000h 
+ 3FFFh 
+ Reserved
+ 4000h
+ YM2612 A0
+ 4001h
+ YM2612 D0
+ 4002h
+ YM2612 A1
+ 4003h
+ YM2612 D1
+ 4004h 
+ 5FFFh 
+ Reserved
+ 6000h
+ Bank register
+ 6001h 
+ 7F10h 
+ Reserved
+ 7F11h
+ SN76489 PSG 
+ 7F12h 
+ 7FFFh 
+ Reserved
+ 8000h 
+ FFFFh 
+ M68k memory bank
+ The current bank to be at the 8000h and up region can be controlled by the banking register.
+ Z80 Control Registers 
+ If the 68k wishes to access anything in the Z80 address space, the Z80 must be stopped. This can be accomplished through the register at $A11100. To stop the Z80 and send a bus request, #$0100 must be written to $A11100. To see if the Z80 has stopped, bit 0 of $A11100 must be checked - if it's clear, the 68k may access the bus, but wait if it is set. Once access to the Z80 area is complete, #$0000 needs to be written to $A11100 to return the bus back to the Z80. No waiting to see if the bus is returned is required here — it is handled automatically.
+ However, if the Z80 is required to be reset (for example, to load a new program to it's memory) this may be done by writing #$0000 to $A11200, but only when the Z80 bus is requested. After returning the bus after loading the new program to it's memory, the Z80 may be let go from reset by writing #$0100 to $A11200.
+ Programming the Z80 
+ Registers 
+ Seeing as the Z80 was developed to be byte compatible with Intel's 8080 chip, the standard 8080 registers are also present on the Z80:
+ AF: 8-bit accumulator (A) and flag bits (F), and an Add/Subtract flag (usually called N) 
+ BC: 16-bit data/address register or two 8-bit registers (A hybrid of an ax and dx register on the M68k ) 
+ DE: 16-bit data/address register or two 8-bit registers (A hybrid of an ax and dx register on the M68k ) 
+ HL: 16-bit accumulator/address register or two 8-bit registers 
+ SP: stack pointer, 16 bits (This register is also present on the M68k ) 
+ PC: program counter, 16 bits (This register is also present on the M68k ) 
+ The Z80 has these added registers:
+ IX: 16-bit index or base register for 8-bit immediate offsets 
+ IY: 16-bit index or base register for 8-bit immediate offsets 
+ I: interrupt vector base register, 8 bits 
+ R: DRAM refresh counter, 
+ AF': alternate (or shadow) accumulator and flags 
+ BC', DE' and HL': alternate (or shadow) registers 
+ Initialise the Z80 
+ Before you'll be able to use the Z80, you will need to send it some code to initialise it. Many games do pretty much the same in this department, and this is the code I use in my sound drivers:
+<source lang="asm" line="GESHI_FANCY_LINE_NUMBERS">
+ ============================================================================== 
+ Subroutine to initialise the Z80 
+ ============================================================================== 
+ Init_Z80:
+ move.w #$100,($A11100)  ; Send the Z80 a bus request
+ move.w #$100,($A11200)  ; Reset the Z80
+ Init_Z80_WaitZ80Loop:
+ btst #0,($A11100)  ; Has the Z80 reset?
+ bne.s Init_Z80_WaitZ80Loop  ; If not, keep checking.
+ lea (Init_Z80_InitCode), a0 ; Load the start address of the code to a0.
+ lea ($A00000), a1 ; Load the address of start of Z80 RAM to a1
+ move.w #Init_Z80_InitCode_End-Init_Z80_InitCode,d1  ; Load the length of the Z80 code to d1
+ Init_Z80_LoadProgramLoop:
+ move.b (a0)+, (a1)+ ; Write a byte of Z80 data.
+ dbf d1, Init_Z80_LoadProgramLoop ; If we have bytes left to write, write them.
+ move.w #0,($A11200) ; Disable the Z80 reset.
+ move.w #0,($A11100) ; Give the Z80 the bus back.
+ move.w #$100,($A11200) ; Reset the Z80 again.
+ rts ; Return to sub.
+ Below is the code that the Z80 will execute. 
+ Init_Z80_InitCode:
+ dc.w $AF01, $D91F, $1127, $0021, $2600, $F977 
+ dc.w $EDB0, $DDE1, $FDE1, $ED47, $ED4F, $D1E1
+ dc.w $F108, $D9C1, $D1E1, $F1F9, $F3ED, $5636
+ dc.w $E9E9
+Init_Z80_InitCode_End:
+</source>
+ Once this initialization is completed, you can load your sound driver's code into Z80 RAM. An important point to take note of when writing a sound driver is that it must fit within the 8KBytes of RAM provided - and preferably use less so you can have some RAM for flags, status info, etc. While some sound drivers use main M68k RAM for this, some use the Z80's own RAM. How you do all this is completely up to you - but it is often desirable that you try to keep everything efficient as possible for music to play at a constant pace. To have a fast sound driver, avoid doing expensive multiplication and division, as well as changing the current bank a lot - it's best to keep it in one place instead of constantly switching around. If you decide to have DAC samples, do not store them in your sound driver, but instead in your ROM in a 'bank' for the Z80 to access. To avoid having to change the bank too often, try to keep all DAC samples you use in one part of your song in one bank. 
+ Once you've written your sound driver, you can load it into Z80 program RAM using the same technique as described above, except changing the data referenced by 'Init_Z80_InitCode' and possibly compressing the sound driver to save some bytes of ROM space. 
+ Play Music at a steady pace 
+ To keep your music playing at a steady pace, you can employ quite a few different techniques. One of them involves the VBlank interrupt the Z80 also receives, but when using this method, your sound diver will suffer from the infamous "50 Hz Syndrome" where the music will sound slowed down by quite a bit on 50 Hz consoles. The second method, which doesn't depend on the VDP makes use of the fact that the YM2612 has two timers, which you can read back in your code. One of them can count with very high accuracy for some distortion effects, while the other can be used to keep the driver read and play a new note after a specified number of microseconds. The value the timers have to reach before a new note is played could be specified by the song's tempo header. Sadly, these timers do not cause a Z80 interrupt when they expire so you will need to constantly poll them in your main loop to see if they've expired.
+ Limitations of a Z80 Sound Driver 
+ As great as writing a sound driver for the Z80 may sound, there are some limitations. First of all, the bank switching register is very slow and takes 100+ cycles to switch a bank. Therefore, it is advised that you do not switch banks too often. Secondly, as every bank is 32KBytes in size, the song you want to play will need to fit into one Z80 bank. It is also advisable to keep all sound effects in one bank for quick switching and reducing the cycles required for looking up in a table what bank to find what sound effect in.
+ Retrieved from ‘ http://md.railgun.works/index.php?title=Zilog_Z80&oldid=269 ’ 
+ Categories : Hardware MegaDrive 
+ Navigation menu 
+ Personal tools 
+ Log in 
+ Namespaces 
+ Page 
+ Discussion 
+ Variants 
+ Views 
+ Read 
+ View source 
+ View history 
+ More 
+ Search 
+ Navigation 
+ Main page Recent changes Random page Help 
+ Tools 
+ What links here Related changes Special pages Printable version Permanent link Page information 
+ This page was last modified on 16 March 2015, at 11:29. 
+ Content is available under Creative Commons Attribution-NonCommercial-ShareAlike unless otherwise noted. 
+ Privacy policy 
+ About MegaDrive Wiki 
+ Disclaimers 

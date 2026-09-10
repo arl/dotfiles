@@ -4,7 +4,7 @@ metadata:
     github-path: skills/using-guigui
     github-ref: refs/heads/main
     github-repo: https://github.com/guigui-gui/guigui
-    github-tree-sha: e79febdeca507a959cb43271d5488f8a3dc1143d
+    github-tree-sha: 661cc66341bdde51130eeecd3906dfc4a455c13a
 name: using-guigui
 ---
 # Using Guigui
@@ -276,6 +276,62 @@ When replacing a subtree or switching records, commit or deliberately discard
 active edits before resetting the widget. Otherwise the model and the retained
 editing buffer can silently diverge.
 
+### Custom list item content must color itself
+
+`basicwidget.ListItem[T].Content` takes any widget, which is how a row gets an
+icon, several columns, or an editable field. Setting `Content` replaces the
+item's built-in text widget, so the list stops coloring anything inside the row.
+It still paints the selection highlight behind the row, so a custom row that
+ignores its state keeps its default text color and turns unreadable on the
+accent background.
+
+The list publishes each row's state as a `basicwidget.ListItemColorType` under
+`basicwidget.EnvKeyListItemColorType` (`Default`, `Highlighted`,
+`SelectedInUnfocusedList`, `Hovered`, `ItemDisabled`, `ListDisabled`). Read it
+and apply `TextColor(context)`:
+
+```go
+func (r *row) Layout(context *guigui.Context, widgetBounds *guigui.WidgetBounds, layouter *guigui.ChildLayouter) {
+	colorType := basicwidget.ListItemColorTypeDefault
+	if v, ok := context.Env(r, basicwidget.EnvKeyListItemColorType); ok {
+		if ct, ok := v.(basicwidget.ListItemColorType); ok {
+			colorType = ct
+		}
+	}
+	var style basicwidget.TextStyle
+	style.SetColor(colorType.TextColor(context))
+	r.text.SetBaseStyle(&style)
+
+	r.layout(context).LayoutWidgets(context, widgetBounds.Bounds(), layouter)
+}
+```
+
+What that shape encodes:
+
+- **Read it in `Layout` (or `Draw`), not `Build`.** This is the deliberate
+  exception to "setters belong in `Build`": the value comes from the list's own
+  content widget, so it exists only after the build phase.
+- **Guard the lookup *and* the type assertion.** A missing value is normal, not
+  an error: the lookup returns `(nil, false)` for a row scrolled out of the
+  viewport and for the same widget used outside any list. `basicwidget.Popup`
+  additionally returns `(nil, true)` to stop a row's color type from leaking
+  into popup content, so `ok` alone does not mean you got a
+  `ListItemColorType` — always use the comma-ok form, never a bare
+  `v.(basicwidget.ListItemColorType)`.
+- **Falling back to `Default` is the simplest correct choice**; it maps to the
+  ordinary text color. Leaving the color `nil` and not touching the style also
+  works, and suits a widget that has its own palette when used outside a list.
+- **The color type drives more than text.** `BackgroundColor(context)` returns
+  the matching fill (`nil` for `Default`), and `Draw` can branch on
+  `Highlighted` to swap a border or fill. A monochrome icon needs re-rendering
+  with `ebiten.ColorModeDark` on a highlighted row, because the accent
+  background wants a light foreground.
+
+Use `basicwidget.ListItemTextPadding(context)` as the row's padding so custom
+content lines up with ordinary text items. `example/gallery/selects.go`
+(`selectItem`: icon + text) and `example/biglist` (`itemWidget`: variable row
+heights) are the in-tree implementations to copy.
+
 For the full list and runnable demos, read `basicwidget/` and the programs under
 `example/` (start with `example/counter` and `example/todo`; `example/gallery`
 exercises most widgets).
@@ -316,12 +372,11 @@ until one returns `true`. Use it for app-wide models / view-state; use explicit
 fields and setters for parent→direct-child wiring.
 
 `Env` is not only for your own values — `basicwidget` itself uses it to push
-presentation state down to descendant widgets. For example a `List` advertises
-its item color scheme through `basicwidget.EnvKeyListItemColorType`, and a row
-inside the list reads it with `context.Env(self, basicwidget.EnvKeyListItemColorType)`
-to draw itself correctly. So when composing a custom widget that lives inside a
-built-in container, check whether that container exposes an `EnvKey…` you should
-honor.
+presentation state down to descendant widgets. A `List` advertises each row's
+state through `basicwidget.EnvKeyListItemColorType` so that custom row content
+can color itself (see "Custom list item content must color itself"). So when
+composing a custom widget that lives inside a built-in container, check whether
+that container exposes an `EnvKey…` you should honor.
 
 ### Env lookups on a just-created widget silently find nothing
 
@@ -411,19 +466,19 @@ receiver or `Env` when the event actually runs.
 ## Dynamic lists of children
 
 For a variable number of children, use `guigui.WidgetSlice[*T]`: set its length
-to match the data, then add and configure each element.
+to match the data, then add and configure each element. `All()` iterates over
+index-widget pairs; `At(i)` gives random access.
 
 ```go
 func (l *List) Build(context *guigui.Context, adder *guigui.ChildAdder) error {
-	n := l.model.Count()
-	l.rows.SetLen(n)
-	for i := range n {
-		adder.AddWidget(l.rows.At(i))
+	l.rows.SetLen(l.model.Count())
+	for _, row := range l.rows.All() {
+		adder.AddWidget(row)
 	}
-	for i := range n {
+	for i, row := range l.rows.All() {
 		item := l.model.At(i)
-		l.rows.At(i).SetText(item.Text)
-		l.rows.At(i).OnActivated(func(context *guigui.Context) {
+		row.SetText(item.Text)
+		row.OnActivated(func(context *guigui.Context) {
 			l.model.Activate(item.ID)
 		})
 	}
@@ -450,6 +505,48 @@ shown in each slot. For filterable or reorderable data, track selection and
 per-item state by a stable item value/key, reconfigure every slot from current
 data in `Build`, and validate the selection after deletion. A row index can
 start referring to a different item after a rebuild.
+
+### Add only the items in view
+
+A tree costs what it holds, not what it shows. A rebuild re-runs `Build` on
+every widget in it, a layout pass re-runs `Layout` on every widget, and every
+widget's `WriteStateKey` is re-hashed whenever the framework checks for
+changes; only `Draw` skips what is off screen. A collection that puts one
+widget per data item in the tree is therefore charged for the entire data set
+on every frame while a screenful is visible — and each item usually brings
+children of its own. A few hundred items is enough to make scrolling, or a
+popup's open animation, stutter.
+
+`basicwidget.List[T]` / `Table[T]` already add only the items around the
+viewport, which is another reason to prefer them. Hand-roll the same shape when
+they do not fit (a grid of thumbnails, say):
+
+- **Derive the visible range in `Layout`, store it, and hash it.** `Build`
+  cannot read bounds, so `Layout` computes the range from
+  `widgetBounds.VisibleBounds()` and keeps it in a field that `WriteStateKey`
+  writes. Scrolling changes the range, the changed key triggers a rebuild, and
+  that `Build` adds the new range — no scroll callback needed. Extend the range
+  by one row on each side so a scroll shorter than a row cannot expose a gap.
+- **Position the range the last `Build` added, not the one just derived.** Keep
+  that range in a second field, assigned in `Build`. `Layout` runs before the
+  rebuild its freshly derived range asks for, so the two disagree in between;
+  positioning the newly derived range there leaves the items actually in the
+  tree unpositioned, holding the empty bounds every layout pass resets them to.
+- **Keep `Measure` covering every item.** The scroll extent comes from the full
+  content size; measuring only the added range shrinks the content, and the
+  visible range with it.
+
+The test is not "is this item on screen" but "does anything under it still need
+to be in the tree". A widget stays in the tree only while *every* ancestor keeps
+adding it, and a popup is drawn on its own layer, independently of where its
+parent sits — so a popup opened from an item remains on screen after that item
+scrolls out of the viewport, but only while the whole chain from the root down
+to it is still added. Skip one link and the entire subtree goes, popup included.
+Widen the added range to keep such a chain intact. `basicwidget` makes this
+exception for layout only: a list item skips its own `Layout` while out of view
+unless it has a content widget, which may hold something visible. Its container
+windows the tree by height alone, so an item scrolled far enough out is dropped
+whatever it holds — a popup opened from inside a list item disappears with it.
 
 ## Resetting a widget's cached state
 
@@ -589,6 +686,72 @@ The ladder, in order: `WriteStateKey` by default; `RequestRedraw` for
 paint-only state; `RequestRebuild` only when the key mechanism structurally
 cannot observe the change.
 
+### A keyless widget drawing state its parent's Build hands it
+
+The subtlest gap in the ladder, and the inverse of the caveat above: a widget
+with **no** `WriteStateKey` whose own `Draw` renders fields that a parent's
+`Build` pushes into it via setters each rebuild.
+
+The rebuild side works fine — the parent re-runs, calls the setters, the
+widget holds the new values. And a rebuild does repaint what it *visibly*
+changes: after build+layout the framework diffs each widget's children and
+their bounds against the previous frame and repaints any difference, which is
+why structural changes (a popup opening, a child appearing, anything moving)
+need no key. But a value-only change reproduces an identical tree with
+identical bounds, so that diff sees nothing; the only remaining bridge from
+"this widget's state changed during the build" to a repaint of its region is
+the post-build snapshot comparing `WriteStateKey` hashes. A widget that
+writes no key always hashes the same, so the framework never notices, and the
+screen keeps the old pixels while the struct holds the new state. Children configured by that widget's `Build` are unaffected (their own
+keys change), which makes the failure look absurd: the `Text` next to the
+thumbnail updates while the thumbnail itself does not.
+
+The symptom is a stale region that heals on its own. A focus change repaints
+the whole screen, so clicking anywhere that moves focus fixes it; only
+focus-preserving mutations leave it visible — arrow-key or key-repeat value
+changes in a focused input, undo/redo shortcuts, results applied from a
+goroutine. One stale region with correct neighbors, fixed by the next click,
+is this bug's signature.
+
+The fix is a `WriteStateKey` hashing exactly what `Draw` reads. When `Draw`
+also renders shared data reached via `Env` (a document, a map, a model), hash
+that model's generation counter too, so edits to it repaint the widget as
+well.
+
+### Auditing a widget for missing key coverage
+
+When reviewing a widget (or hunting a stale-screen bug), the defect pattern
+is: a setter stores a field on the widget; the field reaches the screen
+through the widget's own `Build`/`Layout`/`Measure`/`Draw` (directly or via
+helpers they call); and the field is neither written into `WriteStateKey` nor
+accompanied by `RequestRebuild`/`RequestRedraw` at the mutation site. There
+are two flavors: a `Build`-read field misses its **rebuild** when set outside
+a build pass, while a `Draw`-read field misses its **repaint** even when set
+during one (previous section).
+
+Before flagging one, rule out what is safe by construction:
+
+- **The setter forwards to a child widget's own setter** (`w.text.SetValue(v)`)
+  instead of storing the value — the child's key covers it.
+- **The mutation happens in a `DispatchEvent` handler or in an input handler
+  that returns `HandleInputByWidget`** — both force a whole-tree rebuild, which
+  is why most callback-driven state needs no key. (Handlers that mutate and
+  return an empty `HandleInputResult{}` get no such rebuild.)
+- **The field is read only inside `On…` callbacks** — that is behavior, not
+  screen state; whatever the callback changes triggers its own update.
+- **The field is read only in `CursorShape`** — the cursor shape is
+  re-evaluated every frame without any rebuild.
+- **The value is derived from `Env` or other widgets' state during `Build`** —
+  it can only change during a build pass anyway.
+
+One clearing argument deserves suspicion: "safe because every caller also
+flips something else that rebuilds at the same time" — sets a field right
+before opening a popup (`Popup.SetOpen` requests a rebuild itself), or only
+ever together with a sibling field that *is* in the key. Such coupling works
+but is invisible at the widget itself and breaks silently when a future call
+site changes the setter's company. When you find yourself relying on it,
+prefer adding the field to the key — hashing one more int is cheap insurance.
+
 ## Context utilities
 
 `*guigui.Context` (passed to most methods) also exposes per-widget state setters,
@@ -659,6 +822,10 @@ or global shortcut handlers behind it.
    `WriteStateKey` (preferred) or call `RequestRebuild` when you mutate it —
    unless the change is paint-only (unchanged bounds and children), in which
    case keep it out of the key and call `RequestRedraw` alone.
+7. If the widget has its own `Draw`, put every field `Draw` reads into
+   `WriteStateKey` even when only an ancestor's `Build` ever sets them — a
+   keyless widget is rebuilt but never repainted (see "A keyless widget
+   drawing state its parent's Build hands it").
 
 ## Verify your work — do not trust this file alone
 
@@ -670,11 +837,37 @@ drift from an alpha API. Before considering a change done:
   package: `rg -n "func \\(.*Button\\)" basicwidget/`. The catalog here is
   intentionally not exhaustive.
 - **Copy from a working example.** `example/counter` (state + buttons),
-  `example/todo` (Env, events, dynamic list), and `example/gallery` (most
-  widgets) are canonical, compiling usage. Prefer adapting them to inventing.
+  `example/todo` (Env, events, dynamic list), `example/gallery` (most widgets),
+  and `example/biglist` (custom list item content) are canonical, compiling
+  usage. Prefer adapting them to inventing.
 - **Build and vet.** `go build ./...` and `go vet ./...`. Guigui code that
   misuses the lifecycle often still compiles, so also run the program (or the
   relevant `example/`) and confirm it renders and reacts.
+- **Prefer driving it headlessly.** A headless run is the better default even
+  when a display is right there: it opens no window and never steals the
+  keyboard focus, and the same script reruns identically. A Guigui app is an
+  `ebiten.Game` — `guigui.Run` hands the root tree to
+  `ebiten.RunGameWithOptions` — so the **`run-ebitengine-app-headless`** skill
+  applies to it unchanged: it builds the app with `-tags ebitenginevmguest`, runs it
+  as an `exp/vmhost` guest, steps ticks, injects pointer and keyboard input, and
+  reads rendered frames back as pixels or PNGs. That skill lives in the
+  Ebitengine repository (`skills/run-ebitengine-app-headless/`), so invoking it
+  by name works only where it is installed. Use it for screenshots, golden-image
+  diffs of a rendering change, and deterministic multi-tick repros.
+  Guigui specifics to script around (`doc.go` documents every environment
+  variable):
+  - Pin what the host platform would otherwise decide, so two runs are
+    comparable: `GUIGUI_COLOR_MODE` (`light`/`dark`),
+    `GUIGUI_KEY_BINDING_MODE` (`command`/`control-default`/`control-emacs`),
+    and `GUIGUI_DEBUG=devicescale=1`.
+  - Injected runes do **not** reach a text input: text arrives through
+    `exp/textinput` IME sessions, not `ebiten.AppendInputChars`. Seed text by
+    pasting instead — `GUIGUI_DEBUG=emulateclipboard` plus
+    `GUIGUI_DEBUG_CLIPBOARD_TEXT` gives the app an in-process clipboard.
+  - Shortcut modifiers are read as the virtual `ebiten.KeyMeta`/`KeyControl`,
+    which register only when a physical key such as `KeyMetaLeft` is injected.
+  - `GUIGUI_DEBUG=showbuildlogs,showinputlogs` turns a silent "nothing happened"
+    into a log of what rebuilt and which widget consumed the input.
 - **Sanity-check the lifecycle, not just the compile.** If a change does not
   show up, re-read "State changes and when the screen updates" — a clean build
   with a stale screen is the signature of a missing rebuild trigger.
@@ -699,6 +892,12 @@ drift from an alpha API. Before considering a change done:
 - **Expecting a field write to repaint.** Only handler-driven or
   state-key-driven changes auto-rebuild; otherwise call `RequestRebuild` (or
   just `RequestRedraw` if the change is paint-only).
+- **A custom `Draw` on a widget with no `WriteStateKey`.** Fields the parent's
+  `Build` hands it arrive, but when neither the tree nor any bounds changed,
+  the region is never repainted — the value-only repaint compares key hashes,
+  and a keyless widget always hashes the same.
+  The staleness is intermittent because any focus change repaints the whole
+  screen (see "A keyless widget drawing state its parent's Build hands it").
 - **Allocating a fresh items slice every `Layout`.** Reuse with
   `slices.Delete(s, 0, len(s))`; `Layout` runs frequently.
 - **Hard-coded pixel sizes.** Use `basicwidget.UnitSize(context)` so layouts
@@ -706,6 +905,9 @@ drift from an alpha API. Before considering a change done:
 - **Holding children in a plain value slice.** `append` to a `[]Row` moves its
   elements, which churns widget identity or panics. Use `guigui.WidgetSlice[*T]`
   for a variable number of children (see "Dynamic lists of children").
+- **One widget per item for a large collection.** Everything in the tree is
+  built, laid out and re-hashed every frame, on screen or not. Add only the
+  range in view (see "Add only the items in view").
 - **Reusing one widget in multiple containers.** A widget has one parent chain.
   Use distinct widget instances backed by shared data.
 - **Forcing a text input's value on every Build.** `ForceSetValue` overwrites an
@@ -713,6 +915,11 @@ drift from an alpha API. Before considering a change done:
   normal model synchronization and force only explicit resets.
 - **Letting decorative content consume its container's click.** Mark rich
   button/list content passthrough so the interactive ancestor handles input.
+- **Leaving custom list item content its default text color.** A
+  `ListItem[T].Content` widget replaces the item's built-in text, so nothing
+  recolors it and a highlighted row goes unreadable. Read
+  `basicwidget.EnvKeyListItemColorType` in `Layout` (see "Custom list item
+  content must color itself").
 - **Resolving env through a widget that was just created.** A widget nobody has
   built yet has no parent, so the lookup silently returns `(nil, false)` and code
   assuming a non-nil value crashes. Resolve shared state through the widget whose
