@@ -237,11 +237,14 @@
     "go": true,
     "thview": true,
     "printf": true,
-    "git ls-remote": true
+    "git ls-remote": true,
+    "awk": true,
+    "uniq": true,
+    "git check-ignore": true,
+    "true": true,
+    "pdftotext": true,
+    "ebitendriver": true
   },
-  "claudeCode.preferredLocation": "panel",
-  "amp.git.commit.coauthor.enabled": false,
-  "amp.git.commit.ampThread.enabled": false,
   "chat.tools.urls.autoApprove": {
     "https://code.visualstudio.com": true,
     "https://github.com/microsoft/vscode/wiki/*": true,
@@ -257,7 +260,9 @@
     "https://github.com": {
       "approveRequest": false,
       "approveResponse": true
-    }
+    },
+    "https://docs.oracle.com": true,
+    "https://registry.terraform.io": true
   },
   "editor.formatOnSave": true,
   "[shellscript]": {
@@ -277,4 +282,34 @@
   },
   "chat.mcp.gallery.enabled": true,
   "chat.byokUtilityModelDefault": "mainAgent",
+  "chat.viewSessions.orientation": "stacked",
+  "cmake.showConfigureWithDebuggerNotification": false,
+  "todo-tree.filtering.excludeGlobs": [
+    "**/vendor/**",
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/bower_components/**",
+    "**/build/**",
+    "**/.vscode/**",
+    "**/.github/**",
+    "**/_output/**",
+    "**/*.min.*",
+    "**/*.map",
+    "**/cover/**"
+  ],
+  "todo-tree.ripgrep.ripgrep": "/usr/bin/rg",
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "HACK",
+    "XXX",
+    "OPTIMIZE",
+    "BUG"
+  ],
+  "todo-tree.highlights.defaultHighlight": {
+    "foreground": "#000000",
+    "background": "#858483",
+    "icon": "checklist",
+    "iconColour": "#FFD700"
+  },
 }
