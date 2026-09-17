@@ -243,7 +243,8 @@
     "git check-ignore": true,
     "true": true,
     "pdftotext": true,
-    "ebitendriver": true
+    "ebitendriver": true,
+    "gofmt": true
   },
   "chat.tools.urls.autoApprove": {
     "https://code.visualstudio.com": true,
@@ -262,7 +263,9 @@
       "approveResponse": true
     },
     "https://docs.oracle.com": true,
-    "https://registry.terraform.io": true
+    "https://registry.terraform.io": true,
+    "https://hub.docker.com": true,
+    "https://grafana.com": true
   },
   "editor.formatOnSave": true,
   "[shellscript]": {
