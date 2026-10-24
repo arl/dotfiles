@@ -167,10 +167,10 @@ direct-mapped regions (ROM/RAM) via pointer, MMIO fallback via bus reads.
 
 | Method | Params | Result |
 |--------|--------|--------|
-| `snapshot` | `{cpu?: int, nlines?: int}` | Full snapshot (registers + instruction-aligned disasm window) |
+| `cpuView` | `{cpu?: int, nlines?: int}` | Full CPU snapshot (registers + instruction-aligned disasm window) |
 | `disassemble` | `{cpu?: int, pc: uint32, n: int}` | `[{pc,bytes:"hex",text},...]` |
 
-`snapshot` is the workhorse. It returns everything in one call:
+`cpuView` is the workhorse. It returns everything in one call:
 ```json
 {
   "cpu":0, "pc":26724, "pcIndex":7,

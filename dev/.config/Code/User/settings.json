@@ -265,7 +265,17 @@
     "https://docs.oracle.com": true,
     "https://registry.terraform.io": true,
     "https://hub.docker.com": true,
-    "https://grafana.com": true
+    "https://grafana.com": true,
+    "https://www.plutiedev.com/vdp-registers": true,
+    "https://www.plutiedev.com": true,
+    "https://*.plutiedev.com": true,
+    "https://wiki.neogeodev.org/index.php": true,
+    "https://wiki.neogeodev.org": true,
+    "https://*.neogeodev.org": true,
+    "https://go.dev": true,
+    "https://*.go.dev": true,
+    "https://*.sonarsource.com": true,
+    "https://*.sonarqube.com": true
   },
   "editor.formatOnSave": true,
   "[shellscript]": {

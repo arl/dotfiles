@@ -64,6 +64,15 @@
       "installedAt": "2026-09-10T08:31:48Z",
       "updatedAt": "2026-09-10T08:31:48Z"
     },
+    "grill-me": {
+      "source": "julianoczkowski/designer-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/julianoczkowski/designer-skills.git",
+      "skillPath": "grill-me/SKILL.md",
+      "skillFolderHash": "d0b6a409eeb04df32254311b1fd047fdca9e2a77",
+      "installedAt": "2026-09-17T15:17:33Z",
+      "updatedAt": "2026-09-17T15:17:33Z"
+    },
     "using-guigui": {
       "source": "guigui-gui/guigui",
       "sourceType": "github",
