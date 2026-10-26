@@ -185,7 +185,6 @@
     "minimapSlider.activeBackground": "#595a99b0",
     "minimapSlider.hoverBackground": "#595a9990",
   },
-  "workbench.colorTheme": "Minimal",
   "[go][go.mod]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit",
@@ -325,4 +324,5 @@
     "icon": "checklist",
     "iconColour": "#FFD700"
   },
+  "workbench.colorTheme": "Minimal",
 }
