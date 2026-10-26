@@ -1,5 +1,9 @@
 # bash completion for op                                   -*- shell-script -*-
 
+# Use 1Password as ssh-agent
+# First enable it in 1Password / Settings / Developer
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+
 __op_debug()
 {
     if [[ -n ${BASH_COMP_DEBUG_FILE} ]]; then
