@@ -1,9 +1,0 @@
-#!/bin/bash
-# Helper script for quake-style kitty terminal
-
-# Use GLFW_IM_MODULE=ibus or the caret (^) and probably
-# other keys are not recognized by kitty.
-GLFW_IM_MODULE=ibus tdrop -m -t \
-      -P 'wmctrl -i -r $wid -b add,sticky,fullscreen' \
-      --wm wmctrl \
-      kitty
