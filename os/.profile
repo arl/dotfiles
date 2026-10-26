@@ -12,21 +12,21 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-        . "$HOME/.bashrc"
+	. "$HOME/.bashrc"
     fi
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then
+if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ]; then
+if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# set PATH so it includes user's private scripts dir if it exists
+# set PATH so it includes my private scripts (if exists)
 if [ -d "$HOME/dev/scripts" ]; then
     PATH="$PATH:$HOME/dev/scripts"
 fi
@@ -36,8 +36,6 @@ fi
 # because they are specific to a machine
 #
 # Those will be treated if exported from '~/machine_specific':
-# - ANDROID_HOME : android-sdk root directory
-# - NODE_PATH    : NodeJS root directory
 #
 # Env vars that aren't set won't be integrated in the PATH,
 # nor processed elsewhere. This in the case the same
