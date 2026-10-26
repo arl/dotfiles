@@ -3,11 +3,6 @@
 # local stuff (machine-specific)
 #
 
-if safewhich atuin; then
-    addToPATH "$HOME/.atuin/bin"
-fi
-
-export SSH_KEYS="$HOME/.ssh/id_ed25519"
 export GOPATH=$HOME/dev
 addToPATH "$GOPATH/bin:$GOPATH/bin"
 export PATH
