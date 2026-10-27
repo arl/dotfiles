@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # https://gitlab.com/gitlab-org/cli 
+
 safewhich glab || return 0
 
 # bash completion V2 for glab                                 -*- shell-script -*-
