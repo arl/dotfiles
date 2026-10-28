@@ -7,7 +7,7 @@ __use_vanilla_history() {
 
 __use_atuin() {
   . "$HOME/.atuin/bin/env"
-  eval "$(atuin init bash --disable-up-arrow)"
+  eval "$(atuin init bash)"
 }
 
 # Share history between different terminals
