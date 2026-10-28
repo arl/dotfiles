@@ -50,20 +50,6 @@ if [ -f "$HOME/.machine_specific" ]; then
     source "$HOME/.machine_specific"
 fi
 
-# If set and if it exists, add LOCAL GO /bin directory to the path
-if [ -d /usr/local/go/bin ]; then
-    if [ -d "/usr/local/go/bin" ]; then
-        export PATH="/usr/local/go/bin:$PATH"
-    fi
-fi
-
-# If set and if it exists, use GOPATH and add $GOPATH/bin to the path
-if [ -n "$GOPATH" ]; then
-    if [ -d "$GOPATH" ]; then
-        export PATH="$GOPATH:$PATH"
-    fi
-fi
-
 export GIT_EDITOR=nvim
 export EDITOR=nvim
 
