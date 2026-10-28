@@ -41,14 +41,6 @@ if safewhich pygmentize; then
   alias ccat='lesc '
 fi
 
-# tmux aliases
-# to make tmux understands that we want utf8...
-alias tmux='tmux -u'
-alias tmcs='tmux choose-session'
-alias tmls='tmux list-sessions'
-alias tmns='tmux new-session -A -s'
-alias tmat='tmns' # not really needed now that tmns behaves as attach if session already exists
-
 # alias sudo with 'sudo ' to have sudo'ed command aliased too
 alias sudo='sudo '
 alias suvi='sudo vi'
