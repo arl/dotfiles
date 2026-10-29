@@ -8,7 +8,5 @@
 safewhich glow || return 0
 
 mdless() {
-  # Provide . to glow if no arguments, so that glow opens
-  # README.md if it finds one in the current directory.
-  glow -p -s dark "${1:-.}"
+  glow --width 0 --pager --style dark "${1:-.}"
 }
