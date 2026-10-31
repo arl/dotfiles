@@ -325,4 +325,5 @@
     "iconColour": "#FFD700"
   },
   "workbench.colorTheme": "Minimal",
+  "git.openRepositoryInParentFolders": "always",
 }
