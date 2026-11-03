@@ -15,8 +15,14 @@ ln -s ~/.local/bin/nvim-linux-x86_64/bin/nvim ~/.local/bin/nvim
 curl -L https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz | gunzip > ~/.local/bin/tree-sitter
 chmod +x ~/.local/bin/tree-sitter
 
-
 # install docker
 sudo apt install docker.io docker-compose-v2 -y
 
 sudo apt install xclip
+
+# Install and configure Minidlna
+sudo apt install minidlna
+sudo apt install acl
+sudo setfacl -m u:minidlna:x /home/aurelien
+sudo setfacl -R -m u:minidlna:rX /home/aurelien/Videos
+
