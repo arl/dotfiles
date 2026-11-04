@@ -2,6 +2,11 @@
   email = aurelien.rainone@gmail.com
   name = Aurélien Rainone
 
+[includeIf "gitdir:~/dev/develersrl/"]
+  path = ~/.work.gitconfig
+[includeIf "gitdir:~/dev/platform/"]
+  path = ~/.work.gitconfig
+
 # Requires github.com/Wilfred/difftastic in the PATH somewhere
 [diff]
   external = "difft"
