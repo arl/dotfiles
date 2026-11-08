@@ -268,5 +268,5 @@
   },
   "workbench.colorTheme": "Minimal",
   "git.openRepositoryInParentFolders": "always",
-  "editor.wordWrapColumn": 99,
+  "editor.wordWrapColumn": 79,
 }
