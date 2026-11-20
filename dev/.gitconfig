@@ -57,6 +57,8 @@
   br = branch -avv
   co = checkout
   st = status
+  pretty = show --pretty=fuller
+  
   # for use with other tools in command chains
   rawdiff = diff --no-ext-diff --no-color
   ds = diff --staged
